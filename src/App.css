@@ -1,0 +1,76 @@
+/* <<<<header>>>> */
+.header {
+  width: 100%;
+
+  background-color: red;
+}
+.header_wrapper {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--wrapper-padding);
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.navigation ul li {
+  cursor: pointer;
+}
+
+/* <<<<App>>>> */
+.app {
+  width: 100%;
+  color: black;
+  background-color: white;
+}
+.section {
+  width: 100%;
+}
+.app_section_wrapper {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--wrapper-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Test styles */
+  height: 500px;
+}
+
+/* <<<<Footer>>>> */
+.footer {
+  width: 100%;
+
+  /* Test styles */
+  background-color: red;
+}
+.footer_wrapper {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--wrapper-padding);
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer_links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+.newsletter_subscription_input {
+  padding: 10px 20px;
+}
