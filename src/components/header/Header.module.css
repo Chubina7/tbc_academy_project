@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+
+  background-color: red;
+}
+.header_wrapper {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--wrapper-padding);
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.navigation ul li {
+  cursor: pointer;
+}
