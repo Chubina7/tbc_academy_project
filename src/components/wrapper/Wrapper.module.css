@@ -1,0 +1,12 @@
+.section {
+  width: 100%;
+}
+.section_wrapper {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--wrapper-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
