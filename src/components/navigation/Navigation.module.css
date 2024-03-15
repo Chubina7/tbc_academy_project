@@ -1,0 +1,13 @@
+.navigation {
+  height: inherit;
+}
+.navigation ul {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.navigation ul li {
+  cursor: pointer;
+}
