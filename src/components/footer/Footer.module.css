@@ -1,11 +1,13 @@
 .footer {
   width: 100%;
-
-  /* Test styles */
-  background-color: red;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 .footer_wrapper {
   width: 100%;
+  height: inherit;
   max-width: var(--max-w);
   margin: 0 auto;
   padding: var(--wrapper-padding);
