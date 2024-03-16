@@ -1,13 +1,13 @@
 import React from "react";
-import Button from "../btn/Button";
-import Input from "../input/Input";
 import styles from "./SearchBar.module.css";
+import DynamicBtn from "../../btns/DynamicBtn";
+import DynamicInput from "../../inputs/DynamicInput";
 
 const SearchBar = () => {
   return (
     <section className={styles.searchBar}>
-      <Input placeholder="Start searching" />
-      <Button title="ENTER" />
+      <DynamicInput type={"search"} />
+      <DynamicBtn type={"search"} />
     </section>
   );
 };

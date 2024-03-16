@@ -1,7 +1,6 @@
 import "./App.css";
-
-import ProductsGrid from "./components/products/productsGrid/ProductsGrid";
-import SearchBar from "./components/searchBar/SearchBar";
+import ProductsGrid from "./components/main/products/productsGrid/ProductsGrid";
+import SearchBar from "./components/main/searchBar/SearchBar";
 
 const App = () => {
   return (

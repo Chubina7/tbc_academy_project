@@ -16,13 +16,3 @@
   justify-content: space-between;
   align-items: center;
 }
-.footer_links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 0;
-}
-.newsletter_subscription_input {
-  padding: 10px 20px;
-}

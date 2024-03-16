@@ -1,0 +1,17 @@
+.addToCart {
+  padding: 6px 18px;
+  border: none;
+  border-radius: 6px;
+  color: inherit;
+  font-size: small;
+  font-weight: bold;
+  cursor: pointer;
+}
+.search {
+  padding: 6px 18px;
+  border: none;
+  border-radius: 50px;
+  color: inherit;
+  font-size: large;
+  cursor: pointer;
+}
