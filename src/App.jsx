@@ -1,22 +1,14 @@
 import "./App.css";
-import Wrapper from "./components/wrapper/Wrapper";
+import ProductsGrid from "./components/main/products/productsGrid/ProductsGrid";
+import SearchBar from "./components/main/searchBar/SearchBar";
 
-const contentStyle = { padding: "15px 0" };
-
-function App() {
+const App = () => {
   return (
     <main className="app">
-      <Wrapper>
-        <h1 style={contentStyle}>First test content</h1>
-      </Wrapper>
-      <Wrapper>
-        <h1 style={contentStyle}>Second test content</h1>
-      </Wrapper>
-      <Wrapper>
-        <h1 style={contentStyle}>Third test content</h1>
-      </Wrapper>
+      <SearchBar />
+      <ProductsGrid />
     </main>
   );
-}
+};
 
 export default App;

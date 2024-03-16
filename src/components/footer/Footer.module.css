@@ -1,11 +1,13 @@
 .footer {
   width: 100%;
-
-  /* Test styles */
-  background-color: red;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 .footer_wrapper {
   width: 100%;
+  height: inherit;
   max-width: var(--max-w);
   margin: 0 auto;
   padding: var(--wrapper-padding);
@@ -13,14 +15,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.footer_links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 0;
-}
-.newsletter_subscription_input {
-  padding: 10px 20px;
 }

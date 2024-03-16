@@ -1,10 +1,12 @@
 .header {
   width: 100%;
-
-  background-color: red;
+  height: 60px;
+  position: fixed;
+  top: 0;
 }
 .header_wrapper {
   width: 100%;
+  height: inherit;
   max-width: var(--max-w);
   margin: 0 auto;
   padding: var(--wrapper-padding);
@@ -12,14 +14,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.navigation ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.navigation ul li {
-  cursor: pointer;
 }

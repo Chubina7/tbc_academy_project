@@ -1,10 +1,14 @@
 .app {
   width: 100%;
-  min-height: 100vh;
-  color: black;
-  background-color: white;
+  max-width: var(--max-w);
+  height: 100vh;
+  padding: 60px 12px;
+  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  gap: 20px;
+  color: black;
+  background-color: white;
 }
