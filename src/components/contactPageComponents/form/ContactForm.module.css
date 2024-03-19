@@ -6,13 +6,13 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
-
 }
 .name_email {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   gap: 20px;
 }
 .subject_message {
@@ -33,13 +33,31 @@
   gap: 8px;
 }
 
-/* .inputField label {
-
-} */
-
-.inputField input {
-  width: 100%;
+.inputField label {
+  font-weight: bold;
 }
+
+.inputField input,
 .inputField textarea {
   width: 100%;
+  background-color: inherit;
+  border: 1px solid var(--color4);
+  color: inherit;
+  padding: 14px 18px;
+  font-size: 16px;
+}
+.inputField input:focus,
+.inputField textarea:focus {
+  outline: none;
+}
+
+.inputField i {
+  width: 100%;
+  text-align: right;
+}
+
+@media screen and (min-width: 420px) {
+  .name_email {
+    flex-direction: row;
+  }
 }

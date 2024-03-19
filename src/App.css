@@ -1,20 +1,20 @@
 .app {
   width: 100%;
-  max-width: var(--max-w);
   height: 100vh;
-  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  color: black;
-  background-color: white;
+  color: inherit;
+  background-color: inherit;
 }
 
 .content {
   flex: 1;
   width: 100%;
+  max-width: var(--max-w);
   padding: 12px;
+  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
