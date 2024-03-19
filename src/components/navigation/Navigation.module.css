@@ -1,6 +1,10 @@
 .navigation {
   display: none;
 }
+.activeNav {
+  cursor: pointer;
+  border-bottom: 2px solid white;
+}
 
 @media screen and (min-width: 375px) {
   .navigation {
@@ -15,6 +19,10 @@
     gap: 10px;
   }
   .navigation ul li {
+    transition: all 0.2s ease-in-out;
+  }
+  .navItem {
     cursor: pointer;
+    border-bottom: 2px solid transparent;
   }
 }
