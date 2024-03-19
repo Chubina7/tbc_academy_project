@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <main className="content">{routes[0]}</main>
+      <main className="content">{routes[1]}</main>
       <Footer />
     </div>
   );

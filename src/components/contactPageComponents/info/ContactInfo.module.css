@@ -1,0 +1,24 @@
+.contactInfoWrapper {
+  width: 100%;
+  padding: 64px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 24px;
+  background-color: red;
+  border-radius: 8px;
+}
+
+.contactItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+  .contactInfoWrapper {
+    width: 60%;
+  }
+}
