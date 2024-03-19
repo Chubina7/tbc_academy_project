@@ -1,8 +1,7 @@
 .header {
+  z-index: 100;
   width: 100%;
   height: 60px;
-  position: fixed;
-  top: 0;
 }
 .header_wrapper {
   width: 100%;

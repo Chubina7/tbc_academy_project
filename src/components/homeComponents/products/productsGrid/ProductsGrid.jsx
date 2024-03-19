@@ -13,7 +13,7 @@ import {
 
 const ProductsGrid = () => {
   return (
-    <section className={styles.products}>
+    <section>
       <div className={styles.grid}>
         <ProductItem
           imgSrc={iPhone_SE}
