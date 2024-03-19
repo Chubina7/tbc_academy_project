@@ -12,7 +12,7 @@ const ProductItem = ({ title, description, price, imgSrc }) => {
           <p>{description}</p>
         </div>
         <div className={styles.buyBar}>
-          <p>$ {price}</p>
+          <strong>$ {price}</strong>
           <DynamicBtn type={"addToCart"} />
         </div>
       </div>

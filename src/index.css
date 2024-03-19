@@ -1,13 +1,23 @@
 :root {
   --max-w: 1440px;
   --wrapper-padding: 0 12px;
+
+  --color1: #494c81;
+  --color2: #cdd8d3;
+  --color3: #e4e3cf;
+  --color4: #3e335e;
+  --color5: #d5ab9f;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
+}
+
+html {
+  background-color: var(--color2);
+  color: var(--color4);
 }
 
 ul {
