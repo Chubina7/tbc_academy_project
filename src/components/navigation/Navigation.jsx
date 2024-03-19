@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Navigation.module.css";
-import BurgerMenu from "./burgerMenu/BurgerMenu";
 import { Link, useLocation } from "react-router-dom";
+import BurgerMenu from "./burgerMenu/BurgerMenu";
 
 const Navigation = () => {
   const path = useLocation();
