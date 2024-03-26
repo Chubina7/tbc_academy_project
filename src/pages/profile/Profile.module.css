@@ -8,15 +8,6 @@
   gap: 50px;
 }
 
-.passwordInputs {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .action {
   width: 100%;
   flex: 1;

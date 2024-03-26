@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Profile.module.css";
 import UserInfo from "../../components/profilePageComponents/userInfo/UserInfo";
-import DynamicInput from "../../components/inputs/DynamicInput";
 import DynamicBtn from "../../components/btns/DynamicBtn";
+import DataChangingCont from "../../components/profilePageComponents/dataChangingCont/DataChangingCont";
 
 const Profile = () => {
   return (
@@ -12,11 +12,7 @@ const Profile = () => {
         userName={"luka"}
         userSurename={"chubinidze"}
       />
-      <div className={styles.passwordInputs}>
-        <h2>Change password</h2>
-        <DynamicInput type={"password"} ph={"New Password"} />
-        <DynamicInput type={"password"} ph={"Confirm New Password"} />
-      </div>
+      <DataChangingCont />
       <div className={styles.action}>
         <DynamicBtn type={"save"} />
       </div>
