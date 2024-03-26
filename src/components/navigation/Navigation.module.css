@@ -1,5 +1,6 @@
 .navigation {
   display: none;
+  user-select: none;
 }
 .activeNav {
   cursor: pointer;

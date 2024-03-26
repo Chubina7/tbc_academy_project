@@ -5,9 +5,9 @@ import BurgerMenu from "./burgerMenu/BurgerMenu";
 
 const navigationItems = [
   { title: "Home", href: "/" },
+  { title: "Blog", href: "/blog" },
   { title: "Contact", href: "/contact" },
   { title: "Profile", href: "/profile" },
-  { title: "Blog", href: "/blog" },
 ];
 
 const Navigation = () => {
