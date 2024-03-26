@@ -1,12 +1,13 @@
 .navigation {
   display: none;
+  user-select: none;
 }
 .activeNav {
   cursor: pointer;
   border-bottom: 2px solid white;
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 420px) {
   .navigation {
     display: block;
     height: inherit;

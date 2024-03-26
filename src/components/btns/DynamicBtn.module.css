@@ -1,3 +1,4 @@
+/* Add to Cart btn */
 .addToCart {
   padding: 6px 18px;
   border: none;
@@ -7,6 +8,8 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+/* Search btn */
 .search {
   padding: 6px 18px;
   border: none;
@@ -14,4 +17,9 @@
   color: inherit;
   font-size: large;
   cursor: pointer;
+}
+
+/* Save changes btn */
+.save {
+  padding: 6px 18px;
 }

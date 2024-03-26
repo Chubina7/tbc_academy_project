@@ -3,6 +3,13 @@ import styles from "./Navigation.module.css";
 import { Link, useLocation } from "react-router-dom";
 import BurgerMenu from "./burgerMenu/BurgerMenu";
 
+const navigationItems = [
+  { title: "Home", href: "/" },
+  { title: "Blog", href: "/blog" },
+  { title: "Contact", href: "/contact" },
+  { title: "Profile", href: "/profile" },
+];
+
 const Navigation = () => {
   const path = useLocation();
 
@@ -11,20 +18,16 @@ const Navigation = () => {
       <BurgerMenu />
       <nav className={styles.navigation}>
         <ul>
-          <li
-            className={
-              path.pathname === "/" ? styles.activeNav : styles.navItem
-            }
-          >
-            <Link to="/">Home</Link>
-          </li>
-          <li
-            className={
-              path.pathname === "/contact" ? styles.activeNav : styles.navItem
-            }
-          >
-            <Link to="/contact">Contact</Link>
-          </li>
+          {navigationItems.map((item, idx) => (
+            <li
+              key={idx}
+              className={
+                path.pathname === item.href ? styles.activeNav : styles.navItem
+              }
+            >
+              <Link to={item.href}>{item.title}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </>

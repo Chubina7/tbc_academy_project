@@ -1,0 +1,38 @@
+.blogPost {
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--color3);
+  border-radius: 6px;
+}
+
+.blogPost img {
+  width: 100%;
+}
+
+.blogPost i {
+  width: 100%;
+  text-align: right;
+}
+
+.action {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.blogPost button {
+  padding: 8px 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .blogPost {
+    max-width: 768px;
+  }
+}
