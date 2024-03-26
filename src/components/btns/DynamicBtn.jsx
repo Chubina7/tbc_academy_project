@@ -7,11 +7,15 @@ const AddToCartBtn = () => {
 const SearchBtn = () => {
   return <button className={styles.search}>Search</button>;
 };
+const SaveBtn = () => {
+  return <button className={styles.save}>Save Changes</button>;
+};
 
 // Listing all type components
 const buttonTypes = {
   search: SearchBtn,
   addToCart: AddToCartBtn,
+  save: SaveBtn,
 };
 
 // Usable component
