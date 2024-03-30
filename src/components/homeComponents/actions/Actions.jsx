@@ -1,11 +1,16 @@
 import React from "react";
 import styles from "./Actions.module.css";
-import DynamicInput from "../../inputs/DynamicInput";
 
-const Actions = ({ sortRule, setSortRule }) => {
+const Actions = ({ sortRule, setSortRule, keyStroke, setKeyStroke }) => {
   return (
     <section className={styles.wrapper}>
-      <DynamicInput type={"search"} />
+      <input
+        className={styles.searchInput}
+        type="search"
+        placeholder="Search by a keystroke"
+        value={keyStroke}
+        onChange={(e) => setKeyStroke(e.target.value)}
+      />
       <button
         className={styles.sortBtn}
         onClick={() => {

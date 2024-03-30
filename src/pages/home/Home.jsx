@@ -5,11 +5,17 @@ import Actions from "../../components/homeComponents/actions/Actions";
 
 const Home = () => {
   const [sortRule, setSortRule] = useState(false);
+  const [inputVal, setInputVal] = useState("");
 
   return (
     <div className={styles.wrapper}>
-      <Actions sortRule={sortRule} setSortRule={setSortRule} />
-      <ProductsGrid sortRule={sortRule} />
+      <Actions
+        sortRule={sortRule}
+        setSortRule={setSortRule}
+        keyStroke={inputVal}
+        setKeyStroke={setInputVal}
+      />
+      <ProductsGrid sortRule={sortRule} keyStroke={inputVal} />
     </div>
   );
 };
