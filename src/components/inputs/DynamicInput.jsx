@@ -12,19 +12,15 @@ const EmailInput = () => {
     />
   );
 };
-const PasswordInput = ({ ph }) => {
-  return <input className={styles.password} type="password" placeholder={ph} />;
-};
 
 const inputTypes = {
   search: SearchInput,
   email: EmailInput,
-  password: PasswordInput,
 };
 
-const DynamicInput = ({ type, ph }) => {
+const DynamicInput = ({ type }) => {
   const Inputs = inputTypes[type];
 
-  return <Inputs ph={ph} />;
+  return <Inputs />;
 };
 export default DynamicInput;

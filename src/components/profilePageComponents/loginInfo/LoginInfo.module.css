@@ -1,8 +1,15 @@
-.passwordInputs {
+.wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   gap: 16px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+  }
 }

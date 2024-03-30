@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ProductItem.module.css";
 import DynamicBtn from "../../../btns/DynamicBtn";
 
-const ProductItem = ({ title, description, price, imgSrc }) => {
+const ProductItem = ({ title, description, price, imgSrc, userProduct }) => {
   return (
     <div className={styles.card}>
       <img src={imgSrc} alt="product_image" className={styles.image} />
@@ -15,6 +15,7 @@ const ProductItem = ({ title, description, price, imgSrc }) => {
           <strong>$ {price}</strong>
           <DynamicBtn type={"addToCart"} />
         </div>
+        {userProduct && <button className={styles.editItem}>Edit item</button>}
       </div>
     </div>
   );
