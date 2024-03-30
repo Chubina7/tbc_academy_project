@@ -1,0 +1,23 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.sortBtn {
+  width: 300px;
+  padding: 6px 18px;
+  border: none;
+  border-radius: 50px;
+  color: inherit;
+  font-size: large;
+  cursor: pointer;
+  text-wrap: nowrap;
+}
+
+@media screen and (min-width: 420px) {
+  .wrapper {
+    flex-direction: row;
+  }
+}

@@ -33,3 +33,9 @@
   align-items: center;
   margin-top: 10px;
 }
+
+.editItem {
+  width: 100%;
+  padding: 4px 12px;
+  margin-top: 8px;
+}
