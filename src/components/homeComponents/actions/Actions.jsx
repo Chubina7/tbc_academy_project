@@ -3,10 +3,10 @@ import styles from "./Actions.module.css";
 import SortBtn from "./sortbtn/SortBtn";
 import SearchInput from "./searchInput/SearchInput";
 
-const Actions = ({ sortRule, setSortRule, keyStroke, setKeyStroke }) => {
+const Actions = ({ sortRule, setSortRule, querySetter }) => {
   return (
     <section className={styles.wrapper}>
-      <SearchInput keyStroke={keyStroke} setKeyStroke={setKeyStroke} />
+      <SearchInput setQuery={querySetter} />
       <SortBtn sortRule={sortRule} setSortRule={setSortRule} />
     </section>
   );
