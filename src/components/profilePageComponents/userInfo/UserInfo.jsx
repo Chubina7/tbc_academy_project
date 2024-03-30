@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styles from "./UserInfo.module.css";
 import UserDataField from "./userDataField/UserDataField";
-import { userObj } from "../../../data/blogs"; // initial value can be fetched from backend and inserted dynamically
+import { userObj } from "../../../data/userObj"; // initial value can be fetched from backend and inserted dynamically
 
-const userDataFields = ["name", "lastname", "email", "address"];
+const userDataFields = ["name", "lastname", "number", "address"];
 
 const UserInfo = () => {
   const [user, setUser] = useState(userObj);

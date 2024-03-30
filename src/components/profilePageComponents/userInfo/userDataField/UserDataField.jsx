@@ -12,17 +12,11 @@ const UserDataField = ({ type, data, editUser }) => {
         {!isEditing ? (
           <>
             <h2>{data}</h2>
-            <button
-              onClick={() => {
-                setIsEditing(true);
-              }}
-            >
-              EDIT
-            </button>
+            <button onClick={() => setIsEditing(true)}>Edit</button>
           </>
         ) : (
           <>
-            {/* input types also should be changed */}
+            {/* input types also to be changed */}
             <input
               type="text"
               value={inputVal}
