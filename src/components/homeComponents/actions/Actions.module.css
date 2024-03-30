@@ -5,29 +5,6 @@
   align-items: center;
   gap: 16px;
 }
-.sortBtn {
-  width: 300px;
-  padding: 6px 18px;
-  border: none;
-  border-radius: 50px;
-  color: inherit;
-  font-size: large;
-  cursor: pointer;
-  text-wrap: nowrap;
-}
-
-.searchInput {
-  color: inherit;
-  background-color: inherit;
-  font-size: large;
-  padding: 6px 18px;
-  width: 100%;
-  border: 1px solid var(--color4);
-  border-radius: 50px;
-}
-.searchInput:focus {
-  outline: none;
-}
 
 @media screen and (min-width: 420px) {
   .wrapper {

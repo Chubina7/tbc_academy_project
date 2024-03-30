@@ -1,24 +1,13 @@
 import React from "react";
 import styles from "./Actions.module.css";
+import SortBtn from "./sortbtn/SortBtn";
+import SearchInput from "./searchInput/SearchInput";
 
 const Actions = ({ sortRule, setSortRule, keyStroke, setKeyStroke }) => {
   return (
     <section className={styles.wrapper}>
-      <input
-        className={styles.searchInput}
-        type="search"
-        placeholder="Search by a keystroke"
-        value={keyStroke}
-        onChange={(e) => setKeyStroke(e.target.value)}
-      />
-      <button
-        className={styles.sortBtn}
-        onClick={() => {
-          setSortRule((prev) => !prev);
-        }}
-      >
-        {sortRule ? "Unsort" : "Sort by price"}
-      </button>
+      <SearchInput keyStroke={keyStroke} setKeyStroke={setKeyStroke} />
+      <SortBtn sortRule={sortRule} setSortRule={setSortRule} />
     </section>
   );
 };
