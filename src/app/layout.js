@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} h-screen w-full flex flex-col`}>
         <Header />
-        <main className="w-full max-w-screen-2xl h-full px-3 mx-auto overflow-y-auto">
+        <main className="w-full max-w-screen-2xl h-full p-3 mx-auto overflow-y-auto">
           {children}
         </main>
         <div className="hidden sm:block">
