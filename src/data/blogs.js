@@ -1,166 +1,128 @@
 export const blogData = [
   {
-    title:
-      "Discovering Hidden Gems: Exploring Off-the-Beaten-Path Destinations",
+    title: "10 Tips for Better Time Management",
     description:
-      "Uncover the allure of hidden gems as we journey off the beaten path to explore enchanting destinations untouched by mass tourism. From secluded beaches to quaint villages nestled in lush landscapes, each discovery promises a unique adventure.",
-    publish_date: "2024-03-25",
-    image:
-      "https://images.unsplash.com/photo-1710874087896-6683c258deb4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Learn how to manage your time effectively with these helpful tips.",
+    publish_date: "2024-03-01",
+    image: "https://source.unsplash.com/960x770/?time,management",
   },
   {
-    title: "The Art of Slow Living: Embracing Moments of Tranquility",
+    title: "The Benefits of Regular Exercise",
     description:
-      "Dive into the essence of slow living, where moments of tranquility reign supreme. Discover the beauty of savoring simple pleasures, cultivating mindfulness, and finding joy in the present moment amidst life's hustle and bustle.",
-    publish_date: "2024-03-24",
-    image:
-      "https://images.unsplash.com/photo-1707343843344-011332037abb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Discover the many benefits that regular exercise can have on your physical and mental health.",
+    publish_date: "2024-03-05",
+    image: "https://source.unsplash.com/960x770/?exercise",
   },
   {
-    title: "Capturing the Colors of Autumn: A Photographic Journey",
+    title: "Healthy Eating Habits",
     description:
-      "Immerse yourself in the vibrant palette of autumn as we embark on a photographic journey through nature's most colorful season. From fiery reds to golden yellows, each image encapsulates the breathtaking beauty of fall foliage.",
-    publish_date: "2024-03-23",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Explore the importance of maintaining healthy eating habits and how it can impact your overall well-being.",
+    publish_date: "2024-03-10",
+    image: "https://source.unsplash.com/960x770/?food",
   },
   {
-    title: "Indulging in Culinary Adventures: Exploring Global Flavors",
+    title: "Mindfulness Meditation for Beginners",
     description:
-      "Embark on a culinary adventure around the world as we explore the diverse flavors and gastronomic delights that each culture has to offer. From street food markets to Michelin-starred restaurants, prepare your taste buds for a journey of epicurean proportions.",
+      "A beginner's guide to practicing mindfulness meditation and its benefits for mental health.",
+    publish_date: "2024-03-12",
+    image: "https://source.unsplash.com/960x770/?meditation",
+  },
+  {
+    title: "Tips for Effective Communication",
+    description:
+      "Improve your communication skills with these practical tips for better interactions in personal and professional settings.",
+    publish_date: "2024-03-15",
+    image: "https://source.unsplash.com/960x770/?communication",
+  },
+  {
+    title: "How to Stay Motivated When Working From Home",
+    description:
+      "Maintain your motivation and productivity while working from home with these helpful strategies.",
+    publish_date: "2024-03-18",
+    image: "https://source.unsplash.com/960x770/?work,home",
+  },
+  {
+    title: "The Importance of Self-Care",
+    description:
+      "Understand the importance of self-care and learn how to incorporate it into your daily routine for improved well-being.",
+    publish_date: "2024-03-20",
+    image: "https://source.unsplash.com/960x770/?selfcare",
+  },
+  {
+    title: "Exploring Nature: Benefits for Mind and Body",
+    description:
+      "Discover the mental and physical health benefits of spending time in nature and how it can improve your overall well-being.",
     publish_date: "2024-03-22",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://source.unsplash.com/960x770/?nature",
   },
   {
-    title: "Embracing Sustainable Living: Nurturing a Greener Tomorrow",
+    title: "Effective Stress Management Techniques",
     description:
-      "Join the movement towards sustainable living as we delve into eco-friendly practices that promote harmony with the planet. From reducing waste to embracing renewable energy, discover simple yet impactful ways to nurture a greener tomorrow.",
-    publish_date: "2024-03-21",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title:
-      "Discovering Hidden Gems: Exploring Off-the-Beaten-Path Destinations",
-    description:
-      "Uncover the allure of hidden gems as we journey off the beaten path to explore enchanting destinations untouched by mass tourism. From secluded beaches to quaint villages nestled in lush landscapes, each discovery promises a unique adventure.",
+      "Learn effective techniques for managing and reducing stress in your daily life for better mental health.",
     publish_date: "2024-03-25",
-    image:
-      "https://images.unsplash.com/photo-1710874087896-6683c258deb4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://source.unsplash.com/960x770/?stress,management",
   },
   {
-    title: "The Art of Slow Living: Embracing Moments of Tranquility",
+    title: "The Power of Positive Thinking",
     description:
-      "Dive into the essence of slow living, where moments of tranquility reign supreme. Discover the beauty of savoring simple pleasures, cultivating mindfulness, and finding joy in the present moment amidst life's hustle and bustle.",
-    publish_date: "2024-03-24",
-    image:
-      "https://images.unsplash.com/photo-1707343843344-011332037abb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Understand how positive thinking can impact your life and learn strategies for cultivating a positive mindset.",
+    publish_date: "2024-03-28",
+    image: "https://source.unsplash.com/960x770/?positivity",
   },
   {
-    title: "Capturing the Colors of Autumn: A Photographic Journey",
+    title: "Tips for a Healthy Work-Life Balance",
     description:
-      "Immerse yourself in the vibrant palette of autumn as we embark on a photographic journey through nature's most colorful season. From fiery reds to golden yellows, each image encapsulates the breathtaking beauty of fall foliage.",
-    publish_date: "2024-03-23",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Achieve a healthy work-life balance with these practical tips for managing your time and priorities effectively.",
+    publish_date: "2024-03-30",
+    image: "https://source.unsplash.com/960x770/?worklife,balance",
   },
   {
-    title: "Indulging in Culinary Adventures: Exploring Global Flavors",
+    title: "Healthy Habits for Better Sleep",
     description:
-      "Embark on a culinary adventure around the world as we explore the diverse flavors and gastronomic delights that each culture has to offer. From street food markets to Michelin-starred restaurants, prepare your taste buds for a journey of epicurean proportions.",
-    publish_date: "2024-03-22",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Develop healthy habits to improve the quality of your sleep and wake up feeling refreshed each morning.",
+    publish_date: "2024-04-02",
+    image: "https://source.unsplash.com/960x770/?sleep",
   },
   {
-    title: "Embracing Sustainable Living: Nurturing a Greener Tomorrow",
+    title: "The Benefits of Gratitude",
     description:
-      "Join the movement towards sustainable living as we delve into eco-friendly practices that promote harmony with the planet. From reducing waste to embracing renewable energy, discover simple yet impactful ways to nurture a greener tomorrow.",
-    publish_date: "2024-03-21",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Discover the benefits of practicing gratitude and how it can improve your overall well-being.",
+    publish_date: "2024-04-05",
+    image: "https://source.unsplash.com/960x770/?gratitude",
   },
   {
-    title:
-      "Discovering Hidden Gems: Exploring Off-the-Beaten-Path Destinations",
+    title: "Tips for Building Resilience",
     description:
-      "Uncover the allure of hidden gems as we journey off the beaten path to explore enchanting destinations untouched by mass tourism. From secluded beaches to quaint villages nestled in lush landscapes, each discovery promises a unique adventure.",
-    publish_date: "2024-03-25",
-    image:
-      "https://images.unsplash.com/photo-1710874087896-6683c258deb4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Learn how to build resilience and cope with life's challenges more effectively for improved mental health.",
+    publish_date: "2024-04-08",
+    image: "https://source.unsplash.com/960x770/?resilience",
   },
   {
-    title: "The Art of Slow Living: Embracing Moments of Tranquility",
+    title: "Mindful Eating: The Basics",
     description:
-      "Dive into the essence of slow living, where moments of tranquility reign supreme. Discover the beauty of savoring simple pleasures, cultivating mindfulness, and finding joy in the present moment amidst life's hustle and bustle.",
-    publish_date: "2024-03-24",
-    image:
-      "https://images.unsplash.com/photo-1707343843344-011332037abb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Discover the basics of mindful eating and how it can help you develop a healthier relationship with food.",
+    publish_date: "2024-04-10",
+    image: "https://source.unsplash.com/960x770/?mindfuleating",
   },
   {
-    title: "Capturing the Colors of Autumn: A Photographic Journey",
+    title: "The Connection Between Physical and Mental Health",
     description:
-      "Immerse yourself in the vibrant palette of autumn as we embark on a photographic journey through nature's most colorful season. From fiery reds to golden yellows, each image encapsulates the breathtaking beauty of fall foliage.",
-    publish_date: "2024-03-23",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Understand the connection between your physical and mental health and how one can impact the other.",
+    publish_date: "2024-04-12",
+    image: "https://source.unsplash.com/960x770/?health",
   },
   {
-    title: "Indulging in Culinary Adventures: Exploring Global Flavors",
+    title: "Tips for Improving Your Posture",
     description:
-      "Embark on a culinary adventure around the world as we explore the diverse flavors and gastronomic delights that each culture has to offer. From street food markets to Michelin-starred restaurants, prepare your taste buds for a journey of epicurean proportions.",
-    publish_date: "2024-03-22",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Improve your posture and reduce the risk of developing back pain with these helpful tips.",
+    publish_date: "2024-04-15",
+    image: "https://source.unsplash.com/960x770/?posture",
   },
   {
-    title: "Embracing Sustainable Living: Nurturing a Greener Tomorrow",
+    title: "The Importance of Setting Goals",
     description:
-      "Join the movement towards sustainable living as we delve into eco-friendly practices that promote harmony with the planet. From reducing waste to embracing renewable energy, discover simple yet impactful ways to nurture a greener tomorrow.",
-    publish_date: "2024-03-21",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title:
-      "Discovering Hidden Gems: Exploring Off-the-Beaten-Path Destinations",
-    description:
-      "Uncover the allure of hidden gems as we journey off the beaten path to explore enchanting destinations untouched by mass tourism. From secluded beaches to quaint villages nestled in lush landscapes, each discovery promises a unique adventure.",
-    publish_date: "2024-03-25",
-    image:
-      "https://images.unsplash.com/photo-1710874087896-6683c258deb4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "The Art of Slow Living: Embracing Moments of Tranquility",
-    description:
-      "Dive into the essence of slow living, where moments of tranquility reign supreme. Discover the beauty of savoring simple pleasures, cultivating mindfulness, and finding joy in the present moment amidst life's hustle and bustle.",
-    publish_date: "2024-03-24",
-    image:
-      "https://images.unsplash.com/photo-1707343843344-011332037abb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Capturing the Colors of Autumn: A Photographic Journey",
-    description:
-      "Immerse yourself in the vibrant palette of autumn as we embark on a photographic journey through nature's most colorful season. From fiery reds to golden yellows, each image encapsulates the breathtaking beauty of fall foliage.",
-    publish_date: "2024-03-23",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Indulging in Culinary Adventures: Exploring Global Flavors",
-    description:
-      "Embark on a culinary adventure around the world as we explore the diverse flavors and gastronomic delights that each culture has to offer. From street food markets to Michelin-starred restaurants, prepare your taste buds for a journey of epicurean proportions.",
-    publish_date: "2024-03-22",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Embracing Sustainable Living: Nurturing a Greener Tomorrow",
-    description:
-      "Join the movement towards sustainable living as we delve into eco-friendly practices that promote harmony with the planet. From reducing waste to embracing renewable energy, discover simple yet impactful ways to nurture a greener tomorrow.",
-    publish_date: "2024-03-21",
-    image:
-      "https://images.unsplash.com/photo-1711271595823-4f7caa592129?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Learn why setting goals is important for personal and professional development and how to set achievable goals.",
+    publish_date: "2024-04-18",
+    image: "https://source.unsplash.com/960x770/?goals",
   },
 ];
