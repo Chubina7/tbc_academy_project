@@ -18,7 +18,9 @@ export default function RootLayout({ children }) {
         <main className="w-full max-w-screen-2xl h-full px-3 mx-auto overflow-y-auto">
           {children}
         </main>
-        <Footer />
+        <div className="hidden sm:block">
+          <Footer />
+        </div>
       </body>
     </html>
   );
