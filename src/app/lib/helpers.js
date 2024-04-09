@@ -4,3 +4,10 @@ export async function getAllProducts() {
 
   return data.products;
 }
+
+export async function getSingleProduct(id) {
+  const res = await fetch(`https://dummyjson.com/products/${id}`);
+  const data = await res.json();
+
+  return data;
+}

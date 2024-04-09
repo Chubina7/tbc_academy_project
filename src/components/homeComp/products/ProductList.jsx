@@ -1,5 +1,4 @@
 import React from "react";
-import { allProducts } from "../../../data/products";
 import ProductItem from "./ProductItem";
 
 const ProductList = ({ list, sortRule, searchFilterKeyword }) => {
@@ -16,6 +15,7 @@ const ProductList = ({ list, sortRule, searchFilterKeyword }) => {
         .map((product) => (
           <ProductItem
             key={product.id}
+            route={product.id}
             title={product.title}
             description={product.description}
             imgSrc={product.thumbnail}
