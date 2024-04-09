@@ -1,6 +1,6 @@
 import React from "react";
 import Products from "../components/homeComp/Products";
-import { getAllProducts } from "./lib/helpers";
+import { getAllProducts } from "../lib/helpers";
 
 export default async function Home() {
   const data = await getAllProducts();

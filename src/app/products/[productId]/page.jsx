@@ -1,5 +1,5 @@
 import React from "react";
-import { getSingleProduct } from "../../lib/helpers";
+import { getSingleProduct } from "../../../lib/helpers";
 import Product from "../../../components/dynamicProductComp/Product";
 
 async function ProductDetailsPage({ params }) {
