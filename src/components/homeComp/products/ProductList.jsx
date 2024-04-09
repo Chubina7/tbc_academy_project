@@ -2,10 +2,10 @@ import React from "react";
 import { allProducts } from "../../../data/products";
 import ProductItem from "./ProductItem";
 
-const ProductList = ({ sortRule, searchFilterKeyword }) => {
+const ProductList = ({ list, sortRule, searchFilterKeyword }) => {
   const data = sortRule
-    ? [...allProducts].sort((a, b) => a.price - b.price)
-    : [...allProducts];
+    ? [...list].sort((a, b) => a.price - b.price)
+    : [...list];
 
   return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -18,7 +18,7 @@ const ProductList = ({ sortRule, searchFilterKeyword }) => {
             key={product.id}
             title={product.title}
             description={product.description}
-            imgSrc={product.image}
+            imgSrc={product.thumbnail}
             price={product.price}
           />
         ))}
