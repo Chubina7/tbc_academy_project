@@ -7,7 +7,7 @@ async function ProductDetailsPage({ params }) {
 
   return (
     <div className="w-full flex justify-center items-center flex-col gap-10 ">
-      <Product />
+      <Product data={data} />
     </div>
   );
 }
