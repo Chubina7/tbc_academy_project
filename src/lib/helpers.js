@@ -27,3 +27,11 @@ export async function getSingleRecipe(id) {
 
   return data;
 }
+
+// // // // // Users // // // // //
+export async function getAuthor(id) {
+  const res = await fetch(`https://dummyjson.com/users/${id}`);
+  const data = await res.json();
+
+  return data;
+}
