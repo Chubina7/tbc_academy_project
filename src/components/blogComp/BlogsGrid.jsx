@@ -1,21 +1,23 @@
 import React from "react";
-import { blogData } from "../../data/blogs";
 import BlogItem from "./BlogItem";
 
-const BlogsGrid = () => {
+export default function BlogsGrid({ data }) {
   return (
     <div className="w-full flex flex-col gap-10 md:gap-16">
-      {blogData.map((blog) => (
+      {data.map((item) => (
         <BlogItem
-          key={blog.publish_date}
-          title={blog.title}
-          description={blog.description}
-          imgSrc={blog.image}
-          date={blog.publish_date}
+          key={item.id}
+          id={item.id}
+          title={item.name}
+          imgSrc={item.image}
+          portion={item.servings}
+          rating={item.rating}
+          time={item.prepTimeMinutes}
+          difficulty={item.difficulty}
+          mealType={item.mealType}
+          tags={item.tags}
         />
       ))}
     </div>
   );
-};
-
-export default BlogsGrid;
+}

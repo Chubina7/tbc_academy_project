@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormFields = () => {
+export default function FormFields() {
   return (
     <form className="w-full flex flex-col p-3 gap-6">
       <div className="w-full flex flex-col gap-5">
@@ -52,6 +52,4 @@ const FormFields = () => {
       </div>
     </form>
   );
-};
-
-export default FormFields;
+}

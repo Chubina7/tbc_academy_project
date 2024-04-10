@@ -4,7 +4,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { IoIosGlobe } from "react-icons/io";
 
-const ContactInfo = () => {
+export default function ContactInfo() {
   return (
     <div className="w-full flex flex-col justify-center items-start gap-4 py-8 px-5 bg-slate-500 md:max-w-screen-sm md:mt-20">
       <h1 className="font-bold text-3xl">Contact Us</h1>
@@ -38,6 +38,4 @@ const ContactInfo = () => {
       </div>
     </div>
   );
-};
-
-export default ContactInfo;
+}

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Navigation from "./Navigation";
 
-const Burger = () => {
+export default function Burger() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleModal = () => setIsOpen((prev) => !prev);
@@ -15,13 +15,11 @@ const Burger = () => {
       <button onClick={handleModal}>BRGR</button>
 
       {isOpen && (
-        <div className="fixed w-full h-full left-0 top-0 bg-slate-500 p-6">
+        <div className="fixed w-full h-full left-0 top-0 bg-slate-500 p-6 z-50">
           <button onClick={handleModal}>X</button>
           <Navigation closeBurgerModal={handleModal} />
         </div>
       )}
     </>
   );
-};
-
-export default Burger;
+}

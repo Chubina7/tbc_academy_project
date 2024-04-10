@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { userPrivateInfo } from "../../../data/userObj";
 
-const NewEmail = () => {
+export default function NewEmail() {
   const [loginInfo, setLoginInfo] = useState(userPrivateInfo);
   const [isEditing, setIsEditing] = useState();
   const [inputVal, setInputVal] = useState("");
@@ -50,6 +50,4 @@ const NewEmail = () => {
       />
     </div>
   );
-};
-
-export default NewEmail;
+}

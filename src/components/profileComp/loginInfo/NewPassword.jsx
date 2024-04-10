@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { userPrivateInfo } from "../../../data/userObj";
 
-const NewPassword = () => {
+export default function NewPassword() {
   const [loginInfo, setLoginInfo] = useState(userPrivateInfo);
   const [isEditing, setIsEditing] = useState();
   const [confirmInputVal, setConfirmInputVal] = useState("");
@@ -57,6 +57,4 @@ const NewPassword = () => {
       </div>
     </div>
   );
-};
-
-export default NewPassword;
+}

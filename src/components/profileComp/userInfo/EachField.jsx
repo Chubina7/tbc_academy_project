@@ -1,6 +1,8 @@
+"use client"
+
 import React, { useState } from "react";
 
-const EachField = ({ title, data, setUserInfo }) => {
+export default function EachField({ title, data, setUserInfo }) {
   const [isEditing, setIsEditing] = useState(false);
   const [inputVal, setInputVal] = useState("");
 
@@ -33,6 +35,4 @@ const EachField = ({ title, data, setUserInfo }) => {
       </div>
     </div>
   );
-};
-
-export default EachField;
+}
