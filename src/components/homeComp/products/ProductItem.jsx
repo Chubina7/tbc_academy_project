@@ -2,7 +2,13 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 
-const ProductItem = ({ title, price, description, imgSrc, route }) => {
+export default function ProductItem({
+  title,
+  price,
+  description,
+  imgSrc,
+  route,
+}) {
   return (
     <div className="w-full flex flex-col justify-start items-start p-3 rounded-lg">
       <div className="relative w-full min-h-64">
@@ -29,6 +35,4 @@ const ProductItem = ({ title, price, description, imgSrc, route }) => {
       </div>
     </div>
   );
-};
-
-export default ProductItem;
+}

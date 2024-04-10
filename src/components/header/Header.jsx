@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from "./Navigation";
 import BurgerMenu from "./BurgerMenu";
 
-const Header = () => {
+export default function Header() {
   return (
     <header className="w-full p-4 flex justify-between items-center bg-orange-400">
       <h1>LOGO</h1>
@@ -14,6 +14,4 @@ const Header = () => {
       </div>
     </header>
   );
-};
-
-export default Header;
+}

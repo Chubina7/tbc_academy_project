@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import EachField from "./EachField";
 import { userPublicInfo } from "../../../data/userObj";
 
-const UserInfo = () => {
+export default function UserInfo() {
   const [userInfo, setUserInfo] = useState(userPublicInfo);
 
   return (
@@ -24,6 +24,4 @@ const UserInfo = () => {
       </div>
     </div>
   );
-};
-
-export default UserInfo;
+}

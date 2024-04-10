@@ -1,7 +1,8 @@
 "use client";
+
 import React, { useState } from "react";
 
-const SearchInput = ({ setQuery }) => {
+export default function SearchInput({ setQuery }) {
   const [timeoutId, setTimeoutId] = useState(null);
 
   const handleChange = (e) => {
@@ -22,6 +23,4 @@ const SearchInput = ({ setQuery }) => {
       onChange={handleChange}
     />
   );
-};
-
-export default SearchInput;
+}

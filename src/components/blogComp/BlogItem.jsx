@@ -6,37 +6,7 @@ import { FaRegClock } from "react-icons/fa6";
 import { PiChartPieSliceBold } from "react-icons/pi";
 import { FaRegStar } from "react-icons/fa";
 
-// {
-//   id: 30,
-//   name: 'Brazilian Caipirinha',
-//   ingredients: [
-//     'Cachaça (Brazilian sugarcane spirit)',
-//     'Lime, cut into wedges',
-//     'Granulated sugar',
-//     'Ice cubes'
-//   ],
-//   instructions: [
-//     'In a glass, muddle lime wedges with granulated sugar to release the juice.',
-//     'Fill the glass with ice cubes.',
-//     'Pour cachaça over the ice and stir well.',
-//     'Sip and enjoy the refreshing taste of the Brazilian Caipirinha!',
-//     'Adjust sugar and lime to suit your taste preferences.'
-//   ],
-//   prepTimeMinutes: 5,
-//   cookTimeMinutes: 0,
-//   servings: 1,
-//   difficulty: 'Easy',
-//   cuisine: 'Brazilian',
-//   caloriesPerServing: 150,
-//   tags: [ 'Caipirinha', 'Brazilian', 'Cocktail' ],
-//   userId: 64,
-//   image: 'https://cdn.dummyjson.com/recipe-images/30.webp',
-//   rating: 4.4,
-//   reviewCount: 4,
-//   mealType: [ 'Beverage' ]
-// }
-
-const BlogItem = ({
+export default function BlogItem({
   id,
   title,
   portion,
@@ -46,7 +16,7 @@ const BlogItem = ({
   difficulty,
   mealType,
   tags,
-}) => {
+}) {
   return (
     <div className="w-full flex gap-1 flex-col sm:flex-row sm:gap-8">
       <div className="w-full flex">
@@ -99,6 +69,4 @@ const BlogItem = ({
       </div>
     </div>
   );
-};
-
-export default BlogItem;
+}

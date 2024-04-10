@@ -11,7 +11,7 @@ const navItems = [
   { title: "Profile", href: "/profile" },
 ];
 
-const Navigation = ({ closeBurgerModal }) => {
+export default function Navigation({ closeBurgerModal }) {
   const path = usePathname();
 
   return (
@@ -28,6 +28,4 @@ const Navigation = ({ closeBurgerModal }) => {
       ))}
     </ul>
   );
-};
-
-export default Navigation;
+}

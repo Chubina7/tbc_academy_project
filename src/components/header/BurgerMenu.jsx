@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Navigation from "./Navigation";
 
-const Burger = () => {
+export default function Burger() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleModal = () => setIsOpen((prev) => !prev);
@@ -22,6 +22,4 @@ const Burger = () => {
       )}
     </>
   );
-};
-
-export default Burger;
+}

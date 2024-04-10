@@ -1,7 +1,7 @@
 import React from "react";
 import BlogItem from "./BlogItem";
 
-const BlogsGrid = ({ data }) => {
+export default function BlogsGrid({ data }) {
   return (
     <div className="w-full flex flex-col gap-10 md:gap-16">
       {data.map((item) => (
@@ -20,6 +20,4 @@ const BlogsGrid = ({ data }) => {
       ))}
     </div>
   );
-};
-
-export default BlogsGrid;
+}

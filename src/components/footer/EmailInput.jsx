@@ -1,6 +1,6 @@
 import React from "react";
 
-const EmailInput = () => {
+export default function EmailInput() {
   // The logic which catches inserted email by user and stores it somewhere
   return (
     <input
@@ -9,6 +9,4 @@ const EmailInput = () => {
       placeholder="Leave your email"
     />
   );
-};
-
-export default EmailInput;
+}

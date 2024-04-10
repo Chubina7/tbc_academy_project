@@ -1,6 +1,6 @@
 import React from "react";
 
-const SortBtn = ({ sortState }) => {
+export default function SortBtn({ sortState }) {
   const { sortRule, setSortRule } = sortState;
 
   return (
@@ -13,6 +13,4 @@ const SortBtn = ({ sortState }) => {
       {sortRule ? "Unsort" : "Sort by price"}
     </button>
   );
-};
-
-export default SortBtn;
+}
