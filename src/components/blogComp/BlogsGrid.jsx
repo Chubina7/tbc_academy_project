@@ -9,9 +9,13 @@ const BlogsGrid = ({ data }) => {
           key={item.id}
           id={item.id}
           title={item.name}
-          description={item.description}
           imgSrc={item.image}
-          date={item.publish_date}
+          portion={item.servings}
+          rating={item.rating}
+          time={item.prepTimeMinutes}
+          difficulty={item.difficulty}
+          mealType={item.mealType}
+          tags={item.tags}
         />
       ))}
     </div>
