@@ -5,6 +5,7 @@ import React from "react";
 import { FaRegClock } from "react-icons/fa6";
 import { PiChartPieSliceBold } from "react-icons/pi";
 import { FaRegStar } from "react-icons/fa";
+import Tags from "./Tags";
 
 export default function BlogItem({
   id,
@@ -32,18 +33,21 @@ export default function BlogItem({
       <div className="w-full md:w-[180%] flex flex-col justify-start gap-3 md:gap-6">
         <div>
           <h1 className="font-bold text-xl sm:text-3xl">{title}</h1>
-          <ul className="flex gap-2">
-            {tags.map((tag, idx) => (
-              <li key={idx}>
-                <i className="opacity-60">#{tag}</i>
-                {/* should be added links to search meals by tag */}
-              </li>
-            ))}
-          </ul>
+          <Tags list={tags} />
         </div>
         <div className="w-full flex flex-col">
-          <p>Difficulty: {difficulty}</p>
-          <p>Meal Type: {mealType}</p>
+          <p>
+            Difficulty: <strong> {difficulty}</strong>
+          </p>
+          <p>
+            Meal Type:{" "}
+            {mealType.map((item, idx) => (
+              <strong key={idx}>
+                {item}
+                {mealType.length > 1 && idx !== mealType.length - 1 && ", "}
+              </strong>
+            ))}
+          </p>
         </div>
         <div className="w-full flex flex-1 justify-between items-end">
           <div className="flex gap-2">
