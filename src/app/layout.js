@@ -1,9 +1,9 @@
-import { Inter } from "next/font/google";
+import { Oswald } from "next/font/google";
 import "./globals.css";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const oswald = Oswald({ subsets: ["latin"] });
 
 export const metadata = {
   title: "TBC x USAID Course Project",
@@ -13,9 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} h-screen w-full flex flex-col`}>
+      <body
+        className={`${oswald.className} text-white h-screen w-full flex flex-col bg-[#202326]`}
+      >
         <Header />
-        <main className="w-full max-w-screen-2xl h-full p-3 mx-auto overflow-y-auto">
+        <main className="w-full max-w-screen-2xl h-full p-3 py-6 mx-auto overflow-y-auto">
           {children}
         </main>
         <div className="hidden sm:block">

@@ -32,7 +32,7 @@ export default function NewEmail() {
             {loginInfo.email}{" "}
             {isEditing && (
               <button
-                className="bg-slate-500 text-white rounded-full px-3"
+                className="bg-slate-500 text-inherit rounded-full px-3"
                 onClick={handleSave}
               >
                 Save

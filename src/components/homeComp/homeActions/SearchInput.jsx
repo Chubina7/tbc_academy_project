@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { inputUI } from "../../../lib/styles";
 
 export default function SearchInput({ setQuery }) {
   const [timeoutId, setTimeoutId] = useState(null);
@@ -17,7 +18,7 @@ export default function SearchInput({ setQuery }) {
 
   return (
     <input
-      className="w-full px-6 py-2 border-2 border-black rounded-full"
+      className={`w-full px-6 py-2 ${inputUI}`}
       type="search"
       placeholder="Search by a key stroke"
       onChange={handleChange}

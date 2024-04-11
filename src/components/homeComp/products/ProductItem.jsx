@@ -27,7 +27,7 @@ export default function ProductItem({
         <div className="flex justify-between items-center">
           <strong>$ {price}</strong>
           <Link href={`/products/${route}`}>
-            <button className="bg-black text-white rounded-full px-4 py-1">
+            <button className="bg-black text-inherit rounded-full px-4 py-1">
               See Details
             </button>
           </Link>
