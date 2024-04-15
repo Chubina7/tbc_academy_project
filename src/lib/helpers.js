@@ -5,7 +5,6 @@ export async function getAllProducts() {
 
   return data.products;
 }
-
 export async function getSingleProduct(id) {
   const res = await fetch(`https://dummyjson.com/products/${id}`);
   const data = await res.json();
@@ -20,12 +19,17 @@ export async function getAllRecipes() {
 
   return data.recipes;
 }
-
 export async function getSingleRecipe(id) {
   const res = await fetch(`https://dummyjson.com/recipes/${id}`);
   const data = await res.json();
 
   return data;
+}
+export async function getAllRecipesByTag(tag) {
+  const res = await fetch(`https://dummyjson.com/recipes/tag/${tag}`);
+  const data = await res.json();
+
+  return data.recipes;
 }
 
 // // // // // Users // // // // //

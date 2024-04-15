@@ -18,7 +18,7 @@ export default async function BlogItemPage({ params }) {
         userId={data.userId}
       />
       <hr className="w-full border rounded-full bg-black" />
-      <div className="w-full flex justify-center items-start flex-col lg:flex-row">
+      <div className="w-full flex justify-center items-start flex-col xl:flex-row">
         <Content
           key={1}
           image={data.image}
@@ -31,7 +31,9 @@ export default async function BlogItemPage({ params }) {
           caloriesPerServing={data.caloriesPerServing}
           prepTimeMinutes={data.prepTimeMinutes}
         />
-        <Suggestions />
+        <div className="w-full flex flex-col xl:py-9 xl:w-[40%]">
+          <Suggestions key={2} tags={data.tags} originalName={data.name} />
+        </div>
       </div>
     </div>
   );

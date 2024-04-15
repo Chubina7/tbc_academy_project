@@ -33,7 +33,7 @@ function Content({
         calories={caloriesPerServing}
         time={prepTimeMinutes}
       />
-      <hr className="lg:hidden w-full border rounded-full bg-black" />
+      <hr className="xl:hidden w-full border rounded-full bg-black" />
     </div>
   );
 }
