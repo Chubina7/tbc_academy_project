@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Navigation from "./Navigation";
+import { TfiMenu } from "react-icons/tfi";
+import { IoClose } from "react-icons/io5";
 
 export default function Burger() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,11 +14,18 @@ export default function Burger() {
 
   return (
     <>
-      <button onClick={handleModal}>BRGR</button>
+      <button onClick={handleModal} className="opacity-60 hover:opacity-100">
+        <TfiMenu size={26} />
+      </button>
 
       {isOpen && (
-        <div className="fixed w-full h-full left-0 top-0 bg-slate-500 p-6 z-50">
-          <button onClick={handleModal}>X</button>
+        <div className="fixed w-full h-full left-0 top-0 bg-[#25292D] p-6 z-50">
+          <button
+            onClick={handleModal}
+            className="opacity-60 hover:opacity-100"
+          >
+            <IoClose size={26} />
+          </button>
           <Navigation closeBurgerModal={handleModal} />
         </div>
       )}
