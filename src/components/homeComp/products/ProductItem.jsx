@@ -10,7 +10,7 @@ export default function ProductItem({
   route,
 }) {
   return (
-    <div className="w-full flex flex-col justify-start items-start p-3 rounded-lg">
+    <div className="w-full flex flex-col justify-start items-start p-3 rounded-lg bg-[#202326] shadow-xl">
       <div className="relative w-full min-h-64">
         <Image
           className="rounded-md object-cover"
@@ -22,12 +22,12 @@ export default function ProductItem({
       <div className="h-full w-full flex flex-col justify-between gap-5 p-4">
         <div className="flex flex-col gap-3">
           <h1 className="text-2xl font-bold">{title}</h1>
-          <p>{description}</p>
+          <p className="opacity-60">{description}</p>
         </div>
         <div className="flex justify-between items-center">
           <strong>$ {price}</strong>
           <Link href={`/products/${route}`}>
-            <button className="bg-black text-inherit rounded-full px-4 py-1">
+            <button className="bg-[#F25050] text-inherit rounded-full px-4 py-1">
               See Details
             </button>
           </Link>

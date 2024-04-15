@@ -6,10 +6,10 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="w-full max-w-screen-2xl mx-auto px-3">
-      <header className="w-full p-4 flex justify-between items-center bg-[#202326] rounded-b-3xl shadow-xl">
+    <div className="w-full max-w-screen-2xl mx-auto px-3 z-50">
+      <header className="w-full p-4 flex justify-between items-center bg-[#25292D] rounded-b-3xl shadow-xl">
         <Link href={"/"} className="mx-2">
-          <PiGitlabLogoFill size={36} color="#F26052" />
+          <PiGitlabLogoFill size={36} color="#F25050" />
         </Link>
         <div className="hidden sm:block">
           <Navigation />

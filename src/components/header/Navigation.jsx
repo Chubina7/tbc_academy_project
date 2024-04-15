@@ -21,7 +21,7 @@ export default function Navigation({ closeBurgerModal }) {
         <li
           key={idx}
           className={`text-inherit font-bold px-5 py-1 ${
-            path === navItem.href ? buttonUI : "opacity-60"
+            path === navItem.href ? `${buttonUI} bg-[#F25050]` : "opacity-60"
           }`}
         >
           <Link href={navItem.href} onClick={closeBurgerModal}>

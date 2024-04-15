@@ -8,7 +8,7 @@ export default function SortBtn({ sortState }) {
 
   return (
     <button
-      className={`md:min-w-36 nowrap px-6 py-2 ${buttonUI}`}
+      className={`md:min-w-36 nowrap px-6 py-2 ${buttonUI} z-40 bg-[#F25050]`}
       onClick={clickHandler}
     >
       {sortRule ? "Unsort" : "Sort by price"}
