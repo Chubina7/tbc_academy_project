@@ -6,6 +6,7 @@ import OtherDetails from "./OtherDetails";
 function Product({ data }) {
   const photoSource = {
     src: data.images,
+    alt: data.title
   };
   const detailsSource = {
     title: data.title,
@@ -22,7 +23,7 @@ function Product({ data }) {
 
   return (
     <>
-      <div className="flex justify-center items-start gap-6 lg:gap-0 flex-col md:flex-row">
+      <div className="w-full flex justify-between items-start gap-6 lg:gap-0 flex-col md:flex-row">
         <PhotoCarousel data={photoSource} />
         <Details data={detailsSource} />
       </div>

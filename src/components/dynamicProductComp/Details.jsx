@@ -1,4 +1,5 @@
 import React from "react";
+import { FaRegStar } from "react-icons/fa";
 
 function Details({ data }) {
   return (
@@ -13,7 +14,11 @@ function Details({ data }) {
         </span>
       </p>
       <div className="w-full flex justify-between">
-        <p>VARSKVLAVEBI</p> <p>{data.rating}</p>
+        <p>Rating</p>
+        <div className="flex items-center justify-center gap-1">
+          <FaRegStar size={20} />
+          <p>{data.rating}</p>
+        </div>
       </div>
     </div>
   );

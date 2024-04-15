@@ -11,13 +11,6 @@ module.exports = {
         xl: "rgba(213, 217, 217, .5) 0 2px 5px 0;",
       },
     },
-    // colors: {
-    //   transparent: "transparent",
-    //   current: "currentColor",
-    //   darkBlack: "#202326",
-    //   black: "#343A40",
-    //   white: "#FFFFFF",
-    // },
   },
   plugins: [],
 };
