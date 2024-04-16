@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { AUTH_COOKIE_KEY } from "../../lib/variables";
 
 export default function RootLayout({ children }) {
-  if (!cookies().get(AUTH_COOKIE_KEY)) {
+  if (!cookies().has(AUTH_COOKIE_KEY)) {
     redirect("/login");
   }
 
