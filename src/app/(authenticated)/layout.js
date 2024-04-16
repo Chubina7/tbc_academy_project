@@ -2,11 +2,10 @@ import { cookies } from "next/headers";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { redirect } from "next/navigation";
+import { AUTH_COOKIE_KEY } from "../../lib/variables";
 
 export default function RootLayout({ children }) {
-  const cookieStore = cookies();
-
-  if (!cookieStore.get("name")) {
+  if (!cookies().get(AUTH_COOKIE_KEY)) {
     redirect("/login");
   }
 

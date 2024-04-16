@@ -1,10 +1,11 @@
 import React from "react";
+import { signInHandler } from "../../lib/actions";
 
 function LoginForm() {
   return (
     <form
       className="w-full flex flex-col justify-center items-center gap-6"
-      action=""
+      action={signInHandler}
     >
       <div className="w-full flex flex-col gap-1">
         <label htmlFor="username">Enter your username</label>
@@ -13,7 +14,6 @@ function LoginForm() {
           type="text"
           placeholder="example123"
           name="username"
-          id="username"
         />
       </div>
       <div className="w-full flex flex-col gap-1">
@@ -23,9 +23,9 @@ function LoginForm() {
           type="password"
           placeholder="Password"
           name="password"
-          id="password"
         />
       </div>
+      <button>Sign in</button>
     </form>
   );
 }
