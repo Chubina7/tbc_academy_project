@@ -1,7 +1,15 @@
+import { cookies } from "next/headers";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
+import { redirect } from "next/navigation";
 
 export default function RootLayout({ children }) {
+  const cookieStore = cookies();
+
+  if (!cookieStore.get("name")) {
+    redirect("/login");
+  }
+
   return (
     <>
       <Header />
