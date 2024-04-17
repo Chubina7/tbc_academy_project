@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-
+import test from "/public/test.jpg";
 export default function ProductItem({
   title,
   price,
