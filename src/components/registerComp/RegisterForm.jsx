@@ -43,6 +43,9 @@ function RegisterForm() {
           placeholder="Re-type password"
         />
       </div>
+      <button className="w-full bg-white text-black rounded-full py-1">
+        Sign up
+      </button>
     </form>
   );
 }

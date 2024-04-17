@@ -25,7 +25,9 @@ function LoginForm() {
           name="password"
         />
       </div>
-      <button>Sign in</button>
+      <button className="w-full bg-white text-black rounded-full py-1">
+        Sign in
+      </button>
     </form>
   );
 }
