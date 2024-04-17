@@ -1,14 +1,5 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { redirect } from "next/navigation";
 
 export default function ProductsPage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.replace("/");
-  }, [router]);
-
-  return <div>Redirecting to the home page...</div>;
+  return redirect("/"); // redirect to the page, where products are placed (home in this situation)
 }

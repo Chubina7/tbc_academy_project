@@ -7,7 +7,7 @@ import { AUTH_COOKIE_KEY } from "../../lib/variables";
 
 export default function LoginPage() {
   if (cookies().has(AUTH_COOKIE_KEY)) {
-    redirect("/");
+    redirect("/"); // possible to redirect to the previous requested page
   }
 
   return (
