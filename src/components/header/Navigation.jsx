@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { buttonUI } from "../../lib/styles";
+import { signOut } from "../../lib/actions";
 
 const navItems = [
   { title: "Home", href: "/" },
@@ -14,6 +15,7 @@ const navItems = [
 
 export default function Navigation({ closeBurgerModal }) {
   const path = usePathname();
+  const router = useRouter();
 
   return (
     <ul className="flex flex-col sm:flex-row justify-center items-center gap-4 select-none">
@@ -29,6 +31,15 @@ export default function Navigation({ closeBurgerModal }) {
           </Link>
         </li>
       ))}
+      <button
+        className="text-inherit font-bold px-5 py-1 bg-black rounded-full"
+        onClick={async () => {
+          await signOut();
+          router.refresh("/login");
+        }}
+      >
+        Sign out
+      </button>
     </ul>
   );
 }

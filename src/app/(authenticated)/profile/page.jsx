@@ -1,6 +1,6 @@
 import React from "react";
-import UserInfo from "../../components/profileComp/userInfo/UserInfo";
-import LoginInfo from "../../components/profileComp/loginInfo/LoginInfo";
+import UserInfo from "../../../components/profileComp/userInfo/UserInfo";
+import LoginInfo from "../../../components/profileComp/loginInfo/LoginInfo";
 
 export default function Profile() {
   return (
