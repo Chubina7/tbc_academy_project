@@ -1,5 +1,6 @@
 import React from "react";
+import BlogIDSkeleton from "../../../../components/skeletonUI/blogs/BlogIDSkeleton";
 
 export default function loading() {
-  return <div>Loading from BLOG ID</div>;
+  return <BlogIDSkeleton />;
 }
