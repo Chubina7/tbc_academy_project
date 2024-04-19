@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { userPrivateInfo } from "../../../data/userObj";
 
-export default function NewEmail() {
-  const [loginInfo, setLoginInfo] = useState(userPrivateInfo);
+export default function NewEmail({ data }) {
+  const [loginInfo, setLoginInfo] = useState(data);
   const [isEditing, setIsEditing] = useState();
   const [inputVal, setInputVal] = useState("");
 
@@ -42,7 +41,7 @@ export default function NewEmail() {
         </p>
       </div>
       <input
-        className="w-full text-base border-2 border-black rounded-md px-3 py-2"
+        className="w-full text-black text-base border-2 border-black rounded-md px-3 py-2"
         type="email"
         placeholder="Enter new email"
         value={inputVal}

@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function loading() {
-  return <div>Loading from BLOG ID</div>;
+  return <div>Loading from PRODUCT ID</div>;
 }
