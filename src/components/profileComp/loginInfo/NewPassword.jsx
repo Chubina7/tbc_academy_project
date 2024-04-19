@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { userPrivateInfo } from "../../../data/userObj";
 
-export default function NewPassword() {
-  const [loginInfo, setLoginInfo] = useState(userPrivateInfo);
+export default function NewPassword({ data }) {
+  const [loginInfo, setLoginInfo] = useState(data);
   const [isEditing, setIsEditing] = useState();
   const [confirmInputVal, setConfirmInputVal] = useState("");
   const [newInputVal, setNewInputVal] = useState("");
@@ -33,14 +32,14 @@ export default function NewPassword() {
       </div>
       <div className="w-full flex flex-col gap-3">
         <input
-          className="w-full text-base border-2 border-black rounded-md px-3 py-2"
+          className="text-black w-full text-base border-2 border-black rounded-md px-3 py-2"
           type="password"
           placeholder="Enter new password"
           value={newInputVal}
           onChange={(e) => setNewInputVal(e.target.value)}
         />
         <input
-          className="w-full text-base border-2 border-black rounded-md px-3 py-2"
+          className="text-black w-full text-base border-2 border-black rounded-md px-3 py-2"
           type="password"
           placeholder="Confirm new pasword"
           value={confirmInputVal}
@@ -48,7 +47,7 @@ export default function NewPassword() {
         />
         {isEditing && (
           <button
-            className="bg-slate-500 text-inherit rounded-full px-3"
+            className="text-black bg-slate-500 text-inherit rounded-full px-3"
             onClick={handleSave}
           >
             Save

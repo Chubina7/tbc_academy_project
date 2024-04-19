@@ -2,10 +2,9 @@
 
 import React, { useState } from "react";
 import EachField from "./EachField";
-import { userPublicInfo } from "../../../data/userObj";
 
-export default function UserInfo() {
-  const [userInfo, setUserInfo] = useState(userPublicInfo);
+export default function UserInfo({ userInfoObj }) {
+  const [userInfo, setUserInfo] = useState(userInfoObj);
 
   return (
     <div className="w-full flex flex-col gap-6">
