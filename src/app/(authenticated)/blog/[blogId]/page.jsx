@@ -4,6 +4,13 @@ import Heading from "../../../../components/dynamicBlogComp/Heading";
 import Content from "../../../../components/dynamicBlogComp/content/Content";
 import Suggestions from "../../../../components/dynamicBlogComp/suggests/Suggestions";
 
+export async function generateStaticParams() {
+  const res = await fetch("https://dummyjson.com/recipes");
+  const data = await res.json();
+
+  return data.recipes.map((item) => ({ blogId: `${item.id}` }));
+}
+
 export default async function BlogItemPage({ params }) {
   const data = await getSingleRecipe(params.blogId);
 

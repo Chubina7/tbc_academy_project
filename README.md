@@ -1,5 +1,8 @@
 # will be modified gradually
 
+- new branch (lesson#) = new functionality of the page;
+- ui branch is for refactoring and changing exciting codebase
+
 ### Authentication
 
 - redirect-ები იმართება middleware.js ფაილიდან. აპლიკაციაში არსებული ყველა route მოწმდება (გათვალისწინებულია დინამიური გვერდებიც) და თუ cookie-ში token არ არსებობს redirect აკეთებს login გვერდზე;
