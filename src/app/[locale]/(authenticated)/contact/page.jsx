@@ -1,6 +1,6 @@
 import React from "react";
-import ContactInfo from "../../../components/contactComp/ContactInfo";
-import FormFields from "../../../components/contactComp/FormFields";
+import ContactInfo from "../../../../components/contactComp/ContactInfo";
+import FormFields from "../../../../components/contactComp/FormFields";
 
 export default function Contact() {
   return (

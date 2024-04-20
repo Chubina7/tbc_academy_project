@@ -11,13 +11,19 @@ export const signIn = async (formData) => {
     password: formData.get("password"),
   });
 
-  cookies().set("token", data.toke, { secure: true });
-  cookies().set("id", data.id, { secure: true });
-  cookies().set("email", data.email, { secure: true });
-  cookies().set("firstName", data.firstName, { secure: true });
-  cookies().set("lastName", data.lastName, { secure: true });
-  cookies().set("gender", data.gender, { secure: true });
-  cookies().set("image", data.image, { secure: true });
+  cookies().set(AUTH_COOKIE_KEY, data.token, {
+    secure: true,
+    sameSite: "none",
+  });
+  cookies().set("id", data.id, { secure: true, sameSite: "none" });
+  cookies().set("email", data.email, { secure: true, sameSite: "none" });
+  cookies().set("firstName", data.firstName, {
+    secure: true,
+    sameSite: "none",
+  });
+  cookies().set("lastName", data.lastName, { secure: true, sameSite: "none" });
+  cookies().set("gender", data.gender, { secure: true, sameSite: "none" });
+  cookies().set("image", data.image, { secure: true, sameSite: "none" });
 };
 export const signOut = async () => {
   cookies().delete("id");
@@ -42,6 +48,11 @@ export const getUserInfo = async () => {
 export const getUserLoginInfo = async () => {
   const cookieStore = cookies();
   const email = cookieStore.get("email").value;
-  
+
   return { email, password: "admin" };
+};
+
+// Preferences
+export const setLngInCookies = (lng) => {
+  cookies().set("lng", lng, { secure: true, sameSite: "none" });
 };

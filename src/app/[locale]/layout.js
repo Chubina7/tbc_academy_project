@@ -8,9 +8,9 @@ export const metadata = {
   description: "Developed by Luka Chubinidze",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, params: { locale } }) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={`${oswald.className} text-white h-screen w-full flex flex-col bg-[#25292D]`}
       >

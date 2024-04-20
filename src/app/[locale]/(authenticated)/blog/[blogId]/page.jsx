@@ -1,8 +1,8 @@
 import React from "react";
-import { getSingleRecipe } from "../../../../lib/helpers";
-import Heading from "../../../../components/dynamicBlogComp/Heading";
-import Content from "../../../../components/dynamicBlogComp/content/Content";
-import Suggestions from "../../../../components/dynamicBlogComp/suggests/Suggestions";
+import { getSingleRecipe } from "../../../../../lib/helpers";
+import Heading from "../../../../../components/dynamicBlogComp/Heading";
+import Content from "../../../../../components/dynamicBlogComp/content/Content";
+import Suggestions from "../../../../../components/dynamicBlogComp/suggests/Suggestions";
 
 export async function generateStaticParams() {
   const res = await fetch("https://dummyjson.com/recipes");

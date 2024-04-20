@@ -1,6 +1,6 @@
 import React from "react";
-import { getSingleProduct } from "../../../../lib/helpers";
-import Product from "../../../../components/dynamicProductComp/Product";
+import { getSingleProduct } from "../../../../../lib/helpers";
+import Product from "../../../../../components/dynamicProductComp/Product";
 
 export async function generateStaticParams() {
   const res = await fetch(`https://dummyjson.com/products/`);

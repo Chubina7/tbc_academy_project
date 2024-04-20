@@ -1,3 +1,7 @@
+import { match } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
+import { i18n } from "../i18.config";
+
 // // // // // Products // // // // //
 export async function getAllProducts() {
   const res = await fetch("https://dummyjson.com/products");
@@ -53,3 +57,15 @@ export async function getUserAuth(data) {
     console.log("Error happened");
   }
 }
+
+// // // // // Preferences // // // // //
+export const getLocale = (request) => {
+  const negotiatorHeaders = {};
+  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+  const locales = i18n.locales;
+
+  const locale = match(languages, locales, i18n.defaultLocale);
+  return locale;
+};

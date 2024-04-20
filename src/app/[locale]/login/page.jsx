@@ -1,13 +1,13 @@
 import React from "react";
-import LoginForm from "../../components/loginComp/LoginForm";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { AUTH_COOKIE_KEY } from "../../lib/variables";
-import ToRegisterAction from "../../components/loginComp/ToRegisterAction";
+import { AUTH_COOKIE_KEY } from "../../../lib/variables";
+import LoginForm from "../../../components/loginComp/LoginForm";
+import ToRegisterAction from "../../../components/loginComp/ToRegisterAction";
 
-export default function LoginPage() {
+export default function LoginPage({ params: { locale } }) {
   if (cookies().has(AUTH_COOKIE_KEY)) {
-    redirect("/"); // possible to redirect to the previous requested page
+    redirect(`/${locale}`); // possible to redirect to the previous requested page
   }
 
   return (

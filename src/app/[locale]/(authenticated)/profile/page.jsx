@@ -1,7 +1,7 @@
 import React from "react";
-import UserInfo from "../../../components/profileComp/userInfo/UserInfo";
-import LoginInfo from "../../../components/profileComp/loginInfo/LoginInfo";
-import { getUserInfo, getUserLoginInfo } from "../../../lib/actions";
+import UserInfo from "../../../../components/profileComp/userInfo/UserInfo";
+import LoginInfo from "../../../../components/profileComp/loginInfo/LoginInfo";
+import { getUserInfo, getUserLoginInfo } from "../../../../lib/actions";
 
 export default async function Profile() {
   const userInfo = await getUserInfo();
