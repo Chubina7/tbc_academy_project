@@ -1,21 +1,10 @@
-import { NextResponse } from "next/server";
-import { AUTH_COOKIE_KEY } from "./lib/variables";
-import { cookies } from "next/headers";
+import chain from "./middlewares/chain";
+import { auth } from "./middlewares/auth";
+import { internationalization } from "./middlewares/internationalization";
 
-export function middleware(req) {
-  if (!cookies().has(AUTH_COOKIE_KEY)) {
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
-}
+const middlewares = [auth, internationalization];
+export default chain(middlewares);
 
 export const config = {
-  matcher: [
-    "/",
-    "/products",
-    "/products/(.*)",
-    "/blog",
-    "/blog/(.*)",
-    "/contact",
-    "/profile",
-  ],
+  mather: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
