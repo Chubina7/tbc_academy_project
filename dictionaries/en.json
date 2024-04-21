@@ -16,5 +16,9 @@
             },
             "signOutBtn": "Sign out"
         }
+    },
+    "footer": {
+        "title": "All rights reserved",
+        "inputPh": "Leave your email"
     }
 }
