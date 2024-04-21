@@ -1,14 +1,19 @@
 import React from "react";
 
-export default function FormFields() {
+export default function FormFields({ dict }) {
+  const { name, email, subject, questionOrMessage } = dict.contact.form.labels;
+  const { namePh, emailPh, subjectPh, questionOrMessagePh } =
+    dict.contact.form.inputs;
+  const required = dict.default.required;
+
   return (
     <form className="w-full flex flex-col p-3 gap-6">
       <div className="w-full flex flex-col gap-5">
         <div className="w-full flex flex-col items-start justify-center ">
-          <label htmlFor="name">Name *</label>
+          <label htmlFor="name">{name} *</label>
           <input
             className="w-full border-2 border-black px-4 py-3 focus:outline-none"
-            placeholder="Example Example"
+            placeholder={namePh}
             type="text"
             id="name"
             name="name"
@@ -16,10 +21,10 @@ export default function FormFields() {
           />
         </div>
         <div className="w-full flex flex-col items-start justify-center">
-          <label htmlFor="email">Email *</label>
+          <label htmlFor="email">{email} *</label>
           <input
             className="w-full border-2 border-black px-4 py-3 focus:outline-none"
-            placeholder="example@email.com"
+            placeholder={emailPh}
             type="email"
             id="email"
             name="email"
@@ -29,25 +34,25 @@ export default function FormFields() {
       </div>
       <div className="w-full flex flex-col gap-5">
         <div>
-          <label htmlFor="subject">Subject</label>
+          <label htmlFor="subject">{subject}</label>
           <input
             className="w-full border-2 border-black px-4 py-3 focus:outline-none"
-            placeholder="Write what you want to talk about"
+            placeholder={subjectPh}
             type="text"
             id="subject"
             name="subject"
           />
         </div>
         <div>
-          <label htmlFor="question">Question / Message *</label>
+          <label htmlFor="question">{questionOrMessage} *</label>
           <textarea
             className="w-full border-2 border-black px-4 py-3 focus:outline-none"
-            placeholder="Dear developer..."
+            placeholder={questionOrMessagePh}
             id="question"
             name="question"
             required
           />
-          <i>* - REQUIRED</i>
+          <i>* - {required}</i>
         </div>
       </div>
     </form>

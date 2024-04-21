@@ -80,6 +80,74 @@
             }
         }
     },
+    "contact": {
+        "contactInfo": {
+            "title": "Contact",
+            "info": {
+                "address": {
+                    "name": "Address",
+                    "value": "Didi dighomi, IV district"
+                },
+                "phone": {
+                    "name": "Phone",
+                    "value": "+1 212 456 7890"
+                },
+                "email": {
+                    "name": "E-Mail",
+                    "value": "reactCourse.task@gmail.com"
+                },
+                "website": {
+                    "name": "Web-site",
+                    "value": "google.com"
+                }
+            }
+        },
+        "form": {
+            "labels": {
+                "name": "Name",
+                "email": "E-mail",
+                "subject": "Subject",
+                "questionOrMessage": "Question / Message"
+            },
+            "inputs": {
+                "namePh": "Example Example",
+                "emailPh": "example@email.com",
+                "subjectPh": "Write what you want to talk about",
+                "questionOrMessagePh": "Dear developer..."
+            }
+        }
+    },
+    "profile": {
+        "userInfo": {
+            "title": "User Information",
+            "eachField": {
+                "save": "SAVE",
+                "edit": "EDIT",
+                "userDetails": {
+                    "firstName": "FIRSTNAME",
+                    "lastName": "LASTNAME",
+                    "image": "IMAGE",
+                    "gender": "GENDER"
+                }
+            }
+        },
+        "loginInfo": {
+            "title": "Login Details",
+            "email": {
+                "current": "Current",
+                "email": "Email",
+                "emailPh": "Enter new email",
+                "save": "Save"
+            },
+            "password": {
+                "title": "password",
+                "message": "Password updated",
+                "save": "Save",
+                "enterPass": "Enter new password",
+                "confirmPass": "Confirm new pasword"
+            }
+        }
+    },
     "footer": {
         "title": "All rights reserved",
         "inputPh": "Leave your email"
@@ -98,6 +166,7 @@
         },
         "otherDetails": "Other Details",
         "rating": "Rating",
-        "price": "Price"
+        "price": "Price",
+        "required": "REQUIRED"
     }
 }

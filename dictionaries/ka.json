@@ -80,6 +80,74 @@
             }
         }
     },
+    "contact": {
+        "contactInfo": {
+            "title": "კონტაქტი",
+            "info": {
+                "address": {
+                    "name": "მისამართი",
+                    "value": "დიდი დიღომი, IV მიკრო"
+                },
+                "phone": {
+                    "name": "ტელეფონი",
+                    "value": "+995 555 831 092"
+                },
+                "email": {
+                    "name": "იმეილი",
+                    "value": "reactCourse.task@gmail.com"
+                },
+                "website": {
+                    "name": "ვებსაიტი",
+                    "value": "google.com"
+                }
+            }
+        },
+        "form": {
+            "labels": {
+                "name": "სახელი",
+                "email": "იმეილი",
+                "subject": "სათაური",
+                "questionOrMessage": "შეკითხვა / წერილი"
+            },
+            "inputs": {
+                "namePh": "სახელი გვარი",
+                "emailPh": "example@email.com",
+                "subjectPh": "დაწერეთ, რის შესახებ გინდათ საუბარი",
+                "questionOrMessagePh": "ძვირფასო დეველოპერო..."
+            }
+        }
+    },
+    "profile": {
+        "userInfo": {
+            "title": "მომხმარებლის ინფორმაცია",
+            "eachField": {
+                "save": "შენახვა",
+                "edit": "შეცვლა",
+                "userDetails": {
+                    "firstName": "სახელი",
+                    "lastName": "გვარი",
+                    "image": "ფოტო",
+                    "gender": "გენდერი"
+                }
+            }
+        },
+        "loginInfo": {
+            "title": "ავტორიზაციის დეტალები",
+            "email": {
+                "title": "იმეილი",
+                "current": "არსებული",
+                "emailPh": "ჩაწერეთ ახალი მეილი",
+                "save": "შენახვა"
+            },
+            "password": {
+                "title": "პაროლი",
+                "message": "პაროლი შეიცვალა",
+                "save": "შენახვა",
+                "enterPass": "შეიყვანეთ ახალი პაროლი",
+                "confirmPass": "დაადასტურეთ იმეილი"
+            }
+        }
+    },
     "footer": {
         "title": "ყველა უფლება დაცულია",
         "inputPh": "დაგვიტოვე მეილი"
@@ -98,6 +166,7 @@
         },
         "otherDetails": "სხვა დეტალები",
         "rating": "შეფასება",
-        "price": "ფასი"
+        "price": "ფასი",
+        "required": "სავალდებულო"
     }
 }

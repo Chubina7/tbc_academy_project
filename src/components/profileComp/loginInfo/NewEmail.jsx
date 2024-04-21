@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-export default function NewEmail({ data }) {
+export default function NewEmail({ data, dict }) {
   const [loginInfo, setLoginInfo] = useState(data);
   const [isEditing, setIsEditing] = useState();
   const [inputVal, setInputVal] = useState("");
@@ -24,9 +24,9 @@ export default function NewEmail({ data }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="w-full flex justify-between">
-        <i className="opacity-60">Email</i>
+        <i className="opacity-60">{dict.title}</i>
         <p>
-          Current:{" "}
+          {dict.current}:{" "}
           <span className="italic">
             {loginInfo.email}{" "}
             {isEditing && (
@@ -34,7 +34,7 @@ export default function NewEmail({ data }) {
                 className="bg-slate-500 text-inherit rounded-full px-3"
                 onClick={handleSave}
               >
-                Save
+                {dict.save}
               </button>
             )}
           </span>
@@ -43,7 +43,7 @@ export default function NewEmail({ data }) {
       <input
         className="w-full text-black text-base border-2 border-black rounded-md px-3 py-2"
         type="email"
-        placeholder="Enter new email"
+        placeholder={dict.emailPh}
         value={inputVal}
         onChange={(e) => setInputVal(e.target.value)}
       />

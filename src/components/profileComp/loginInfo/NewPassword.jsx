@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-export default function NewPassword({ data }) {
+export default function NewPassword({ data, dict }) {
   const [loginInfo, setLoginInfo] = useState(data);
   const [isEditing, setIsEditing] = useState();
   const [confirmInputVal, setConfirmInputVal] = useState("");
@@ -27,21 +27,21 @@ export default function NewPassword({ data }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="w-full flex justify-between">
-        <i className="opacity-60">Password</i>
-        {updated && <p>Password updated</p>}
+        <i className="opacity-60">{dict.title}</i>
+        {updated && <p>{dict.message}</p>}
       </div>
       <div className="w-full flex flex-col gap-3">
         <input
           className="text-black w-full text-base border-2 border-black rounded-md px-3 py-2"
+          placeholder={dict.enterPass}
           type="password"
-          placeholder="Enter new password"
           value={newInputVal}
           onChange={(e) => setNewInputVal(e.target.value)}
         />
         <input
           className="text-black w-full text-base border-2 border-black rounded-md px-3 py-2"
+          placeholder={dict.confirmPass}
           type="password"
-          placeholder="Confirm new pasword"
           value={confirmInputVal}
           onChange={(e) => setConfirmInputVal(e.target.value)}
         />
@@ -50,7 +50,7 @@ export default function NewPassword({ data }) {
             className="text-black bg-slate-500 text-inherit rounded-full px-3"
             onClick={handleSave}
           >
-            Save
+            {dict.save}
           </button>
         )}
       </div>
