@@ -1,5 +1,20 @@
 {
     "home": {
-        "test": "კაი გამარჯობა!"
+        "test": "Hello world!"
+    },
+    "header": {
+        "navigation": {
+            "navItems": {
+                "home": "მთავარი",
+                "blog": "ბლოგი",
+                "contact": "კონტაქტი",
+                "profile": "პროფილი"
+            },
+            "lngChanger": {
+                "geo": "ქართ",
+                "eng": "ინგლ"
+            },
+            "signOutBtn": "გასვლა"
+        }
     }
 }

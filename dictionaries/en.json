@@ -1,5 +1,20 @@
 {
     "home": {
         "test": "Hello world!"
+    },
+    "header": {
+        "navigation": {
+            "navItems": {
+                "home": "Home",
+                "blog": "Blog",
+                "contact": "Contact",
+                "profile": "Profile"
+            },
+            "lngChanger": {
+                "geo": "Ge",
+                "eng": "En"
+            },
+            "signOutBtn": "Sign out"
+        }
     }
 }

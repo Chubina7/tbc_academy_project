@@ -13,13 +13,8 @@ export function internationalization(middleware) {
     );
 
     if (!pathnameHasLocale) {
-      if (inCookie) {
-        request.nextUrl.pathname = `/${inCookie}${pathname}`;
-      } else {
-        const locale = getLocale(request);
-        request.nextUrl.pathname = `/${locale}${pathname}`;
-      }
-
+      const newLocale = inCookie || getLocale(request);
+      request.nextUrl.pathname = `/${newLocale}${pathname}`;
       return NextResponse.redirect(request.nextUrl);
     }
 

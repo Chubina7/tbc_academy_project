@@ -15,7 +15,7 @@ export default function Header({ lng }) {
           <Navigation lng={lng} />
         </div>
         <div className="relative block sm:hidden">
-          <BurgerMenu />
+          <BurgerMenu lng={lng} />
         </div>
       </header>
     </div>

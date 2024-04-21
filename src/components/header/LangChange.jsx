@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { setLngInCookies } from "../../lib/actions";
 import Link from "next/link";
 
-export default function LangChange() {
+export default function LangChange({ data }) {
   const path = usePathname();
   const route = path.substring(6);
 
@@ -20,7 +20,7 @@ export default function LangChange() {
           id="ka-GE"
           onClick={(e) => lngChangeHandler(e.target.id)}
         >
-          Georgian
+          {data["geo"]}
         </p>
       </Link>
       <p>/</p>
@@ -30,7 +30,7 @@ export default function LangChange() {
           id="en-US"
           onClick={(e) => lngChangeHandler(e.target.id)}
         >
-          English
+          {data["eng"]}
         </p>
       </Link>
     </div>

@@ -9,7 +9,7 @@ export default function RootLayout({ children, params: { locale } }) {
         {children}
       </main>
       <div className="hidden sm:block">
-        <Footer />
+        <Footer lng={locale} />
       </div>
     </>
   );
