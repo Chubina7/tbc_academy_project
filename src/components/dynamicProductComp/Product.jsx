@@ -3,10 +3,10 @@ import PhotoCarousel from "./PhotoCarousel";
 import Details from "./Details";
 import OtherDetails from "./OtherDetails";
 
-function Product({ data }) {
+function Product({ data, dict }) {
   const photoSource = {
     src: data.images,
-    alt: data.title
+    alt: data.title,
   };
   const detailsSource = {
     title: data.title,
@@ -25,9 +25,9 @@ function Product({ data }) {
     <>
       <div className="w-full flex justify-between items-start gap-6 lg:gap-0 flex-col md:flex-row">
         <PhotoCarousel data={photoSource} />
-        <Details data={detailsSource} />
+        <Details data={detailsSource} dict={dict} />
       </div>
-      <OtherDetails data={otherDetailsSource} />
+      <OtherDetails data={otherDetailsSource} dict={dict} />
     </>
   );
 }

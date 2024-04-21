@@ -1,22 +1,4 @@
 {
-    "home": {
-        "test": "Hello world!"
-    },
-    "header": {
-        "navigation": {
-            "navItems": {
-                "home": "Home",
-                "blog": "Blog",
-                "contact": "Contact",
-                "profile": "Profile"
-            },
-            "lngChanger": {
-                "geo": "Ge",
-                "eng": "En"
-            },
-            "signOutBtn": "Sign out"
-        }
-    },
     "auth": {
         "login": {
             "title": "Login",
@@ -50,8 +32,72 @@
             }
         }
     },
+    "header": {
+        "navigation": {
+            "navItems": {
+                "home": "Home",
+                "blog": "Blog",
+                "contact": "Contact",
+                "profile": "Profile"
+            },
+            "lngChanger": {
+                "geo": "Ge",
+                "eng": "En"
+            },
+            "signOutBtn": "Sign out"
+        }
+    },
+    "products": {
+        "searchInput": "Search by a key stroke",
+        "sortBtn": {
+            "sort": "Sort by price",
+            "unSort": "Unsort"
+        },
+        "productItem": {
+            "seeMoreBtn": "See Details"
+        },
+        "dynamicProductItem": {
+            "brand": "Brand",
+            "category": "Category",
+            "discount": "Discount",
+            "stock": "In Stock"
+        }
+    },
+    "blog": {
+        "blogGridItem": {
+            "hardness": "Difficulty",
+            "type": "Meal type"
+        },
+        "blogDynamicItem": {
+            "content": {
+                "ingredients": "Ingredients",
+                "instructions": "Instructions",
+                "cookTime": "Cook time",
+                "calories": "Calories per serving"
+            },
+            "suggestions": {
+                "title": "Similar recipes from"
+            }
+        }
+    },
     "footer": {
         "title": "All rights reserved",
         "inputPh": "Leave your email"
+    },
+    "default": {
+        "measurement": {
+            "currency": "$",
+            "calories": "ccal"
+        },
+        "time": {
+            "minute": "min"
+        },
+        "action": {
+            "seeDetails": "See details",
+            "readMore": "Read more"
+        },
+        "otherDetails": "Other Details",
+        "rating": "Rating",
+        "price": "Price"
     }
 }

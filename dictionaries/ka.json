@@ -1,22 +1,4 @@
 {
-    "home": {
-        "test": "Hello world!"
-    },
-    "header": {
-        "navigation": {
-            "navItems": {
-                "home": "მთავარი",
-                "blog": "ბლოგი",
-                "contact": "კონტაქტი",
-                "profile": "პროფილი"
-            },
-            "lngChanger": {
-                "geo": "ქართ",
-                "eng": "ინგლ"
-            },
-            "signOutBtn": "გასვლა"
-        }
-    },
     "auth": {
         "login": {
             "title": "შესვლა",
@@ -50,8 +32,72 @@
             }
         }
     },
+    "header": {
+        "navigation": {
+            "navItems": {
+                "home": "მთავარი",
+                "blog": "ბლოგი",
+                "contact": "კონტაქტი",
+                "profile": "პროფილი"
+            },
+            "lngChanger": {
+                "geo": "ქართ",
+                "eng": "ინგლ"
+            },
+            "signOutBtn": "გასვლა"
+        }
+    },
+    "products": {
+        "searchInput": "ძიება",
+        "sortBtn": {
+            "sort": "ფასით სორტირება",
+            "unSort": "დაბრუნება"
+        },
+        "productItem": {
+            "seeMoreBtn": "მეტის ნახვა"
+        },
+        "dynamicProductItem": {
+            "brand": "ბრენდი",
+            "category": "კატეგორია",
+            "discount": "ფასდაკლება",
+            "stock": "მარაგშია"
+        }
+    },
+    "blog": {
+        "blogGridItem": {
+            "hardness": "სირთულე",
+            "type": "ტიპი"
+        },
+        "blogDynamicItem": {
+            "content": {
+                "ingredients": "ინგრედიენტები",
+                "instructions": "ინსტრუქციები",
+                "cookTime": "მომზადების დრო",
+                "calories": "კალორიები ულუფაზე"
+            },
+            "suggestions": {
+                "title": "მსგავსი რეცეპტები"
+            }
+        }
+    },
     "footer": {
         "title": "ყველა უფლება დაცულია",
         "inputPh": "დაგვიტოვე მეილი"
+    },
+    "default": {
+        "measurement": {
+            "currency": "₾",
+            "calories": "კკალ"
+        },
+        "time": {
+            "minute": "წთ"
+        },
+        "action": {
+            "seeDetails": "მეტის ნახვა",
+            "readMore": "ვრცლად წაკითხვა"
+        },
+        "otherDetails": "სხვა დეტალები",
+        "rating": "შეფასება",
+        "price": "ფასი"
     }
 }

@@ -17,7 +17,12 @@ export default function BlogItem({
   difficulty,
   mealType,
   tags,
+  dict,
 }) {
+  const minute = dict.default.time.minute;
+  const readMore = dict.default.action.readMore;
+  const { hardness, type } = dict.blog.blogGridItem;
+
   return (
     <div className="w-full flex gap-1 flex-col sm:flex-row sm:gap-8">
       <div className="w-full flex">
@@ -37,10 +42,10 @@ export default function BlogItem({
         </div>
         <div className="w-full flex flex-col">
           <p>
-            Difficulty: <strong> {difficulty}</strong>
+            {hardness}: <strong> {difficulty}</strong>
           </p>
           <p>
-            Meal Type:{" "}
+            {type}:{" "}
             {mealType.map((item, idx) => (
               <strong key={idx}>
                 {item}
@@ -53,7 +58,9 @@ export default function BlogItem({
           <div className="flex gap-2">
             <div className="flex justify-center items-center gap-1">
               <FaRegClock size={15} opacity={0.6} />
-              <p className="opacity-80">{time} min</p>
+              <p className="opacity-80">
+                {time} {minute}
+              </p>
             </div>
             <div className="flex justify-center items-center gap-1">
               <PiChartPieSliceBold size={15} opacity={0.6} />
@@ -66,7 +73,7 @@ export default function BlogItem({
           </div>
           <div>
             <Link href={`/blog/${id}`}>
-              <p className="underline">Read more...</p>
+              <p className="underline">{readMore}...</p>
             </Link>
           </div>
         </div>

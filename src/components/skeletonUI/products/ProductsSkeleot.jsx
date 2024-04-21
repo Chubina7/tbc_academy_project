@@ -7,7 +7,7 @@ function ProductsSkeleot() {
       <section className="w-full">
         <div className="w-full flex flex-col sm:flex-row gap-3">
           <div className="w-full px-6 py-2 rounded-full bg-slate-700 h-11" />
-          <div className="sm:min-w-36 rounded-full px-6 py-2 z-40 bg-[#F25050] h-11" />
+          <div className="sm:min-w-52 rounded-full px-6 py-2 z-40 bg-[#F25050] h-11" />
         </div>
       </section>
       <section className="w-full">

@@ -1,14 +1,17 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import test from "/public/test.jpg";
+
 export default function ProductItem({
   title,
   price,
   description,
   imgSrc,
   route,
+  dict,
 }) {
+  const seeDetailsBtn = dict.products.productItem.seeMoreBtn;
+
   return (
     <div className="w-full flex flex-col justify-start items-start p-3 rounded-lg bg-[#202326] shadow-xl">
       <div className="relative w-full min-h-64">
@@ -28,7 +31,7 @@ export default function ProductItem({
           <strong>$ {price}</strong>
           <Link href={`/products/${route}`}>
             <button className="bg-[#F25050] text-inherit rounded-full px-4 py-1">
-              See Details
+              {seeDetailsBtn}
             </button>
           </Link>
         </div>

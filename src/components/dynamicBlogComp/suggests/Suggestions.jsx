@@ -3,14 +3,15 @@ import SuggestItem from "./SuggestItem";
 import Link from "next/link";
 import { getAllRecipesByTag } from "../../../lib/helpers";
 
-async function Suggestions({ tags, originalName }) {
+async function Suggestions({ tags, originalName, dict }) {
   const rand = Math.floor(Math.random() * (tags.length - 1)) + 1;
   const data = await getAllRecipesByTag(tags[rand]);
+  const title = dict.blog.blogDynamicItem.suggestions.title;
 
   return (
     <>
       <h1 className="text-3xl">
-        Similar recipes from <i>#{tags[rand]}</i>
+        {title} <i>#{tags[rand]}</i>
       </h1>
       <br />
       <div className="w-full max-w-lg mx-auto p-7 flex flex-col items-start gap-6">
@@ -24,6 +25,7 @@ async function Suggestions({ tags, originalName }) {
                   name={item.name}
                   prepTimeMinutes={item.prepTimeMinutes}
                   rating={item.rating}
+                  dict={dict}
                 />
               </Link>
             );

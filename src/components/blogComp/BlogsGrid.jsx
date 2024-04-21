@@ -1,7 +1,7 @@
 import React from "react";
 import BlogItem from "./BlogItem";
 
-export default function BlogsGrid({ data }) {
+export default function BlogsGrid({ data, dict }) {
   return (
     <div className="w-full flex flex-col gap-10 md:gap-16">
       {data.map((item) => (
@@ -16,6 +16,7 @@ export default function BlogsGrid({ data }) {
           difficulty={item.difficulty}
           mealType={item.mealType}
           tags={item.tags}
+          dict={dict}
         />
       ))}
     </div>
