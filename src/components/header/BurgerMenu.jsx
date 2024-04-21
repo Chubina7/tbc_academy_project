@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-// import Navigation from "./Navigation";
+import Navigation from "./Navigation";
 import { TfiMenu } from "react-icons/tfi";
 import { IoClose } from "react-icons/io5";
 
-export default function Burger({ lng }) {
+export default function Burger({ dict, lng }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleModal = () => setIsOpen((prev) => !prev);
@@ -26,7 +26,7 @@ export default function Burger({ lng }) {
           >
             <IoClose size={26} />
           </button>
-          {/* <Navigation closeBurgerModal={handleModal} lng={lng} /> */}
+          <Navigation closeBurgerModal={handleModal} lng={lng} dict={dict} />
         </div>
       )}
     </>

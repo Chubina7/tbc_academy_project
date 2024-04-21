@@ -4,8 +4,9 @@ import React from "react";
 import { signOut } from "../../lib/actions";
 import { useRouter } from "next/navigation";
 
-export default function SignOutBtn({ lng, data }) {
+export default function SignOutBtn({ lng, dict }) {
   const router = useRouter();
+  const btn = dict.header.navigation.signOutBtn;
 
   return (
     <button
@@ -15,7 +16,7 @@ export default function SignOutBtn({ lng, data }) {
         router.refresh(`/${lng}/login`);
       }}
     >
-      {data}
+      {btn}
     </button>
   );
 }

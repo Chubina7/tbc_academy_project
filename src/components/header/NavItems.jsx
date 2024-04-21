@@ -6,8 +6,9 @@ import { navItems } from "../../lib/lists";
 import { usePathname } from "next/navigation";
 import { buttonUI } from "../../lib/styles";
 
-function NavItems({ action, lng, data }) {
+function NavItems({ action, lng, dict }) {
   const path = usePathname();
+  const navLink = dict.header.navigation.navItems;
 
   return (
     <>
@@ -21,7 +22,7 @@ function NavItems({ action, lng, data }) {
           }`}
         >
           <Link href={`/${lng}/${navItem.href}`} onClick={action}>
-            {data[navItem.placeholder]}
+            {navLink[navItem.placeholder]}
           </Link>
         </li>
       ))}
