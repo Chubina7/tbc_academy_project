@@ -17,6 +17,39 @@
             "signOutBtn": "Sign out"
         }
     },
+    "auth": {
+        "login": {
+            "title": "Login",
+            "form": {
+                "usernameLabel": "Enter your username",
+                "usernameInput": "example123",
+                "passwordLabel": "Enter valid password",
+                "passwordInput": "Password",
+                "signInBtn": "Sign in"
+            },
+            "info": {
+                "text": "If you dont have accout, Sign Up",
+                "underline": "here"
+            }
+        },
+        "register": {
+            "title": "Register",
+            "form": {
+                "usernameLabel": "Username",
+                "usernameInput": "Username",
+                "emailLabel": "Email",
+                "emailInput": "Enter e-mail",
+                "passwordLabel": "Password",
+                "passwordInput": "Enter password",
+                "rePasswordInput": "Re-type password",
+                "signUpBtn": "Sign up"
+            },
+            "info": {
+                "text": "If you already have accout, Sign in",
+                "underline": "here"
+            }
+        }
+    },
     "footer": {
         "title": "All rights reserved",
         "inputPh": "Leave your email"

@@ -1,13 +1,14 @@
 import Link from "next/link";
 import React from "react";
 
-function ToLoginAction() {
+function ToLoginAction({ data }) {
+  const { text, underline } = data;
   return (
     <div className="w-full flex flex-col justify-center items-center gap-2">
       <p className="w-full text-center">
-        If you already have accout, Sign in{" "}
+        {text}{" "}
         <Link href={"/login"}>
-          <span className="underline ">here</span>
+          <span className="underline ">{underline}</span>
         </Link>
       </p>
     </div>

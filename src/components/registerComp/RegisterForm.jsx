@@ -1,50 +1,61 @@
 import React from "react";
 
-function RegisterForm() {
+function RegisterForm({ data }) {
+  const {
+    usernameLabel,
+    usernameInput,
+    emailLabel,
+    emailInput,
+    passwordLabel,
+    passwordInput,
+    rePasswordInput,
+    signUpBtn,
+  } = data;
+
   return (
     <form
       className="w-full flex flex-col justify-center items-center gap-6"
       action=""
     >
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">{usernameLabel}</label>
         <input
           className="bg-transparent border-2 border-white py-1 px-3"
+          placeholder={usernameInput}
           type="text"
-          placeholder="Username"
           name="username"
           id="username"
         />
       </div>
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{emailLabel}</label>
         <input
           className="bg-transparent border-2 border-white py-1 px-3"
+          placeholder={emailInput}
           type="email"
           name="email"
           id="email"
-          placeholder="Email"
         />
       </div>
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{passwordLabel}</label>
         <input
           className="bg-transparent border-2 border-white py-1 px-3"
           type="password"
           name="password"
           id="password"
-          placeholder="Enter password"
+          placeholder={passwordInput}
         />
         <input
           className="bg-transparent border-2 border-white py-1 px-3"
           type="password"
           name="password"
           id="password"
-          placeholder="Re-type password"
+          placeholder={rePasswordInput}
         />
       </div>
       <button className="w-full bg-white text-black rounded-full py-1">
-        Sign up
+        {signUpBtn}
       </button>
     </form>
   );

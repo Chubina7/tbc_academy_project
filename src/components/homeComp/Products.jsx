@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import ProductList from "./products/ProductList";
 import HomeActions from "./homeActions/HomeActions";
 
-function Products({ data }) {
+function Products({ data, lng }) {
   const [sortRule, setSortRule] = useState(false);
   const [query, setQuery] = useState("");
 

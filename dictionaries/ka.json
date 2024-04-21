@@ -17,6 +17,39 @@
             "signOutBtn": "გასვლა"
         }
     },
+    "auth": {
+        "login": {
+            "title": "შესვლა",
+            "form": {
+                "usernameLabel": "მომხმარებლის სახელი",
+                "usernameInput": "სახელი123",
+                "passwordLabel": "მომხმარებლის პაროლი",
+                "passwordInput": "პაროლი",
+                "signInBtn": "შესვლა"
+            },
+            "info": {
+                "text": "თუ ჯერ არ გაქვს ანგარიში, დააჭირე",
+                "underline": "აქ"
+            }
+        },
+        "register": {
+            "title": "რეგისტრაცია",
+            "form": {
+                "usernameLabel": "მომხმარებლის სახელი",
+                "usernameInput": "შეიყვანეთ სახელი",
+                "emailLabel": "ელ. მეილი",
+                "emailInput": "შეიყვანეთ იმეილი",
+                "passwordLabel": "პაროლი",
+                "passwordInput": "შეიყვანეთ პაროლი",
+                "rePasswordInput": "გაიმეორეთ პაროლი",
+                "signUpBtn": "რეგისტრაცია"
+            },
+            "info": {
+                "text": "თუ უკვე გაქვს ანგარიში, დააჭირე",
+                "underline": "აქ"
+            }
+        }
+    },
     "footer": {
         "title": "ყველა უფლება დაცულია",
         "inputPh": "დაგვიტოვე მეილი"
