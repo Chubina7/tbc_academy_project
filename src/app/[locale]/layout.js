@@ -1,8 +1,8 @@
-import { Oswald } from "next/font/google";
+import { Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
 import { i18n } from "../../i18.config";
 
-const oswald = Oswald({ subsets: ["latin"] });
+const georgian = Noto_Sans_Georgian({ subsets: ["georgian"] });
 
 export const metadata = {
   title: "TBC x USAID Course Project",
@@ -17,7 +17,7 @@ export default function RootLayout({ children, params: { locale } }) {
   return (
     <html lang={locale}>
       <body
-        className={`${oswald.className} text-white h-screen w-full flex flex-col bg-[#25292D]`}
+        className={`${georgian.className} text-white h-screen w-full flex flex-col bg-[#25292D]`}
       >
         {children}
       </body>
