@@ -4,7 +4,9 @@ import Ingredients from "../Ingredients";
 import fallback_img from "../../../../public/anonym_user.webp";
 import PreDetails from "./PreDetails";
 
-function Intro({ image, name, ingredients, difficulty, origin, type }) {
+function Intro({ image, name, ingredients, difficulty, origin, type, dict }) {
+  const ingredientsDict = dict.blog.blogDynamicItem.content.ingredients;
+
   return (
     <div className="w-full flex justify-start items-start flex-col md:flex-row gap-4 lg:gap-8">
       <div className="w-full lg:w-auto max-h-full flex justify-center items-center ">
@@ -20,7 +22,7 @@ function Intro({ image, name, ingredients, difficulty, origin, type }) {
       <div className="w-full lg:w-auto flex flex-col gap-2">
         <PreDetails difficulty={difficulty} origin={origin} type={type} />
         <hr className="md:hidden w-full border rounded-full bg-black" />
-        <h1 className="text-xl md:text-2xl">Ingredients: </h1>
+        <h1 className="text-xl md:text-2xl">{ingredientsDict}: </h1>
         <Ingredients list={ingredients} />
       </div>
     </div>

@@ -1,0 +1,177 @@
+{
+    "auth": {
+        "login": {
+            "title": "შესვლა",
+            "form": {
+                "usernameLabel": "მომხმარებლის სახელი",
+                "usernameInput": "სახელი123",
+                "passwordLabel": "მომხმარებლის პაროლი",
+                "passwordInput": "პაროლი",
+                "signInBtn": "შესვლა"
+            },
+            "info": {
+                "text": "თუ ჯერ არ გაქვს ანგარიში, დააჭირე",
+                "underline": "აქ"
+            }
+        },
+        "register": {
+            "title": "რეგისტრაცია",
+            "form": {
+                "usernameLabel": "მომხმარებლის სახელი",
+                "usernameInput": "შეიყვანეთ სახელი",
+                "emailLabel": "ელ. მეილი",
+                "emailInput": "შეიყვანეთ იმეილი",
+                "passwordLabel": "პაროლი",
+                "passwordInput": "შეიყვანეთ პაროლი",
+                "rePasswordInput": "გაიმეორეთ პაროლი",
+                "signUpBtn": "რეგისტრაცია"
+            },
+            "info": {
+                "text": "თუ უკვე გაქვს ანგარიში, დააჭირე",
+                "underline": "აქ"
+            }
+        }
+    },
+    "header": {
+        "navigation": {
+            "navItems": {
+                "home": "მთავარი",
+                "blog": "ბლოგი",
+                "contact": "კონტაქტი",
+                "profile": "პროფილი"
+            },
+            "lngChanger": {
+                "geo": "ქა",
+                "eng": "ინგ"
+            },
+            "themeChanger": {
+                "light": "ღია",
+                "dark": "მუქი",
+                "os": "სისტემური"
+            },
+            "signOutBtn": "გასვლა"
+        }
+    },
+    "products": {
+        "searchInput": "ძიება",
+        "sortBtn": {
+            "sort": "ფასით სორტირება",
+            "unSort": "დაბრუნება"
+        },
+        "productItem": {
+            "seeMoreBtn": "მეტის ნახვა"
+        },
+        "dynamicProductItem": {
+            "brand": "ბრენდი",
+            "category": "კატეგორია",
+            "discount": "ფასდაკლება",
+            "stock": "მარაგშია"
+        }
+    },
+    "blog": {
+        "blogGridItem": {
+            "hardness": "სირთულე",
+            "type": "ტიპი"
+        },
+        "blogDynamicItem": {
+            "content": {
+                "ingredients": "ინგრედიენტები",
+                "instructions": "ინსტრუქციები",
+                "cookTime": "მომზადების დრო",
+                "calories": "კალორიები ულუფაზე"
+            },
+            "suggestions": {
+                "title": "მსგავსი რეცეპტები"
+            }
+        }
+    },
+    "contact": {
+        "contactInfo": {
+            "title": "კონტაქტი",
+            "info": {
+                "address": {
+                    "name": "მისამართი",
+                    "value": "დიდი დიღომი, IV მიკრო"
+                },
+                "phone": {
+                    "name": "ტელეფონი",
+                    "value": "+995 555 831 092"
+                },
+                "email": {
+                    "name": "იმეილი",
+                    "value": "reactCourse.task@gmail.com"
+                },
+                "website": {
+                    "name": "ვებსაიტი",
+                    "value": "google.com"
+                }
+            }
+        },
+        "form": {
+            "labels": {
+                "name": "სახელი",
+                "email": "იმეილი",
+                "subject": "სათაური",
+                "questionOrMessage": "შეკითხვა / წერილი"
+            },
+            "inputs": {
+                "namePh": "სახელი გვარი",
+                "emailPh": "example@email.com",
+                "subjectPh": "დაწერეთ, რის შესახებ გინდათ საუბარი",
+                "questionOrMessagePh": "ძვირფასო დეველოპერო..."
+            }
+        }
+    },
+    "profile": {
+        "userInfo": {
+            "title": "მომხმარებლის ინფორმაცია",
+            "eachField": {
+                "save": "შენახვა",
+                "edit": "შეცვლა",
+                "userDetails": {
+                    "firstName": "სახელი",
+                    "lastName": "გვარი",
+                    "image": "ფოტო",
+                    "gender": "გენდერი"
+                }
+            }
+        },
+        "loginInfo": {
+            "title": "ავტორიზაციის დეტალები",
+            "email": {
+                "title": "იმეილი",
+                "current": "არსებული",
+                "emailPh": "ჩაწერეთ ახალი მეილი",
+                "save": "შენახვა"
+            },
+            "password": {
+                "title": "პაროლი",
+                "message": "პაროლი შეიცვალა",
+                "save": "შენახვა",
+                "enterPass": "შეიყვანეთ ახალი პაროლი",
+                "confirmPass": "დაადასტურეთ იმეილი"
+            }
+        }
+    },
+    "footer": {
+        "title": "ყველა უფლება დაცულია",
+        "inputPh": "დაგვიტოვე მეილი"
+    },
+    "default": {
+        "measurement": {
+            "currency": "₾",
+            "calories": "კკალ"
+        },
+        "time": {
+            "minute": "წთ"
+        },
+        "action": {
+            "seeDetails": "მეტის ნახვა",
+            "readMore": "ვრცლად წაკითხვა"
+        },
+        "otherDetails": "სხვა დეტალები",
+        "rating": "შეფასება",
+        "price": "ფასი",
+        "required": "სავალდებულო"
+    }
+}

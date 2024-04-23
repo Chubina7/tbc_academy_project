@@ -5,7 +5,7 @@ import Navigation from "./Navigation";
 import { TfiMenu } from "react-icons/tfi";
 import { IoClose } from "react-icons/io5";
 
-export default function Burger() {
+export default function Burger({ dict, lng }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleModal = () => setIsOpen((prev) => !prev);
@@ -19,14 +19,14 @@ export default function Burger() {
       </button>
 
       {isOpen && (
-        <div className="fixed w-full h-full left-0 top-0 bg-[#25292D] p-6 z-50">
+        <div className="fixed w-full h-full left-0 top-0 bg-white dark:bg-[#25292D] p-6 z-50">
           <button
             onClick={handleModal}
             className="opacity-60 hover:opacity-100"
           >
             <IoClose size={26} />
           </button>
-          <Navigation closeBurgerModal={handleModal} />
+          <Navigation closeBurgerModal={handleModal} lng={lng} dict={dict} />
         </div>
       )}
     </>

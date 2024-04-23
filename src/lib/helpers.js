@@ -1,4 +1,8 @@
-// // // // // Products // // // // //
+import { match } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
+import { i18n } from "../i18.config";
+
+// Products
 export async function getAllProducts() {
   const res = await fetch("https://dummyjson.com/products");
   const data = await res.json();
@@ -12,7 +16,7 @@ export async function getSingleProduct(id) {
   return data;
 }
 
-// // // // // Recipies // // // // //
+// Recipies
 export async function getAllRecipes() {
   const res = await fetch("https://dummyjson.com/recipes");
   const data = await res.json();
@@ -32,7 +36,7 @@ export async function getAllRecipesByTag(tag) {
   return data.recipes;
 }
 
-// // // // // Users // // // // //
+// Users
 export async function getAuthor(id) {
   const res = await fetch(`https://dummyjson.com/users/${id}`);
   const data = await res.json();
@@ -40,16 +44,26 @@ export async function getAuthor(id) {
   return data;
 }
 
-export async function getUserAuth(data) {
-  const res = await fetch("https://dummyjson.com/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
+// Preferences
+export const getLocale = (request) => {
+  const negotiatorHeaders = {};
+  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  if (res.ok) {
-    return res.json();
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+  const locales = i18n.locales;
+
+  const locale = match(languages, locales, i18n.defaultLocale);
+  return locale;
+};
+export const setTheme = (pref) => {
+  if (pref === "os") {
+    document.documentElement.classList.remove("light");
+    document.documentElement.classList.remove("dark");
+    localStorage.removeItem("theme");
   } else {
-    console.log("Error happened");
+    document.documentElement.classList.remove("light");
+    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.add(pref);
+    localStorage.setItem("theme", pref);
   }
-}
+};

@@ -1,0 +1,177 @@
+{
+    "auth": {
+        "login": {
+            "title": "Login",
+            "form": {
+                "usernameLabel": "Enter your username",
+                "usernameInput": "example123",
+                "passwordLabel": "Enter valid password",
+                "passwordInput": "Password",
+                "signInBtn": "Sign in"
+            },
+            "info": {
+                "text": "If you dont have accout, Sign Up",
+                "underline": "here"
+            }
+        },
+        "register": {
+            "title": "Register",
+            "form": {
+                "usernameLabel": "Username",
+                "usernameInput": "Username",
+                "emailLabel": "Email",
+                "emailInput": "Enter e-mail",
+                "passwordLabel": "Password",
+                "passwordInput": "Enter password",
+                "rePasswordInput": "Re-type password",
+                "signUpBtn": "Sign up"
+            },
+            "info": {
+                "text": "If you already have accout, Sign in",
+                "underline": "here"
+            }
+        }
+    },
+    "header": {
+        "navigation": {
+            "navItems": {
+                "home": "Home",
+                "blog": "Blog",
+                "contact": "Contact",
+                "profile": "Profile"
+            },
+            "lngChanger": {
+                "geo": "Ge",
+                "eng": "En"
+            },
+            "themeChanger": {
+                "light": "Light",
+                "dark": "Dark",
+                "os": "System"
+            },
+            "signOutBtn": "Sign out"
+        }
+    },
+    "products": {
+        "searchInput": "Search by a key stroke",
+        "sortBtn": {
+            "sort": "Sort by price",
+            "unSort": "Unsort"
+        },
+        "productItem": {
+            "seeMoreBtn": "See Details"
+        },
+        "dynamicProductItem": {
+            "brand": "Brand",
+            "category": "Category",
+            "discount": "Discount",
+            "stock": "In Stock"
+        }
+    },
+    "blog": {
+        "blogGridItem": {
+            "hardness": "Difficulty",
+            "type": "Meal type"
+        },
+        "blogDynamicItem": {
+            "content": {
+                "ingredients": "Ingredients",
+                "instructions": "Instructions",
+                "cookTime": "Cook time",
+                "calories": "Calories per serving"
+            },
+            "suggestions": {
+                "title": "Similar recipes from"
+            }
+        }
+    },
+    "contact": {
+        "contactInfo": {
+            "title": "Contact",
+            "info": {
+                "address": {
+                    "name": "Address",
+                    "value": "Didi dighomi, IV district"
+                },
+                "phone": {
+                    "name": "Phone",
+                    "value": "+1 212 456 7890"
+                },
+                "email": {
+                    "name": "E-Mail",
+                    "value": "reactCourse.task@gmail.com"
+                },
+                "website": {
+                    "name": "Web-site",
+                    "value": "google.com"
+                }
+            }
+        },
+        "form": {
+            "labels": {
+                "name": "Name",
+                "email": "E-mail",
+                "subject": "Subject",
+                "questionOrMessage": "Question / Message"
+            },
+            "inputs": {
+                "namePh": "Example Example",
+                "emailPh": "example@email.com",
+                "subjectPh": "Write what you want to talk about",
+                "questionOrMessagePh": "Dear developer..."
+            }
+        }
+    },
+    "profile": {
+        "userInfo": {
+            "title": "User Information",
+            "eachField": {
+                "save": "SAVE",
+                "edit": "EDIT",
+                "userDetails": {
+                    "firstName": "FIRSTNAME",
+                    "lastName": "LASTNAME",
+                    "image": "IMAGE",
+                    "gender": "GENDER"
+                }
+            }
+        },
+        "loginInfo": {
+            "title": "Login Details",
+            "email": {
+                "current": "Current",
+                "email": "Email",
+                "emailPh": "Enter new email",
+                "save": "Save"
+            },
+            "password": {
+                "title": "password",
+                "message": "Password updated",
+                "save": "Save",
+                "enterPass": "Enter new password",
+                "confirmPass": "Confirm new pasword"
+            }
+        }
+    },
+    "footer": {
+        "title": "All rights reserved",
+        "inputPh": "Leave your email"
+    },
+    "default": {
+        "measurement": {
+            "currency": "$",
+            "calories": "ccal"
+        },
+        "time": {
+            "minute": "min"
+        },
+        "action": {
+            "seeDetails": "See details",
+            "readMore": "Read more"
+        },
+        "otherDetails": "Other Details",
+        "rating": "Rating",
+        "price": "Price",
+        "required": "REQUIRED"
+    }
+}

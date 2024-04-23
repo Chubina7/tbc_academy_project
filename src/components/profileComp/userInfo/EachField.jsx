@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 
-export default function EachField({ title, data, setUserInfo }) {
+export default function EachField({ title, data, setUserInfo, dict }) {
   const [isEditing, setIsEditing] = useState(false);
   const [inputVal, setInputVal] = useState("");
 
@@ -13,11 +13,11 @@ export default function EachField({ title, data, setUserInfo }) {
 
   return (
     <div className="flex flex-col justify-start items-start gap-1 p-2">
-      <i className="text-sm opacity-60 w-full">{title.toUpperCase()}</i>
+      <i className="text-sm opacity-60 w-full">{dict.userDetails[title]}</i>
       <div className="w-full flex justify-between items-center gap-5">
         {isEditing ? (
           <input
-            className="w-full text-xl border-2 border-black rounded-md px-3 py-2"
+            className="w-full text-black text-xl border-2 border-black rounded-md px-3 py-2"
             type="text"
             placeholder={data}
             value={inputVal}
@@ -30,7 +30,7 @@ export default function EachField({ title, data, setUserInfo }) {
           className="select-none cursor-pointer text-sm"
           onClick={handleDataSave}
         >
-          {isEditing ? "SAVE" : "EDIT"}
+          {isEditing ? dict.save : dict.edit}
         </button>
       </div>
     </div>

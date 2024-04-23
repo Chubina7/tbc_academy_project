@@ -1,7 +1,12 @@
 import React from "react";
 import ProductItem from "./ProductItem";
 
-export default function ProductList({ list, sortRule, searchFilterKeyword }) {
+export default function ProductList({
+  list,
+  sortRule,
+  searchFilterKeyword,
+  dict,
+}) {
   const data = sortRule
     ? [...list].sort((a, b) => a.price - b.price)
     : [...list];
@@ -20,6 +25,7 @@ export default function ProductList({ list, sortRule, searchFilterKeyword }) {
             description={product.description}
             imgSrc={product.thumbnail}
             price={product.price}
+            dict={dict}
           />
         ))}
     </div>

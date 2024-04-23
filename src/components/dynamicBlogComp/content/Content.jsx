@@ -13,6 +13,7 @@ function Content({
   mealType,
   caloriesPerServing,
   prepTimeMinutes,
+  dict,
 }) {
   return (
     <div className="w-full flex flex-col justify-center items-start lg:items-center gap-9 py-9">
@@ -24,14 +25,16 @@ function Content({
         difficulty={difficulty}
         origin={cuisine}
         type={mealType}
+        dict={dict}
       />
       <hr className="w-full border rounded-full bg-black" />
-      <Instructions key={1} instructions={instructions} />
+      <Instructions key={1} instructions={instructions} dict={dict} />
       <hr className="w-full border rounded-full bg-black" />
       <AdditionalDetails
         key={2}
         calories={caloriesPerServing}
         time={prepTimeMinutes}
+        dict={dict}
       />
       <hr className="xl:hidden w-full border rounded-full bg-black" />
     </div>
