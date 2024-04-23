@@ -1,7 +1,12 @@
-import React from "react";
-import { signIn } from "../../lib/actions";
+"use client";
+
+import { useRouter } from "next/navigation";
+import React, { useRef } from "react";
 
 function LoginForm({ data }) {
+  const router = useRouter();
+  const usernameRef = useRef(null);
+  const passwordRef = useRef(null);
   const {
     usernameLabel,
     usernameInput,
@@ -10,14 +15,49 @@ function LoginForm({ data }) {
     signInBtn,
   } = data;
 
+  const signInHandler = async (e) => {
+    e.preventDefault();
+
+    const username = usernameRef.current.value;
+    const password = passwordRef.current.value;
+
+    // Validate input
+    // ...
+
+    try {
+      const data = { username, password };
+
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const parsed = await res.json();
+
+      if (parsed.status === 200) {
+        router.refresh();
+        console.log(parsed.message);
+      } else {
+        // Showing appropriate UI
+        console.error(parsed.message);
+      }
+    } catch (error) {
+      // Showing appropriate UI
+      console.error("An error occurred:", error);
+    }
+  };
+
   return (
     <form
       className="w-full flex flex-col justify-center items-center gap-6"
-      action={signIn}
+      method="POST"
+      onSubmit={signInHandler}
     >
       <div className="w-full flex flex-col gap-1">
         <label htmlFor="username">{usernameLabel}</label>
         <input
+          ref={usernameRef}
           className="bg-transparent border-2 border-white py-1 px-3"
           placeholder={usernameInput}
           type="text"
@@ -27,6 +67,7 @@ function LoginForm({ data }) {
       <div className="w-full flex flex-col gap-1">
         <label htmlFor="password">{passwordLabel}</label>
         <input
+          ref={passwordRef}
           className="bg-transparent border-2 border-white py-1 px-3"
           placeholder={passwordInput}
           type="password"
