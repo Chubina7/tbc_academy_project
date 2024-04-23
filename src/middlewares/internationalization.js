@@ -5,9 +5,9 @@ import { cookies } from "next/headers";
 
 export function internationalization(middleware) {
   return async function (request, event) {
-    
     const { pathname } = request.nextUrl;
     const inCookie = cookies().get("lng")?.value;
+    
     const pathnameHasLocale = i18n.locales.some(
       (locale) =>
         pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`

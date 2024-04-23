@@ -2,7 +2,7 @@ import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { i18n } from "../i18.config";
 
-// // // // // Products // // // // //
+// Products
 export async function getAllProducts() {
   const res = await fetch("https://dummyjson.com/products");
   const data = await res.json();
@@ -16,7 +16,7 @@ export async function getSingleProduct(id) {
   return data;
 }
 
-// // // // // Recipies // // // // //
+// Recipies
 export async function getAllRecipes() {
   const res = await fetch("https://dummyjson.com/recipes");
   const data = await res.json();
@@ -36,7 +36,7 @@ export async function getAllRecipesByTag(tag) {
   return data.recipes;
 }
 
-// // // // // Users // // // // //
+// Users
 export async function getAuthor(id) {
   const res = await fetch(`https://dummyjson.com/users/${id}`);
   const data = await res.json();
@@ -58,7 +58,7 @@ export async function getUserAuth(data) {
   }
 }
 
-// // // // // Preferences // // // // //
+// Preferences
 export const getLocale = (request) => {
   const negotiatorHeaders = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
@@ -68,4 +68,16 @@ export const getLocale = (request) => {
 
   const locale = match(languages, locales, i18n.defaultLocale);
   return locale;
+};
+export const setTheme = (pref) => {
+  if (pref === "os") {
+    document.documentElement.classList.remove("light");
+    document.documentElement.classList.remove("dark");
+    localStorage.removeItem("theme");
+  } else {
+    document.documentElement.classList.remove("light");
+    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.add(pref);
+    localStorage.setItem("theme", pref);
+  }
 };

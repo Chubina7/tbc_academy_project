@@ -41,8 +41,13 @@
                 "profile": "პროფილი"
             },
             "lngChanger": {
-                "geo": "ქართ",
-                "eng": "ინგლ"
+                "geo": "ქა",
+                "eng": "ინგ"
+            },
+            "themeChanger": {
+                "light": "ღია",
+                "dark": "მუქი",
+                "os": "სისტემური"
             },
             "signOutBtn": "გასვლა"
         }

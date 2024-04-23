@@ -44,6 +44,11 @@
                 "geo": "Ge",
                 "eng": "En"
             },
+            "themeChanger": {
+                "light": "Light",
+                "dark": "Dark",
+                "os": "System"
+            },
             "signOutBtn": "Sign out"
         }
     },

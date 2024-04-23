@@ -56,3 +56,10 @@ export const getUserLoginInfo = async () => {
 export const setLngInCookies = (lng) => {
   cookies().set("lng", lng, { secure: true, sameSite: "none" });
 };
+export const setThemeInCookies = (pref) => {
+  if (pref === "os") {
+    cookies().delete("theme");
+  } else {
+    cookies().set("theme", pref, { secure: true, sameSite: "none" });
+  }
+};

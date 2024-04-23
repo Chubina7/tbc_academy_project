@@ -19,7 +19,7 @@ export default function Burger({ dict, lng }) {
       </button>
 
       {isOpen && (
-        <div className="fixed w-full h-full left-0 top-0 bg-[#25292D] p-6 z-50">
+        <div className="fixed w-full h-full left-0 top-0 bg-white dark:bg-[#25292D] p-6 z-50">
           <button
             onClick={handleModal}
             className="opacity-60 hover:opacity-100"

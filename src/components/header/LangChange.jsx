@@ -14,7 +14,7 @@ export default function LangChange({ dict, action }) {
   };
 
   return (
-    <div className="flex justify-center items-center gap-3">
+    <div className="flex justify-center items-center gap-1">
       <Link href={`/ka-GE${route}`} onClick={action}>
         <p className="cursor-pointer" onClick={() => lngChangeHandler("ka-GE")}>
           {lang.geo}
