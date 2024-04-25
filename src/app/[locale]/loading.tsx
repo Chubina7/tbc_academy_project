@@ -1,8 +1,8 @@
 import React from "react";
 import LoadingSpin from "../../components/skeletonUI/LoadingSpin";
 
-function loading() {
+function Loading() {
   return <LoadingSpin />;
 }
 
-export default loading;
+export default Loading;

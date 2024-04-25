@@ -1,7 +1,16 @@
 import Footer from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
 
-export default function RootLayout({ children, params: { locale } }) {
+// Types
+interface Props {
+  children: React.ReactNode;
+  params: IParams;
+}
+
+// Component
+export default function RootLayout({ children, params }: Props) {
+  const { locale } = params;
+
   return (
     <>
       <Header lng={locale} />

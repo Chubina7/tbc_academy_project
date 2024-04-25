@@ -3,7 +3,13 @@ import BlogsGrid from "../../../../components/blogComp/BlogsGrid";
 import { getAllRecipes } from "../../../../lib/helpers";
 import { getDictionary } from "../../../../lib/dictionary";
 
-async function Blog({ params: { locale } }) {
+// Types
+interface Props {
+  params: IParams;
+}
+
+// Component
+async function Blog({ params: { locale } }: Props) {
   const data = await getAllRecipes();
   const dictionary = await getDictionary(locale);
 

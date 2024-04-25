@@ -1,8 +1,8 @@
 import React from "react";
 import ProductsSkeleot from "../../../components/skeletonUI/products/ProductsSkeleot";
 
-function loading() {
+function Loading() {
   return <ProductsSkeleot />;
 }
 
-export default loading;
+export default Loading;

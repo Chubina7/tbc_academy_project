@@ -1,9 +1,7 @@
-import React from "react";
-
-export default function loading() {
+export default function Loading() {
   return (
     <div className="flex w-full h-screen justify-center items-center animate-pulse">
-      Checking user...
+      Chekcing user...
     </div>
   );
 }

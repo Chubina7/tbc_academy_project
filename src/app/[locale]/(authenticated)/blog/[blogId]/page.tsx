@@ -5,14 +5,23 @@ import Content from "../../../../../components/dynamicBlogComp/content/Content";
 import Suggestions from "../../../../../components/dynamicBlogComp/suggests/Suggestions";
 import { getDictionary } from "../../../../../lib/dictionary";
 
+// Types
+interface Props {
+  params: IParams;
+}
+
+// Static Generation
 export async function generateStaticParams() {
   const res = await fetch("https://dummyjson.com/recipes");
-  const data = await res.json();
+  const data: IRecipes = await res.json();
 
   return data.recipes.map((item) => ({ blogId: `${item.id}` }));
 }
 
-export default async function BlogItemPage({ params: { blogId, locale } }) {
+// Component
+export default async function BlogItemPage({
+  params: { blogId, locale },
+}: Props) {
   const data = await getSingleRecipe(blogId);
   const dictionary = await getDictionary(locale);
 

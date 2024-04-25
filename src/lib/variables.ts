@@ -1,1 +1,1 @@
-export const AUTH_COOKIE_KEY = "token";
+export const AUTH_COOKIE_KEY: string = "token";

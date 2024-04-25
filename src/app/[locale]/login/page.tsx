@@ -7,15 +7,21 @@ import LoginForm from "../../../components/loginComp/LoginForm";
 import ToRegisterAction from "../../../components/loginComp/ToRegisterAction";
 import ThemeChange from "../../../components/header/ThemeChange";
 
-export default async function LoginPage({ params: { locale } }) {
+// Types
+interface Props {
+  params: IParams;
+}
+
+// Component
+export default async function LoginPage({ params: { locale } }: Props) {
   if (cookies().has(AUTH_COOKIE_KEY)) {
     redirect(`/${locale}`); // possible to redirect to the previous requested page
   }
 
   const dict = await getDictionary(locale);
-  const title = dict.auth.login.title;
-  const form = dict.auth.login.form;
-  const info = dict.auth.login.info;
+  const title: string = dict.auth.login.title;
+  const form: string = dict.auth.login.form;
+  const info: string = dict.auth.login.info;
 
   return (
     <main className="w-full h-screen flex flex-col justify-center items-center gap-16 sm:p-14 bg-white dark:bg-[#25292D]">

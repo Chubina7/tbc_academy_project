@@ -3,18 +3,28 @@ import "./globals.css";
 import { i18n } from "../../i18.config";
 import { cookies } from "next/headers";
 
+// Types
+interface Props {
+  children: React.ReactNode;
+  params: IParams;
+}
+
+// Font
 const georgian = Noto_Sans_Georgian({ subsets: ["georgian"] });
 
-export const metadata = {
+// Metadata
+export const metadata: IMetaData = {
   title: "TBC x USAID Course Project",
   description: "Developed by Luka Chubinidze",
 };
 
+// Static Generation
 export function generateStaticParams() {
   return i18n.locales.map((lang) => ({ locale: lang }));
 }
 
-export default function RootLayout({ children, params }) {
+// Component
+export default function RootLayout({ children, params }: Props) {
   const themePref = cookies().get("theme")?.value;
   const lngPref = params.locale;
 

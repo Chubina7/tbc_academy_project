@@ -6,15 +6,21 @@ import { getDictionary } from "../../../lib/dictionary";
 import RegisterForm from "../../../components/registerComp/RegisterForm";
 import ToLoginAction from "../../../components/registerComp/ToLoginAction";
 
-export default async function RegisterPage({ params: { locale } }) {
+// Types
+interface Props {
+  params: IParams;
+}
+
+// Component
+export default async function RegisterPage({ params: { locale } }: Props) {
   if (cookies().has(AUTH_COOKIE_KEY)) {
     redirect(`/${locale}`); // possible to redirect to the previous requested page
   }
 
   const dict = await getDictionary(locale);
-  const title = dict.auth.register.title;
-  const form = dict.auth.register.form;
-  const info = dict.auth.register.info;
+  const title: string = dict.auth.register.title;
+  const form: string = dict.auth.register.form;
+  const info: string = dict.auth.register.info;
 
   return (
     <main className="w-full h-screen flex flex-col justify-center items-center gap-16 sm:p-14">

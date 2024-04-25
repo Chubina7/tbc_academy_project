@@ -3,7 +3,13 @@ import Products from "../../../components/homeComp/Products";
 import { getAllProducts } from "../../../lib/helpers";
 import { getDictionary } from "../../../lib/dictionary";
 
-export default async function Home({ params: { locale } }) {
+// Types
+interface Props {
+  params: IParams;
+}
+
+// Component
+export default async function Home({ params: { locale } }: Props) {
   const data = await getAllProducts();
   const dictionary = await getDictionary(locale);
 

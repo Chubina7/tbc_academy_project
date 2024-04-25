@@ -3,7 +3,13 @@ import ContactInfo from "../../../../components/contactComp/ContactInfo";
 import FormFields from "../../../../components/contactComp/FormFields";
 import { getDictionary } from "../../../../lib/dictionary";
 
-export default async function Contact({ params: { locale } }) {
+// Types
+interface Props {
+  params: IParams;
+}
+
+// Component
+export default async function Contact({ params: { locale } }: Props) {
   const dictionary = await getDictionary(locale);
 
   return (

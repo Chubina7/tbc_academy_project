@@ -3,14 +3,21 @@ import { getSingleProduct } from "../../../../../lib/helpers";
 import Product from "../../../../../components/dynamicProductComp/Product";
 import { getDictionary } from "../../../../../lib/dictionary";
 
+// Types
+interface Props {
+  params: IParams;
+}
+
+// Static generation
 export async function generateStaticParams() {
   const res = await fetch(`https://dummyjson.com/products/`);
-  const data = await res.json();
+  const data: IProducts = await res.json();
 
   return data.products.map((item) => ({ productId: `${item.id}` }));
 }
 
-async function ProductDetailsPage({ params: { productId, locale } }) {
+// Component
+async function ProductDetailsPage({ params: { productId, locale } }: Props) {
   const data = await getSingleProduct(productId);
   const dictionary = await getDictionary(locale);
 
