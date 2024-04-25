@@ -1,13 +1,13 @@
-import { NextResponse } from "next/server";
+import { NextFetchEvent, NextMiddleware, NextRequest, NextResponse } from "next/server";
 import { i18n } from "../i18.config";
 import { getLocale } from "../lib/helpers";
 import { cookies } from "next/headers";
 
-export function internationalization(middleware) {
-  return async function (request, event) {
+export function internationalization(middleware: NextMiddleware) {
+  return async function (request: NextRequest, event: NextFetchEvent) {
     const { pathname } = request.nextUrl;
     const inCookie = cookies().get("lng")?.value;
-    
+
     const pathnameHasLocale = i18n.locales.some(
       (locale) =>
         pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
