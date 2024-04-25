@@ -15,14 +15,14 @@ export default function LangChange({ dict, action }) {
 
   return (
     <div className="flex justify-center items-center gap-1">
-      <Link href={`/ka-GE${route}`} onClick={action}>
-        <p className="cursor-pointer" onClick={() => lngChangeHandler("ka-GE")}>
+      <Link href={`/ka${route}`} onClick={action}>
+        <p className="cursor-pointer" onClick={() => lngChangeHandler("ka")}>
           {lang.geo}
         </p>
       </Link>
       <p>/</p>
-      <Link href={`/en-US${route}`} onClick={action}>
-        <p className="cursor-pointer" onClick={() => lngChangeHandler("en-US")}>
+      <Link href={`/en${route}`} onClick={action}>
+        <p className="cursor-pointer" onClick={() => lngChangeHandler("en")}>
           {lang.eng}
         </p>
       </Link>
