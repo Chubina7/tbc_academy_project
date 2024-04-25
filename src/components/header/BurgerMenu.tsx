@@ -5,8 +5,8 @@ import Navigation from "./Navigation";
 import { TfiMenu } from "react-icons/tfi";
 import { IoClose } from "react-icons/io5";
 
-export default function Burger({ dict, lng }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Burger({ dict, lng }: { dict?: any; lng: string }) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleModal = () => setIsOpen((prev) => !prev);
 

@@ -3,13 +3,13 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 
-export default function SignOutBtn({ lng, dict }) {
+export default function SignOutBtn({ lng, dict }: { lng: string; dict?: any }) {
   const router = useRouter();
   const btn = dict.header.navigation.signOutBtn;
 
   const signOutHandler = async () => {
     const res = await fetch("/api/auth/logout");
-    const result = await res.json();
+    const result: LogOutResponse = await res.json();
     // Could trigger succesful logout message with toastify
     console.log(result.message);
   };

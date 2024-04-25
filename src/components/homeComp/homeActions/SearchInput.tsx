@@ -3,10 +3,15 @@
 import React, { useState } from "react";
 import { inputUI } from "../../../lib/styles";
 
-export default function SearchInput({ setQuery, data }) {
-  const [timeoutId, setTimeoutId] = useState(null);
+interface Props {
+  setQuery: SetQueryType;
+  data?: any;
+}
 
-  const handleChange = (e) => {
+export default function SearchInput({ setQuery, data }: Props) {
+  const [timeoutId, setTimeoutId] = useState<null | number>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (timeoutId) clearTimeout(timeoutId);
 
     const newTimeoutId = setTimeout(() => {

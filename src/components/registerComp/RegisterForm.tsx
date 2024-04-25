@@ -1,6 +1,6 @@
 import React from "react";
 
-function RegisterForm({ data }) {
+function RegisterForm({ data }: { data: any }) {
   const {
     usernameLabel,
     usernameInput,

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-function ToRegisterAction({ data }) {
+function ToRegisterAction({ data }: { data: any }) {
   const { text, underline } = data;
+
   return (
     <div className="w-full flex flex-col justify-center items-center gap-2">
       <p className="w-full text-center">

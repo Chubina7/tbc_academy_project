@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-function ToLoginAction({ data }) {
+function ToLoginAction({ data }: { data: any }) {
   const { text, underline } = data;
+
   return (
     <div className="w-full flex flex-col justify-center items-center gap-2">
       <p className="w-full text-center">

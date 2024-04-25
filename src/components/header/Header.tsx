@@ -5,7 +5,7 @@ import { PiGitlabLogoFill } from "react-icons/pi";
 import Link from "next/link";
 import { getDictionary } from "../../lib/dictionary";
 
-export default async function Header({ lng }) {
+export default async function Header({ lng }: { lng: string }) {
   const dictionary = await getDictionary(lng);
 
   return (

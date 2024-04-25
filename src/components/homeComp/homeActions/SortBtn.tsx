@@ -1,7 +1,12 @@
 import React from "react";
 import { buttonUI } from "../../../lib/styles";
 
-export default function SortBtn({ sortState, data }) {
+interface Props {
+  sortState: SortStateType;
+  data?: any;
+}
+
+export default function SortBtn({ sortState, data }: Props) {
   const { sort, unSort } = data;
   const { sortRule, setSortRule } = sortState;
 

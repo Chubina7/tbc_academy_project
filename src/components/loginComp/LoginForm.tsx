@@ -3,10 +3,11 @@
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 
-function LoginForm({ data }) {
+function LoginForm({ data }: { data: any }) {
   const router = useRouter();
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
   const {
     usernameLabel,
     usernameInput,
@@ -15,17 +16,17 @@ function LoginForm({ data }) {
     signInBtn,
   } = data;
 
-  const signInHandler = async (e) => {
+  const signInHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const username = usernameRef.current.value;
-    const password = passwordRef.current.value;
+    const username = usernameRef.current?.value;
+    const password = passwordRef.current?.value;
 
     // Validate input
     // ...
 
     try {
-      const data = { username, password };
+      const data: IUserLoginInfo = { username, password };
 
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -33,7 +34,7 @@ function LoginForm({ data }) {
         body: JSON.stringify(data),
       });
 
-      const parsed = await res.json();
+      const parsed: LoginResponse = await res.json();
 
       if (parsed.status === 200) {
         router.refresh();

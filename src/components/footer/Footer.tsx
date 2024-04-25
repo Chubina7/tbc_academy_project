@@ -2,7 +2,7 @@ import React from "react";
 import EmailInput from "./EmailInput";
 import { getDictionary } from "../../lib/dictionary";
 
-export default async function Footer({ lng }) {
+export default async function Footer({ lng }: { lng: string }) {
   const dict = await getDictionary(lng);
   const inputPh = dict.footer.inputPh;
   const title = dict.footer.title;

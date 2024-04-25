@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import ProductList from "./products/ProductList";
 import HomeActions from "./homeActions/HomeActions";
 
-function Products({ data, dict }) {
-  const [sortRule, setSortRule] = useState(false);
-  const [query, setQuery] = useState("");
+function Products({ data, dict }: ProductsProps) {
+  const [sortRule, setSortRule] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>("");
 
   return (
     <>

@@ -4,8 +4,9 @@ import React from "react";
 import { setTheme } from "../../lib/helpers";
 import { setThemeInCookies } from "../../lib/actions";
 
-function ThemeChange({ dict, action }) {
+function ThemeChange({ dict, action }: { dict?: any; action?: () => void }) {
   // const { dark, light, os } = dict.header.navigation.themeChanger;
+  console.log(dict);
 
   return (
     <div className="flex justify-center items-center gap-1">

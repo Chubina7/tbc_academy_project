@@ -4,7 +4,17 @@ import NavItems from "./NavItems";
 import SignOutBtn from "./SignOutBtn";
 import ThemeChange from "./ThemeChange";
 
-export default async function Navigation({ closeBurgerModal, dict, lng }) {
+interface NavigationProps {
+  closeBurgerModal?: () => void;
+  lng: string;
+  dict?: any;
+}
+
+export default async function Navigation({
+  closeBurgerModal,
+  dict,
+  lng,
+}: NavigationProps) {
   return (
     <ul className="flex flex-col sm:flex-row justify-center items-center gap-4 select-none">
       <NavItems action={closeBurgerModal} lng={lng} dict={dict} />

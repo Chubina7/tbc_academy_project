@@ -6,7 +6,7 @@ export default function ProductList({
   sortRule,
   searchFilterKeyword,
   dict,
-}) {
+}: ProductListProps) {
   const data = sortRule
     ? [...list].sort((a, b) => a.price - b.price)
     : [...list];
@@ -20,10 +20,10 @@ export default function ProductList({
         .map((product) => (
           <ProductItem
             key={product.id}
-            route={product.id}
+            route={`${product.id}`}
             title={product.title}
             description={product.description}
-            imgSrc={product.thumbnail}
+            thumbnail={product.thumbnail}
             price={product.price}
             dict={dict}
           />

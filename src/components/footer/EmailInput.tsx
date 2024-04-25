@@ -1,7 +1,7 @@
 import React from "react";
 import { inputUI } from "../../lib/styles";
 
-export default function EmailInput({ data }) {
+export default function EmailInput({ data }: { data: any }) {
   // The logic which catches inserted email by user and stores it somewhere
   return (
     <input

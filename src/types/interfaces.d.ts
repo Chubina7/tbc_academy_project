@@ -1,16 +1,18 @@
 // Products
 interface IProduct {
-    id: number
+    id?: number
     title: string
     description: string
     price: number
-    discountPercentage: number
-    rating: number
-    stock: number
-    brand: string
-    category: string
+    discountPercentage?: number
+    rating?: number
+    stock?: number
+    brand?: string
+    category?: string
     thumbnail: string
-    images: string[] | string
+    images?: string[] | string
+    route?: string
+    dict?: any
 }
 interface IProducts {
     products: Array<IProduct>
@@ -99,8 +101,8 @@ interface IUser {
     userAgent?: string
 }
 interface IUserLoginInfo {
-    username: string
-    password: string
+    username: string | undefined
+    password: string | undefined
 }
 interface IUserIsAuthed {
     id: number
@@ -113,7 +115,7 @@ interface IUserIsAuthed {
     token: string
 }
 
-// Components
+// General for Components
 interface IMetaData {
     title: string
     description: string
@@ -122,4 +124,21 @@ interface IParams {
     locale: string
     productId: number
     blogId: number
+}
+
+// Products Page
+interface ProductsProps {
+    data: Array<IProduct>;
+    dict: any;
+}
+interface HomeActionProps {
+    sortState: SortStateType
+    queryState: SetQueryType;
+    dict?: any;
+}
+interface ProductListProps {
+    list: Array<IProduct>;
+    sortRule: boolean;
+    searchFilterKeyword: string;
+    dict?: any;
 }

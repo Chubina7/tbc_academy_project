@@ -4,12 +4,18 @@ import { usePathname } from "next/navigation";
 import { setLngInCookies } from "../../lib/actions";
 import Link from "next/link";
 
-export default function LangChange({ dict, action }) {
+export default function LangChange({
+  dict,
+  action,
+}: {
+  dict?: any;
+  action?: () => void;
+}) {
   const path = usePathname();
   const route = path.substring(6);
   const lang = dict.header.navigation.lngChanger;
 
-  const lngChangeHandler = (lang) => {
+  const lngChangeHandler = (lang: string) => {
     setLngInCookies(lang);
   };
 

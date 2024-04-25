@@ -6,7 +6,13 @@ import { navItems } from "../../lib/lists";
 import { usePathname } from "next/navigation";
 import { buttonUI } from "../../lib/styles";
 
-function NavItems({ action, lng, dict }) {
+interface NavItemsProps {
+  action?: () => void;
+  lng: string;
+  dict?: any;
+}
+
+function NavItems({ action, lng, dict }: NavItemsProps) {
   const path = usePathname();
   const navLink = dict.header.navigation.navItems;
 

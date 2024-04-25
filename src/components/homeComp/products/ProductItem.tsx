@@ -6,10 +6,10 @@ export default function ProductItem({
   title,
   price,
   description,
-  imgSrc,
+  thumbnail,
   route,
   dict,
-}) {
+}: IProduct) {
   const seeDetailsBtn = dict.products.productItem.seeMoreBtn;
 
   return (
@@ -17,7 +17,7 @@ export default function ProductItem({
       <div className="relative w-full min-h-64">
         <Image
           className="rounded-md object-cover"
-          src={imgSrc}
+          src={thumbnail}
           alt={title}
           fill
         />

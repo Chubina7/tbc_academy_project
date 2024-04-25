@@ -2,7 +2,11 @@ import React from "react";
 import SearchInput from "./SearchInput";
 import SortBtn from "./SortBtn";
 
-export default function HomeActions({ sortState, queryState, dict }) {
+export default function HomeActions({
+  sortState,
+  queryState,
+  dict,
+}: HomeActionProps) {
   const searchInput = dict.products.searchInput;
   const sortBtn = dict.products.sortBtn;
 
