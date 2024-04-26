@@ -18,9 +18,9 @@ export default async function RegisterPage({ params: { locale } }: Props) {
   }
 
   const dict = await getDictionary(locale);
-  const title: string = dict.auth.register.title;
-  const form: string = dict.auth.register.form;
-  const info: string = dict.auth.register.info;
+  const title = dict.auth.register.title;
+  const form = dict.auth.register.form;
+  const info = dict.auth.register.info;
 
   return (
     <main className="w-full h-screen flex flex-col justify-center items-center gap-16 sm:p-14">

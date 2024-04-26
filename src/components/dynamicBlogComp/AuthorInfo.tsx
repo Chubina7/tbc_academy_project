@@ -3,7 +3,7 @@ import Image from "next/image";
 import fallback_img from "../../../public/anonym_user.webp";
 import { getAuthor } from "../../lib/helpers";
 
-async function AuthorInfo({ userId }) {
+async function AuthorInfo({ userId }: { userId: number }) {
   const author = await getAuthor(userId);
 
   return (

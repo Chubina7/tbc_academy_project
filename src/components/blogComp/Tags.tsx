@@ -1,6 +1,6 @@
 import React from "react";
 
-function Tags({ list }) {
+function Tags({ list }: { list: Array<string> }) {
   return (
     <ul className="w-full ">
       {list.map((tag, idx) => (

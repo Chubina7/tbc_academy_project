@@ -3,7 +3,13 @@ import { RiGlobalLine } from "react-icons/ri";
 import { MdFoodBank } from "react-icons/md";
 import { FaCircleNotch } from "react-icons/fa";
 
-function PreDetails({ difficulty, origin, type }) {
+interface Props {
+  difficulty: string;
+  origin: string | undefined;
+  type: Array<string>;
+}
+
+function PreDetails({ difficulty, origin, type }: Props) {
   // const difficultyLevel = difficulty === "Easy" && "text-green-700";
   let difficultyLevel;
   switch (difficulty) {

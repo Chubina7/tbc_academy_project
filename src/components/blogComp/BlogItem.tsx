@@ -9,16 +9,16 @@ import Tags from "./Tags";
 
 export default function BlogItem({
   id,
-  title,
-  portion,
-  imgSrc,
+  name,
+  servings,
+  image,
   rating,
-  time,
+  prepTimeMinutes,
   difficulty,
   mealType,
   tags,
   dict,
-}) {
+}: IRecipe) {
   const minute = dict.default.time.minute;
   const readMore = dict.default.action.readMore;
   const { hardness, type } = dict.blog.blogGridItem;
@@ -28,8 +28,8 @@ export default function BlogItem({
       <div className="w-full flex">
         <Image
           className="rounded-md object-cover"
-          src={imgSrc}
-          alt={title}
+          src={image}
+          alt={name}
           width={760}
           height={520}
         />
@@ -37,7 +37,7 @@ export default function BlogItem({
 
       <div className="w-full md:w-[180%] flex flex-col justify-start gap-3 md:gap-6">
         <div>
-          <h1 className="font-bold text-xl sm:text-3xl">{title}</h1>
+          <h1 className="font-bold text-xl sm:text-3xl">{name}</h1>
           <Tags list={tags} />
         </div>
         <div className="w-full flex flex-col">
@@ -59,12 +59,12 @@ export default function BlogItem({
             <div className="flex justify-center items-center gap-1">
               <FaRegClock size={15} opacity={0.6} />
               <p className="opacity-80">
-                {time} {minute}
+                {prepTimeMinutes} {minute}
               </p>
             </div>
             <div className="flex justify-center items-center gap-1">
               <PiChartPieSliceBold size={15} opacity={0.6} />
-              <p className="opacity-80">{portion}</p>
+              <p className="opacity-80">{servings}</p>
             </div>
             <div className="flex justify-center items-center gap-1">
               <FaRegStar size={15} opacity={0.6} />

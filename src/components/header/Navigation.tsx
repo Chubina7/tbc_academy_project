@@ -7,7 +7,7 @@ import ThemeChange from "./ThemeChange";
 interface NavigationProps {
   closeBurgerModal?: () => void;
   lng: string;
-  dict?: any;
+  dict: ITranslation;
 }
 
 export default async function Navigation({

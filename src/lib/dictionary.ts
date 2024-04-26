@@ -7,5 +7,4 @@ const dictionaries: Record<string, () => Promise<ITranslation>> = {
     import("../../dictionaries/ka.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: string) =>
-  dictionaries[locale]();
+export const getDictionary = async (locale: string) => dictionaries[locale]();

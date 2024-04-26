@@ -12,7 +12,7 @@ function ProductsSkeleot() {
       </section>
       <section className="w-full">
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-          {Array.from({ length: 12 }, (itm, idx) => (
+          {Array.from({ length: 12 }, (_, idx) => (
             <Item key={idx} />
           ))}
         </div>

@@ -1,6 +1,16 @@
 import React from "react";
 
-function OtherDetails({ data, dict }) {
+interface Props {
+  data: {
+    discount: number | undefined;
+    stock: number | undefined;
+    brand: string | undefined;
+    category: string | undefined;
+  };
+  dict: ITranslation;
+}
+
+function OtherDetails({ data, dict }: Props) {
   const { brand, category, discount, stock } = dict.products.dynamicProductItem;
   const otherDetails = dict.default.otherDetails;
 

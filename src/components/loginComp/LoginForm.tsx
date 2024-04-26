@@ -3,7 +3,17 @@
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 
-function LoginForm({ data }: { data: any }) {
+function LoginForm({
+  data,
+}: {
+  data: {
+    usernameLabel: string;
+    usernameInput: string;
+    passwordLabel: string;
+    passwordInput: string;
+    signInBtn: string;
+  };
+}) {
   const router = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);

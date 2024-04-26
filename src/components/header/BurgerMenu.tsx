@@ -1,11 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import Navigation from "./Navigation";
+// import Navigation from "./Navigation";
 import { TfiMenu } from "react-icons/tfi";
 import { IoClose } from "react-icons/io5";
+import NavItems from "./NavItems";
+import LangChange from "./LangChange";
+import ThemeChange from "./ThemeChange";
+import SignOutBtn from "./SignOutBtn";
 
-export default function Burger({ dict, lng }: { dict?: any; lng: string }) {
+export default function Burger({
+  dict,
+  lng,
+}: {
+  dict: ITranslation;
+  lng: string;
+}) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleModal = () => setIsOpen((prev) => !prev);
@@ -26,7 +36,13 @@ export default function Burger({ dict, lng }: { dict?: any; lng: string }) {
           >
             <IoClose size={26} />
           </button>
-          <Navigation closeBurgerModal={handleModal} lng={lng} dict={dict} />
+          {/* <Navigation closeBurgerModal={handleModal} lng={lng} dict={dict} /> */}
+          <ul className="flex flex-col sm:flex-row justify-center items-center gap-4 select-none">
+            <NavItems action={handleModal} lng={lng} dict={dict} />
+            <LangChange dict={dict} action={handleModal} />
+            <ThemeChange dict={dict} action={handleModal} />
+            <SignOutBtn lng={lng} dict={dict} />
+          </ul>
         </div>
       )}
     </>

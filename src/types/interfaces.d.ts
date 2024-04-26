@@ -140,6 +140,7 @@ interface ITranslation {
         loginInfo: {
             title: string
             email: {
+                title: string
                 current: string
                 email: string
                 emailPh: string
@@ -189,9 +190,9 @@ interface IProduct {
     brand?: string
     category?: string
     thumbnail: string
-    images?: string[] | string
+    images?: string[]
     route?: string
-    dict?: any
+    dict: ITranslation
 }
 interface IProducts {
     products: Array<IProduct>
@@ -202,22 +203,23 @@ interface IProducts {
 
 // Recipes
 interface IRecipe {
-    id: number
+    id?: number
     name: string
-    ingredients: Array<string>
-    instructions: Array<string>
+    ingredients?: Array<string>
+    instructions?: Array<string>
     prepTimeMinutes: number
-    cookTimeMinutes: number
+    cookTimeMinutes?: number
     servings: number
     difficulty: string
-    cuisine: string
-    caloriesPerServing: number
+    cuisine?: string
+    caloriesPerServing?: number
     tags: Array<string>
-    userId: number
+    userId?: number
     image: string
     rating: number
-    reviewCount: number
+    reviewCount?: number
     mealType: Array<string>
+    dict: ITranslation
 }
 interface IRecipes {
     recipes: Array<IRecipe>
@@ -308,16 +310,16 @@ interface IParams {
 // Products Page
 interface ProductsProps {
     data: Array<IProduct>;
-    dict: any;
+    dict: ITranslation;
 }
 interface HomeActionProps {
     sortState: SortStateType
     queryState: SetQueryType;
-    dict?: any;
+    dict: ITranslation;
 }
 interface ProductListProps {
     list: Array<IProduct>;
     sortRule: boolean;
     searchFilterKeyword: string;
-    dict?: any;
+    dict: ITranslation;
 }

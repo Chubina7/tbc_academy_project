@@ -3,11 +3,14 @@ import { buttonUI } from "../../../lib/styles";
 
 interface Props {
   sortState: SortStateType;
-  data?: any;
+  dict: {
+    sort: string;
+    unSort: string;
+  };
 }
 
-export default function SortBtn({ sortState, data }: Props) {
-  const { sort, unSort } = data;
+export default function SortBtn({ sortState, dict }: Props) {
+  const { sort, unSort } = dict;
   const { sortRule, setSortRule } = sortState;
 
   const clickHandler = () => setSortRule((prev) => !prev);

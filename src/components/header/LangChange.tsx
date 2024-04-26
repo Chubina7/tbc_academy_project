@@ -8,7 +8,7 @@ export default function LangChange({
   dict,
   action,
 }: {
-  dict?: any;
+  dict: ITranslation;
   action?: () => void;
 }) {
   const path = usePathname();

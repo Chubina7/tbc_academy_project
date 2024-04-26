@@ -1,7 +1,14 @@
 import Link from "next/link";
 import React from "react";
 
-function ToRegisterAction({ data }: { data: any }) {
+function ToRegisterAction({
+  data,
+}: {
+  data: {
+    text: string;
+    underline: string;
+  };
+}) {
   const { text, underline } = data;
 
   return (

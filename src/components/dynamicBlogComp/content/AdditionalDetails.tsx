@@ -1,6 +1,12 @@
 import React from "react";
 
-function AdditionalDetails({ time, calories, dict }) {
+interface Props {
+  time: number;
+  calories: number | undefined;
+  dict: ITranslation;
+}
+
+function AdditionalDetails({ time, calories, dict }: Props) {
   const cookTime = dict.blog.blogDynamicItem.content.cookTime;
   const caloriesDict = dict.blog.blogDynamicItem.content.calories;
   const min = dict.default.time.minute;

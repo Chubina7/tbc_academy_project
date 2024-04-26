@@ -2,7 +2,30 @@
 
 import React, { useState } from "react";
 
-export default function EachField({ title, data, setUserInfo, dict }) {
+interface Props {
+  title: string;
+  data: string | undefined;
+  setUserInfo: React.Dispatch<
+    React.SetStateAction<{
+      firstName: string | undefined;
+      lastName: string | undefined;
+      image: string | undefined;
+      gender: string | undefined;
+    }>
+  >;
+  dict: {
+    save: string;
+    edit: string;
+    userDetails: {
+      firstName: string;
+      lastName: string;
+      image: string;
+      gender: string;
+    };
+  };
+}
+
+export default function EachField({ title, data, setUserInfo, dict }: Props) {
   const [isEditing, setIsEditing] = useState(false);
   const [inputVal, setInputVal] = useState("");
 

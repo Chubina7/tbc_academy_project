@@ -9,7 +9,7 @@ import { buttonUI } from "../../lib/styles";
 interface NavItemsProps {
   action?: () => void;
   lng: string;
-  dict?: any;
+  dict: ITranslation;
 }
 
 function NavItems({ action, lng, dict }: NavItemsProps) {

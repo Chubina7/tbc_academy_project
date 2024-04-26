@@ -2,10 +2,24 @@
 
 import React, { useEffect, useState } from "react";
 
-export default function NewEmail({ data, dict }) {
+interface Props {
+  data: {
+    email: string | undefined;
+    password: string;
+  };
+  dict: {
+    title: string;
+    current: string;
+    email: string;
+    emailPh: string;
+    save: string;
+  };
+}
+
+export default function NewEmail({ data, dict }: Props) {
   const [loginInfo, setLoginInfo] = useState(data);
-  const [isEditing, setIsEditing] = useState();
-  const [inputVal, setInputVal] = useState("");
+  const [isEditing, setIsEditing] = useState<boolean>();
+  const [inputVal, setInputVal] = useState<string>("");
 
   useEffect(() => {
     if (inputVal === "" || !inputVal.includes("@") || !inputVal.includes(".")) {

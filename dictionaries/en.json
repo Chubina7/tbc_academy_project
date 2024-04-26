@@ -139,6 +139,7 @@
         "loginInfo": {
             "title": "Login Details",
             "email": {
+                "title": "Email",
                 "current": "Current",
                 "email": "Email",
                 "emailPh": "Enter new email",

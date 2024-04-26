@@ -3,7 +3,17 @@
 import React, { useState } from "react";
 import EachField from "./EachField";
 
-export default function UserInfo({ userInfoObj, dict }) {
+interface Props {
+  userInfoObj: {
+    firstName: string | undefined;
+    lastName: string | undefined;
+    image: string | undefined;
+    gender: string | undefined;
+  };
+  dict: ITranslation;
+}
+
+export default function UserInfo({ userInfoObj, dict }: Props) {
   const [userInfo, setUserInfo] = useState(userInfoObj);
   const { title, eachField } = dict.profile.userInfo;
 

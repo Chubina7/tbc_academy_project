@@ -3,7 +3,12 @@ import PhotoCarousel from "./PhotoCarousel";
 import Details from "./Details";
 import OtherDetails from "./OtherDetails";
 
-function Product({ data, dict }) {
+interface Props {
+  data: IProduct;
+  dict: ITranslation;
+}
+
+function Product({ data, dict }: Props) {
   const photoSource = {
     src: data.images,
     alt: data.title,

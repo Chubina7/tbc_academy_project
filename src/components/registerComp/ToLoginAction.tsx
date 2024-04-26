@@ -1,7 +1,14 @@
 import Link from "next/link";
 import React from "react";
 
-function ToLoginAction({ data }: { data: any }) {
+function ToLoginAction({
+  data,
+}: {
+  data: {
+    text: string;
+    underline: string;
+  };
+}) {
   const { text, underline } = data;
 
   return (

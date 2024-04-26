@@ -3,6 +3,19 @@ import Intro from "./Intro";
 import Instructions from "./Instructions";
 import AdditionalDetails from "./AdditionalDetails";
 
+interface Props {
+  image: string;
+  name: string;
+  ingredients: Array<string> | undefined;
+  instructions: Array<string> | undefined;
+  difficulty: string;
+  cuisine: string | undefined;
+  mealType: Array<string>;
+  caloriesPerServing: number | undefined;
+  prepTimeMinutes: number;
+  dict: ITranslation;
+}
+
 function Content({
   image,
   name,
@@ -14,7 +27,7 @@ function Content({
   caloriesPerServing,
   prepTimeMinutes,
   dict,
-}) {
+}: Props) {
   return (
     <div className="w-full flex flex-col justify-center items-start lg:items-center gap-9 py-9">
       <Intro

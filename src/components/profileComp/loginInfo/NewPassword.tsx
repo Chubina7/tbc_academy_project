@@ -2,12 +2,26 @@
 
 import React, { useEffect, useState } from "react";
 
-export default function NewPassword({ data, dict }) {
+interface Props {
+  data: {
+    email: string | undefined;
+    password: string;
+  };
+  dict: {
+    title: string;
+    message: string;
+    save: string;
+    enterPass: string;
+    confirmPass: string;
+  };
+}
+
+export default function NewPassword({ data, dict }: Props) {
   const [loginInfo, setLoginInfo] = useState(data);
-  const [isEditing, setIsEditing] = useState();
-  const [confirmInputVal, setConfirmInputVal] = useState("");
-  const [newInputVal, setNewInputVal] = useState("");
-  const [updated, setUpdated] = useState(false);
+  const [isEditing, setIsEditing] = useState<boolean>();
+  const [confirmInputVal, setConfirmInputVal] = useState<string>("");
+  const [newInputVal, setNewInputVal] = useState<string>("");
+  const [updated, setUpdated] = useState<boolean>(false);
 
   useEffect(() => {
     if (confirmInputVal === "" || confirmInputVal !== newInputVal) {

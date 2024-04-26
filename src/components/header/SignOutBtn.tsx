@@ -3,7 +3,13 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 
-export default function SignOutBtn({ lng, dict }: { lng: string; dict?: any }) {
+export default function SignOutBtn({
+  lng,
+  dict,
+}: {
+  lng: string;
+  dict: ITranslation;
+}) {
   const router = useRouter();
   const btn = dict.header.navigation.signOutBtn;
 

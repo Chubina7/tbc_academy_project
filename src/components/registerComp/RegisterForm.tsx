@@ -1,6 +1,19 @@
 import React from "react";
 
-function RegisterForm({ data }: { data: any }) {
+function RegisterForm({
+  data,
+}: {
+  data: {
+    usernameLabel: string;
+    usernameInput: string;
+    emailLabel: string;
+    emailInput: string;
+    passwordLabel: string;
+    passwordInput: string;
+    rePasswordInput: string;
+    signUpBtn: string;
+  };
+}) {
   const {
     usernameLabel,
     usernameInput,

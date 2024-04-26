@@ -4,9 +4,14 @@ import React from "react";
 import { setTheme } from "../../lib/helpers";
 import { setThemeInCookies } from "../../lib/actions";
 
-function ThemeChange({ dict, action }: { dict?: any; action?: () => void }) {
-  // const { dark, light, os } = dict.header.navigation.themeChanger;
-  console.log(dict);
+function ThemeChange({
+  dict,
+  action,
+}: {
+  dict: ITranslation;
+  action?: () => void;
+}) {
+  const { dark, light, os } = dict.header.navigation.themeChanger;
 
   return (
     <div className="flex justify-center items-center gap-1">
@@ -17,7 +22,7 @@ function ThemeChange({ dict, action }: { dict?: any; action?: () => void }) {
           setThemeInCookies("dark");
         }}
       >
-        <span onClick={action}>dark</span>
+        <span onClick={action}>{dark}</span>
       </p>
       <p>/</p>
       <p
@@ -27,7 +32,7 @@ function ThemeChange({ dict, action }: { dict?: any; action?: () => void }) {
           setThemeInCookies("light");
         }}
       >
-        <span onClick={action}>light</span>
+        <span onClick={action}>{light}</span>
       </p>
       <p>/</p>
       <p
@@ -37,7 +42,7 @@ function ThemeChange({ dict, action }: { dict?: any; action?: () => void }) {
           setThemeInCookies("os");
         }}
       >
-        <span onClick={action}>os</span>
+        <span onClick={action}>{os}</span>
       </p>
     </div>
   );

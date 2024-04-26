@@ -4,6 +4,15 @@ import { MdOutlineRateReview } from "react-icons/md";
 import { FaCircleNotch } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa6";
 
+interface Props {
+  image: string;
+  name: string;
+  rating: number;
+  prepTimeMinutes: number;
+  difficulty: string;
+  dict: ITranslation;
+}
+
 function SuggestItem({
   image,
   name,
@@ -11,7 +20,7 @@ function SuggestItem({
   prepTimeMinutes,
   difficulty,
   dict,
-}) {
+}: Props) {
   const minute = dict.default.time.minute;
 
   return (

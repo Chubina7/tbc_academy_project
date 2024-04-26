@@ -2,7 +2,13 @@ import React from "react";
 import { FaRegStar } from "react-icons/fa";
 import { MdOutlineRateReview } from "react-icons/md";
 
-function ReviewNStars({ rating, reviewCount }) {
+function ReviewNStars({
+  rating,
+  reviewCount,
+}: {
+  rating: number;
+  reviewCount: number;
+}) {
   return (
     <div className="hidden md:flex justify-center items-center gap-2">
       {rating}

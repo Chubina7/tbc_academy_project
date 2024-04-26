@@ -5,7 +5,6 @@ import { AUTH_COOKIE_KEY } from "../../../lib/variables";
 import { getDictionary } from "../../../lib/dictionary";
 import LoginForm from "../../../components/loginComp/LoginForm";
 import ToRegisterAction from "../../../components/loginComp/ToRegisterAction";
-import ThemeChange from "../../../components/header/ThemeChange";
 
 // Types
 interface Props {
@@ -29,7 +28,6 @@ export default async function LoginPage({ params: { locale } }: Props) {
       <div className="flex flex-col gap-10 bg-gray-700 p-6 rounded-xl sm:text-xl">
         <LoginForm data={form} />
       </div>
-      <ThemeChange />
       <ToRegisterAction data={info} />
     </main>
   );

@@ -4,7 +4,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { IoIosGlobe } from "react-icons/io";
 
-export default function ContactInfo({ dict }) {
+export default function ContactInfo({ dict }: { dict: ITranslation }) {
   const { title, info } = dict.contact.contactInfo;
   const { address, phone, email, website } = info;
 

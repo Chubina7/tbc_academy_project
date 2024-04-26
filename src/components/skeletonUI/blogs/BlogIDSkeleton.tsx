@@ -27,7 +27,7 @@ function BlogIDSkeleton() {
               <hr className="md:hidden w-full border rounded-full bg-black" />
               <div className="h-7 md:h-8 w-[70%] rounded-full bg-slate-700" />
               <ul className="flex flex-col justify-start items-start gap-3">
-                {Array.from({ length: 8 }, (itm, idx) => (
+                {Array.from({ length: 8 }, (_, idx) => (
                   <div
                     key={idx}
                     className="h-6 w-[50%] bg-slate-700 rounded-full"
@@ -40,7 +40,7 @@ function BlogIDSkeleton() {
           <div className="w-full flex justify-center items-start flex-col gap-2">
             <div className="h-7 md:h-8 w-full rounded-full bg-slate-700" />
             <ul className="flex flex-col justify-start items-start gap-3">
-              {Array.from({ length: 8 }, (itm, idx) => (
+              {Array.from({ length: 8 }, (_, idx) => (
                 <div
                   key={idx}
                   className="h-6 w-[50%] bg-slate-700 rounded-full"
@@ -62,7 +62,7 @@ function BlogIDSkeleton() {
           <h1 className="h-11 bg-slate-700 w-full rounded-full" />
           <br />
           <div className="w-full max-w-lg mx-auto p-7 flex flex-col items-start gap-6">
-            {Array.from({ length: 4 }, (item, idx) => {
+            {Array.from({ length: 4 }, (_, idx) => {
               return (
                 <div className="w-full flex flex-col gap-2" key={idx}>
                   <div className="w-full rounded-lg bg-slate-700 min-h-80" />

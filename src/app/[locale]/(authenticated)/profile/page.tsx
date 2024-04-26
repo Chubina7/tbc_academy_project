@@ -4,6 +4,10 @@ import LoginInfo from "../../../../components/profileComp/loginInfo/LoginInfo";
 import { getUserInfo, getUserLoginInfo } from "../../../../lib/actions";
 import { getDictionary } from "../../../../lib/dictionary";
 
+interface PageProps {
+  params: IParams;
+}
+
 export default async function Profile({ params: { locale } }: PageProps) {
   const userInfo = await getUserInfo();
   const loginInfo = await getUserLoginInfo();

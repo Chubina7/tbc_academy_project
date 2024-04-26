@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function FormFields({ dict }) {
+export default function FormFields({ dict }: { dict: ITranslation }) {
   const { name, email, subject, questionOrMessage } = dict.contact.form.labels;
   const { namePh, emailPh, subjectPh, questionOrMessagePh } =
     dict.contact.form.inputs;

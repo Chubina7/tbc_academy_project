@@ -1,7 +1,17 @@
 import React from "react";
 import { FaRegStar } from "react-icons/fa";
 
-function Details({ data, dict }) {
+interface Props {
+  data: {
+    title: string;
+    description: string;
+    price: number;
+    rating: number | undefined;
+  };
+  dict: ITranslation;
+}
+
+function Details({ data, dict }: Props) {
   const rating = dict.default.rating;
   const price = dict.default.price;
   const currency = dict.default.measurement.currency;

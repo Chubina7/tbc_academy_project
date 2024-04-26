@@ -2,7 +2,15 @@ import React from "react";
 import NewEmail from "./NewEmail";
 import NewPassword from "./NewPassword";
 
-export default function LoginInfo({ loginInfoObj, dict }) {
+interface Props {
+  loginInfoObj: {
+    email: string | undefined;
+    password: string;
+  };
+  dict: ITranslation;
+}
+
+export default function LoginInfo({ loginInfoObj, dict }: Props) {
   const { title, email, password } = dict.profile.loginInfo;
 
   return (

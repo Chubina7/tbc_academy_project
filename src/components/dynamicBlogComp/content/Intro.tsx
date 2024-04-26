@@ -4,7 +4,25 @@ import Ingredients from "../Ingredients";
 import fallback_img from "../../../../public/anonym_user.webp";
 import PreDetails from "./PreDetails";
 
-function Intro({ image, name, ingredients, difficulty, origin, type, dict }) {
+interface Props {
+  image: string;
+  name: string;
+  ingredients: Array<string> | undefined;
+  difficulty: string;
+  origin: string | undefined;
+  type: Array<string>;
+  dict: ITranslation;
+}
+
+function Intro({
+  image,
+  name,
+  ingredients,
+  difficulty,
+  origin,
+  type,
+  dict,
+}: Props) {
   const ingredientsDict = dict.blog.blogDynamicItem.content.ingredients;
 
   return (
