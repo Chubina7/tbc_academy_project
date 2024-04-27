@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 
 export default function SearchInput({ setQuery }: { setQuery: SetQueryType }) {
   const t = useTranslations("Products");
-  const [timeoutId, setTimeoutId] = useState<null | number>(null);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (timeoutId) clearTimeout(timeoutId);

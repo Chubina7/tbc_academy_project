@@ -6,8 +6,8 @@ function ReviewNStars({
   rating,
   reviewCount,
 }: {
-  rating: number;
-  reviewCount: number;
+  rating: number | undefined;
+  reviewCount: number | undefined;
 }) {
   return (
     <div className="hidden md:flex justify-center items-center gap-2">

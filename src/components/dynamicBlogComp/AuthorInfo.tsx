@@ -3,8 +3,8 @@ import Image from "next/image";
 import fallback_img from "../../../public/anonym_user.webp";
 import { getAuthor } from "../../lib/helpers";
 
-async function AuthorInfo({ userId }: { userId: number }) {
-  const author = await getAuthor(userId);
+async function AuthorInfo({ userId }: { userId: number | undefined }) {
+  const author = await getAuthor(userId || 0);
 
   return (
     <div className="w-full flex justify-stretch items-center gap-4 py-5">

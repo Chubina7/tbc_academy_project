@@ -18,7 +18,7 @@ export default function RootLayout({ children, params }: Props) {
         {children}
       </main>
       <div className="hidden sm:block">
-        <Footer lng={locale} />
+        <Footer />
       </div>
     </>
   );
