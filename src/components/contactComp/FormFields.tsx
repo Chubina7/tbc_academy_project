@@ -1,14 +1,17 @@
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function FormFields() {
+  const t = useTranslations("Contact.form");
+
   return (
     <form className="w-full flex flex-col p-3 gap-6">
       <div className="w-full flex flex-col gap-5">
         <div className="w-full flex flex-col items-start justify-center ">
-          <label htmlFor="name">{"dict.contact.form.labels.name"} *</label>
+          <label htmlFor="name">{t("labels.name")} *</label>
           <input
             className="w-full border-2 border-black px-4 py-3 focus:outline-none"
-            placeholder={"dict.contact.form.inputs.namePh"}
+            placeholder={t("inputs.namePh")}
             type="text"
             id="name"
             name="name"
@@ -16,10 +19,10 @@ export default function FormFields() {
           />
         </div>
         <div className="w-full flex flex-col items-start justify-center">
-          <label htmlFor="email">{"dict.contact.form.labels.email"} *</label>
+          <label htmlFor="email">{t("labels.email")} *</label>
           <input
             className="w-full border-2 border-black px-4 py-3 focus:outline-none"
-            placeholder={"dict.contact.form.inputs.emailPh"}
+            placeholder={t("inputs.emailPh")}
             type="email"
             id="email"
             name="email"
@@ -29,27 +32,25 @@ export default function FormFields() {
       </div>
       <div className="w-full flex flex-col gap-5">
         <div>
-          <label htmlFor="subject">{"dict.contact.form.labels.subject"}</label>
+          <label htmlFor="subject">{t("labels.subject")}</label>
           <input
             className="w-full border-2 border-black px-4 py-3 focus:outline-none"
-            placeholder={"dict.contact.form.inputs.subjectPh"}
+            placeholder={t("inputs.subjectPh")}
             type="text"
             id="subject"
             name="subject"
           />
         </div>
         <div>
-          <label htmlFor="question">
-            {"dict.contact.form.labels.questionOrMessage"} *
-          </label>
+          <label htmlFor="question">{t("labels.questionOrMessage")} *</label>
           <textarea
             className="w-full border-2 border-black px-4 py-3 focus:outline-none"
-            placeholder={"dict.contact.form.inputs.questionOrMessagePh"}
+            placeholder={t("inputs.questionOrMessagePh")}
             id="question"
             name="question"
             required
           />
-          <i>* - {"dict.default.required"}</i>
+          <i>* - {t("required")}</i>
         </div>
       </div>
     </form>

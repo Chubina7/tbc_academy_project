@@ -1,13 +1,12 @@
 import createIntlMiddleware from 'next-intl/middleware';
 import { NextRequest } from 'next/server';
-import { AUTH_COOKIE_KEY } from './lib/variables';
+import { AUTH_COOKIE_KEY, defaultLocale, supportedLocales } from './lib/variables';
 import { cookies } from 'next/headers';
-import { locales } from './i18n';
 
 export default async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
-  const en = locales[0];
-  const ge = locales[1];
+  const ka = supportedLocales[0];
+  const en = supportedLocales[1];
 
   // Checking authentification
   if (
@@ -17,21 +16,21 @@ export default async function middleware(request: NextRequest) {
       path.startsWith(`/${en}/blog`) ||
       path === `/${en}/contact` ||
       path === `/${en}/profile` ||
-      path === `/${ge}` ||
-      path.startsWith(`/${ge}/products`) ||
-      path.startsWith(`/${ge}/blog`) ||
-      path === `/${ge}/contact` ||
-      path === `/${ge}/profile`)
+      path === `/${ka}` ||
+      path.startsWith(`/${ka}/products`) ||
+      path.startsWith(`/${ka}/blog`) ||
+      path === `/${ka}/contact` ||
+      path === `/${ka}/profile`)
   ) {
     request.nextUrl.pathname = "/login"
   }
 
   // Rewriting on the supported language
-  const handleI18nRouting = createIntlMiddleware({
-    locales: locales,
-    defaultLocale: "ka",
+  const localeRewrite = createIntlMiddleware({
+    locales: supportedLocales,
+    defaultLocale: defaultLocale,
   });
-  const response = handleI18nRouting(request);
+  const response = localeRewrite(request);
   return response;
 }
 

@@ -2,8 +2,10 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function SignOutBtn({ lng }: { lng: string }) {
+  const t = useTranslations("Header.navigation");
   const router = useRouter();
 
   const signOutHandler = async () => {
@@ -22,7 +24,7 @@ export default function SignOutBtn({ lng }: { lng: string }) {
         router.replace(`/${lng}/login`);
       }}
     >
-      {"dict.header.navigation.signOutBtn.btn"}
+      {t("signOutBtn")}
     </button>
   );
 }

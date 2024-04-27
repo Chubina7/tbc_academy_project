@@ -1,5 +1,5 @@
 {
-    "auth": {
+    "Auth": {
         "login": {
             "title": "შესვლა",
             "form": {
@@ -32,7 +32,7 @@
             }
         }
     },
-    "header": {
+    "Header": {
         "navigation": {
             "navItems": {
                 "home": "მთავარი",
@@ -52,7 +52,7 @@
             "signOutBtn": "გასვლა"
         }
     },
-    "products": {
+    "Products": {
         "searchInput": "ძიება",
         "sortBtn": {
             "sort": "ფასით სორტირება",
@@ -65,27 +65,37 @@
             "brand": "ბრენდი",
             "category": "კატეგორია",
             "discount": "ფასდაკლება",
-            "stock": "მარაგშია"
+            "stock": "მარაგშია",
+            "price": "ფასი",
+            "currency": "₾",
+            "rating": "შეფასება",
+            "otherDetails": "სხვა დეტალები"
         }
     },
-    "blog": {
+    "Blog": {
         "blogGridItem": {
             "hardness": "სირთულე",
-            "type": "ტიპი"
+            "type": "ტიპი",
+            "readMore": "ვრცლად წაკითხვა",
+            "minute": "წთ"
         },
         "blogDynamicItem": {
             "content": {
                 "ingredients": "ინგრედიენტები",
                 "instructions": "ინსტრუქციები",
                 "cookTime": "მომზადების დრო",
-                "calories": "კალორიები ულუფაზე"
+                "calories": "კალორიები ულუფაზე",
+                "otherDetails": "სხვა დეტალები",
+                "minute": "წთ",
+                "calorie": "კკალ"
             },
             "suggestions": {
-                "title": "მსგავსი რეცეპტები"
+                "title": "მსგავსი რეცეპტები",
+                "minute": "წთ"
             }
         }
     },
-    "contact": {
+    "Contact": {
         "contactInfo": {
             "title": "კონტაქტი",
             "info": {
@@ -108,6 +118,7 @@
             }
         },
         "form": {
+            "required": "სავალდებულო",
             "labels": {
                 "name": "სახელი",
                 "email": "იმეილი",
@@ -122,7 +133,7 @@
             }
         }
     },
-    "profile": {
+    "Profile": {
         "userInfo": {
             "title": "მომხმარებლის ინფორმაცია",
             "eachField": {
@@ -154,25 +165,8 @@
             }
         }
     },
-    "footer": {
+    "Footer": {
         "title": "ყველა უფლება დაცულია",
         "inputPh": "დაგვიტოვე მეილი"
-    },
-    "default": {
-        "measurement": {
-            "currency": "₾",
-            "calories": "კკალ"
-        },
-        "time": {
-            "minute": "წთ"
-        },
-        "action": {
-            "seeDetails": "მეტის ნახვა",
-            "readMore": "ვრცლად წაკითხვა"
-        },
-        "otherDetails": "სხვა დეტალები",
-        "rating": "შეფასება",
-        "price": "ფასი",
-        "required": "სავალდებულო"
     }
 }

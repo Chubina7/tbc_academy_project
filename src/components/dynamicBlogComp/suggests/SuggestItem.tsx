@@ -3,6 +3,7 @@ import Image from "next/image";
 import { MdOutlineRateReview } from "react-icons/md";
 import { FaCircleNotch } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa6";
+import { useTranslations } from "next-intl";
 
 interface Props {
   image: string;
@@ -19,6 +20,8 @@ function SuggestItem({
   prepTimeMinutes,
   difficulty,
 }: Props) {
+  const t = useTranslations("Blog.blogDynamicItem.suggestions");
+
   return (
     <div className="w-full flex flex-col gap-2">
       <Image
@@ -37,7 +40,7 @@ function SuggestItem({
         <div className="flex justify-center items-center gap-1">
           <FaRegClock size={12} />
           <p className="text-sm">
-            {prepTimeMinutes} {"dict.default.time.minute"}.
+            {prepTimeMinutes} {t("minute")}.
           </p>
         </div>
         <div className="flex justify-center items-center gap-1">

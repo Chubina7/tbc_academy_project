@@ -1,54 +1,52 @@
+import { useTranslations } from "next-intl";
 import React from "react";
 
 function RegisterForm() {
+  const t = useTranslations("Auth.register.form");
   return (
     <form
       className="w-full flex flex-col justify-center items-center gap-6"
       action=""
     >
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="username">
-          {"dict.auth.register.form.usernameLabel"}
-        </label>
+        <label htmlFor="username">{t("usernameLabel")}</label>
         <input
           className="bg-transparent border-2 border-white py-1 px-3"
-          placeholder={"dict.auth.register.form.usernameInput"}
+          placeholder={t("usernameInput")}
           type="text"
           name="username"
           id="username"
         />
       </div>
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="email">{"dict.auth.register.form.emailLabel"}</label>
+        <label htmlFor="email">{t("emailLabel")}</label>
         <input
           className="bg-transparent border-2 border-white py-1 px-3"
-          placeholder={"dict.auth.register.form.emailInput"}
+          placeholder={t("emailInput")}
           type="email"
           name="email"
           id="email"
         />
       </div>
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="password">
-          {"dict.auth.register.form.passwordLabel"}
-        </label>
+        <label htmlFor="password">{t("passwordLabel")}</label>
         <input
           className="bg-transparent border-2 border-white py-1 px-3"
           type="password"
           name="password"
           id="password"
-          placeholder={"dict.auth.register.form.passwordInput"}
+          placeholder={t("passwordInput")}
         />
         <input
           className="bg-transparent border-2 border-white py-1 px-3"
           type="password"
           name="password"
           id="password"
-          placeholder={"dict.auth.register.form.rePasswordInput"}
+          placeholder={t("rePasswordInput")}
         />
       </div>
       <button className="w-full bg-white text-black rounded-full py-1">
-        {"dict.auth.register.form.signUpBtn"}
+        {t("signUpBtn")}
       </button>
     </form>
   );

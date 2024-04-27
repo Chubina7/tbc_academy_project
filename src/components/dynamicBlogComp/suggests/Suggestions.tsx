@@ -2,6 +2,7 @@ import React from "react";
 import SuggestItem from "./SuggestItem";
 import Link from "next/link";
 import { getAllRecipesByTag } from "../../../lib/helpers";
+import { getTranslations } from "next-intl/server";
 
 interface Props {
   tags: Array<string>;
@@ -9,13 +10,14 @@ interface Props {
 }
 
 async function Suggestions({ tags, originalName }: Props) {
+  const t = await getTranslations("Blog.blogDynamicItem.suggestions");
   const rand = Math.floor(Math.random() * (tags.length - 1)) + 1;
   const data = await getAllRecipesByTag(tags[rand]);
 
   return (
     <>
       <h1 className="text-3xl">
-        {"dict.blog.blogDynamicItem.suggestions.title"} <i>#{tags[rand]}</i>
+        {t("title")} <i>#{tags[rand]}</i>
       </h1>
       <br />
       <div className="w-full max-w-lg mx-auto p-7 flex flex-col items-start gap-6">
@@ -33,7 +35,7 @@ async function Suggestions({ tags, originalName }: Props) {
               </Link>
             );
           } else {
-            return <p key={1}>No Items Found</p>;
+            return;
           }
         })}
       </div>

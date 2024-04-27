@@ -2,8 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
+import { useTranslations } from "use-intl";
 
 function LoginForm() {
+  const t = useTranslations("Auth.login.form");
   const router = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -48,27 +50,27 @@ function LoginForm() {
       onSubmit={signInHandler}
     >
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="username">{"dict.auth.login.form.usernameLabel"}</label>
+        <label htmlFor="username">{t("usernameLabel")}</label>
         <input
           ref={usernameRef}
           className="bg-transparent border-2 border-white py-1 px-3"
-          placeholder={"dict.auth.login.form.usernameInput"}
+          placeholder={t("usernameInput")}
           type="text"
           name="username"
         />
       </div>
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="password">{"dict.auth.login.form.passwordLabel"}</label>
+        <label htmlFor="password">{t("passwordLabel")}</label>
         <input
           ref={passwordRef}
           className="bg-transparent border-2 border-white py-1 px-3"
-          placeholder={"dict.auth.login.form.passwordInput"}
+          placeholder={t("passwordInput")}
           type="password"
           name="password"
         />
       </div>
       <button className="w-full bg-white text-black rounded-full py-1">
-        {"dict.auth.login.form.signInBtn"}
+        {t("signInBtn")}
       </button>
     </form>
   );

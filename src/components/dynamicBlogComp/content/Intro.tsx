@@ -3,6 +3,7 @@ import Image from "next/image";
 import Ingredients from "../Ingredients";
 import fallback_img from "../../../../public/anonym_user.webp";
 import PreDetails from "./PreDetails";
+import { useTranslations } from "next-intl";
 
 interface Props {
   image: string;
@@ -14,6 +15,8 @@ interface Props {
 }
 
 function Intro({ image, name, ingredients, difficulty, origin, type }: Props) {
+  const t = useTranslations("Blog.blogDynamicItem.content");
+
   return (
     <div className="w-full flex justify-start items-start flex-col md:flex-row gap-4 lg:gap-8">
       <div className="w-full lg:w-auto max-h-full flex justify-center items-center ">
@@ -29,9 +32,7 @@ function Intro({ image, name, ingredients, difficulty, origin, type }: Props) {
       <div className="w-full lg:w-auto flex flex-col gap-2">
         <PreDetails difficulty={difficulty} origin={origin} type={type} />
         <hr className="md:hidden w-full border rounded-full bg-black" />
-        <h1 className="text-xl md:text-2xl">
-          {"dict.blog.blogDynamicItem.content.ingredients"}:{" "}
-        </h1>
+        <h1 className="text-xl md:text-2xl">{t("ingredients")}: </h1>
         <Ingredients list={ingredients} />
       </div>
     </div>

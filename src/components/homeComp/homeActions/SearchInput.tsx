@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import { inputUI } from "../../../lib/styles";
+import { useTranslations } from "next-intl";
 
 export default function SearchInput({ setQuery }: { setQuery: SetQueryType }) {
+  const t = useTranslations("Products");
   const [timeoutId, setTimeoutId] = useState<null | number>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +22,7 @@ export default function SearchInput({ setQuery }: { setQuery: SetQueryType }) {
     <input
       className={`w-full px-6 py-2 border-[#343A40] ${inputUI}`}
       type="search"
-      placeholder={"products.searchInput"}
+      placeholder={t("searchInput")}
       onChange={handleChange}
     />
   );

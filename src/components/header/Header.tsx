@@ -4,7 +4,7 @@ import BurgerMenu from "./BurgerMenu";
 import { PiGitlabLogoFill } from "react-icons/pi";
 import Link from "next/link";
 
-export default async function Header({ lng }: { lng: string }) {
+export default function Header({ lng }: { lng: string }) {
   return (
     <div className="w-full max-w-screen-2xl mx-auto px-3 z-50">
       <header className="w-full p-4 flex justify-between items-center bg-inherit rounded-b-3xl shadow-xl">

@@ -5,6 +5,7 @@ import React from "react";
 import { navItems } from "../../lib/lists";
 import { usePathname } from "next/navigation";
 import { buttonUI } from "../../lib/styles";
+import { useTranslations } from "use-intl";
 
 interface NavItemsProps {
   action?: () => void;
@@ -12,6 +13,7 @@ interface NavItemsProps {
 }
 
 function NavItems({ action, lng }: NavItemsProps) {
+  const t = useTranslations("Header.navigation.navItems");
   const path = usePathname();
 
   return (
@@ -26,8 +28,7 @@ function NavItems({ action, lng }: NavItemsProps) {
           }`}
         >
           <Link href={`/${lng}/${navItem.href}`} onClick={action}>
-            {/* {"dict.header.navigation.navItems"[navItem.placeholder]} */}
-            nav item
+            {t(navItem.placeholder)}
           </Link>
         </li>
       ))}

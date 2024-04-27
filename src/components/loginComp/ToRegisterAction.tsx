@@ -1,13 +1,16 @@
 import Link from "next/link";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 function ToRegisterAction() {
+  const t = useTranslations("Auth.login.info");
+
   return (
     <div className="w-full flex flex-col justify-center items-center gap-2">
       <p className="w-full text-center">
-        {"dict.auth.login.info.text"}{" "}
+        {t("text")}{" "}
         <Link href={"/register"}>
-          <span className="underline ">{"dict.auth.login.info.underline"}</span>
+          <span className="underline ">{t("underline")}</span>
         </Link>
       </p>
     </div>

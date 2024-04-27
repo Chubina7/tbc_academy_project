@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
 interface Props {
@@ -7,10 +8,10 @@ interface Props {
     email: string | undefined;
     password: string;
   };
-  dict: string;
 }
 
-export default function NewEmail({ data, dict }: Props) {
+export default function NewEmail({ data }: Props) {
+  const t = useTranslations("Profile.loginInfo.email");
   const [loginInfo, setLoginInfo] = useState(data);
   const [isEditing, setIsEditing] = useState<boolean>();
   const [inputVal, setInputVal] = useState<string>("");
@@ -32,9 +33,9 @@ export default function NewEmail({ data, dict }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <div className="w-full flex justify-between">
-        <i className="opacity-60">{"dict.title"}</i>
+        <i className="opacity-60">{t("title")}</i>
         <p>
-          {"dict.current"}:{" "}
+          {t("current")}:{" "}
           <span className="italic">
             {loginInfo.email}{" "}
             {isEditing && (
@@ -42,7 +43,7 @@ export default function NewEmail({ data, dict }: Props) {
                 className="bg-slate-500 text-inherit rounded-full px-3"
                 onClick={handleSave}
               >
-                {"dict.save"}
+                {t("save")}
               </button>
             )}
           </span>
@@ -51,7 +52,7 @@ export default function NewEmail({ data, dict }: Props) {
       <input
         className="w-full text-black text-base border-2 border-black rounded-md px-3 py-2"
         type="email"
-        placeholder={"dict.emailPh"}
+        placeholder={t("emailPh")}
         value={inputVal}
         onChange={(e) => setInputVal(e.target.value)}
       />

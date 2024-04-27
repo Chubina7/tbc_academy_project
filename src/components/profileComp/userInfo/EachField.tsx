@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 
 interface Props {
@@ -13,10 +14,10 @@ interface Props {
       gender: string | undefined;
     }>
   >;
-  dict: string;
 }
 
-export default function EachField({ title, data, setUserInfo, dict }: Props) {
+export default function EachField({ title, data, setUserInfo }: Props) {
+  const t = useTranslations("Profile.userInfo.eachField");
   const [isEditing, setIsEditing] = useState(false);
   const [inputVal, setInputVal] = useState("");
 
@@ -27,7 +28,7 @@ export default function EachField({ title, data, setUserInfo, dict }: Props) {
 
   return (
     <div className="flex flex-col justify-start items-start gap-1 p-2">
-      <i className="text-sm opacity-60 w-full">{"dict.userDetails[title]"}</i>
+      <i className="text-sm opacity-60 w-full">{t(`userDetails.${title}`)}</i>
       <div className="w-full flex justify-between items-center gap-5">
         {isEditing ? (
           <input
@@ -44,7 +45,7 @@ export default function EachField({ title, data, setUserInfo, dict }: Props) {
           className="select-none cursor-pointer text-sm"
           onClick={handleDataSave}
         >
-          {isEditing ? "dict.save" : "dict.edit"}
+          {isEditing ? t("save") : t("edit")}
         </button>
       </div>
     </div>

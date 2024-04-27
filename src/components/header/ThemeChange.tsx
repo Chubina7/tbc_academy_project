@@ -3,8 +3,10 @@
 import React from "react";
 import { setTheme } from "../../lib/helpers";
 import { setThemeInCookies } from "../../lib/actions";
+import { useTranslations } from "next-intl";
 
 function ThemeChange({ action }: { action?: () => void }) {
+  const t = useTranslations("Header.navigation.themeChanger");
   return (
     <div className="flex justify-center items-center gap-1">
       <p
@@ -14,10 +16,7 @@ function ThemeChange({ action }: { action?: () => void }) {
           setThemeInCookies("dark");
         }}
       >
-        <span onClick={action}>
-          {/* {"dict.header.navigation.themeChanger.dark"} */}
-          dark
-        </span>
+        <span onClick={action}>{t("dark")}</span>
       </p>
       <p>/</p>
       <p
@@ -27,10 +26,7 @@ function ThemeChange({ action }: { action?: () => void }) {
           setThemeInCookies("light");
         }}
       >
-        <span onClick={action}>
-          {/* {"dict.header.navigation.themeChanger.light"} */}
-          light
-        </span>
+        <span onClick={action}>{t("light")}</span>
       </p>
       <p>/</p>
       <p
@@ -40,10 +36,7 @@ function ThemeChange({ action }: { action?: () => void }) {
           setThemeInCookies("os");
         }}
       >
-        <span onClick={action}>
-          {/* {"dict.header.navigation.themeChanger.os"} */}
-          os
-        </span>
+        <span onClick={action}>{t("os")}</span>
       </p>
     </div>
   );

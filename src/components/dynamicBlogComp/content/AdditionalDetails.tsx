@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import React from "react";
 
 interface Props {
@@ -6,17 +7,16 @@ interface Props {
 }
 
 function AdditionalDetails({ time, calories }: Props) {
+  const t = useTranslations("Blog.blogDynamicItem.content");
   return (
     <div className="w-full flex flex-col items-start justify-start gap-3">
-      <h1 className="text-xl md:text-2xl">{"dict.default.otherDetails"}: </h1>
+      <h1 className="text-xl md:text-2xl">{t("otherDetails")}: </h1>
       <div className="flex flex-col gap-2">
         <i>
-          {"dict.blog.blogDynamicItem.content.cookTime"}:{" "}
-          <strong>{time}</strong> {"dict.default.time.minute"}
+          {t("cookTime")}: <strong>{time}</strong> {t("minute")}
         </i>
         <i>
-          {"dict.blog.blogDynamicItem.content.calories"}:{" "}
-          <strong>{calories}</strong> {"dict.default.measurement.calories"}
+          {t("calories")}: <strong>{calories}</strong> {t("calorie")}
         </i>
       </div>
     </div>

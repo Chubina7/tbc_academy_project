@@ -7,6 +7,7 @@ export default function BlogsGrid({ data }: { data: Array<IRecipe> }) {
       {data.map((item) => (
         <BlogItem
           key={item.id}
+          id={item.id}
           name={item.name}
           servings={item.servings}
           image={item.image}

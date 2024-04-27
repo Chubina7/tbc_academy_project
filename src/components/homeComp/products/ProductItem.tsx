@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function ProductItem({
   title,
@@ -9,6 +10,8 @@ export default function ProductItem({
   thumbnail,
   route,
 }: IProduct) {
+  const t = useTranslations("Products.productItem");
+
   return (
     <div className="w-full flex flex-col justify-start items-start p-3 rounded-lg bg-[#202326] shadow-xl">
       <div className="relative w-full min-h-64">
@@ -28,7 +31,7 @@ export default function ProductItem({
           <strong>$ {price}</strong>
           <Link href={`/products/${route}`}>
             <button className="bg-[#F25050] text-inherit rounded-full px-4 py-1">
-              dict.products.productItem.seeMoreBtn
+              {t("seeMoreBtn")}
             </button>
           </Link>
         </div>

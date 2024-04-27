@@ -5,6 +5,7 @@ import { FaRegClock } from "react-icons/fa6";
 import { PiChartPieSliceBold } from "react-icons/pi";
 import { FaRegStar } from "react-icons/fa";
 import Tags from "./Tags";
+import { useTranslations } from "next-intl";
 
 export default function BlogItem({
   id,
@@ -17,6 +18,8 @@ export default function BlogItem({
   mealType,
   tags,
 }: IRecipe) {
+  const t = useTranslations("Blog.blogGridItem");
+
   return (
     <div className="w-full flex gap-1 flex-col sm:flex-row sm:gap-8">
       <div className="w-full flex">
@@ -28,7 +31,6 @@ export default function BlogItem({
           height={520}
         />
       </div>
-
       <div className="w-full md:w-[180%] flex flex-col justify-start gap-3 md:gap-6">
         <div>
           <h1 className="font-bold text-xl sm:text-3xl">{name}</h1>
@@ -36,10 +38,10 @@ export default function BlogItem({
         </div>
         <div className="w-full flex flex-col">
           <p>
-            {"dict.blog.blogGridItem.hardness"}: <strong> {difficulty}</strong>
+            {t("hardness")}: <strong> {difficulty}</strong>
           </p>
           <p>
-            {"dict.blog.blogGridItem.type"}:{" "}
+            {t("type")}:{" "}
             {mealType.map((item, idx) => (
               <strong key={idx}>
                 {item}
@@ -53,7 +55,7 @@ export default function BlogItem({
             <div className="flex justify-center items-center gap-1">
               <FaRegClock size={15} opacity={0.6} />
               <p className="opacity-80">
-                {prepTimeMinutes} {"dict.default.time.minute"}
+                {prepTimeMinutes} {t("minute")}
               </p>
             </div>
             <div className="flex justify-center items-center gap-1">
@@ -67,7 +69,7 @@ export default function BlogItem({
           </div>
           <div>
             <Link href={`/blog/${id}`}>
-              <p className="underline">{"dict.default.action.readMore"}...</p>
+              <p className="underline">{t("readMore")}...</p>
             </Link>
           </div>
         </div>

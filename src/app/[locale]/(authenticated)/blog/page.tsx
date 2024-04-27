@@ -2,7 +2,6 @@ import React from "react";
 import BlogsGrid from "../../../../components/blogComp/BlogsGrid";
 import { getAllRecipes } from "../../../../lib/helpers";
 
-// Component
 async function Blog() {
   const data = await getAllRecipes();
 
