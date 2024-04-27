@@ -20,9 +20,6 @@ export const getUserLoginInfo = async () => {
 };
 
 // Preferences
-export const setLngInCookies = (lng: string) => {
-  cookies().set("lng", lng, { secure: true, sameSite: "none" });
-};
 export const setThemeInCookies = (pref: string) => {
   if (pref === "os") {
     cookies().delete("theme");

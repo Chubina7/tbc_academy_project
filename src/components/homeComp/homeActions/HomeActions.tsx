@@ -5,15 +5,14 @@ import SortBtn from "./SortBtn";
 export default function HomeActions({
   sortState,
   queryState,
-  dict,
-}: HomeActionProps) {
-  const searchInput = dict.products.searchInput;
-  const sortBtn = dict.products.sortBtn;
-
+}: {
+  sortState: SortStateType;
+  queryState: SetQueryType;
+}) {
   return (
     <div className="w-full flex flex-col sm:flex-row gap-3">
-      <SearchInput setQuery={queryState} dict={searchInput} />
-      <SortBtn sortState={sortState} dict={sortBtn} />
+      <SearchInput setQuery={queryState} />
+      <SortBtn sortState={sortState} />
     </div>
   );
 }

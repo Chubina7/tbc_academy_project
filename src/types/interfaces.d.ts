@@ -192,7 +192,6 @@ interface IProduct {
     thumbnail: string
     images?: string[]
     route?: string
-    dict: ITranslation
 }
 interface IProducts {
     products: Array<IProduct>
@@ -219,7 +218,6 @@ interface IRecipe {
     rating: number
     reviewCount?: number
     mealType: Array<string>
-    dict: ITranslation
 }
 interface IRecipes {
     recipes: Array<IRecipe>
@@ -308,18 +306,5 @@ interface IParams {
 }
 
 // Products Page
-interface ProductsProps {
-    data: Array<IProduct>;
-    dict: ITranslation;
-}
-interface HomeActionProps {
-    sortState: SortStateType
-    queryState: SetQueryType;
-    dict: ITranslation;
-}
-interface ProductListProps {
-    list: Array<IProduct>;
-    sortRule: boolean;
-    searchFilterKeyword: string;
-    dict: ITranslation;
-}
+
+

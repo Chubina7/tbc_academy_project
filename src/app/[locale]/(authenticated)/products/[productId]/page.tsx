@@ -1,7 +1,6 @@
 import React from "react";
 import { getSingleProduct } from "../../../../../lib/helpers";
 import Product from "../../../../../components/dynamicProductComp/Product";
-import { getDictionary } from "../../../../../lib/dictionary";
 
 // Types
 interface Props {
@@ -17,13 +16,12 @@ export async function generateStaticParams() {
 }
 
 // Component
-async function ProductDetailsPage({ params: { productId, locale } }: Props) {
+async function ProductDetailsPage({ params: { productId } }: Props) {
   const data = await getSingleProduct(productId);
-  const dictionary = await getDictionary(locale);
 
   return (
     <div className="w-full flex justify-center items-center flex-col gap-10 ">
-      <Product data={data} dict={dictionary} />
+      <Product data={data} />
     </div>
   );
 }

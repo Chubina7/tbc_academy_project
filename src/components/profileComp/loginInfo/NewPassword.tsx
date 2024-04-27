@@ -7,13 +7,7 @@ interface Props {
     email: string | undefined;
     password: string;
   };
-  dict: {
-    title: string;
-    message: string;
-    save: string;
-    enterPass: string;
-    confirmPass: string;
-  };
+  dict: string
 }
 
 export default function NewPassword({ data, dict }: Props) {
@@ -22,6 +16,8 @@ export default function NewPassword({ data, dict }: Props) {
   const [confirmInputVal, setConfirmInputVal] = useState<string>("");
   const [newInputVal, setNewInputVal] = useState<string>("");
   const [updated, setUpdated] = useState<boolean>(false);
+
+  console.log(loginInfo);
 
   useEffect(() => {
     if (confirmInputVal === "" || confirmInputVal !== newInputVal) {
@@ -41,20 +37,20 @@ export default function NewPassword({ data, dict }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <div className="w-full flex justify-between">
-        <i className="opacity-60">{dict.title}</i>
-        {updated && <p>{dict.message}</p>}
+        <i className="opacity-60">{"dict.title"}</i>
+        {updated && <p>{"dict.message"}</p>}
       </div>
       <div className="w-full flex flex-col gap-3">
         <input
           className="text-black w-full text-base border-2 border-black rounded-md px-3 py-2"
-          placeholder={dict.enterPass}
+          placeholder={"dict.enterPass"}
           type="password"
           value={newInputVal}
           onChange={(e) => setNewInputVal(e.target.value)}
         />
         <input
           className="text-black w-full text-base border-2 border-black rounded-md px-3 py-2"
-          placeholder={dict.confirmPass}
+          placeholder={"dict.confirmPass"}
           type="password"
           value={confirmInputVal}
           onChange={(e) => setConfirmInputVal(e.target.value)}
@@ -64,7 +60,7 @@ export default function NewPassword({ data, dict }: Props) {
             className="text-black bg-slate-500 text-inherit rounded-full px-3"
             onClick={handleSave}
           >
-            {dict.save}
+            {"dict.save"}
           </button>
         )}
       </div>

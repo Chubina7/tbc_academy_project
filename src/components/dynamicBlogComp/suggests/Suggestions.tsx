@@ -6,18 +6,16 @@ import { getAllRecipesByTag } from "../../../lib/helpers";
 interface Props {
   tags: Array<string>;
   originalName: string;
-  dict: ITranslation;
 }
 
-async function Suggestions({ tags, originalName, dict }: Props) {
+async function Suggestions({ tags, originalName }: Props) {
   const rand = Math.floor(Math.random() * (tags.length - 1)) + 1;
   const data = await getAllRecipesByTag(tags[rand]);
-  const title = dict.blog.blogDynamicItem.suggestions.title;
 
   return (
     <>
       <h1 className="text-3xl">
-        {title} <i>#{tags[rand]}</i>
+        {"dict.blog.blogDynamicItem.suggestions.title"} <i>#{tags[rand]}</i>
       </h1>
       <br />
       <div className="w-full max-w-lg mx-auto p-7 flex flex-col items-start gap-6">
@@ -31,7 +29,6 @@ async function Suggestions({ tags, originalName, dict }: Props) {
                   name={item.name}
                   prepTimeMinutes={item.prepTimeMinutes}
                   rating={item.rating}
-                  dict={dict}
                 />
               </Link>
             );

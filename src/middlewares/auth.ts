@@ -1,12 +1,12 @@
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../lib/variables";
 import { NextFetchEvent, NextMiddleware, NextRequest, NextResponse } from "next/server";
-import { i18n } from "../i18.config";
+// import { i18n } from "../i18n";
 
 export function auth(middleware: NextMiddleware) {
   return async function (request: NextRequest, event: NextFetchEvent) {
-    const ge = i18n.locales[0];
-    const en = i18n.locales[1];
+    const ge = ["ka", "en"][0];
+    const en = ["ka", "en"][1];
     const path = request.nextUrl.pathname;
 
     if (

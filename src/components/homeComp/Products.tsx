@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import ProductList from "./products/ProductList";
 import HomeActions from "./homeActions/HomeActions";
 
-function Products({ data, dict }: ProductsProps) {
+function Products({ data }: { data: Array<IProduct> }) {
   const [sortRule, setSortRule] = useState<boolean>(false);
   const [query, setQuery] = useState<string>("");
 
@@ -14,7 +14,6 @@ function Products({ data, dict }: ProductsProps) {
         <HomeActions
           sortState={{ sortRule, setSortRule }}
           queryState={setQuery}
-          dict={dict}
         />
       </section>
       <section className="w-full">
@@ -22,7 +21,6 @@ function Products({ data, dict }: ProductsProps) {
           list={data}
           sortRule={sortRule}
           searchFilterKeyword={query}
-          dict={dict}
         />
       </section>
     </>

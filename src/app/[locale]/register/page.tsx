@@ -2,7 +2,6 @@ import React from "react";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../../../lib/variables";
-import { getDictionary } from "../../../lib/dictionary";
 import RegisterForm from "../../../components/registerComp/RegisterForm";
 import ToLoginAction from "../../../components/registerComp/ToLoginAction";
 
@@ -17,18 +16,13 @@ export default async function RegisterPage({ params: { locale } }: Props) {
     redirect(`/${locale}`); // possible to redirect to the previous requested page
   }
 
-  const dict = await getDictionary(locale);
-  const title = dict.auth.register.title;
-  const form = dict.auth.register.form;
-  const info = dict.auth.register.info;
-
   return (
     <main className="w-full h-screen flex flex-col justify-center items-center gap-16 sm:p-14">
-      <h1 className="text-4xl sm:text-5xl">{title}</h1>
+      <h1 className="text-4xl sm:text-5xl">{"dict.auth.register.title"}</h1>
       <div className="flex flex-col gap-10 bg-gray-700 p-6 rounded-xl sm:text-xl">
-        <RegisterForm data={form} />
+        <RegisterForm />
       </div>
-      <ToLoginAction data={info} />
+      <ToLoginAction />
     </main>
   );
 }

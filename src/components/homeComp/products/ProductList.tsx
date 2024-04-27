@@ -1,11 +1,16 @@
 import React from "react";
 import ProductItem from "./ProductItem";
 
+interface ProductListProps {
+  list: Array<IProduct>;
+  sortRule: boolean;
+  searchFilterKeyword: string;
+}
+
 export default function ProductList({
   list,
   sortRule,
   searchFilterKeyword,
-  dict,
 }: ProductListProps) {
   const data = sortRule
     ? [...list].sort((a, b) => a.price - b.price)
@@ -25,7 +30,6 @@ export default function ProductList({
             description={product.description}
             thumbnail={product.thumbnail}
             price={product.price}
-            dict={dict}
           />
         ))}
     </div>

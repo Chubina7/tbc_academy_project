@@ -1,7 +1,7 @@
-import { match } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
-import { i18n } from "../i18.config";
-import { NextRequest } from "next/server";
+// import { match } from "@formatjs/intl-localematcher";
+// import Negotiator from "negotiator";
+// import { i18n } from "../i18n";
+// import { NextRequest } from "next/server";
 
 // Products
 export async function getAllProducts() {
@@ -46,16 +46,16 @@ export async function getAuthor(id: number) {
 }
 
 // Preferences
-export const getLocale = (request: NextRequest) => {
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+// export const getLocale = (request: NextRequest) => {
+//   const negotiatorHeaders: Record<string, string> = {};
+//   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-  const locales = i18n.locales;
+//   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+//   const locales = i18n.locales;
 
-  const locale = match(languages, locales, i18n.defaultLocale);
-  return locale;
-};
+//   const locale = match(languages, locales, i18n.defaultLocale);
+//   return locale;
+// };
 export const setTheme = (pref: string) => {
   if (pref === "os") {
     document.documentElement.classList.remove("light");

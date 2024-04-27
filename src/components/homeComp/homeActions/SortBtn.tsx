@@ -1,16 +1,8 @@
 import React from "react";
 import { buttonUI } from "../../../lib/styles";
 
-interface Props {
-  sortState: SortStateType;
-  dict: {
-    sort: string;
-    unSort: string;
-  };
-}
-
-export default function SortBtn({ sortState, dict }: Props) {
-  const { sort, unSort } = dict;
+export default function SortBtn({ sortState }: { sortState: SortStateType }) {
+  // const { sort, unSort } = products.sortbtn;
   const { sortRule, setSortRule } = sortState;
 
   const clickHandler = () => setSortRule((prev) => !prev);
@@ -20,7 +12,7 @@ export default function SortBtn({ sortState, dict }: Props) {
       className={`sm:min-w-60 nowrap px-6 py-2 ${buttonUI} z-40 bg-[#F25050]`}
       onClick={clickHandler}
     >
-      {sortRule ? unSort : sort}
+      {sortRule ? "products.sortBtn.unSort" : "products.sortBtn.sort"}
     </button>
   );
 }

@@ -8,10 +8,7 @@ export default function ProductItem({
   description,
   thumbnail,
   route,
-  dict,
 }: IProduct) {
-  const seeDetailsBtn = dict.products.productItem.seeMoreBtn;
-
   return (
     <div className="w-full flex flex-col justify-start items-start p-3 rounded-lg bg-[#202326] shadow-xl">
       <div className="relative w-full min-h-64">
@@ -31,7 +28,7 @@ export default function ProductItem({
           <strong>$ {price}</strong>
           <Link href={`/products/${route}`}>
             <button className="bg-[#F25050] text-inherit rounded-full px-4 py-1">
-              {seeDetailsBtn}
+              dict.products.productItem.seeMoreBtn
             </button>
           </Link>
         </div>

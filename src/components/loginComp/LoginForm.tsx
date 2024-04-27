@@ -3,28 +3,10 @@
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 
-function LoginForm({
-  data,
-}: {
-  data: {
-    usernameLabel: string;
-    usernameInput: string;
-    passwordLabel: string;
-    passwordInput: string;
-    signInBtn: string;
-  };
-}) {
+function LoginForm() {
   const router = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-
-  const {
-    usernameLabel,
-    usernameInput,
-    passwordLabel,
-    passwordInput,
-    signInBtn,
-  } = data;
 
   const signInHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -66,27 +48,27 @@ function LoginForm({
       onSubmit={signInHandler}
     >
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="username">{usernameLabel}</label>
+        <label htmlFor="username">{"dict.auth.login.form.usernameLabel"}</label>
         <input
           ref={usernameRef}
           className="bg-transparent border-2 border-white py-1 px-3"
-          placeholder={usernameInput}
+          placeholder={"dict.auth.login.form.usernameInput"}
           type="text"
           name="username"
         />
       </div>
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="password">{passwordLabel}</label>
+        <label htmlFor="password">{"dict.auth.login.form.passwordLabel"}</label>
         <input
           ref={passwordRef}
           className="bg-transparent border-2 border-white py-1 px-3"
-          placeholder={passwordInput}
+          placeholder={"dict.auth.login.form.passwordInput"}
           type="password"
           name="password"
         />
       </div>
       <button className="w-full bg-white text-black rounded-full py-1">
-        {signInBtn}
+        {"dict.auth.login.form.signInBtn"}
       </button>
     </form>
   );

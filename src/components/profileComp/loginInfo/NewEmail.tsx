@@ -7,13 +7,7 @@ interface Props {
     email: string | undefined;
     password: string;
   };
-  dict: {
-    title: string;
-    current: string;
-    email: string;
-    emailPh: string;
-    save: string;
-  };
+  dict: string;
 }
 
 export default function NewEmail({ data, dict }: Props) {
@@ -38,9 +32,9 @@ export default function NewEmail({ data, dict }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <div className="w-full flex justify-between">
-        <i className="opacity-60">{dict.title}</i>
+        <i className="opacity-60">{"dict.title"}</i>
         <p>
-          {dict.current}:{" "}
+          {"dict.current"}:{" "}
           <span className="italic">
             {loginInfo.email}{" "}
             {isEditing && (
@@ -48,7 +42,7 @@ export default function NewEmail({ data, dict }: Props) {
                 className="bg-slate-500 text-inherit rounded-full px-3"
                 onClick={handleSave}
               >
-                {dict.save}
+                {"dict.save"}
               </button>
             )}
           </span>
@@ -57,7 +51,7 @@ export default function NewEmail({ data, dict }: Props) {
       <input
         className="w-full text-black text-base border-2 border-black rounded-md px-3 py-2"
         type="email"
-        placeholder={dict.emailPh}
+        placeholder={"dict.emailPh"}
         value={inputVal}
         onChange={(e) => setInputVal(e.target.value)}
       />

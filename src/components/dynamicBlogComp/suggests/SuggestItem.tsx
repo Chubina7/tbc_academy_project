@@ -10,7 +10,6 @@ interface Props {
   rating: number;
   prepTimeMinutes: number;
   difficulty: string;
-  dict: ITranslation;
 }
 
 function SuggestItem({
@@ -19,10 +18,7 @@ function SuggestItem({
   rating,
   prepTimeMinutes,
   difficulty,
-  dict,
 }: Props) {
-  const minute = dict.default.time.minute;
-
   return (
     <div className="w-full flex flex-col gap-2">
       <Image
@@ -41,7 +37,7 @@ function SuggestItem({
         <div className="flex justify-center items-center gap-1">
           <FaRegClock size={12} />
           <p className="text-sm">
-            {prepTimeMinutes} {minute}.
+            {prepTimeMinutes} {"dict.default.time.minute"}.
           </p>
         </div>
         <div className="flex justify-center items-center gap-1">

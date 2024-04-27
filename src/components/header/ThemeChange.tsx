@@ -4,15 +4,7 @@ import React from "react";
 import { setTheme } from "../../lib/helpers";
 import { setThemeInCookies } from "../../lib/actions";
 
-function ThemeChange({
-  dict,
-  action,
-}: {
-  dict: ITranslation;
-  action?: () => void;
-}) {
-  const { dark, light, os } = dict.header.navigation.themeChanger;
-
+function ThemeChange({ action }: { action?: () => void }) {
   return (
     <div className="flex justify-center items-center gap-1">
       <p
@@ -22,7 +14,10 @@ function ThemeChange({
           setThemeInCookies("dark");
         }}
       >
-        <span onClick={action}>{dark}</span>
+        <span onClick={action}>
+          {/* {"dict.header.navigation.themeChanger.dark"} */}
+          dark
+        </span>
       </p>
       <p>/</p>
       <p
@@ -32,7 +27,10 @@ function ThemeChange({
           setThemeInCookies("light");
         }}
       >
-        <span onClick={action}>{light}</span>
+        <span onClick={action}>
+          {/* {"dict.header.navigation.themeChanger.light"} */}
+          light
+        </span>
       </p>
       <p>/</p>
       <p
@@ -42,7 +40,10 @@ function ThemeChange({
           setThemeInCookies("os");
         }}
       >
-        <span onClick={action}>{os}</span>
+        <span onClick={action}>
+          {/* {"dict.header.navigation.themeChanger.os"} */}
+          os
+        </span>
       </p>
     </div>
   );

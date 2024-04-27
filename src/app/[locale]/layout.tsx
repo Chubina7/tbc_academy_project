@@ -1,6 +1,6 @@
 import { Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
-import { i18n } from "../../i18.config";
+// import { i18n } from "../../i18n";
 import { cookies } from "next/headers";
 
 // Types
@@ -19,9 +19,9 @@ export const metadata: IMetaData = {
 };
 
 // Static Generation
-export function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ locale: lang }));
-}
+// export function generateStaticParams() {
+//   return i18n.locales.map((lang) => ({ locale: lang }));
+// }
 
 // Component
 export default function RootLayout({ children, params }: Props) {

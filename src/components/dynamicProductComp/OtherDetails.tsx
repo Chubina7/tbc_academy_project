@@ -7,34 +7,30 @@ interface Props {
     brand: string | undefined;
     category: string | undefined;
   };
-  dict: ITranslation;
 }
 
-function OtherDetails({ data, dict }: Props) {
-  const { brand, category, discount, stock } = dict.products.dynamicProductItem;
-  const otherDetails = dict.default.otherDetails;
-
+function OtherDetails({ data }: Props) {
   return (
     <div className="w-full max-w-5xl flex flex-col items-center justify-center gap-2">
-      <i className="w-full text-left text-xl">{otherDetails}:</i>
+      <i className="w-full text-left text-xl">{"dict.default.otherDetails"}:</i>
       <br />
       <div className="w-full flex justify-between items-center">
-        <p>{brand}: </p>
+        <p>{"dict.products.dynamicProductItem.brand"}: </p>
         <h1 className="font-bold text-lg">{data.brand}</h1>
       </div>
       <hr className=" w-full border border-black rounded-full opacity-20" />
       <div className="w-full flex justify-between items-center">
-        <p>{category}: </p>
+        <p>{"dict.products.dynamicProductItem.category"}: </p>
         <h1 className="font-bold text-lg">{data.category}</h1>
       </div>
       <hr className=" w-full border border-black rounded-full opacity-20" />
       <div className="w-full flex justify-between items-center">
-        <p>{discount}: </p>
+        <p>{"discount.discount"}: </p>
         <h1 className="font-bold text-lg">{data.discount} %</h1>
       </div>
       <hr className=" w-full border border-black rounded-full opacity-20" />
       <div className="w-full flex justify-between items-center">
-        <p>{stock}: </p>
+        <p>{"stock.stock"}: </p>
         <h1 className="font-bold text-lg">{data.stock}</h1>
       </div>
     </div>

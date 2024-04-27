@@ -3,7 +3,6 @@ import { getSingleRecipe } from "../../../../../lib/helpers";
 import Heading from "../../../../../components/dynamicBlogComp/Heading";
 import Content from "../../../../../components/dynamicBlogComp/content/Content";
 import Suggestions from "../../../../../components/dynamicBlogComp/suggests/Suggestions";
-import { getDictionary } from "../../../../../lib/dictionary";
 
 // Types
 interface Props {
@@ -19,11 +18,8 @@ export async function generateStaticParams() {
 }
 
 // Component
-export default async function BlogItemPage({
-  params: { blogId, locale },
-}: Props) {
+export default async function BlogItemPage({ params: { blogId } }: Props) {
   const data = await getSingleRecipe(blogId);
-  const dictionary = await getDictionary(locale);
 
   return (
     <div className="flex flex-col justify-start items-start">
@@ -48,15 +44,9 @@ export default async function BlogItemPage({
           mealType={data.mealType}
           caloriesPerServing={data.caloriesPerServing}
           prepTimeMinutes={data.prepTimeMinutes}
-          dict={dictionary}
         />
         <div className="w-full flex flex-col xl:py-9 xl:w-[40%]">
-          <Suggestions
-            key={2}
-            tags={data.tags}
-            originalName={data.name}
-            dict={dictionary}
-          />
+          <Suggestions key={2} tags={data.tags} originalName={data.name} />
         </div>
       </div>
     </div>

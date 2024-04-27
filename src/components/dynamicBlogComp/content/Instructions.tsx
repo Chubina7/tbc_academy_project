@@ -1,16 +1,15 @@
 import React from "react";
 
-interface Props {
+function Instructions({
+  instructions,
+}: {
   instructions: Array<string> | undefined;
-  dict: ITranslation;
-}
-
-function Instructions({ instructions, dict }: Props) {
-  const instructionsDict = dict.blog.blogDynamicItem.content.instructions;
-
+}) {
   return (
     <div className="w-full flex justify-center items-start flex-col gap-2">
-      <h1 className="text-xl md:text-2xl">{instructionsDict}: </h1>
+      <h1 className="text-xl md:text-2xl">
+        {"dict.blog.blogDynamicItem.content.instructions"}:{" "}
+      </h1>
       <ul className="flex flex-col gap-3">
         {instructions?.map((instruction, idx) => (
           <li key={idx} className="w-full flex items-start justify-start gap-3">

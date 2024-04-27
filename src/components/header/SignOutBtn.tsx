@@ -3,15 +3,8 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 
-export default function SignOutBtn({
-  lng,
-  dict,
-}: {
-  lng: string;
-  dict: ITranslation;
-}) {
+export default function SignOutBtn({ lng }: { lng: string }) {
   const router = useRouter();
-  const btn = dict.header.navigation.signOutBtn;
 
   const signOutHandler = async () => {
     const res = await fetch("/api/auth/logout");
@@ -29,7 +22,7 @@ export default function SignOutBtn({
         router.replace(`/${lng}/login`);
       }}
     >
-      {btn}
+      {"dict.header.navigation.signOutBtn.btn"}
     </button>
   );
 }

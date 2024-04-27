@@ -1,7 +1,6 @@
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-import React from "react";
 import { FaRegClock } from "react-icons/fa6";
 import { PiChartPieSliceBold } from "react-icons/pi";
 import { FaRegStar } from "react-icons/fa";
@@ -17,12 +16,7 @@ export default function BlogItem({
   difficulty,
   mealType,
   tags,
-  dict,
 }: IRecipe) {
-  const minute = dict.default.time.minute;
-  const readMore = dict.default.action.readMore;
-  const { hardness, type } = dict.blog.blogGridItem;
-
   return (
     <div className="w-full flex gap-1 flex-col sm:flex-row sm:gap-8">
       <div className="w-full flex">
@@ -42,10 +36,10 @@ export default function BlogItem({
         </div>
         <div className="w-full flex flex-col">
           <p>
-            {hardness}: <strong> {difficulty}</strong>
+            {"dict.blog.blogGridItem.hardness"}: <strong> {difficulty}</strong>
           </p>
           <p>
-            {type}:{" "}
+            {"dict.blog.blogGridItem.type"}:{" "}
             {mealType.map((item, idx) => (
               <strong key={idx}>
                 {item}
@@ -59,7 +53,7 @@ export default function BlogItem({
             <div className="flex justify-center items-center gap-1">
               <FaRegClock size={15} opacity={0.6} />
               <p className="opacity-80">
-                {prepTimeMinutes} {minute}
+                {prepTimeMinutes} {"dict.default.time.minute"}
               </p>
             </div>
             <div className="flex justify-center items-center gap-1">
@@ -73,7 +67,7 @@ export default function BlogItem({
           </div>
           <div>
             <Link href={`/blog/${id}`}>
-              <p className="underline">{readMore}...</p>
+              <p className="underline">{"dict.default.action.readMore"}...</p>
             </Link>
           </div>
         </div>

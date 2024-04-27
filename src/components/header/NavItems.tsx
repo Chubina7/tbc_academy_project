@@ -9,12 +9,10 @@ import { buttonUI } from "../../lib/styles";
 interface NavItemsProps {
   action?: () => void;
   lng: string;
-  dict: ITranslation;
 }
 
-function NavItems({ action, lng, dict }: NavItemsProps) {
+function NavItems({ action, lng }: NavItemsProps) {
   const path = usePathname();
-  const navLink = dict.header.navigation.navItems;
 
   return (
     <>
@@ -28,7 +26,8 @@ function NavItems({ action, lng, dict }: NavItemsProps) {
           }`}
         >
           <Link href={`/${lng}/${navItem.href}`} onClick={action}>
-            {navLink[navItem.placeholder]}
+            {/* {"dict.header.navigation.navItems"[navItem.placeholder]} */}
+            nav item
           </Link>
         </li>
       ))}

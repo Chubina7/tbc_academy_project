@@ -1,12 +1,7 @@
 import React from "react";
 import BlogItem from "./BlogItem";
 
-interface Props {
-  data: Array<IRecipe>;
-  dict: ITranslation;
-}
-
-export default function BlogsGrid({ data, dict }: Props) {
+export default function BlogsGrid({ data }: { data: Array<IRecipe> }) {
   return (
     <div className="w-full flex flex-col gap-10 md:gap-16">
       {data.map((item) => (
@@ -20,7 +15,6 @@ export default function BlogsGrid({ data, dict }: Props) {
           difficulty={item.difficulty}
           mealType={item.mealType}
           tags={item.tags}
-          dict={dict}
         />
       ))}
     </div>

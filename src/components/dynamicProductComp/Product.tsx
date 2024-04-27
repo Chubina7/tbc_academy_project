@@ -3,12 +3,7 @@ import PhotoCarousel from "./PhotoCarousel";
 import Details from "./Details";
 import OtherDetails from "./OtherDetails";
 
-interface Props {
-  data: IProduct;
-  dict: ITranslation;
-}
-
-function Product({ data, dict }: Props) {
+function Product({ data }: { data: IProduct }) {
   const photoSource = {
     src: data.images,
     alt: data.title,
@@ -30,9 +25,9 @@ function Product({ data, dict }: Props) {
     <>
       <div className="w-full flex justify-between items-start gap-6 lg:gap-0 flex-col md:flex-row">
         <PhotoCarousel data={photoSource} />
-        <Details data={detailsSource} dict={dict} />
+        <Details data={detailsSource} />
       </div>
-      <OtherDetails data={otherDetailsSource} dict={dict} />
+      <OtherDetails data={otherDetailsSource} />
     </>
   );
 }

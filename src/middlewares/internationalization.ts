@@ -1,5 +1,5 @@
 import { NextFetchEvent, NextMiddleware, NextRequest, NextResponse } from "next/server";
-import { i18n } from "../i18.config";
+// import { i18n } from "../i18n";
 import { getLocale } from "../lib/helpers";
 import { cookies } from "next/headers";
 
@@ -8,7 +8,7 @@ export function internationalization(middleware: NextMiddleware) {
     const { pathname } = request.nextUrl;
     const inCookie = cookies().get("lng")?.value;
 
-    const pathnameHasLocale = i18n.locales.some(
+    const pathnameHasLocale = ["ka", "en"].some(
       (locale) =>
         pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );

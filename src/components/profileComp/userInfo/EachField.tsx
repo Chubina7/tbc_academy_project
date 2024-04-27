@@ -13,16 +13,7 @@ interface Props {
       gender: string | undefined;
     }>
   >;
-  dict: {
-    save: string;
-    edit: string;
-    userDetails: {
-      firstName: string;
-      lastName: string;
-      image: string;
-      gender: string;
-    };
-  };
+  dict: string;
 }
 
 export default function EachField({ title, data, setUserInfo, dict }: Props) {
@@ -36,7 +27,7 @@ export default function EachField({ title, data, setUserInfo, dict }: Props) {
 
   return (
     <div className="flex flex-col justify-start items-start gap-1 p-2">
-      <i className="text-sm opacity-60 w-full">{dict.userDetails[title]}</i>
+      <i className="text-sm opacity-60 w-full">{"dict.userDetails[title]"}</i>
       <div className="w-full flex justify-between items-center gap-5">
         {isEditing ? (
           <input
@@ -53,7 +44,7 @@ export default function EachField({ title, data, setUserInfo, dict }: Props) {
           className="select-none cursor-pointer text-sm"
           onClick={handleDataSave}
         >
-          {isEditing ? dict.save : dict.edit}
+          {isEditing ? "dict.save" : "dict.edit"}
         </button>
       </div>
     </div>

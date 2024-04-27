@@ -2,21 +2,15 @@ import React from "react";
 import UserInfo from "../../../../components/profileComp/userInfo/UserInfo";
 import LoginInfo from "../../../../components/profileComp/loginInfo/LoginInfo";
 import { getUserInfo, getUserLoginInfo } from "../../../../lib/actions";
-import { getDictionary } from "../../../../lib/dictionary";
 
-interface PageProps {
-  params: IParams;
-}
-
-export default async function Profile({ params: { locale } }: PageProps) {
+export default async function Profile() {
   const userInfo = await getUserInfo();
   const loginInfo = await getUserLoginInfo();
-  const dictionary = await getDictionary(locale);
 
   return (
     <div className="w-full h-full flex flex-col justify-start items-center gap-9">
-      <UserInfo userInfoObj={userInfo} dict={dictionary} />
-      <LoginInfo loginInfoObj={loginInfo} dict={dictionary} />
+      <UserInfo userInfoObj={userInfo} />
+      <LoginInfo loginInfoObj={loginInfo} />
     </div>
   );
 }

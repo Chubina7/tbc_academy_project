@@ -3,12 +3,7 @@
 import React, { useState } from "react";
 import { inputUI } from "../../../lib/styles";
 
-interface Props {
-  setQuery: SetQueryType;
-  dict: string;
-}
-
-export default function SearchInput({ setQuery, dict }: Props) {
+export default function SearchInput({ setQuery }: { setQuery: SetQueryType }) {
   const [timeoutId, setTimeoutId] = useState<null | number>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +20,7 @@ export default function SearchInput({ setQuery, dict }: Props) {
     <input
       className={`w-full px-6 py-2 border-[#343A40] ${inputUI}`}
       type="search"
-      placeholder={dict}
+      placeholder={"products.searchInput"}
       onChange={handleChange}
     />
   );
