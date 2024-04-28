@@ -1,6 +1,7 @@
 import React from "react";
 import { getSingleProduct } from "../../../../../lib/helpers";
 import Product from "../../../../../components/dynamicProductComp/Product";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 // Types
 interface Props {
@@ -16,7 +17,8 @@ export async function generateStaticParams() {
 }
 
 // Component
-async function ProductDetailsPage({ params: { productId } }: Props) {
+async function ProductDetailsPage({ params: { productId, locale } }: Props) {
+  unstable_setRequestLocale(locale);
   const data = await getSingleProduct(productId);
 
   return (

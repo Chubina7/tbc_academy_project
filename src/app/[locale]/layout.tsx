@@ -3,6 +3,7 @@ import "./globals.css";
 import { cookies } from "next/headers";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { supportedLocales } from "../../lib/variables";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 // Types
 interface Props {
@@ -21,13 +22,14 @@ export const metadata: IMetaData = {
 
 // Static Generation
 export function generateStaticParams() {
-  return supportedLocales.map((lang) => ({ locale: lang }));
+  return supportedLocales.map((locale) => ({ locale }));
 }
 
 // Component
 export default function RootLayout({ children, params }: Props) {
   const themePref = cookies().get("theme")?.value;
   const lngPref = params.locale;
+  unstable_setRequestLocale(lngPref);
   const translations = useMessages();
 
   return (

@@ -1,8 +1,14 @@
 import React from "react";
 import BlogsGrid from "../../../../components/blogComp/BlogsGrid";
 import { getAllRecipes } from "../../../../lib/helpers";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-async function Blog() {
+interface Props {
+  params: IParams;
+}
+
+async function Blog({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
   const data = await getAllRecipes();
 
   return (

@@ -5,6 +5,7 @@ import { AUTH_COOKIE_KEY } from "../../../lib/variables";
 import LoginForm from "../../../components/loginComp/LoginForm";
 import ToRegisterAction from "../../../components/loginComp/ToRegisterAction";
 import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 // Types
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 
 // Component
 export default function LoginPage({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
   if (cookies().has(AUTH_COOKIE_KEY)) {
     redirect(`/${locale}`); // possible to redirect to the previous requested page
   }

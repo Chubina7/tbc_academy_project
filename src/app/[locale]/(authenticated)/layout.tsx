@@ -1,3 +1,4 @@
+import { unstable_setRequestLocale } from "next-intl/server";
 import Footer from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
 
@@ -10,6 +11,7 @@ interface Props {
 // Component
 export default function RootLayout({ children, params }: Props) {
   const { locale } = params;
+  unstable_setRequestLocale(locale);
 
   return (
     <>

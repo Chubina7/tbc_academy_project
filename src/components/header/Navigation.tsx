@@ -18,7 +18,7 @@ export default async function Navigation({
       <NavItems action={closeBurgerModal} lng={lng} />
       <LangChange action={closeBurgerModal} />
       <ThemeChange action={closeBurgerModal} />
-      <SignOutBtn lng={lng} />
+      <SignOutBtn />
     </ul>
   );
 }

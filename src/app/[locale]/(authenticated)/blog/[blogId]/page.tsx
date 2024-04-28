@@ -3,6 +3,7 @@ import { getSingleRecipe } from "../../../../../lib/helpers";
 import Heading from "../../../../../components/dynamicBlogComp/Heading";
 import Content from "../../../../../components/dynamicBlogComp/content/Content";
 import Suggestions from "../../../../../components/dynamicBlogComp/suggests/Suggestions";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 // Types
 interface Props {
@@ -18,7 +19,10 @@ export async function generateStaticParams() {
 }
 
 // Component
-export default async function BlogItemPage({ params: { blogId } }: Props) {
+export default async function BlogItemPage({
+  params: { blogId, locale },
+}: Props) {
+  unstable_setRequestLocale(locale);
   const data = await getSingleRecipe(blogId);
 
   return (

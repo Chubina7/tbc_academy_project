@@ -4,7 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-export default function SignOutBtn({ lng }: { lng: string }) {
+export default function SignOutBtn() {
   const t = useTranslations("Header.navigation");
   const router = useRouter();
 
@@ -21,7 +21,7 @@ export default function SignOutBtn({ lng }: { lng: string }) {
       onClick={async () => {
         signOutHandler();
         router.refresh();
-        router.replace(`/${lng}/login`);
+        router.replace(`/login`);
       }}
     >
       {t("signOutBtn")}
