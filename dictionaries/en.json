@@ -1,5 +1,5 @@
 {
-    "auth": {
+    "Auth": {
         "login": {
             "title": "Login",
             "form": {
@@ -32,7 +32,7 @@
             }
         }
     },
-    "header": {
+    "Header": {
         "navigation": {
             "navItems": {
                 "home": "Home",
@@ -52,7 +52,7 @@
             "signOutBtn": "Sign out"
         }
     },
-    "products": {
+    "Products": {
         "searchInput": "Search by a key stroke",
         "sortBtn": {
             "sort": "Sort by price",
@@ -65,27 +65,37 @@
             "brand": "Brand",
             "category": "Category",
             "discount": "Discount",
-            "stock": "In Stock"
+            "stock": "In Stock",
+            "price": "Price",
+            "currency": "$",
+            "rating": "Rating",
+            "otherDetails": "Other Details"
         }
     },
-    "blog": {
+    "Blog": {
         "blogGridItem": {
             "hardness": "Difficulty",
-            "type": "Meal type"
+            "type": "Meal type",
+            "readMore": "Read more",
+            "minute": "min"
         },
         "blogDynamicItem": {
             "content": {
                 "ingredients": "Ingredients",
                 "instructions": "Instructions",
                 "cookTime": "Cook time",
-                "calories": "Calories per serving"
+                "calories": "Calories per serving",
+                "otherDetails": "Other Details",
+                "minute": "min",
+                "calorie": "ccal"
             },
             "suggestions": {
-                "title": "Similar recipes from"
+                "title": "Similar recipes from",
+                "minute": "min"
             }
         }
     },
-    "contact": {
+    "Contact": {
         "contactInfo": {
             "title": "Contact",
             "info": {
@@ -108,6 +118,7 @@
             }
         },
         "form": {
+            "required": "REQUIRED",
             "labels": {
                 "name": "Name",
                 "email": "E-mail",
@@ -122,7 +133,7 @@
             }
         }
     },
-    "profile": {
+    "Profile": {
         "userInfo": {
             "title": "User Information",
             "eachField": {
@@ -139,6 +150,7 @@
         "loginInfo": {
             "title": "Login Details",
             "email": {
+                "title": "Email",
                 "current": "Current",
                 "email": "Email",
                 "emailPh": "Enter new email",
@@ -153,25 +165,8 @@
             }
         }
     },
-    "footer": {
+    "Footer": {
         "title": "All rights reserved",
         "inputPh": "Leave your email"
-    },
-    "default": {
-        "measurement": {
-            "currency": "$",
-            "calories": "ccal"
-        },
-        "time": {
-            "minute": "min"
-        },
-        "action": {
-            "seeDetails": "See details",
-            "readMore": "Read more"
-        },
-        "otherDetails": "Other Details",
-        "rating": "Rating",
-        "price": "Price",
-        "required": "REQUIRED"
     }
 }
