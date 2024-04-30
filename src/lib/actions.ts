@@ -20,10 +20,15 @@ export const getUserLoginInfo = async () => {
 };
 
 // Preferences
-export const setThemeInCookies = (pref: string) => {
+export const storeThemeInCookies = (pref: string) => {
   if (pref === "os") {
     cookies().delete("theme");
   } else {
     cookies().set("theme", pref, { secure: true, sameSite: "none" });
   }
 };
+
+// General
+export const readCookieForClient = async (searchCookie: string) => {
+  return cookies().get(searchCookie)?.value
+}

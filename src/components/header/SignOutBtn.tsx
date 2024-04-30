@@ -3,6 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { FaSignOutAlt } from "react-icons/fa";
 
 export default function SignOutBtn() {
   const t = useTranslations("Header.navigation");
@@ -17,7 +18,7 @@ export default function SignOutBtn() {
 
   return (
     <button
-      className="text-inherit font-bold px-5 py-1 bg-black rounded-full"
+      className="text-[#EEE8F6] bg-[#3D52A1] dark:text-[#3D52A1] dark:bg-[#EEE8F6] px-5 py-1 font-bold rounded-full flex justify-center items-center gap-2 transition-all duration-300 opacity-70 hover:opacity-100"
       onClick={async () => {
         signOutHandler();
         router.refresh();
@@ -25,6 +26,7 @@ export default function SignOutBtn() {
       }}
     >
       {t("signOutBtn")}
+      <FaSignOutAlt size={18} />
     </button>
   );
 }

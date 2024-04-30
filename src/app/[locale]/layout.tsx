@@ -36,7 +36,7 @@ export default function RootLayout({ children, params }: Props) {
     <NextIntlClientProvider locale={lngPref} messages={translations}>
       <html lang={lngPref} className={themePref}>
         <body
-          className={`${georgian.className} text-black dark:text-white h-screen w-full flex flex-col bg-white dark:bg-[#25292D] transition-colors duration-300`}
+          className={`${georgian.className} text-[#3D52A1] bg-[#EEE8F6] dark:text-[#EEE8F6] dark:bg-[#3D52A1] w-full flex flex-col transition-colors duration-300`}
         >
           {children}
         </body>
