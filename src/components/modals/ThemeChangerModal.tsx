@@ -6,8 +6,8 @@ import { themeList } from "../../lib/componentLists";
 interface Props {
   themeModalHandler: () => void;
   activeState: {
-    activeTheme: string | undefined;
-    setActiveTheme: React.Dispatch<React.SetStateAction<string | undefined>>;
+    activeTheme: string;
+    setActiveTheme: React.Dispatch<React.SetStateAction<string>>;
   };
 }
 

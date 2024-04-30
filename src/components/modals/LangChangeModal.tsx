@@ -7,25 +7,35 @@ import { languageList } from "../../lib/lists";
 
 function LangChangeModal({
   langModalHandler,
+  activeLang,
 }: {
   langModalHandler: () => void;
+  activeLang: string | undefined;
 }) {
   const t = useTranslations("Header.navigation.lngChanger");
   const path = usePathname();
   const route = path.substring(3);
 
   return (
-    <div className="bg-red-400 absolute top-11 right-0 z-50">
+    <div className="absolute top-12 left-0 rounded-lg py-2 bg-[#3D52A1] text-[#EEE8F6] dark:text-[#3D52A1] dark:bg-[#EEE8F6] z-50 flex flex-col gap-1 overflow-hidden">
       {languageList.map((item, idx) => (
-        <Link
+        <div
           key={idx}
-          href={`/${item.identifier}${route}`}
-          onClick={() => {
-            langModalHandler();
-          }}
+          className={`cursor-pointer flex gap-3 justify-start items-center px-4 py-2 ${
+            activeLang === item.identifier
+              ? "bg-[#8697C3]"
+              : "hover:bg-[#ADBADA] hover:text-[#3D52A1]"
+          }`}
         >
-          <p className="cursor-pointer">{t(item.title)}</p>
-        </Link>
+          <Link
+            href={`/${item.identifier}${route}`}
+            onClick={() => {
+              langModalHandler();
+            }}
+          >
+            <p className="cursor-pointer">{t(item.title)}</p>
+          </Link>
+        </div>
       ))}
     </div>
   );

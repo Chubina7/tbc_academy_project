@@ -2,10 +2,10 @@ import React from "react";
 import Navigation from "./Navigation";
 // import BurgerMenu from "./BurgerMenu";
 import SignOutBtn from "./SignOutBtn";
-import LangChange from "./langComponent/LangChange";
 import Logo from "./Logo";
 import { RxDividerVertical } from "react-icons/rx";
 import ThemeChanger from "./themeComponent/ThemeChanger";
+import LangChanger from "./langComponent/LangChanger";
 
 export default function Header() {
   return (
@@ -14,9 +14,9 @@ export default function Header() {
       <div className="hidden sm:flex justify-center items-center">
         <Navigation />
         <RxDividerVertical size={32} opacity={"60%"} />
-        <div className="h-full flex justify-center items-center">
+        <div className="h-full flex justify-center items-center gap-2 mr-3">
           <ThemeChanger />
-          <LangChange />
+          <LangChanger />
         </div>
         <SignOutBtn />
       </div>

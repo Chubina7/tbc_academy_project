@@ -1,8 +1,8 @@
 import React from "react";
-import LangChange from "../header/langComponent/LangChange";
 import SignOutBtn from "../header/SignOutBtn";
 import { IoClose } from "react-icons/io5";
 import Navigation from "../header/Navigation";
+// import LangChanger from "../header/langComponent/LangChanger";
 // import ThemeChanger from "../header/themeComponent/ThemeChanger";
 
 function BurgerModal({ modalStateHandler }: { modalStateHandler: () => void }) {
@@ -16,7 +16,7 @@ function BurgerModal({ modalStateHandler }: { modalStateHandler: () => void }) {
       </button>
       <ul className="flex flex-col sm:flex-row justify-center items-center gap-4 select-none">
         <Navigation />
-        <LangChange />
+        {/* <LangChanger /> */}
         {/* <ThemeChanger /> */}
         <SignOutBtn />
       </ul>
