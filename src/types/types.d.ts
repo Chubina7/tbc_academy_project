@@ -7,3 +7,4 @@ type LogOutResponse = { message: string }
 type SetQueryType = React.Dispatch<React.SetStateAction<string>>
 type SetSortRuleType = React.Dispatch<React.SetStateAction<boolean>>
 type SortStateType = { sortRule: boolean; setSortRule: SetSortRuleType };
+type ThemeListType = Record<string, { title: string; icon: React.ReactNode }>;

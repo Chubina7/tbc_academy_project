@@ -4,7 +4,11 @@ import { useState } from "react";
 import { themeList } from "../../../lib/componentLists";
 import ThemeChangerModal from "../../modals/ThemeChangerModal";
 
-function ThemeChangerUi({ storedTheme }: { storedTheme: string | undefined }) {
+interface Props {
+  storedTheme: string | undefined;
+}
+
+function ThemeChangerUi({ storedTheme }: Props) {
   const [isOpen, setisOpen] = useState<boolean>(false);
   const [activeTheme, setActiveTheme] = useState(() => storedTheme);
 

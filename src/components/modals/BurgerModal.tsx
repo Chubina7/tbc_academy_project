@@ -5,7 +5,7 @@ import { IoClose } from "react-icons/io5";
 import Navigation from "../header/Navigation";
 // import ThemeChanger from "../header/themeComponent/ThemeChanger";
 
-function BurgerModal({ modalStateHandler }: { modalStateHandler: any }) {
+function BurgerModal({ modalStateHandler }: { modalStateHandler: () => void }) {
   return (
     <div className="fixed w-full h-full left-0 top-0 bg-white dark:bg-[#25292D] p-6 z-50">
       <button

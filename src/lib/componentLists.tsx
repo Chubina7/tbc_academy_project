@@ -1,6 +1,6 @@
 import { FiMonitor, FiMoon, FiSun } from "react-icons/fi";
 
-export const themeList: Record<string, any> = {
+export const themeList: ThemeListType = {
   light: {
     title: "light",
     icon: <FiSun size={20} />,

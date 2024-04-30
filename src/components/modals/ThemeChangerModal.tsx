@@ -3,13 +3,12 @@ import { setTheme } from "../../lib/helpers";
 import { storeThemeInCookies } from "../../lib/actions";
 import { themeList } from "../../lib/componentLists";
 
-function ThemeChangerModal({
-  themeModalHandler,
-  activeThemeSetter,
-}: {
+interface Props {
   themeModalHandler: () => void;
-  activeThemeSetter: any;
-}) {
+  activeThemeSetter: React.Dispatch<React.SetStateAction<string | undefined>>;
+}
+
+function ThemeChangerModal({ themeModalHandler, activeThemeSetter }: Props) {
   const t = useTranslations("Header.navigation.themeChanger");
 
   return (
