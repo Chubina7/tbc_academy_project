@@ -5,20 +5,28 @@ import { themeList } from "../../lib/componentLists";
 
 interface Props {
   themeModalHandler: () => void;
-  activeThemeSetter: React.Dispatch<React.SetStateAction<string | undefined>>;
+  activeState: {
+    activeTheme: string | undefined;
+    setActiveTheme: React.Dispatch<React.SetStateAction<string | undefined>>;
+  };
 }
 
-function ThemeChangerModal({ themeModalHandler, activeThemeSetter }: Props) {
+function ThemeChangerModal({ themeModalHandler, activeState }: Props) {
   const t = useTranslations("Header.navigation.themeChanger");
+  const { activeTheme, setActiveTheme } = activeState;
 
   return (
-    <div className="absolute top-11 right-0 p-4 rounded-lg bg-[#3D52A1] text-[#EEE8F6] dark:text-[#3D52A1] dark:bg-[#EEE8F6] z-50 flex flex-col gap-3">
+    <div className="absolute top-12 right-0 rounded-lg py-2 bg-[#3D52A1] text-[#EEE8F6] dark:text-[#3D52A1] dark:bg-[#EEE8F6] z-50 flex flex-col gap-1 overflow-hidden">
       {Object.entries(themeList).map((item, idx) => (
         <div
           key={idx}
-          className="cursor-pointer flex gap-1 justify-start items-center"
+          className={`cursor-pointer flex gap-3 justify-start items-center px-4 py-2 ${
+            activeTheme === item[1].title
+              ? "bg-[#8697C3]"
+              : "hover:bg-[#ADBADA] hover:text-[#3D52A1]"
+          }`}
           onClick={() => {
-            activeThemeSetter(item[1].title);
+            setActiveTheme(item[1].title);
             setTheme(item[1].title);
             storeThemeInCookies(item[1].title);
             themeModalHandler();

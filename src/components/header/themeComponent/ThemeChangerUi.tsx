@@ -17,7 +17,9 @@ function ThemeChangerUi({ storedTheme }: Props) {
   return (
     <div className="relative flex justify-center items-center gap-1">
       <div
-        className="flex h-full justify-center items-center cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100"
+        className={`flex h-full justify-center items-center cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100 ${
+          isOpen && "opacity-100"
+        }`}
         onClick={handleModal}
       >
         {activeTheme ? themeList[activeTheme].icon : themeList.os.icon}
@@ -25,7 +27,7 @@ function ThemeChangerUi({ storedTheme }: Props) {
       {isOpen && (
         <ThemeChangerModal
           themeModalHandler={handleModal}
-          activeThemeSetter={setActiveTheme}
+          activeState={{ activeTheme, setActiveTheme }}
         />
       )}
     </div>
