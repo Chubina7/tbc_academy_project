@@ -17,7 +17,7 @@ export default function ProductList({
     : [...list];
 
   return (
-    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-y-5 gap-x-10">
       {data
         .filter((item) =>
           item.title.toLowerCase().includes(searchFilterKeyword)

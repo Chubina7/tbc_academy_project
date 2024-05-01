@@ -1,24 +1,30 @@
+"use client";
+
 import React from "react";
-import LangChange from "./LangChange";
-import NavItems from "./NavItems";
-import SignOutBtn from "./SignOutBtn";
-import ThemeChange from "./ThemeChange";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
+import { navItems } from "../../lib/lists";
 
-interface NavigationProps {
-  closeBurgerModal?: () => void;
-  lng: string;
-}
+import Link from "next/link";
 
-export default async function Navigation({
-  closeBurgerModal,
-  lng,
-}: NavigationProps) {
+export default function Navigation() {
+  const t = useTranslations("Header.navigation.navItems");
+  const path = usePathname();
+
   return (
-    <ul className="flex flex-col sm:flex-row justify-center items-center gap-4 select-none">
-      <NavItems action={closeBurgerModal} lng={lng} />
-      <LangChange action={closeBurgerModal} />
-      <ThemeChange action={closeBurgerModal} />
-      <SignOutBtn />
+    <ul className="flex flex-col sm:flex-row justify-center items-center gap-2 select-none">
+      {navItems.map((navItem, idx) => (
+        <li
+          key={idx}
+          className={`transition-all duration-300 font-bold py-1 px-2 ${
+            path === navItem.whenActive
+              ? "text-inherit"
+              : "text-[#8697C3] hover:text-inherit"
+          }`}
+        >
+          <Link href={navItem.href}>{t(navItem.placeholder)}</Link>
+        </li>
+      ))}
     </ul>
   );
 }

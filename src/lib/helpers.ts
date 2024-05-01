@@ -46,16 +46,6 @@ export async function getAuthor(id: number) {
 }
 
 // Preferences
-// export const getLocale = (request: NextRequest) => {
-//   const negotiatorHeaders: Record<string, string> = {};
-//   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-//   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-//   const locales = i18n.locales;
-
-//   const locale = match(languages, locales, i18n.defaultLocale);
-//   return locale;
-// };
 export const setTheme = (pref: string) => {
   if (pref === "os") {
     document.documentElement.classList.remove("light");

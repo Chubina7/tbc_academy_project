@@ -1,5 +1,4 @@
 import React from "react";
-import { buttonUI } from "../../../lib/styles";
 import { useTranslations } from "next-intl";
 
 export default function SortBtn({ sortState }: { sortState: SortStateType }) {
@@ -8,7 +7,7 @@ export default function SortBtn({ sortState }: { sortState: SortStateType }) {
 
   return (
     <button
-      className={`sm:min-w-60 nowrap px-6 py-2 ${buttonUI} z-40 bg-[#F25050]`}
+      className="sm:min-w-60 nowrap px-6 py-2 rounded-full font-bold text-[#EEE8F6] bg-[#3D52A1] dark:bg-[#EEE8F6] dark:text-[#3D52A1] transition-all duration-300"
       onClick={() => setSortRule((prev) => !prev)}
     >
       {sortRule ? t("unSort") : t("sort")}

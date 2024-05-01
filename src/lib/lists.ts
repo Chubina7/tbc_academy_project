@@ -1,6 +1,13 @@
 export const navItems = [
-  { placeholder: "home", href: "" },
-  { placeholder: "blog", href: "/blog" },
-  { placeholder: "contact", href: "/contact" },
-  { placeholder: "profile", href: "/profile" },
+  { placeholder: "home", href: "/", whenActive: "/" },
+  { placeholder: "products", href: "/products", whenActive: "/products" },
+  { placeholder: "blog", href: "/blog", whenActive: "/blog" },
+  { placeholder: "contact", href: "/contact", whenActive: "/contact" },
+  { placeholder: "profile", href: "/profile", whenActive: "/profile" },
+];
+
+
+export const languageList = [
+  { title: "geo", identifier: "ka" },
+  { title: "eng", identifier: "en" },
 ];

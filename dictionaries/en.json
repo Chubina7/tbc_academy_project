@@ -38,11 +38,12 @@
                 "home": "Home",
                 "blog": "Blog",
                 "contact": "Contact",
-                "profile": "Profile"
+                "profile": "Profile",
+                "products": "Products"
             },
             "lngChanger": {
-                "geo": "Ge",
-                "eng": "En"
+                "geo": "Georgian",
+                "eng": "English"
             },
             "themeChanger": {
                 "light": "Light",
@@ -59,7 +60,8 @@
             "unSort": "Unsort"
         },
         "productItem": {
-            "seeMoreBtn": "See Details"
+            "addToCart": "Add to Cart",
+            "currency": "$"
         },
         "dynamicProductItem": {
             "brand": "Brand",

@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { HiOutlineCursorClick } from "react-icons/hi";
 
 export default function ProductItem({
   title,
@@ -11,31 +14,45 @@ export default function ProductItem({
   route,
 }: IProduct) {
   const t = useTranslations("Products.productItem");
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="w-full flex flex-col justify-start items-start p-3 rounded-lg bg-[#202326] shadow-xl">
-      <div className="relative w-full min-h-64">
+    <div className="w-full overflow-hidden flex flex-col justify-start items-start gap-2">
+      <Link
+        href={`/products/${route}`}
+        className="relative w-full rounded-md overflow-hidden"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <Image
-          className="rounded-md object-cover"
+          className="w-full h-72 object-cover "
           src={thumbnail}
           alt={title}
-          fill
+          width={570}
+          height={700}
         />
-      </div>
-      <div className="h-full w-full flex flex-col justify-between gap-5 p-4">
-        <div className="flex flex-col gap-3">
-          <h1 className="text-2xl font-bold">{title}</h1>
-          <p className="opacity-60">{description}</p>
-        </div>
-        <div className="flex justify-between items-center">
-          <strong>$ {price}</strong>
-          <Link href={`/products/${route}`}>
-            <button className="bg-[#F25050] text-inherit rounded-full px-4 py-1">
-              {t("seeMoreBtn")}
-            </button>
-          </Link>
-        </div>
-      </div>
+        {isHovered && (
+          <>
+            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60" />
+            <div className="absolute top-0 left-0 w-full h-full flex justify-between items-end px-6 py-3">
+              <h1 className="text-xl font-bold text-[#EEE8F6]">
+                {t("currency")} {price}
+              </h1>
+              <div className="flex gap-2 items-start justify-center">
+                <p className="italic text-xs text-[#EEE8F6]">
+                  Click to open details
+                </p>
+                <HiOutlineCursorClick size={18} color="#EEE8F6" />
+              </div>
+            </div>
+          </>
+        )}
+      </Link>
+      <h1 className="font-bold text-lg">{title}</h1>
+      <p className="flex-1 align-top text-sm opacity-70">{description}</p>
+      <button className="w-full rounded-md bg-[#3D52A1] text-[#EEE8F6] dark:bg-[#EEE8F6] dark:text-[#3D52A1] py-1 mt-4 hover:opacity-70">
+        {t("addToCart")}
+      </button>
     </div>
   );
 }

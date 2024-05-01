@@ -15,8 +15,8 @@ export default function RootLayout({ children, params }: Props) {
 
   return (
     <>
-      <Header lng={locale} />
-      <main className="w-full max-w-screen-2xl h-full p-8 py-6 mx-auto overflow-y-auto z-40">
+      <Header />
+      <main className="w-full max-w-screen-2xl min-h-screen p-8 py-6 mx-auto mt-16">
         {children}
       </main>
       <div className="hidden sm:block">
