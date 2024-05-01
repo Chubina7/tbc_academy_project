@@ -17,7 +17,7 @@ export default function Navigation() {
         <li
           key={idx}
           className={`transition-all duration-300 font-bold py-1 px-2 ${
-            path.substring(3) === navItem.whenActive
+            path === navItem.whenActive
               ? "text-inherit"
               : "text-[#8697C3] hover:text-inherit"
           }`}

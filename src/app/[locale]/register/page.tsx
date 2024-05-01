@@ -16,7 +16,7 @@ interface Props {
 export default function RegisterPage({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale);
   if (cookies().has(AUTH_COOKIE_KEY)) {
-    redirect(`/${locale}`); // possible to redirect to the previous requested page
+    redirect(`/`); // possible to redirect to the previous requested page
   }
   const t = useTranslations("Auth.register");
 
