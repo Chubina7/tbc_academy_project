@@ -21,7 +21,7 @@ export default function LoginPage({ params: { locale } }: Props) {
   const t = useTranslations("Auth");
 
   return (
-    <main className="w-full h-screen flex flex-col justify-center items-center gap-16 sm:p-14 bg-white dark:bg-[#25292D]">
+    <main className="w-full h-screen flex flex-col justify-center items-center gap-16 sm:p-14 bg-inherit">
       <h1 className="text-4xl sm:text-5xl">{t("login.title")}</h1>
       <div className="flex flex-col gap-10 bg-gray-700 p-6 rounded-xl sm:text-xl">
         <LoginForm />
