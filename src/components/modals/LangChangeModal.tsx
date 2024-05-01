@@ -14,7 +14,6 @@ function LangChangeModal({
 }) {
   const t = useTranslations("Header.navigation.lngChanger");
   const path = usePathname();
-  const route = path.substring(3);
 
   return (
     <div className="absolute top-12 left-0 rounded-lg py-2 bg-[#3D52A1] text-[#EEE8F6] dark:text-[#3D52A1] dark:bg-[#EEE8F6] z-50 flex flex-col gap-1 overflow-hidden">
@@ -28,7 +27,7 @@ function LangChangeModal({
           }`}
         >
           <Link
-            href={`/${item.identifier}${route}`}
+            href={`/${item.identifier}${path}`}
             onClick={() => {
               langModalHandler();
             }}

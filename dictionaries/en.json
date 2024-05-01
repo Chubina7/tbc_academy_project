@@ -38,7 +38,8 @@
                 "home": "Home",
                 "blog": "Blog",
                 "contact": "Contact",
-                "profile": "Profile"
+                "profile": "Profile",
+                "products": "Products"
             },
             "lngChanger": {
                 "geo": "Georgian",
@@ -59,7 +60,8 @@
             "unSort": "Unsort"
         },
         "productItem": {
-            "seeMoreBtn": "See Details"
+            "addToCart": "Add to Cart",
+            "currency": "$"
         },
         "dynamicProductItem": {
             "brand": "Brand",

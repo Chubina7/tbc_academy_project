@@ -1,5 +1,21 @@
-import { redirect } from "next/navigation";
+import React from "react";
+import { unstable_setRequestLocale } from "next-intl/server";
+import Products from "../../../../components/homeComp/Products";
+import { getAllProducts } from "../../../../lib/helpers";
 
-export default function ProductsPage() {
-  return redirect("/"); // redirect to the page, where products are placed (home in this situation)
+// Types
+interface Props {
+  params: IParams;
+}
+
+// Component
+export default async function ProductsPage({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
+  const data = await getAllProducts();
+
+  return (
+    <div className="w-full flex flex-col items-center gap-6">
+      <Products data={data} />
+    </div>
+  );
 }

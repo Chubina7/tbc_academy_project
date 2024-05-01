@@ -9,7 +9,7 @@ import LangChanger from "./langComponent/LangChanger";
 
 export default function Header() {
   return (
-    <header className="fixed w-full h-16 p-4 flex justify-between items-center bg-inherit text-inherit shadow-xl z-50">
+    <header className="fixed w-full h-16 p-4 flex justify-between items-center bg-inherit text-inherit z-50">
       <Logo />
       <div className="hidden sm:flex justify-center items-center">
         <Navigation />

@@ -38,7 +38,8 @@
                 "home": "მთავარი",
                 "blog": "ბლოგი",
                 "contact": "კონტაქტი",
-                "profile": "პროფილი"
+                "profile": "პროფილი",
+                "products": "პროდუქცია"
             },
             "lngChanger": {
                 "geo": "ქართული",
@@ -59,7 +60,8 @@
             "unSort": "დაბრუნება"
         },
         "productItem": {
-            "seeMoreBtn": "მეტის ნახვა"
+            "addToCart": " კალათაში დამატება",
+            "currency": "₾"
         },
         "dynamicProductItem": {
             "brand": "ბრენდი",

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { inputUI } from "../../../lib/styles";
 import { useTranslations } from "next-intl";
 
 export default function SearchInput({ setQuery }: { setQuery: SetQueryType }) {
@@ -20,7 +19,7 @@ export default function SearchInput({ setQuery }: { setQuery: SetQueryType }) {
 
   return (
     <input
-      className={`w-full px-6 py-2 border-[#343A40] ${inputUI}`}
+      className="w-full px-6 py-2 bg-[#ADBADA] text-[#3D52A1] placeholder:text-[#3D52A1] rounded-full focus:outline-none"
       type="search"
       placeholder={t("searchInput")}
       onChange={handleChange}
