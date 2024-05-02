@@ -1,6 +1,6 @@
 import React from "react";
 import { unstable_setRequestLocale } from "next-intl/server";
-import Products from "../../../../components/homeComp/Products";
+import Products from "../../../../components/productsComp/Products";
 import { getAllProducts } from "../../../../lib/helpers";
 
 // Types

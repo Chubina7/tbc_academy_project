@@ -2,7 +2,7 @@ import React from "react";
 import SearchInput from "./SearchInput";
 import SortBtn from "./SortBtn";
 
-export default function HomeActions({
+export default function ProductsActions({
   sortState,
   queryState,
 }: {

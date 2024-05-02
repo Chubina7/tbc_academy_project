@@ -11,7 +11,7 @@ export default function SearchInput({ setQuery }: { setQuery: SetQueryType }) {
     if (timeoutId) clearTimeout(timeoutId);
 
     const newTimeoutId = setTimeout(() => {
-      setQuery(e.target.value);
+      setQuery(e.target.value.trim());
     }, 1000);
 
     setTimeoutId(newTimeoutId);
