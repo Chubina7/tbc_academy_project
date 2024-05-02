@@ -5,16 +5,16 @@ import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 export async function POST(req: NextRequest) {
   const { username, password }: IUserLoginInfo = await req.json();
+  const options: Partial<ResponseCookie> = { secure: true, sameSite: "none" };
 
-  try {
-    const res = await fetch("https://dummyjson.com/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
-    const user: IUserIsAuthed = await res.json();
+  const res = await fetch("https://dummyjson.com/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+  const user: IUserIsAuthed = await res.json();
 
-    const options: Partial<ResponseCookie> = { secure: true, sameSite: "none" };
+  if (user.token) {
     cookies().set(AUTH_COOKIE_KEY, user.token, options);
     cookies().set("id", user.id.toString(), options);
     cookies().set("email", user.email, options);
@@ -28,11 +28,11 @@ export async function POST(req: NextRequest) {
       message: "Loggined successfully!",
       user,
     });
-  } catch (error) {
+  } else {
     return Response.json({
       status: 401,
-      message: "Can not login!",
-      error,
-    });
+      message: "Unable to login!",
+    })
   }
+
 }

@@ -7,7 +7,13 @@
                 "usernameInput": "example123",
                 "passwordLabel": "Enter valid password",
                 "passwordInput": "Password",
-                "signInBtn": "Sign in"
+                "signInBtn": "Sign in",
+                "messages": {
+                    "empty": "Unable to pass empty data!",
+                    "fillBoth": "One of these fields is empty. Please, fill both!",
+                    "invalid": "Invalid credentials",
+                    "handlerError": "Erorr happened. Check browser console for more information."
+                }
             },
             "info": {
                 "text": "If you dont have accout, Sign Up",

@@ -1,11 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useTranslations } from "use-intl";
 
 function LoginForm() {
   const t = useTranslations("Auth.login.form");
+  const [problem, setProblem] = useState<{ type: string; message: string }>();
   const router = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -16,30 +17,42 @@ function LoginForm() {
     const username = usernameRef.current?.value;
     const password = passwordRef.current?.value;
 
-    // Validate input
-    // ...
-
-    try {
-      const data: IUserLoginInfo = { username, password };
-
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+    if (username?.trim() === "" && password?.trim() === "") {
+      setProblem({
+        type: "error",
+        message: t("messages.empty"),
       });
+    } else if (username?.trim() === "" || password?.trim() === "") {
+      setProblem({
+        type: "error",
+        message: t("messages.fillBoth"),
+      });
+    } else {
+      try {
+        const userCredentials: IUserLoginInfo = { username, password };
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userCredentials),
+        });
+        const result: LoginResponse = await res.json();
 
-      const parsed: LoginResponse = await res.json();
-
-      if (parsed.status === 200) {
-        router.refresh();
-        console.log(parsed.message);
-      } else {
-        // Showing appropriate UI
-        console.error(parsed.message);
+        if (result.status === 200) {
+          router.replace("/");
+          setProblem({ type: "success", message: "" });
+        } else {
+          setProblem({
+            type: "error",
+            message: t("messages.invalid"),
+          });
+        }
+      } catch (error) {
+        setProblem({
+          type: "error",
+          message: t("messages.handlerError"),
+        });
+        console.error(error);
       }
-    } catch (error) {
-      // Showing appropriate UI
-      console.error("An error occurred:", error);
     }
   };
 
@@ -69,6 +82,9 @@ function LoginForm() {
           name="password"
         />
       </div>
+      {problem && (
+        <p className="italic text-red-700 text-sm">{problem.message}</p>
+      )}
       <button className="w-full bg-white text-black rounded-full py-1">
         {t("signInBtn")}
       </button>

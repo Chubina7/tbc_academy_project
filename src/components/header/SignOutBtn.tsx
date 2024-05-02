@@ -21,7 +21,6 @@ export default function SignOutBtn() {
       className="text-[#EEE8F6] bg-[#3D52A1] dark:text-[#3D52A1] dark:bg-[#EEE8F6] px-5 py-1 font-bold rounded-full flex justify-center items-center gap-2 transition-all duration-300 opacity-70 hover:opacity-100"
       onClick={async () => {
         signOutHandler();
-        router.refresh();
         router.replace(`/login`);
       }}
     >
