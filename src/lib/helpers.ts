@@ -1,7 +1,4 @@
-// import { match } from "@formatjs/intl-localematcher";
-// import Negotiator from "negotiator";
-// import { i18n } from "../i18n";
-// import { NextRequest } from "next/server";
+import { sql } from "@vercel/postgres";
 
 // Products
 export async function getAllProducts() {
@@ -44,9 +41,20 @@ export async function getAuthor(id: number) {
 
   return data;
 }
+export async function registerUser({ username, email, password }: IUserCredentials) {
+  const user_id = generateUniqueId()
+  // Store in auth table
+  await sql`INSERT INTO user_credentials (user_id, username, email, password) VALUES (${user_id}, ${username}, ${email}, ${password});`;
+  // Update public info table
+  await sql`INSERT INTO user_publics (user_id, username, email)
+            SELECT user_id, username, email FROM user_credentials
+            ON CONFLICT (user_id) DO UPDATE
+            SET username = EXCLUDED.username, email = EXCLUDED.email, user_id = EXCLUDED.user_id;`
+}
+
 
 // Preferences
-export const setTheme = (pref: string) => {
+export function setTheme(pref: string) {
   if (pref === "os") {
     document.documentElement.classList.remove("light");
     document.documentElement.classList.remove("dark");
@@ -58,3 +66,16 @@ export const setTheme = (pref: string) => {
     localStorage.setItem("theme", pref);
   }
 };
+
+// Generators
+export function generateUniqueId() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = chars.length;
+  let userID = '';
+
+  for (let i = 0; i < 5; i++) {
+    userID += chars.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return userID;
+}

@@ -114,6 +114,18 @@ interface IUserIsAuthed {
     token: string
 }
 
+interface IUserCredentials {
+    username: string,
+    email: string,
+    password: string
+}
+interface IUserPublics {
+    user_id: string,
+    username: string,
+    email: string,
+    age: number
+}
+
 // General for Components
 interface IMetaData {
     title: string
