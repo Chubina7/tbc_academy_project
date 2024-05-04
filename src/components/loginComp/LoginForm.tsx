@@ -28,31 +28,6 @@ function LoginForm() {
         message: t("messages.fillBoth"),
       });
     } else {
-      // try {
-      //   const userCredentials: IUserLoginInfo = { username, password };
-      //   const res = await fetch("/api/auth/login", {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify(userCredentials),
-      //   });
-      //   const result: LoginResponse = await res.json();
-
-      //   if (result.status === 200) {
-      //     router.replace("/");
-      //     setProblem({ type: "success", message: "" });
-      //   } else {
-      //     setProblem({
-      //       type: "error",
-      //       message: t("messages.invalid"),
-      //     });
-      //   }
-      // } catch (error) {
-      //   setProblem({
-      //     type: "error",
-      //     message: t("messages.handlerError"),
-      //   });
-      //   console.error(error);
-      // }
       const userCredentials: IUserLoginInfo = { username, password };
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -60,7 +35,7 @@ function LoginForm() {
         body: JSON.stringify(userCredentials),
       });
       const result = await res.json();
-      
+
       router.replace("/");
 
       console.log(result);

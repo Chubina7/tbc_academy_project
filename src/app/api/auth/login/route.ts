@@ -11,9 +11,9 @@ export async function POST(req: NextRequest) {
   // Signing in
   try {
     const credentials = await checkUserCredentials({ username, password })
-    if (credentials.length === 0) return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 })
+    if (credentials.length === 0) throw new Error()
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 })
+    return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 })
   }
 
   // On success

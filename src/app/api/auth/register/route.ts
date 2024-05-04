@@ -1,35 +1,25 @@
 import { sql } from '@vercel/postgres';
 import { NextRequest, NextResponse } from 'next/server';
-import { registerUser } from '../../../../lib/helpers';
-import { cookies } from 'next/headers';
-import { AUTH_COOKIE_KEY } from '../../../../lib/variables';
-import { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
+import { getUser, insertUserCredentials } from '../../../../lib/helpers';
+import { setSession } from '../../../../lib/actions';
 
 export async function POST(req: NextRequest) {
-    // Helper variables
-    const options: Partial<ResponseCookie> = { secure: true, sameSite: "none", httpOnly: true, path: "/" };
-    // Reading incoming data
-    const data = await req.json()
-    const username = data.username;
-    const email = data.email;
-    const password = data.password;
+    const { username, email, password } = await req.json()
 
     // Validation
-    if (!username || !email || !password) return NextResponse.json({ message: "One of the required data is empty" }, { status: 500 });
+    if (!username || !email || !password) return NextResponse.json({ message: "Unable to pass empty values" }, { status: 400 });
 
-    // 
+    // Signing up
     try {
-        registerUser({ username, email, password })
+        await insertUserCredentials({ username, email, password })
     } catch (error) {
-        return NextResponse.json({ error }, { status: 500 });
+        return NextResponse.json({ message: "Email is already in use. Please choose a different one.", dbError: error }, { status: 409 });
     }
 
     // On success
-    const result = await sql`SELECT * FROM user_publics WHERE email = ${email};`;
-
-    cookies().set(AUTH_COOKIE_KEY, "test_session", options)
-
-    return NextResponse.json(result, { status: 200 });
+    const user = await getUser(username);
+    setSession(user.user_id)
+    return NextResponse.json(user, { status: 200 });
 }
 
 // FOR DEVELOPMENT PURPOSE

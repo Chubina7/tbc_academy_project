@@ -41,7 +41,7 @@ export async function getAuthor(id: number) {
 
   return data;
 }
-export async function registerUser({ username, email, password }: IUserCredentials) {
+export async function insertUserCredentials({ username, email, password }: IUserCredentials) {
   const user_id = generateUniqueId()
   // Store in auth table
   await sql`INSERT INTO user_credentials (user_id, username, email, password) VALUES (${user_id}, ${username}, ${email}, ${password});`;
@@ -85,4 +85,9 @@ export function generateUniqueId() {
   }
 
   return userID;
+}
+
+
+export function dbError() {
+  // should get error code and show different text messages
 }

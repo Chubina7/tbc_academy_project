@@ -24,23 +24,17 @@ function RegisterForm() {
 
     try {
       const user = { username, email, password };
-      const res = await fetch(
-        `http://localhost:3000/api/auth/register?username=${username}&email=${email}&password=${password}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user),
-        }
-      );
+      const res = await fetch(`http://localhost:3000/api/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
 
       const result = await res.json();
 
-      if (res.ok) {
-        router.replace("/");
-        console.log(result.users.rows);
-      }
+      router.replace("/");
+
+      console.log(result);
     } catch (error) {
       console.error("error", error);
     }
