@@ -3,8 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { registerUser } from '../../../../lib/helpers';
 import { cookies } from 'next/headers';
 import { AUTH_COOKIE_KEY } from '../../../../lib/variables';
+import { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 
 export async function POST(req: NextRequest) {
+    // Helper variables
+    const options: Partial<ResponseCookie> = { secure: true, sameSite: "none", httpOnly: true, path: "/" };
     // Reading incoming data
     const data = await req.json()
     const username = data.username;
@@ -14,19 +17,19 @@ export async function POST(req: NextRequest) {
     // Validation
     if (!username || !email || !password) return NextResponse.json({ message: "One of the required data is empty" }, { status: 500 });
 
-    // Trying to register the user
+    // 
     try {
-        // Store user data in database
         registerUser({ username, email, password })
-        // Set up session *logic must be changed*
-        cookies().set(AUTH_COOKIE_KEY, "test_session", { httpOnly: true, path: "/", sameSite: false })
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 });
     }
 
-    // Return every user
-    const users = await sql`SELECT * FROM user_publics;`;
-    return NextResponse.json({ users }, { status: 200 });
+    // On success
+    const result = await sql`SELECT * FROM user_publics WHERE email = ${email};`;
+
+    cookies().set(AUTH_COOKIE_KEY, "test_session", options)
+
+    return NextResponse.json(result, { status: 200 });
 }
 
 // FOR DEVELOPMENT PURPOSE

@@ -51,7 +51,14 @@ export async function registerUser({ username, email, password }: IUserCredentia
             ON CONFLICT (user_id) DO UPDATE
             SET username = EXCLUDED.username, email = EXCLUDED.email, user_id = EXCLUDED.user_id;`
 }
-
+export async function checkUserCredentials({ username, password }: { username: string, password: string }) {
+  const data = await sql`SELECT * FROM user_credentials WHERE username = ${username} AND password = ${password}`
+  return data.rows
+}
+export async function getUser(username: string) {
+  const data = await sql`SELECT * FROM user_publics WHERE username = ${username}`
+  return data.rows[0]
+}
 
 // Preferences
 export function setTheme(pref: string) {
