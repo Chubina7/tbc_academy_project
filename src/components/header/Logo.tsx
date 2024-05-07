@@ -4,8 +4,8 @@ import { PiGitlabLogoFill } from "react-icons/pi";
 
 function Logo() {
   return (
-    <Link href={"/"} className="mx-2">
-      <PiGitlabLogoFill size={36} color="inherit" />
+    <Link href={"/dashboard"} className="m-4">
+      <PiGitlabLogoFill size={36} color="#603CFF" />
     </Link>
   );
 }
