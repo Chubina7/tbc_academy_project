@@ -7,6 +7,7 @@ import { useTranslations } from "use-intl";
 function LoginForm() {
   const t = useTranslations("Auth.login.form");
   const [problem, setProblem] = useState<{ type: string; message: string }>();
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -28,6 +29,7 @@ function LoginForm() {
         message: t("messages.fillBoth"),
       });
     } else {
+      setIsLoading(true);
       const userCredentials: IUserLoginInfo = { username, password };
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -36,9 +38,14 @@ function LoginForm() {
       });
       const result = await res.json();
 
-      router.replace("/");
+      if (res.status === 200) {
+        router.refresh();
+      } else {
+        console.log({ status: res.status });
+      }
 
       console.log(result);
+      setIsLoading(false);
     }
   };
 
@@ -72,7 +79,7 @@ function LoginForm() {
         <p className="italic text-red-700 text-sm">{problem.message}</p>
       )}
       <button className="w-full bg-white text-black rounded-full py-1">
-        {t("signInBtn")}
+        {isLoading ? "Wait..." : t("signInBtn")}
       </button>
     </form>
   );
