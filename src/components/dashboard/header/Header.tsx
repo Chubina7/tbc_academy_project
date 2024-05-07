@@ -8,8 +8,8 @@ import LangChanger from "../../header/langComponent/LangChanger";
 
 function Header() {
   return (
-    <header className="bg-inherit text-inherit | w-full flex justify-between items-center p-3 pt-5 rounded-xl">
-      <div className="flex flex-col justify-center items-start">
+    <header className="bg-inherit text-inherit | w-full flex justify-between items-center py-3 pt-5 rounded-xl">
+      <div className="flex flex-col justify-center items-start gap-2">
         <RouteHistory />
         <PageHeading />
       </div>
