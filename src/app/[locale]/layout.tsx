@@ -2,7 +2,7 @@ import { Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
 import { cookies } from "next/headers";
 import { NextIntlClientProvider, useMessages } from "next-intl";
-import { supportedLocales } from "../../lib/variables";
+// import { supportedLocales } from "../../lib/variables";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 // Types
@@ -21,9 +21,9 @@ export const metadata: IMetaData = {
 };
 
 // Static Generation
-export function generateStaticParams() {
-  return supportedLocales.map((locale) => ({ locale }));
-}
+// export function generateStaticParams() {
+//   return supportedLocales.map((locale) => ({ locale }));
+// }
 
 // Component
 export default function RootLayout({ children, params }: Props) {

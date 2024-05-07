@@ -9,21 +9,21 @@ export default async function middleware(request: NextRequest) {
   // const en = supportedLocales[1];
 
   // Checking authentification
-  if (
-    !cookies().has(AUTH_COOKIE_KEY) &&
-    (path === `/` ||
-      path.startsWith(`/products`) ||
-      path.startsWith(`/blog`) ||
-      path === `/contact` ||
-      path === `/profile` ||
-      path === `/` ||
-      path.startsWith(`/products`) ||
-      path.startsWith(`/blog`) ||
-      path === `/contact` ||
-      path === `/profile`)
-  ) {
-    request.nextUrl.pathname = "/login"
-  }
+  // if (
+  //   !cookies().has(AUTH_COOKIE_KEY) &&
+  //   (path === `/` ||
+  //     path.startsWith(`/products`) ||
+  //     path.startsWith(`/blog`) ||
+  //     path === `/contact` ||
+  //     path === `/profile` ||
+  //     path === `/` ||
+  //     path.startsWith(`/products`) ||
+  //     path.startsWith(`/blog`) ||
+  //     path === `/contact` ||
+  //     path === `/profile`)
+  // ) {
+  //   request.nextUrl.pathname = "/login"
+  // }
 
   // Rewriting on the supported language
   const localeRewrite = createIntlMiddleware({
