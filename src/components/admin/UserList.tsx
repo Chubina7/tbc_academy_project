@@ -1,11 +1,8 @@
-"use client";
-
 import React from "react";
-import { BsPencilFill } from "react-icons/bs";
-import { MdDelete } from "react-icons/md";
-import { editUser, removeUser } from "../../lib/helpers";
+import RemoveUser from "./RemoveUser";
+import EditUser from "./EditUser";
 
-export default function UserList({ users }: { users: any }) {
+export default function UserList({ data }: { data: IUserPublics[] }) {
   return (
     <table className="w-full border border-black border-collapse p-3">
       <thead>
@@ -17,25 +14,17 @@ export default function UserList({ users }: { users: any }) {
         </tr>
       </thead>
       <tbody>
-        {users.map((user: any, idx: number) => (
+        {data.map((user: any, idx: number) => (
           <tr key={idx} className="border border-black text-center">
             <td className="p-3">{user.user_id}</td>
             <td>{user.username}</td>
             <td>{user.email}</td>
             <td>{user.age || "unknow"}</td>
             <td>
-              <BsPencilFill
-                size={20}
-                onClick={() => editUser(user.user_id)}
-                cursor="pointer"
-              />
+              <EditUser id={user.user_id} />
             </td>
             <td>
-              <MdDelete
-                size={20}
-                onClick={() => removeUser(user.user_id)}
-                cursor="pointer"
-              />
+              <RemoveUser id={user.user_id} />
             </td>
           </tr>
         ))}

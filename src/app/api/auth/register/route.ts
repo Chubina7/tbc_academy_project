@@ -1,7 +1,7 @@
 import { sql } from '@vercel/postgres';
 import { NextRequest, NextResponse } from 'next/server';
-import { getUser, insertUserCredentials } from '../../../../lib/helpers';
 import { setSession } from '../../../../lib/actions';
+import { psqlGetUser, psqlInsertUserCredentials } from '../../../../lib/sqlQueries';
 
 export async function POST(req: NextRequest) {
     const { username, email, password } = await req.json()
@@ -11,15 +11,13 @@ export async function POST(req: NextRequest) {
 
     // Signing up
     try {
-        await insertUserCredentials({ username, email, password })
+        await psqlInsertUserCredentials({ username, email, password })
+        const user = await psqlGetUser(username);
+        setSession(user.user_id)
+        return NextResponse.json(user, { status: 200 });
     } catch (error) {
         return NextResponse.json({ message: "Email is already in use. Please choose a different one.", dbError: error }, { status: 409 });
     }
-
-    // On success
-    const user = await getUser(username);
-    setSession(user.user_id)
-    return NextResponse.json(user, { status: 200 });
 }
 
 // FOR DEVELOPMENT PURPOSE

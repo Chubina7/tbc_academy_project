@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { checkUserCredentials, getUser } from "../../../../lib/helpers";
 import { setSession } from "../../../../lib/actions";
+import { psqlCheckUserCredentials, psqlGetUser } from "../../../../lib/sqlQueries";
 
 export async function POST(req: NextRequest) {
   const { username, password }: IUserLoginInfo = await req.json();
@@ -10,14 +10,13 @@ export async function POST(req: NextRequest) {
 
   // Signing in
   try {
-    const credentials = await checkUserCredentials({ username, password })
+    const credentials = await psqlCheckUserCredentials({ username, password })
     if (credentials.length === 0) throw new Error()
+
+    const user = await psqlGetUser(username)
+    setSession(user.user_id)
+    return NextResponse.json(user, { status: 200 })
   } catch (error) {
     return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 })
   }
-
-  // On success
-  const user = await getUser(username)
-  setSession(user.user_id)
-  return NextResponse.json(user, { status: 200 })
 }

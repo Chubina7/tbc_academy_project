@@ -1,13 +1,7 @@
 import React from "react";
 import UserList from "../../../../components/admin/UserList";
 import AddUser from "../../../../components/admin/AddUser";
-
-async function getUsers() {
-  const res = await fetch("http://localhost:3000/api/admin/get-users");
-  const json = await res.json();
-
-  return json;
-}
+import { getUsers } from "../../../../lib/helpers";
 
 export default async function page() {
   const users = await getUsers();
@@ -17,7 +11,7 @@ export default async function page() {
       <div className="flex gap-5 justify-center items-center">
         <AddUser />
       </div>
-      <UserList users={users} />
+      <UserList data={users} />
     </div>
   );
 }

@@ -1,5 +1,3 @@
-import { sql } from "@vercel/postgres";
-
 // Products
 export async function getAllProducts() {
   const res = await fetch("https://dummyjson.com/products");
@@ -41,43 +39,37 @@ export async function getAuthor(id: number) {
 
   return data;
 }
-export async function insertUserCredentials({ username, email, password }: IUserCredentials) {
-  const user_id = generateUniqueId()
-  // Store in auth table
-  await sql`INSERT INTO user_credentials (user_id, username, email, password) VALUES (${user_id}, ${username}, ${email}, ${password});`;
-  // Update public info table
-  await sql`INSERT INTO user_publics (user_id, username, email)
-            SELECT user_id, username, email FROM user_credentials
-            ON CONFLICT (user_id) DO UPDATE
-            SET username = EXCLUDED.username, email = EXCLUDED.email, user_id = EXCLUDED.user_id;`
+
+// sql
+export async function getUsers() {
+  const res = await fetch("http://localhost:3000/api/admin/get-users");
+  const result: IUserPublics[] = await res.json()
+
+  return result;
 }
-export async function checkUserCredentials({ username, password }: { username: string, password: string }) {
-  const data = await sql`SELECT * FROM user_credentials WHERE username = ${username} AND password = ${password}`
-  return data.rows
-}
-export async function getUser(username: string) {
-  const data = await sql`SELECT * FROM user_publics WHERE username = ${username}`
-  return data.rows[0]
-}
-export async function getAllUsers() {
-  const table = await sql`SELECT * FROM user_publics`
-  const result = table.rows
-  return result
-}
-export function addUser() {
-  console.log("adding user");
+export async function addUser(userData: IUserPublics) {
+  const res = await fetch("http://localhost:3000/api/admin/add-user", {
+    method: "POST",
+    body: JSON.stringify(userData),
+  });
+  const result = await res.json()
+  console.log(result)
 }
 export async function removeUser(user_id: string) {
-  await fetch("http://localhost:3000/api/admin/delete-user", {
+  const res = await fetch("http://localhost:3000/api/admin/delete-user", {
     method: "POST",
     body: JSON.stringify({ user_id }),
   });
+  const result = await res.json()
+  console.log(result)
 }
 export async function editUser(user_id: string) {
-  await fetch("http://localhost:3000/api/admin/edit-user", {
+  const res = await fetch("http://localhost:3000/api/admin/edit-user", {
     method: "POST",
     body: JSON.stringify({ user_id }),
   });
+  const result = await res.json()
+  console.log(result)
 }
 
 // Preferences

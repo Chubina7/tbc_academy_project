@@ -114,10 +114,17 @@ interface IUserIsAuthed {
     token: string
 }
 
-interface IUserCredentials {
-    username: string,
-    email: string,
+// sql
+interface IUserLogin {
+    username: string
     password: string
+}
+interface IUserRegister extends IUserLogin {
+    email: string,
+}
+
+interface IUserCredentials extends IUserRegister {
+    user_id: string
 }
 interface IUserPublics {
     user_id: string,
