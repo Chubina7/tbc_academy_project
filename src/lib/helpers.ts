@@ -59,6 +59,26 @@ export async function getUser(username: string) {
   const data = await sql`SELECT * FROM user_publics WHERE username = ${username}`
   return data.rows[0]
 }
+export async function getAllUsers() {
+  const table = await sql`SELECT * FROM user_publics`
+  const result = table.rows
+  return result
+}
+export function addUser() {
+  console.log("adding user");
+}
+export async function removeUser(user_id: string) {
+  await fetch("http://localhost:3000/api/admin/delete-user", {
+    method: "POST",
+    body: JSON.stringify({ user_id }),
+  });
+}
+export async function editUser(user_id: string) {
+  await fetch("http://localhost:3000/api/admin/edit-user", {
+    method: "POST",
+    body: JSON.stringify({ user_id }),
+  });
+}
 
 // Preferences
 export function setTheme(pref: string) {
