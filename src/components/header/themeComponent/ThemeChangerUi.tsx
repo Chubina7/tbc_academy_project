@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { themeList } from "../../../lib/componentLists";
 import ThemeChangerModal from "../../modals/ThemeChangerModal";
+import { themeList } from "../../../lib/componentLists";
 
 interface Props {
   storedTheme: string | undefined;

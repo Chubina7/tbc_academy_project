@@ -11,7 +11,7 @@ export default function SearchInput() {
       <input
         type="search"
         placeholder="Search"
-        className="bg-[#F4F7FF] text-inherit placeholder:text-inherit placeholder:opacity-50 | w-full h-full p-3 pl-10 outline-none"
+        className="bg-[#F4F7FF] text-inherit placeholder:text-inherit placeholder:opacity-50 | w-full h-full p-2 pl-10 outline-none"
       />
     </div>
   );

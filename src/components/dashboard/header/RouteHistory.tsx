@@ -13,7 +13,7 @@ export default function RouteHistory() {
     .slice(1);
 
   return (
-    <div className="text-xs flex justify-center items-center gap-3 opacity-50">
+    <div className="w-full flex justify-start items-center gap-3 opacity-50 text-xs">
       <Link href={"/dashboard"}>
         <p>Dashboard</p>
       </Link>

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import LangChangeModal from "../../modals/LangChangeModal";
 import { RiGlobalLine } from "react-icons/ri";
+import LangChangeModal from "../../modals/LangChangeModal";
 
 interface Props {
   storedLang: string | undefined;

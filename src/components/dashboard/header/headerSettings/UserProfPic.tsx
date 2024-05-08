@@ -7,8 +7,8 @@ export default function UserProfPic() {
     <Image
       src={anonym}
       alt="anonym"
-      width={40}
-      height={40}
+      width={36}
+      height={36}
       className="rounded-full"
     />
   );
