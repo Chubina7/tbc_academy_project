@@ -3,6 +3,8 @@
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "./variables";
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { revalidateTag } from "next/cache";
+import { psqlDeleteUser } from "./sqlQueries";
 
 // User Data
 export const getUserInfo = async () => {
@@ -39,4 +41,11 @@ export const storeThemeInCookies = (pref: string) => {
 // General
 export const readCookieForClient = async (searchCookie: string) => {
   return cookies().get(searchCookie)?.value
+}
+
+
+// Admin actions
+export const actDeleteUser = async (id: string) => {
+  await psqlDeleteUser(id)
+  revalidateTag("user_list")
 }

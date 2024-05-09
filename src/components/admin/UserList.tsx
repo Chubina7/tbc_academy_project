@@ -1,8 +1,8 @@
 import React from "react";
-import RemoveUser from "./RemoveUser";
-import EditUser from "./EditUser";
+import RemoveUser from "./removeUser/RemoveUser";
+import EditUser from "./editUser/EditUser";
 
-export default function UserList({ data }: { data: IUserPublics[] }) {
+export default function UserList({ data }: { data: any[] }) {
   return (
     <table className="w-full border border-black border-collapse p-3">
       <thead>

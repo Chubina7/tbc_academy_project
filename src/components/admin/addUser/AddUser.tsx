@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { addUser } from "../../lib/helpers";
+import { addUser } from "../../../lib/helpers";
 
 export default function AddUser() {
   return (

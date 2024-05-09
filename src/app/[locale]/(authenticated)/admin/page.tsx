@@ -1,6 +1,6 @@
 import React from "react";
 import UserList from "../../../../components/admin/UserList";
-import AddUser from "../../../../components/admin/AddUser";
+import AddUser from "../../../../components/admin/addUser/AddUser";
 import { getUsers } from "../../../../lib/helpers";
 
 export default async function page() {

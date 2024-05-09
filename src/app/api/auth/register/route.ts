@@ -2,6 +2,7 @@ import { sql } from '@vercel/postgres';
 import { NextRequest, NextResponse } from 'next/server';
 import { setSession } from '../../../../lib/actions';
 import { psqlGetUser, psqlInsertUserCredentials } from '../../../../lib/sqlQueries';
+import { revalidateTag } from 'next/cache';
 
 export async function POST(req: NextRequest) {
     const { username, email, password } = await req.json()
@@ -14,6 +15,7 @@ export async function POST(req: NextRequest) {
         await psqlInsertUserCredentials({ username, email, password })
         const user = await psqlGetUser(username);
         setSession(user.user_id)
+        revalidateTag("user_list")
         return NextResponse.json(user, { status: 200 });
     } catch (error) {
         return NextResponse.json({ message: "Email is already in use. Please choose a different one.", dbError: error }, { status: 409 });

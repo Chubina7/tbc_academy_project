@@ -2,8 +2,8 @@ import { sql } from "@vercel/postgres";
 import { generateUniqueId } from "./helpers";
 
 export async function psqlCheckUserCredentials({ username, password }: IUserLogin) {
-    const data = await sql`SELECT * FROM user_credentials WHERE username = ${username} AND password = ${password}`
-    return data.rows
+    const { rows } = await sql`SELECT * FROM user_credentials WHERE username = ${username} AND password = ${password}`
+    return rows
 }
 
 export async function psqlInsertUserCredentials({ username, email, password }: IUserRegister) {
@@ -16,16 +16,17 @@ export async function psqlInsertUserCredentials({ username, email, password }: I
 }
 
 export async function psqlGetAllUsers() {
-    const table = await sql`SELECT * FROM user_publics`
-    return table.rows
+    const { rows } = await sql`SELECT * FROM user_publics`
+    return rows
 }
 
 export async function psqlGetUser(username: string) {
-    const data = await sql`SELECT * FROM user_publics WHERE username = ${username}`
-    return data.rows[0]
+    const { rows } = await sql`SELECT * FROM user_publics WHERE username = ${username}`
+    return rows[0]
 }
 
 export async function psqlAddUser(id: string) {
+    // Add user queries logic
     console.log(id)
 }
 
@@ -35,5 +36,6 @@ export async function psqlDeleteUser(id: string) {
 }
 
 export async function psqlEditUser(id: string) {
+    // Editing user queres logic
     console.log(id)
 }

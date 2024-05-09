@@ -1,3 +1,6 @@
+import { unstable_cache } from "next/cache";
+import { psqlGetAllUsers } from "./sqlQueries";
+
 // Products
 export async function getAllProducts() {
   const res = await fetch("https://dummyjson.com/products");
@@ -41,12 +44,11 @@ export async function getAuthor(id: number) {
 }
 
 // sql
-export async function getUsers() {
-  const res = await fetch("http://localhost:3000/api/admin/get-users");
-  const result: IUserPublics[] = await res.json()
+export const getUsers = unstable_cache(async () => {
+  const data = await psqlGetAllUsers()
+  return data
+}, ["user_list"], { tags: ["user_list"] })
 
-  return result;
-}
 export async function addUser(userData: IUserPublics) {
   const res = await fetch("http://localhost:3000/api/admin/add-user", {
     method: "POST",
