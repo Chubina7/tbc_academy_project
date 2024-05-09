@@ -21,7 +21,9 @@ export default function Modal({ handleModal }: Props) {
         <button className="text-white bg-green-700 px-4 py-1 rounded-xl">
           Add user
         </button>
-        <span onClick={handleModal} className="cursor-pointer">Cancel</span>
+        <span onClick={handleModal} className="cursor-pointer">
+          Cancel
+        </span>
       </div>
     </form>
   );

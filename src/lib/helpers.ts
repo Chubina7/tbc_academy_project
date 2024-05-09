@@ -49,31 +49,6 @@ export const getUsers = unstable_cache(async () => {
   return data
 }, ["user_list"], { tags: ["user_list"] })
 
-export async function addUser(userData: IUserPublics) {
-  const res = await fetch("http://localhost:3000/api/admin/add-user", {
-    method: "POST",
-    body: JSON.stringify(userData),
-  });
-  const result = await res.json()
-  console.log(result)
-}
-export async function removeUser(user_id: string) {
-  const res = await fetch("http://localhost:3000/api/admin/delete-user", {
-    method: "POST",
-    body: JSON.stringify({ user_id }),
-  });
-  const result = await res.json()
-  console.log(result)
-}
-export async function editUser(user_id: string) {
-  const res = await fetch("http://localhost:3000/api/admin/edit-user", {
-    method: "POST",
-    body: JSON.stringify({ user_id }),
-  });
-  const result = await res.json()
-  console.log(result)
-}
-
 // Preferences
 export function setTheme(pref: string) {
   if (pref === "os") {
@@ -100,7 +75,6 @@ export function generateUniqueId() {
 
   return userID;
 }
-
 
 export function dbError() {
   // should get error code and show different text messages

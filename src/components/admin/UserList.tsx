@@ -7,8 +7,7 @@ export default function UserList({ data }: { data: any[] }) {
     <table className="w-full border border-black border-collapse p-3">
       <thead>
         <tr className="border border-black">
-          <th className="p-3">User ID</th>
-          <th>Username</th>
+          <th className="p-3">Username</th>
           <th>Email</th>
           <th>Age</th>
         </tr>
@@ -16,8 +15,7 @@ export default function UserList({ data }: { data: any[] }) {
       <tbody>
         {data.map((user: any, idx: number) => (
           <tr key={idx} className="border border-black text-center">
-            <td className="p-3">{user.user_id}</td>
-            <td>{user.username}</td>
+            <td className="p-3">{user.username}</td>
             <td>{user.email}</td>
             <td>{user.age || "unknow"}</td>
             <td>
