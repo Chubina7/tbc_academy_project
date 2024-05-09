@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "./variables";
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { revalidateTag } from "next/cache";
-import { psqlDeleteUser } from "./sqlQueries";
+import { psqlAddUser, psqlDeleteUser } from "./sqlQueries";
 
 // User Data
 export const getUserInfo = async () => {
@@ -47,5 +47,14 @@ export const readCookieForClient = async (searchCookie: string) => {
 // Admin actions
 export const actDeleteUser = async (id: string) => {
   await psqlDeleteUser(id)
+  revalidateTag("user_list")
+}
+export const actAddUser = async (formData: FormData) => {
+  const username = formData.get("username")
+  const email = formData.get("email")
+  const password = formData.get("password")
+  const age = formData.get("age")
+
+  await psqlAddUser({ username, email, password, age })
   revalidateTag("user_list")
 }

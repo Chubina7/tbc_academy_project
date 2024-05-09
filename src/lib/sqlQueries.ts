@@ -25,9 +25,10 @@ export async function psqlGetUser(username: string) {
     return rows[0]
 }
 
-export async function psqlAddUser(id: string) {
-    // Add user queries logic
-    console.log(id)
+export async function psqlAddUser({ username, email, password, age }: any) {
+    const user_id = generateUniqueId()
+    await sql`INSERT INTO user_credentials (user_id, username, email, password) VALUES (${user_id}, ${username}, ${email}, ${password});`;
+    await sql`INSERT INTO user_publics (user_id, username, email, age) VALUES (${user_id}, ${username}, ${email}, ${age});`;
 }
 
 export async function psqlDeleteUser(id: string) {
