@@ -114,6 +114,25 @@ interface IUserIsAuthed {
     token: string
 }
 
+// sql
+interface IUserLogin {
+    username: string
+    password: string
+}
+interface IUserRegister extends IUserLogin {
+    email: string,
+}
+
+interface IUserCredentials extends IUserRegister {
+    user_id: string
+}
+interface IUserPublics {
+    user_id: string,
+    username: string,
+    email: string,
+    age: number
+}
+
 // General for Components
 interface IMetaData {
     title: string

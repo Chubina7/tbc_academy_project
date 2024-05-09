@@ -1,6 +1,10 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { AUTH_COOKIE_KEY } from "./variables";
+import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { revalidateTag } from "next/cache";
+import { psqlAddUser, psqlDeleteUser, psqlEditUser } from "./sqlQueries";
 
 // User Data
 export const getUserInfo = async () => {
@@ -18,6 +22,12 @@ export const getUserLoginInfo = async () => {
 
   return { email, password: "admin" };
 };
+export const setSession = async (userId: string) => {
+  const options: Partial<ResponseCookie> = { secure: true, sameSite: "none", httpOnly: true, path: "/" };
+
+  cookies().set(AUTH_COOKIE_KEY, "development_session_token", options);
+  cookies().set("user_id", userId, options);
+}
 
 // Preferences
 export const storeThemeInCookies = (pref: string) => {
@@ -31,4 +41,28 @@ export const storeThemeInCookies = (pref: string) => {
 // General
 export const readCookieForClient = async (searchCookie: string) => {
   return cookies().get(searchCookie)?.value
+}
+
+
+// Admin actions
+export const actDeleteUser = async (id: string) => {
+  await psqlDeleteUser(id)
+  revalidateTag("user_list")
+}
+export const actAddUser = async (formData: FormData) => {
+  const username = formData.get("username")
+  const email = formData.get("email")
+  const password = formData.get("password")
+  const age = formData.get("age")
+
+  await psqlAddUser({ username, email, password, age })
+  revalidateTag("user_list")
+}
+export const actEditUser = async (formData: FormData, user_id: string) => {
+  const username = formData.get("username")
+  const email = formData.get("email")
+  let age = formData.get("age")
+  if (age === "unknow" || age === "") age = null
+  await psqlEditUser({ username, email, age, user_id })
+  revalidateTag("user_list")
 }

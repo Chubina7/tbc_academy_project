@@ -1,8 +1,9 @@
-import { Noto_Sans_Georgian } from "next/font/google";
+// import { Noto_Sans_Georgian } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { cookies } from "next/headers";
 import { NextIntlClientProvider, useMessages } from "next-intl";
-import { supportedLocales } from "../../lib/variables";
+// import { supportedLocales } from "../../lib/variables";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 // Types
@@ -12,7 +13,8 @@ interface Props {
 }
 
 // Font
-const georgian = Noto_Sans_Georgian({ subsets: ["georgian"] });
+// const georgian = Noto_Sans_Georgian({ subsets: ["georgian"] });
+const english = Montserrat({ subsets: ["latin"] });
 
 // Metadata
 export const metadata: IMetaData = {
@@ -21,9 +23,9 @@ export const metadata: IMetaData = {
 };
 
 // Static Generation
-export function generateStaticParams() {
-  return supportedLocales.map((locale) => ({ locale }));
-}
+// export function generateStaticParams() {
+//   return supportedLocales.map((locale) => ({ locale }));
+// }
 
 // Component
 export default function RootLayout({ children, params }: Props) {
@@ -33,14 +35,14 @@ export default function RootLayout({ children, params }: Props) {
   const translations = useMessages();
 
   return (
-    <NextIntlClientProvider locale={lngPref} messages={translations}>
-      <html lang={lngPref} className={themePref}>
-        <body
-          className={`${georgian.className} text-[#3D52A1] bg-[#EEE8F6] dark:text-[#EEE8F6] dark:bg-[#3D52A1] w-full flex flex-col transition-colors duration-300`}
-        >
+    <html lang={lngPref} className={themePref}>
+      <body
+        className={`${english.className} text-[#3D52A1] bg-[#EEE8F6] dark:text-[#EEE8F6] dark:bg-[#3D52A1] w-full flex flex-col transition-colors duration-300`}
+      >
+        <NextIntlClientProvider locale={lngPref} messages={translations}>
           {children}
-        </body>
-      </html>
-    </NextIntlClientProvider>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

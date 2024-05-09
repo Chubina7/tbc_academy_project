@@ -2,20 +2,11 @@ import React from "react";
 
 function Item() {
   return (
-    <div className="w-full flex flex-col justify-start items-start p-3 rounded-lg bg-[#202326]">
-      <div className="rounded-md w-full min-h-64 bg-slate-700" />
-      <div className="h-full w-full flex flex-col justify-between gap-5 p-4">
-        <div className="flex flex-col gap-3">
-          <div className="text-2xl font-bold rounded-full w-full h-8 bg-slate-700" />
-          <div className="opacity-60 rounded-full w-full h-6 bg-slate-700" />
-          <div className="opacity-60 rounded-full w-full h-6 bg-slate-700" />
-          <div className="opacity-60 rounded-full w-full h-6 bg-slate-700" />
-        </div>
-        <div className="flex justify-between items-cen8ter">
-          <div className="bg-slate-700 rounded-full h-8 w-full mr-3" />
-          <div className="bg-[#F25050] text-inherit rounded-full px-4 py-1 h-8 w-24" />
-        </div>
-      </div>
+    <div className="w-full overflow-hidden flex flex-col justify-start items-start gap-2">
+      <div className="w-full h-72 bg-[#3D52A1] dark:bg-[#EEE8F6] rounded-md opacity-70" />
+      <h1 className="w-full h-7 bg-[#3D52A1] dark:bg-[#EEE8F6] rounded-full" />
+      <p className="w-full h-16 bg-[#3D52A1] dark:bg-[#EEE8F6] rounded-lg opacity-70" />
+      <button className="w-full h-8 rounded-md bg-[#3D52A1] text-[#EEE8F6] dark:bg-[#EEE8F6] dark:text-[#3D52A1] py-1 mt-4 hover:opacity-70" />
     </div>
   );
 }

@@ -1,11 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useTranslations } from "use-intl";
 
 function LoginForm() {
   const t = useTranslations("Auth.login.form");
+  const [problem, setProblem] = useState<{ type: string; message: string }>();
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -16,30 +18,34 @@ function LoginForm() {
     const username = usernameRef.current?.value;
     const password = passwordRef.current?.value;
 
-    // Validate input
-    // ...
-
-    try {
-      const data: IUserLoginInfo = { username, password };
-
+    if (username?.trim() === "" && password?.trim() === "") {
+      setProblem({
+        type: "error",
+        message: t("messages.empty"),
+      });
+    } else if (username?.trim() === "" || password?.trim() === "") {
+      setProblem({
+        type: "error",
+        message: t("messages.fillBoth"),
+      });
+    } else {
+      setIsLoading(true);
+      const userCredentials: IUserLoginInfo = { username, password };
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(userCredentials),
       });
+      const result = await res.json();
 
-      const parsed: LoginResponse = await res.json();
-
-      if (parsed.status === 200) {
+      if (res.status === 200) {
         router.refresh();
-        console.log(parsed.message);
       } else {
-        // Showing appropriate UI
-        console.error(parsed.message);
+        console.log({ status: res.status });
       }
-    } catch (error) {
-      // Showing appropriate UI
-      console.error("An error occurred:", error);
+
+      console.log(result);
+      setIsLoading(false);
     }
   };
 
@@ -69,8 +75,11 @@ function LoginForm() {
           name="password"
         />
       </div>
+      {problem && (
+        <p className="italic text-red-700 text-sm">{problem.message}</p>
+      )}
       <button className="w-full bg-white text-black rounded-full py-1">
-        {t("signInBtn")}
+        {isLoading ? "Wait..." : t("signInBtn")}
       </button>
     </form>
   );

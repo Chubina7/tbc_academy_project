@@ -1,7 +1,5 @@
-// import { match } from "@formatjs/intl-localematcher";
-// import Negotiator from "negotiator";
-// import { i18n } from "../i18n";
-// import { NextRequest } from "next/server";
+import { unstable_cache } from "next/cache";
+import { psqlGetAllUsers } from "./sqlQueries";
 
 // Products
 export async function getAllProducts() {
@@ -45,8 +43,14 @@ export async function getAuthor(id: number) {
   return data;
 }
 
+// sql
+export const getUsers = unstable_cache(async () => {
+  const data = await psqlGetAllUsers()
+  return data
+}, ["user_list"], { tags: ["user_list"] })
+
 // Preferences
-export const setTheme = (pref: string) => {
+export function setTheme(pref: string) {
   if (pref === "os") {
     document.documentElement.classList.remove("light");
     document.documentElement.classList.remove("dark");
@@ -58,3 +62,20 @@ export const setTheme = (pref: string) => {
     localStorage.setItem("theme", pref);
   }
 };
+
+// Generators
+export function generateUniqueId() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = chars.length;
+  let userID = '';
+
+  for (let i = 0; i < 5; i++) {
+    userID += chars.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return userID;
+}
+
+export function dbError() {
+  // should get error code and show different text messages
+}

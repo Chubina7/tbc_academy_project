@@ -1,38 +1,22 @@
-import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "../../../../lib/variables";
-import { NextRequest } from "next/server";
-import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { NextRequest, NextResponse } from "next/server";
+import { setSession } from "../../../../lib/actions";
+import { psqlCheckUserCredentials, psqlGetUser } from "../../../../lib/sqlQueries";
 
 export async function POST(req: NextRequest) {
   const { username, password }: IUserLoginInfo = await req.json();
 
+  // Validation
+  if (!username || !password) return NextResponse.json({ message: "Unable to pass empty values" }, { status: 500 })
+
+  // Signing in
   try {
-    const res = await fetch("https://dummyjson.com/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
-    const user: IUserIsAuthed = await res.json();
+    const credentials = await psqlCheckUserCredentials({ username, password })
+    if (credentials.length === 0) throw new Error()
 
-    const options: Partial<ResponseCookie> = { secure: true, sameSite: "none" };
-    cookies().set(AUTH_COOKIE_KEY, user.token, options);
-    cookies().set("id", user.id.toString(), options);
-    cookies().set("email", user.email, options);
-    cookies().set("firstName", user.firstName, options);
-    cookies().set("lastName", user.lastName, options);
-    cookies().set("gender", user.gender, options);
-    cookies().set("image", user.image, options);
-
-    return Response.json({
-      status: 200,
-      message: "Loggined successfully!",
-      user,
-    });
+    const user = await psqlGetUser(username)
+    setSession(user.user_id)
+    return NextResponse.json(user, { status: 200 })
   } catch (error) {
-    return Response.json({
-      status: 401,
-      message: "Can not login!",
-      error,
-    });
+    return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 })
   }
 }

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import ProductList from "./products/ProductList";
-import HomeActions from "./homeActions/HomeActions";
+import ProductsActions from "./productsActions/ProductsActions";
 
 function Products({ data }: { data: Array<IProduct> }) {
   const [sortRule, setSortRule] = useState<boolean>(false);
@@ -11,7 +11,7 @@ function Products({ data }: { data: Array<IProduct> }) {
   return (
     <>
       <section className="w-full">
-        <HomeActions
+        <ProductsActions
           sortState={{ sortRule, setSortRule }}
           queryState={setQuery}
         />
