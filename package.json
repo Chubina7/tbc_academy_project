@@ -11,6 +11,7 @@
   "dependencies": {
     "@types/react": "^18.2.79",
     "@vercel/postgres": "^0.8.0",
+    "framer-motion": "^11.1.9",
     "next": "^14.2.3",
     "next-intl": "^3.12.0",
     "react": "^18.3.1",

@@ -9,7 +9,7 @@ function Logo() {
       className="flex justify-center items-center gap-3"
     >
       <GiWhiteBook size={36} />
-      <h1 className="text-lg font-bold">LMS For you</h1>
+      <h1 className="hidden xl:block text-lg font-bold">LMS For you</h1>
     </Link>
   );
 }

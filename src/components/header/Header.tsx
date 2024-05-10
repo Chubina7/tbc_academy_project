@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from "./Navigation";
 // import BurgerMenu from "./BurgerMenu";
 import SignOutBtn from "./SignOutBtn";
-import Logo from "./Logo";
+import Logo from "../dashboard/navigation/aside/Logo";
 import { RxDividerVertical } from "react-icons/rx";
 import ThemeChanger from "./themeComponent/ThemeChanger";
 import LangChanger from "./langComponent/LangChanger";
