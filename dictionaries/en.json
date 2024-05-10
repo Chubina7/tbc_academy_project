@@ -45,7 +45,8 @@
                 "blog": "Blog",
                 "contact": "Contact",
                 "profile": "Profile",
-                "products": "Products"
+                "products": "Products",
+                "admin": "Admin"
             },
             "lngChanger": {
                 "geo": "Georgian",

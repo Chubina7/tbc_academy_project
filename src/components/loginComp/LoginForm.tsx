@@ -31,7 +31,7 @@ function LoginForm() {
     } else {
       setIsLoading(true);
       const userCredentials: IUserLoginInfo = { username, password };
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch(`/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userCredentials),
@@ -57,6 +57,7 @@ function LoginForm() {
     >
       <div className="w-full flex flex-col gap-1">
         <label htmlFor="username">{t("usernameLabel")}</label>
+        <i className="w-full text-right">user: admin</i>
         <input
           ref={usernameRef}
           className="bg-transparent border-2 border-white py-1 px-3"
@@ -67,6 +68,7 @@ function LoginForm() {
       </div>
       <div className="w-full flex flex-col gap-1">
         <label htmlFor="password">{t("passwordLabel")}</label>
+        <i className="w-full text-right">pass: admin</i>
         <input
           ref={passwordRef}
           className="bg-transparent border-2 border-white py-1 px-3"
