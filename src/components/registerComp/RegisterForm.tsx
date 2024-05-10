@@ -3,8 +3,9 @@
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useRef } from "react";
+import { detectEnviro } from "../../lib/helpers";
 
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
+const domain = detectEnviro();
 
 function RegisterForm() {
   const t = useTranslations("Auth.register.form");

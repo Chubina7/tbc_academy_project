@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FaSignOutAlt } from "react-icons/fa";
+import { detectEnviro } from "../../lib/helpers";
 
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
+const domain = detectEnviro();
 
 export default function SignOutBtn() {
   const t = useTranslations("Header.navigation");
