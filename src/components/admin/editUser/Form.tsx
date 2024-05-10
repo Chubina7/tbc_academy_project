@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { detectEnviro } from "../../../lib/helpers";
 
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
+const domain = detectEnviro();
 
 export default function Form({ user_id }: { user_id: string }) {
   const [username, setUsername] = useState<string>("");
