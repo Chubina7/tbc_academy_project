@@ -45,7 +45,8 @@
                 "blog": "ბლოგი",
                 "contact": "კონტაქტი",
                 "profile": "პროფილი",
-                "products": "პროდუქცია"
+                "products": "პროდუქცია",
+                "admin": "ადმინი"
             },
             "lngChanger": {
                 "geo": "ქართული",

@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 export default function Form({ user_id }: { user_id: string }) {
   const [username, setUsername] = useState<string>("");
   const [age, setAge] = useState<string>("");
@@ -10,7 +12,7 @@ export default function Form({ user_id }: { user_id: string }) {
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        `http://localhost:3000/api/users/singleUser?user_id=${user_id}`
+        `${domain}/api/users/singleUser?user_id=${user_id}`
       );
       const data = await res.json();
 

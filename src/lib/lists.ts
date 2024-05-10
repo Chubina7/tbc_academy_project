@@ -4,6 +4,7 @@ export const navItems = [
   { placeholder: "blog", href: "/blog", whenActive: "/blog" },
   { placeholder: "contact", href: "/contact", whenActive: "/contact" },
   { placeholder: "profile", href: "/profile", whenActive: "/profile" },
+  { placeholder: "admin", href: "/admin", whenActive: "/admin" },
 ];
 
 

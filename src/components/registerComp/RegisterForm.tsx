@@ -4,6 +4,8 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useRef } from "react";
 
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 function RegisterForm() {
   const t = useTranslations("Auth.register.form");
   const router = useRouter();
@@ -24,7 +26,7 @@ function RegisterForm() {
 
     try {
       const user = { username, email, password };
-      const res = await fetch(`http://localhost:3000/api/auth/register`, {
+      const res = await fetch(`${domain}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),

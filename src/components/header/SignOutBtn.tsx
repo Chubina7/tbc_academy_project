@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FaSignOutAlt } from "react-icons/fa";
 
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 export default function SignOutBtn() {
   const t = useTranslations("Header.navigation");
   const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +14,7 @@ export default function SignOutBtn() {
 
   const signOutHandler = async () => {
     setIsLoading(true);
-    const res = await fetch("/api/auth/logout");
+    const res = await fetch(`${domain}/api/auth/logout`);
     const result: LogOutResponse = await res.json();
 
     if (res.status === 200) {
