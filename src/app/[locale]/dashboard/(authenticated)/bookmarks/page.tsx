@@ -1,10 +1,10 @@
 import React from "react";
+import BookmarkList from "../../../../../components/dashboard/bookmarksPage/BookmarkList";
 
 export default function page() {
   return (
-    <div>
-      user can mark courses, resources, events, announcements and see full list
-      of them here
+    <div className="w-full">
+      <BookmarkList />
     </div>
   );
 }

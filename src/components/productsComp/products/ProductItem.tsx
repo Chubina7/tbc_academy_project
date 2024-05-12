@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { HiOutlineCursorClick } from "react-icons/hi";
-import AddToBookmark from "../../ui/AddToBookmark";
+import AddToBookmark from "../../ui/bookmarkAction/AddToBookmark";
 
 export default function ProductItem({
   title,
