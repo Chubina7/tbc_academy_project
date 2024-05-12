@@ -1,39 +1,35 @@
 "use client";
 
-import React, { createContext, ReactNode, useState } from "react";
+import React, { Context, createContext, useReducer } from "react";
+import {
+  BookmarkStateInitial as initial,
+  BookmarkStateReducer as reducer,
+} from "../state-management/reducers";
 
 interface Props {
-  children: ReactNode;
+  children: React.ReactNode;
+}
+interface ICtx {
+  list: any;
+  addItem: (param: any) => void;
+  removeItem: (param: any) => void;
 }
 
-export const BookmarkContext = createContext({
+export const BookmarkContext: Context<ICtx> = createContext({
   list: [],
-  addItem: (p: any) => {
-    p;
-  },
-  removeItem: (p: any) => {
-    p;
-  },
+  addItem: (param) => param,
+  removeItem: (param) => param,
 });
 
 export default function BookmarkProvider({ children }: Props) {
-  const [bookmarkList, setBookmarkList] = useState<any>([]);
-
-  const handleIncrement = (data: any) => {
-    setBookmarkList((prev: any) => [...prev, data]);
-  };
-  const handleDecrement = (data: any) => {
-    setBookmarkList((prev: any[]) => {
-      return prev.filter((item) => item.title !== data.title); // შესაცვლელია უფრო უნიკალურ იდენტიფიკატორზე
-    });
-  };
+  const [bookmarkList, dispatch] = useReducer(reducer, initial);
 
   return (
     <BookmarkContext.Provider
       value={{
         list: bookmarkList,
-        addItem: (p) => handleIncrement(p),
-        removeItem: (p) => handleDecrement(p),
+        addItem: (item) => dispatch({ type: "ADD", payload: item }),
+        removeItem: (item) => dispatch({ type: "REMOVE", payload: item }),
       }}
     >
       {children}

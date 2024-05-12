@@ -9,6 +9,8 @@ import { BookmarkContext } from "../../../../providers/BookmarkProvider";
 export default function Bookmark() {
   const { list } = useContext(BookmarkContext);
 
+  console.log(list);
+
   return (
     <div className="relative">
       <Link href={"/dashboard/bookmarks"}>
