@@ -20,8 +20,6 @@ export const themeList: ThemeListType = {
   },
 };
 
-export const test = [1, 2, 3];
-
 export const dashboardNavigationList = [
   {
     title: "Home",

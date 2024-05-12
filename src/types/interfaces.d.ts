@@ -122,7 +122,6 @@ interface IUserLogin {
 interface IUserRegister extends IUserLogin {
     email: string,
 }
-
 interface IUserCredentials extends IUserRegister {
     user_id: string
 }
@@ -144,6 +143,10 @@ interface IParams {
     blogId: number
 }
 
-// Products Page
-
-
+// Context
+interface IBookmarkCtx {
+    list: any;
+    addItem: (param: any) => void;
+    removeItem: (param: any) => void;
+    resetList: () => void;
+}
