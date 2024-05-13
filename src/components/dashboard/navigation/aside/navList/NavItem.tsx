@@ -45,8 +45,10 @@ export default function NavItem({ data }: Props) {
           onMouseLeave={handleMouseLeave}
         >
           <div
-            className={`${
-              isActive ? "opacity-100 font-bold scale-105" : "opacity-40"
+            className={`text-[#2B3674] dark:text-[#4765AB] transition-all duration-300 ${
+              isActive
+                ? "opacity-100 font-bold scale-105 text-[#603CFF] dark:text-[#8BA8FF]"
+                : "opacity-40"
             }`}
           >
             {isActive ? data.onActive : data.icon}
@@ -54,7 +56,7 @@ export default function NavItem({ data }: Props) {
           {isHovering && <Tooltip title={data.title} />}
         </div>
         <p
-          className={`hidden xl:block ${
+          className={`hidden xl:block transition-all duration-300 ${
             isActive ? "opacity-100 font-bold scale-105" : "opacity-40"
           }`}
         >

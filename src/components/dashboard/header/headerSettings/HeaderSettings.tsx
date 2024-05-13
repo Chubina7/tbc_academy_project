@@ -7,7 +7,7 @@ import Bookmark from "./bookmark/Bookmark";
 
 export default function HeaderSettings() {
   return (
-    <div className="bg-white | flex justify-center items-center gap-5 p-3 py-2 rounded-full">
+    <div className="bg-[#FFFFFF] text-[#2B3674] dark:bg-[#352F44] dark:text-[#DBD8E3] | flex justify-center items-center gap-5 p-3 py-2 rounded-full transition-all duration-300">
       <SearchInput />
       <ThemeChanger />
       <LangChanger />
