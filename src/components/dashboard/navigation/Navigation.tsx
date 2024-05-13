@@ -6,7 +6,7 @@ export default function Navigation({ type }: { type: "mobile" | "dekstop" }) {
   switch (type) {
     case "mobile":
       return (
-        <div className="md:hidden">
+        <div className="sm:hidden">
           <BurgerNav />
         </div>
       );

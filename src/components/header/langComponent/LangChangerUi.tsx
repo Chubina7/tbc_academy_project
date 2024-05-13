@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { RiGlobalLine } from "react-icons/ri";
+import { IoMap } from "react-icons/io5";
 import LangChangeModal from "../../modals/LangChangeModal";
 
 interface Props {
@@ -22,7 +22,7 @@ function LangChangerUi({ storedLang }: Props) {
         }`}
         onClick={handleModal}
       >
-        <RiGlobalLine size={22} />
+        <IoMap size={22} />
       </div>
       {isOpen && (
         <LangChangeModal

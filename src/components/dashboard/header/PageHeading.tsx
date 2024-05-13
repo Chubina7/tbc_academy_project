@@ -10,5 +10,5 @@ export default function PageHeading() {
     (item) => item.href === path.substring(10)
   );
 
-  return <h1 className="text-3xl font-bold">{heading?.forHeading}</h1>;
+  return <h1 className="text-2xl sm:text-3xl font-bold">{heading?.forHeading}</h1>;
 }
