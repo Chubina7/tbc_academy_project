@@ -9,20 +9,20 @@ import {
   IoDesktop,
 } from "react-icons/io5";
 
-export const themeList: ThemeListType = {
-  light: {
-    title: "light",
-    icon: <IoSunny size={20} color="inherit" />,
-  },
-  dark: {
-    title: "dark",
-    icon: <IoMoon size={20} color="inherit" />,
-  },
-  os: {
+export const themeList: ThemeListType = [
+  {
     title: "os",
     icon: <IoDesktop size={20} color="inherit" />,
   },
-};
+  {
+    title: "light",
+    icon: <IoSunny size={20} color="inherit" />,
+  },
+  {
+    title: "dark",
+    icon: <IoMoon size={20} color="inherit" />,
+  },
+];
 
 export const dashboardNavigationList = [
   {
