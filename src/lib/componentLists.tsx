@@ -1,3 +1,4 @@
+import { GE, US } from "country-flag-icons/react/3x2";
 import {
   IoHome,
   IoCalendarSharp,
@@ -9,22 +10,33 @@ import {
   IoDesktop,
 } from "react-icons/io5";
 
-export const themeList: ThemeListType = {
-  light: {
-    title: "light",
-    icon: <IoSunny size={20} color="inherit" />,
-  },
-  dark: {
-    title: "dark",
-    icon: <IoMoon size={20} color="inherit" />,
-  },
-  os: {
+export const themeList: ThemeListType = [
+  {
     title: "os",
     icon: <IoDesktop size={20} color="inherit" />,
   },
-};
-
-export const dashboardNavigationList = [
+  {
+    title: "light",
+    icon: <IoSunny size={20} color="inherit" />,
+  },
+  {
+    title: "dark",
+    icon: <IoMoon size={20} color="inherit" />,
+  },
+];
+export const langPrefList: LangPrefListType = [
+  { title: "ka", icon: <GE className="bg-white w-6 h-4" /> },
+  { title: "en", icon: <US className="bg-white w-6 h-4" /> },
+];
+export const navItems: LandingNavItemsType = [
+  { placeholder: "home", href: "/", whenActive: "/" },
+  { placeholder: "products", href: "/products", whenActive: "/products" },
+  { placeholder: "blog", href: "/blog", whenActive: "/blog" },
+  { placeholder: "contact", href: "/contact", whenActive: "/contact" },
+  { placeholder: "profile", href: "/profile", whenActive: "/profile" },
+  { placeholder: "admin", href: "/admin", whenActive: "/admin" },
+];
+export const dashboardNavigationList: DashboardNavListTyope = [
   {
     title: "Home",
     icon: <IoHome size={20} color="inherit" />,

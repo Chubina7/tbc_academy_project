@@ -1,35 +1,34 @@
 "use client";
 
-import { useState } from "react";
-import { IoMap } from "react-icons/io5";
-import LangChangeModal from "../../modals/LangChangeModal";
+import { useEffect, useState } from "react";
+import { langPrefList } from "../../../lib/componentLists";
 
 interface Props {
   storedLang: string | undefined;
 }
 
 function LangChangerUi({ storedLang }: Props) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [activeLang] = useState(() => storedLang || "ka");
+  const [idx, setIdx] = useState(() => {
+    switch (storedLang) {
+      case "ka":
+        return 0;
+      case "en":
+        return 1;
+      default:
+        return 0;
+    }
+  });
 
-  const handleModal = () => setIsOpen((prev) => !prev);
+  useEffect(() => {
+    console.log("changing language..");
+  }, []);
 
   return (
-    <div className="relative flex justify-center items-center gap-2">
-      <div
-        className={`flex h-full justify-center items-center gap-1 cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100 ${
-          isOpen ? "opacity-100" : ""
-        }`}
-        onClick={handleModal}
-      >
-        <IoMap size={22} />
-      </div>
-      {isOpen && (
-        <LangChangeModal
-          langModalHandler={handleModal}
-          activeLang={activeLang}
-        />
-      )}
+    <div
+      className={`flex h-full justify-center items-center gap-1 cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100`}
+      onClick={() => setIdx((prev) => (prev + 1) % 2)}
+    >
+      {langPrefList[idx].icon}
     </div>
   );
 }

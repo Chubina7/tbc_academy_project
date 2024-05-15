@@ -3,7 +3,7 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { navItems } from "../../lib/lists";
+import { navItems } from "../../lib/componentLists";
 import { IoArrowUp } from "react-icons/io5";
 
 import Link from "next/link";
