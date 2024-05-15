@@ -22,9 +22,6 @@ function ThemeChangerUi({ storedTheme }: Props) {
         return 0;
     }
   });
-  const handleThemeChange = () => {
-    setIdx((prev) => (prev + 1) % 3);
-  };
 
   useEffect(() => {
     setTheme(themeList[idx].title);
@@ -33,13 +30,11 @@ function ThemeChangerUi({ storedTheme }: Props) {
   }, [idx]);
 
   return (
-    <div className="relative flex justify-center items-center gap-1">
-      <div
-        className={`flex h-full justify-center items-center cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100`}
-        onClick={handleThemeChange}
-      >
-        {themeList[idx].icon}
-      </div>
+    <div
+      className={`flex h-full justify-center items-center cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100`}
+      onClick={() => setIdx((prev) => (prev + 1) % 3)}
+    >
+      {themeList[idx].icon}
     </div>
   );
 }

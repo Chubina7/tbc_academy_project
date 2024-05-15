@@ -1,7 +1,7 @@
-import createIntlMiddleware from 'next-intl/middleware';
 import { NextRequest } from 'next/server';
 import { AUTH_COOKIE_KEY, defaultLocale, supportedLocales } from './lib/variables';
 import { cookies } from 'next/headers';
+import createMiddleware from 'next-intl/middleware';
 
 export default async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
@@ -26,7 +26,7 @@ export default async function middleware(request: NextRequest) {
   }
 
   // Rewriting on the supported language
-  const localeRewrite = createIntlMiddleware({
+  const localeRewrite = createMiddleware({
     locales: supportedLocales,
     defaultLocale: defaultLocale,
     localePrefix: 'never'
