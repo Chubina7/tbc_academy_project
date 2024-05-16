@@ -36,7 +36,7 @@ export const navItems: LandingNavItemsType = [
   { placeholder: "profile", href: "/profile", whenActive: "/profile" },
   { placeholder: "admin", href: "/admin", whenActive: "/admin" },
 ];
-export const dashboardNavigationList: DashboardNavListTyope = [
+export const dashboardNavigationList: DashboardNavListType = [
   {
     title: "Home",
     icon: <IoHome size={20} color="inherit" />,
