@@ -6,13 +6,7 @@ import React, { useState } from "react";
 import Tooltip from "./Tooltip";
 
 interface Props {
-  data: {
-    title: string;
-    icon: React.JSX.Element;
-    onActive: React.JSX.Element;
-    href: string;
-    forHeading: string;
-  };
+  data: IDashboardNavListItem;
 }
 
 export default function NavItem({ data }: Props) {

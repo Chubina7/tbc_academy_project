@@ -150,3 +150,25 @@ interface IBookmarkCtx {
     removeItem: (param: any) => void;
     resetList: () => void;
 }
+
+// 
+interface IThemeListItem {
+    title: "light" | "os" | "dark";
+    icon: React.ReactNode
+}
+interface ILandPrefListItem {
+    title: "ka" | "en";
+    icon: React.ReactNode
+}
+interface ILandingNavItem {
+    placeholder: "home" | "products" | "blog" | "contact" | "profile" | "admin";
+    href: "/" | "/products" | "/blog" | "/contact" | "/profile" | "/admin";
+    whenActive: "/" | "/products" | "/blog" | "/contact" | "/profile" | "/admin";
+}
+interface IDashboardNavListItem {
+    title: "Home" | "Courses" | "Schedule" | "Annoucements" | "El-Resources",
+    icon: React.ReactNode,
+    onActive: React.ReactNode,
+    href: "" | "/courses" | "/schedule" | "/annoucements" | "/el-resources",
+    forHeading: string
+}
