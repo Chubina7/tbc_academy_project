@@ -19,12 +19,12 @@ interface ArrBookmarks {
 }
 
 export default function BookmarkList({ bookmarks }: ArrBookmarks) {
-  const { list, removeItem, resetList } = useContext(BookmarkContext);
+  const { resetList } = useContext(BookmarkContext);
 
   return (
     <div className="flex flex-col">
       <button onClick={resetList}>RESET</button>
-      <List data={bookmarks} action={removeItem} />
+      <List data={bookmarks} />
     </div>
   );
 }

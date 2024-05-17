@@ -44,10 +44,14 @@ export async function getAuthor(id: number) {
 }
 
 // sql
-export const getUsers = unstable_cache(async () => {
-  const data = await psqlGetAllUsers()
-  return data
-}, ["user_list"], { tags: ["user_list"] })
+export const getUsers = unstable_cache(
+  async () => {
+    const data = await psqlGetAllUsers();
+    return data;
+  },
+  ["user_list"],
+  { tags: ["user_list"] }
+);
 
 // Preferences
 export function setTheme(pref: string) {
@@ -61,13 +65,14 @@ export function setTheme(pref: string) {
     document.documentElement.classList.add(pref);
     localStorage.setItem("theme", pref);
   }
-};
+}
 
 // Generators
 export function generateUniqueId() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = chars.length;
-  let userID = '';
+  let userID = "";
 
   for (let i = 0; i < 5; i++) {
     userID += chars.charAt(Math.floor(Math.random() * charactersLength));
@@ -80,10 +85,17 @@ export function dbError() {
   // should get error code and show different text messages
 }
 export function detectEnviro() {
-  const enviro = process.env.NODE_ENV
+  const enviro = process.env.NODE_ENV;
   if (enviro === "production") {
-    return "https://tbc-accelerator-project.vercel.app"
+    return "https://tbc-accelerator-project.vercel.app";
   } else {
-    return "http://localhost:3000"
+    return "http://localhost:3000";
   }
+}
+
+export async function getAllBookmarks() {
+  const res = await fetch("http://localhost:3000/api/get-bookmark-list");
+  const data = await res.json();
+
+  return data.bookmarks;
 }

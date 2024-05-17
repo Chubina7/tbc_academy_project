@@ -1,13 +1,12 @@
 import React from "react";
-import BookmarkList from "../../../../../components/dashboard/bookmarksPage/BookmarkList";
+import Bookmarks from "../../../../../components/dashboard/Bookmarks/Bookmarks";
+import { getAllBookmarks } from "../../../../../lib/helpers";
 
 export default async function page() {
-  const res = await fetch("http://localhost:3000/api/get-bookmark-list");
-  const data = await res.json();
-  console.log(data);
+  const data = await getAllBookmarks();
   return (
     <div className="w-full">
-      <BookmarkList bookmarks={data.bookmarks} />
+      <Bookmarks bookmarks={data} />
     </div>
   );
 }
