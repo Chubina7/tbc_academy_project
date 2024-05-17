@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { BookmarkContext } from "../../../context/ctx";
+
 import { actAddToBookmarks } from "../../../lib/actions";
 const Title = dynamic(() => import("./Title"), {
   ssr: false,
