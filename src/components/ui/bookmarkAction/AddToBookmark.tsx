@@ -3,6 +3,7 @@
 import React, { useContext, useState } from "react";
 import dynamic from "next/dynamic";
 import { BookmarkContext } from "../../../context/ctx";
+import { actAddToBookmarks } from "../../../lib/actions";
 const Title = dynamic(() => import("./Title"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
@@ -20,6 +21,7 @@ export default function AddToBookmark({ dataOfItem }: { dataOfItem: any }) {
   const handleBookmarkListChange = () => {
     if (itemIdx === -1) {
       addItem(dataOfItem);
+      actAddToBookmarks();
       setIsInList(true);
     } else {
       removeItem(dataOfItem);
