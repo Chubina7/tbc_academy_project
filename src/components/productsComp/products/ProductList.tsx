@@ -1,5 +1,6 @@
 import React from "react";
 import ProductItem from "./ProductItem";
+import testImage from "../../../../public/test.jpg";
 
 interface ProductListProps {
   list: Array<IProduct>;
@@ -28,7 +29,7 @@ export default function ProductList({
             route={`${product.id}`}
             title={product.title}
             description={product.description}
-            thumbnail={product.thumbnail}
+            thumbnail={testImage}
             price={product.price}
           />
         ))}

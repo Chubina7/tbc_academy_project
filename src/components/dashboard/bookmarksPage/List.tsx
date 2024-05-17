@@ -1,6 +1,8 @@
 import React from "react";
+import { psqlGetBookmarks } from "../../../lib/sqlQueries";
 
 export default function List({ data, action }: { data: any; action: any }) {
+  // const bookmarks = await psqlGetBookmarks("BtMV3");
   return (
     <>
       {data.length !== 0 ? (

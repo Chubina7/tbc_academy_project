@@ -67,3 +67,19 @@ export async function psqAddToBookmarks({
 }) {
   await sql`INSERT INTO bookmarks (user_id, count, resource_id) VALUES  (${user_id}, ${count}, ${resource_id});`;
 }
+
+export async function psqlGetResources() {
+  const { rows } = await sql`SELECT * FROM resources`;
+
+  return rows;
+}
+
+export async function psqlGetBookmarks({ userId }) {
+  const { rows } = await sql`SELECT u.username, r.title, r.description
+  FROM bookmarks b
+  JOIN users u ON b.user_id = u.user_id
+  JOIN resources r ON b.resource_id = r.resource_id
+  WHERE b.user_id = ${userId}`;
+
+  return rows;
+}
