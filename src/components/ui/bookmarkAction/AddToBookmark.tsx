@@ -10,29 +10,35 @@ const Title = dynamic(() => import("./Title"), {
 });
 
 export default function AddToBookmark({ dataOfItem }: { dataOfItem: any }) {
-  const { addItem, removeItem, list } = useContext(BookmarkContext);
-  const itemIdx = list
-    ? list.findIndex((item: any) => item.title === dataOfItem.title)
-    : -1;
-  const [isInList, setIsInList] = useState(() =>
-    itemIdx === -1 ? false : true
-  );
+  const [isInList, setIsInList] = useState(false);
+  // const { addItem, removeItem, list } = useContext(BookmarkContext);
+  // const itemIdx = list
+  //   ? list.findIndex((item: any) => item.title === dataOfItem.title)
+  //   : -1;
+  // const [isInList, setIsInList] = useState(() =>
+  //   itemIdx === -1 ? false : true
+  // );
 
-  const handleBookmarkListChange = () => {
-    if (itemIdx === -1) {
-      addItem(dataOfItem);
-      actAddToBookmarks();
-      setIsInList(true);
-    } else {
-      removeItem(dataOfItem);
-      setIsInList(false);
-    }
+  // const handleBookmarkListChange = () => {
+  //   if (itemIdx === -1) {
+  //     addItem(dataOfItem);
+  //     actAddToBookmarks(dataOfItem.resource_id);
+  //     setIsInList(true);
+  //   } else {
+  //     removeItem(dataOfItem);
+  //     setIsInList(false);
+  //   }
+  // };
+
+  const handleAddToBookmarks = () => {
+    actAddToBookmarks({ resource_id: dataOfItem?.resource_id });
+    setIsInList(true);
   };
 
   return (
     <button
       className="w-full rounded-md bg-[#3D52A1] text-[#EEE8F6] dark:bg-[#EEE8F6] dark:text-[#3D52A1] py-1 mt-4 hover:opacity-70"
-      onClick={handleBookmarkListChange}
+      onClick={handleAddToBookmarks}
     >
       <Title title={isInList} />
     </button>
