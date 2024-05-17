@@ -1,10 +1,12 @@
 import React from "react";
-import BookmarkList from "../../../../../components/dashboard/bookmarksPage/BookmarkList";
+import Bookmarks from "../../../../../components/dashboard/Bookmarks/Bookmarks";
+import { getAllBookmarks } from "../../../../../lib/helpers";
 
-export default function page() {
+export default async function page() {
+  const data = await getAllBookmarks();
   return (
     <div className="w-full">
-      <BookmarkList />
+      <Bookmarks bookmarks={data} />
     </div>
   );
 }

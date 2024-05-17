@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import ProductList from "./products/ProductList";
 import ProductsActions from "./productsActions/ProductsActions";
 
-function Products({ data }: { data: Array<IProduct> }) {
+function Products({ data }: { data: any }) {
   const [sortRule, setSortRule] = useState<boolean>(false);
   const [query, setQuery] = useState<string>("");
 

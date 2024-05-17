@@ -1,10 +1,16 @@
 import React from "react";
 
-export default function List({ data }: { data: any }) {
+interface Bookmarks {
+  title: string;
+  description: string;
+  count: number;
+}
+
+export default function Bookmarks({ bookmarks }: { bookmarks: Bookmarks[] }) {
   return (
     <>
-      {data.length !== 0 ? (
-        data.map((item: any, idx: number) => (
+      {bookmarks.length !== 0 ? (
+        bookmarks.map((item: any, idx: number) => (
           <div
             key={idx}
             className="w-full flex flex-col md:flex-row justify-between text-white items-center p-6 border-2 border-gray-200 rounded-lg shadow-sm"
