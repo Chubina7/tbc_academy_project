@@ -1,6 +1,9 @@
 import Products from "../../../../../components/productsComp/Products";
 import { getAllProducts } from "../../../../../lib/helpers";
-import { psqlGetResources } from "../../../../../lib/sqlQueries";
+import {
+  psqlGetBookmarks,
+  psqlGetResources,
+} from "../../../../../lib/sqlQueries";
 
 export default async function ElResources() {
   // დროებითი დატა

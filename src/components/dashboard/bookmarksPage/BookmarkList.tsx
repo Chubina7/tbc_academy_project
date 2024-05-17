@@ -8,13 +8,23 @@ const List = dynamic(() => import("./List"), {
   loading: () => <p>Loading...</p>,
 });
 
-export default function BookmarkList() {
+interface Bookmarks {
+  title: string;
+  description: string;
+  count: number;
+}
+
+interface ArrBookmarks {
+  bookmarks: Bookmarks[];
+}
+
+export default function BookmarkList({ bookmarks }: ArrBookmarks) {
   const { list, removeItem, resetList } = useContext(BookmarkContext);
 
   return (
     <div className="flex flex-col">
       <button onClick={resetList}>RESET</button>
-      <List data={list} action={removeItem} />
+      <List data={bookmarks} action={removeItem} />
     </div>
   );
 }

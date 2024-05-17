@@ -74,12 +74,15 @@ export async function psqlGetResources() {
   return rows;
 }
 
-export async function psqlGetBookmarks({ userId }) {
-  const { rows } = await sql`SELECT u.username, r.title, r.description
-  FROM bookmarks b
-  JOIN users u ON b.user_id = u.user_id
-  JOIN resources r ON b.resource_id = r.resource_id
-  WHERE b.user_id = ${userId}`;
-
+//Get all bookmarks
+export async function psqlGetBookmarks(userId: string, resourceId: string) {
+  const { rows } = await sql`
+      SELECT resources.title, resources.description, bookmarks.count
+      FROM bookmarks
+      JOIN users ON bookmarks.user_id = users.user_id
+      JOIN resources ON bookmarks.resource_id = resources.resource_id
+      WHERE bookmarks.user_id = ${userId}
+      AND bookmarks.resource_id = ${resourceId}
+    `;
   return rows;
 }

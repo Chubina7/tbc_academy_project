@@ -25,7 +25,7 @@ export default function ProductList({
         )
         .map((product) => (
           <ProductItem
-            key={product.id}
+            key={product.resource_id}
             route={`${product.id}`}
             title={product.title}
             description={product.description}
