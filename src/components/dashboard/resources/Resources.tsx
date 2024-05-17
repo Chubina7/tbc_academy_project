@@ -24,9 +24,10 @@ export default function Resources({ data }: { data: any }) {
                 <p className="text-gray-700 text-base">{item.description}</p>
                 <div className="px-6 pt-4 pb-2">
                   <AddToBookmark dataOfItem={item} />
+                  <p>{item.resource_id} random</p>
                   <span className="flex gap-6 py-2">
                     <DecreaseCount />
-                    <IncreaseCount />
+                    <IncreaseCount resource_id={item.resource_id} />
                   </span>
 
                   {/* <button className="bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
