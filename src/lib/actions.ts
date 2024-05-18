@@ -10,6 +10,8 @@ import {
   psqlEditUser,
   psqAddToBookmarks,
   psqIncrementBookmarkCount,
+  psqDecrementBookmarkCount,
+  psqDeleteBookmarks,
 } from "./sqlQueries";
 
 // User Data
@@ -106,5 +108,28 @@ export const actIncreaseCount = async ({
     console.log(`Count for bookmark ${resource_id} incremented successfully`);
   } catch (error) {
     console.error("Failed to increment bookmark count:", error);
+  }
+};
+
+export const actDecreaseCount = async ({
+  resource_id,
+}: {
+  resource_id: string;
+}): Promise<void> => {
+  try {
+    await psqDecrementBookmarkCount({ resource_id });
+    console.log(`Count for bookmark ${resource_id} decremented successfully`);
+  } catch (error) {
+    console.error("Failed to decrement bookmark count:", error);
+  }
+};
+
+export const actDeleteBookmarks = async (): Promise<void> => {
+  const user_id = "U1234";
+  try {
+    await psqDeleteBookmarks({ user_id });
+    console.log(`All bookmarks deleted successfully for user ${user_id}`);
+  } catch (error) {
+    console.error("Failed to delete bookmarks:", error);
   }
 };

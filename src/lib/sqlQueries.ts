@@ -80,6 +80,42 @@ export async function psqIncrementBookmarkCount({
     `;
 }
 
+export async function psqDecrementBookmarkCount({
+  resource_id,
+}: {
+  resource_id: string;
+}): Promise<void> {
+  const { rows } = await sql`
+      SELECT count FROM bookmarks
+      WHERE resource_id = ${resource_id};
+    `;
+  const count = rows[0]?.count;
+
+  if (count === 1) {
+    await sql`
+      DELETE FROM bookmarks
+      WHERE resource_id = ${resource_id};
+    `;
+  } else if (count > 1) {
+    await sql`
+      UPDATE bookmarks
+      SET count = count - 1
+      WHERE resource_id = ${resource_id};
+    `;
+  }
+}
+
+export async function psqDeleteBookmarks({
+  user_id,
+}: {
+  user_id: string;
+}): Promise<void> {
+  await sql`
+      DELETE FROM bookmarks
+      WHERE user_id = ${user_id};
+    `;
+}
+
 export async function psqlGetResources() {
   const { rows } = await sql`SELECT * FROM resources`;
 
