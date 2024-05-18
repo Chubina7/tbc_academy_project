@@ -117,20 +117,23 @@ export async function psqDeleteBookmarks({
 }
 
 export async function psqlGetResources() {
-  const { rows } = await sql`SELECT * FROM resources`;
+  const { rows } = await sql`
+  SELECT * FROM resources
+  ORDER BY resources.resource_id
+  `;
 
   return rows;
 }
 
 //Get all bookmarks
-export async function psqlGetBookmarks(userId: string, resourceId: string) {
+export async function psqlGetBookmarks(userId: string) {
   const { rows } = await sql`
       SELECT resources.title, resources.description, bookmarks.count
       FROM bookmarks
       JOIN users ON bookmarks.user_id = users.user_id
       JOIN resources ON bookmarks.resource_id = resources.resource_id
       WHERE bookmarks.user_id = ${userId}
-      AND bookmarks.resource_id = ${resourceId}
+      ORDER BY bookmarks.bookmark_id
     `;
   return rows;
 }

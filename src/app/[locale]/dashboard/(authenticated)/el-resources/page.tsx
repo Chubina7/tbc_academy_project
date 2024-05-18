@@ -1,8 +1,8 @@
 import Resources from "../../../../../components/dashboard/resources/Resources";
-import { psqlGetResources } from "../../../../../lib/sqlQueries";
+import { getAllRsources } from "../../../../../lib/helpers";
 
 export default async function ElResources() {
-  const resources = await psqlGetResources();
+  const resources = await getAllRsources();
 
   return (
     <div className="w-full flex flex-col items-center gap-6">
