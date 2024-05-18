@@ -16,8 +16,7 @@ export default function Resources({ data }: { data: any }) {
       <div className=" rounded flex flex-wrap gap-5 shadow-lg  m-4">
         {data.map((item: any) => {
           return (
-            <>
-              {" "}
+            <div key={item.resource_id}>
               <div className="px-6 py-4 w-[300px] bg-white flex flex-col justify-between rounded-lg">
                 <div className="font-bold text-xl text-black mb-2">
                   {item.title}
@@ -37,7 +36,7 @@ export default function Resources({ data }: { data: any }) {
                   </button> */}
                 </div>
               </div>
-            </>
+            </div>
           );
         })}
       </div>

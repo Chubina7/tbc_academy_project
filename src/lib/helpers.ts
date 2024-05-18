@@ -94,7 +94,8 @@ export function detectEnviro() {
 }
 
 export async function getAllBookmarks() {
-  const res = await fetch("http://localhost:3000/api/get-bookmark-list", {
+  const domain = detectEnviro();
+  const res = await fetch(`${domain}/api/get-bookmark-list`, {
     next: {
       revalidate: 0,
     },
@@ -105,7 +106,8 @@ export async function getAllBookmarks() {
 }
 
 export async function getAllRsources() {
-  const res = await fetch("http://localhost:3000/api/get-resource-list");
+  const domain = detectEnviro();
+  const res = await fetch(`${domain}/api/get-resource-list`);
   const data = await res.json();
 
   return data.resources;
