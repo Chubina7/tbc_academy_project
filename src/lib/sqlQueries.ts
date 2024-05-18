@@ -68,6 +68,18 @@ export async function psqAddToBookmarks({
   await sql`INSERT INTO bookmarks (user_id, count, resource_id) VALUES  (${user_id}, ${count}, ${resource_id});`;
 }
 
+export async function psqIncrementBookmarkCount({
+  resource_id,
+}: {
+  resource_id: string;
+}): Promise<void> {
+  await sql`
+      UPDATE bookmarks
+      SET count = count + 1
+      WHERE resource_id = ${resource_id};
+    `;
+}
+
 export async function psqlGetResources() {
   const { rows } = await sql`SELECT * FROM resources`;
 

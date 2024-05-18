@@ -9,6 +9,7 @@ import {
   psqlDeleteUser,
   psqlEditUser,
   psqAddToBookmarks,
+  psqIncrementBookmarkCount,
 } from "./sqlQueries";
 
 // User Data
@@ -76,17 +77,14 @@ export const actEditUser = async (formData: FormData, user_id: string) => {
   revalidateTag("user_list");
 };
 
-export const actAddToBookmarks = async (): Promise<void> => {
-  // const userCookie = cookies().get("user_id");
+export const actAddToBookmarks = async ({
+  resource_id,
+}: {
+  resource_id: string;
+}): Promise<void> => {
   const count = 1;
-  const resource_id = "R1234";
-  // const user_id = userCookie?.value;
   const user_id = "U1234";
-  console.log(user_id);
-  // if (!user_id) {
-  //   console.error("User ID not found in cookies");
-  //   return;
-  // }
+  console.log(user_id, resource_id);
 
   try {
     await psqAddToBookmarks({ resource_id, user_id, count });
@@ -95,5 +93,18 @@ export const actAddToBookmarks = async (): Promise<void> => {
     );
   } catch (error) {
     console.error("Failed to add to bookmarks:", error);
+  }
+};
+
+export const actIncreaseCount = async ({
+  resource_id,
+}: {
+  resource_id: string;
+}): Promise<void> => {
+  try {
+    await psqIncrementBookmarkCount({ resource_id });
+    console.log(`Count for bookmark ${resource_id} incremented successfully`);
+  } catch (error) {
+    console.error("Failed to increment bookmark count:", error);
   }
 };
