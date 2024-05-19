@@ -51,7 +51,7 @@ export default function ProductItem({
       </Link>
       <h1 className="font-bold text-lg">{title}</h1>
       <p className="flex-1 align-top text-sm opacity-70">{description}</p>
-      <AddToBookmark dataOfItem={{ title, price, description }} />
+      <AddToBookmark dataOfItem={{ title, price, description }} toggleVisibility={null} isHidden={null} />
     </div>
   );
 }
