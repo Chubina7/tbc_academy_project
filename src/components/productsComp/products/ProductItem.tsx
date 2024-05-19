@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { HiOutlineCursorClick } from "react-icons/hi";
-import AddToBookmark from "../../ui/bookmarkAction/AddToBookmark";
 
 export default function ProductItem({
   title,
@@ -51,7 +50,6 @@ export default function ProductItem({
       </Link>
       <h1 className="font-bold text-lg">{title}</h1>
       <p className="flex-1 align-top text-sm opacity-70">{description}</p>
-      <AddToBookmark dataOfItem={{ title, price, description }} />
     </div>
   );
 }

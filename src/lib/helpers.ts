@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache";
-import { psqlGetAllUsers } from "./sqlQueries";
+import { psqlGetAllUsers, psqlGetBookmarkedItemCount, psqlGetBookmarks, psqlGetResources } from "./sqlQueries";
 
 // Products
 export async function getAllProducts() {
@@ -44,10 +44,40 @@ export async function getAuthor(id: number) {
 }
 
 // sql
-export const getUsers = unstable_cache(async () => {
-  const data = await psqlGetAllUsers()
-  return data
-}, ["user_list"], { tags: ["user_list"] })
+export const getUsers = unstable_cache(
+  async () => {
+    const data = await psqlGetAllUsers();
+    return data;
+  },
+  ["user_list"],
+  { tags: ["user_list"] }
+)
+
+export const getResouces = unstable_cache(
+  async () => {
+    const data = await psqlGetResources();
+    return data;
+  },
+  ["resources_list"],
+  { tags: ["resources_list"] }
+)
+
+export const getBookmarks = unstable_cache(
+  async () => {
+    const id = "U1234" // change dynamicly
+    const data = await psqlGetBookmarks(id);
+    return data;
+  },
+  ["bookmarks_list"],
+  { tags: ["bookmarks_list"] }
+)
+
+export const getBookmarkedItemCount = unstable_cache(
+  async (resource_id) => {
+    const result = await psqlGetBookmarkedItemCount(resource_id)
+    return result
+  }, ["item_count"], { tags: ["item_count"] }
+)
 
 // Preferences
 export function setTheme(pref: string) {
@@ -61,13 +91,14 @@ export function setTheme(pref: string) {
     document.documentElement.classList.add(pref);
     localStorage.setItem("theme", pref);
   }
-};
+}
 
 // Generators
 export function generateUniqueId() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = chars.length;
-  let userID = '';
+  let userID = "";
 
   for (let i = 0; i < 5; i++) {
     userID += chars.charAt(Math.floor(Math.random() * charactersLength));
@@ -80,10 +111,10 @@ export function dbError() {
   // should get error code and show different text messages
 }
 export function detectEnviro() {
-  const enviro = process.env.NODE_ENV
+  const enviro = process.env.NODE_ENV;
   if (enviro === "production") {
-    return "https://tbc-accelerator-project.vercel.app"
+    return "https://tbc-accelerator-project.vercel.app";
   } else {
-    return "http://localhost:3000"
+    return "http://localhost:3000";
   }
 }

@@ -1,13 +1,12 @@
-import Products from "../../../../../components/productsComp/Products";
-import { getAllProducts } from "../../../../../lib/helpers";
+import Resources from "../../../../../components/dashboard/resourcesPage/Resources";
+import { getResouces } from "../../../../../lib/helpers";
 
 export default async function ElResources() {
-  // დროებითი დატა
-  const data = await getAllProducts();
+  const data = await getResouces();
 
   return (
     <div className="w-full flex flex-col items-center gap-6">
-      <Products data={data} />
+      <Resources data={data} />
     </div>
   );
 }
