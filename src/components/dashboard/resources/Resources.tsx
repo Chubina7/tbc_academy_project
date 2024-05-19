@@ -9,14 +9,10 @@ interface Resources {
 
 export default function Resources({ data }: { data: any }) {
   return (
-    <>
-      <div className="rounded flex flex-wrap gap-5 shadow-lg m-4 justify-center lg:justify-normal">
-        {data.map((item: any) => {
-          return (
-            <ResourceItem item={item} key={item.resource_id} />
-          );
-        })}
-      </div>
-    </>
+    <div className="rounded flex flex-wrap gap-5 shadow-lg m-4 justify-center lg:justify-normal">
+      {data.map((item: any) => {
+        return <ResourceItem item={item} key={item.resource_id} />;
+      })}
+    </div>
   );
 }

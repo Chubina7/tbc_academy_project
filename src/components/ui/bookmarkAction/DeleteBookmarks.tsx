@@ -1,10 +1,10 @@
-// DeleteBookmarks.tsx
 "use client";
-import { actDeleteBookmarks } from "../../../lib/actions";
+
+import { actResetBookmarks } from "../../../lib/actions";
 
 export default function DeleteBookmarks() {
   const handleDeleteBookmarks = () => {
-    actDeleteBookmarks();
+    actResetBookmarks();
   };
 
   return (

@@ -3,12 +3,9 @@
 import Link from "next/link";
 import React from "react";
 import { IoBookmark } from "react-icons/io5";
-import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
+import BookmarkNum from "./BookmarkNum";
 // import { IoBookmarkOutline } from "react-icons/io5";
-const BookmarkNum = dynamic(() => import("./BookmarkNum"), {
-  ssr: false,
-});
 
 export default function Bookmark() {
   const path = usePathname();
@@ -27,4 +24,3 @@ export default function Bookmark() {
     </div>
   );
 }
- 

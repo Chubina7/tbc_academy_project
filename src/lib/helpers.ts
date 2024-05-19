@@ -1,5 +1,7 @@
 import { unstable_cache } from "next/cache";
-import { psqlGetAllUsers } from "./sqlQueries";
+import { psqlGetAllUsers, psqlGetBookmarks, psqlGetResources } from "./sqlQueries";
+
+const domain = detectEnviro();
 
 // Products
 export async function getAllProducts() {
@@ -53,6 +55,40 @@ export const getUsers = unstable_cache(
   { tags: ["user_list"] }
 );
 
+export const getResouces = unstable_cache(
+  async () => {
+    const data = await psqlGetResources();
+    return data;
+  },
+  ["resources_list"],
+  { tags: ["resources_list"] }
+);
+
+export const getBookmarks = unstable_cache(
+  async () => {
+    const id = "U1234" // change dynamicly
+    const data = await psqlGetBookmarks(id);
+    return data;
+  },
+  ["bookmarks_list"],
+  { tags: ["bookmarks_list"] }
+);
+
+export async function getAllBookmarks() {
+  const res = await fetch(`${domain}/api/get-bookmark-list`);
+  const data = await res.json();
+
+  return data.bookmarks;
+}
+
+export async function getAllRsources() {
+  const domain = detectEnviro();
+  const res = await fetch(`${domain}/api/get-resource-list`);
+  const data = await res.json();
+
+  return data.resources;
+}
+
 // Preferences
 export function setTheme(pref: string) {
   if (pref === "os") {
@@ -91,24 +127,4 @@ export function detectEnviro() {
   } else {
     return "http://localhost:3000";
   }
-}
-
-export async function getAllBookmarks() {
-  const domain = detectEnviro();
-  const res = await fetch(`${domain}/api/get-bookmark-list`, {
-    next: {
-      revalidate: 0,
-    },
-  });
-  const data = await res.json();
-
-  return data.bookmarks;
-}
-
-export async function getAllRsources() {
-  const domain = detectEnviro();
-  const res = await fetch(`${domain}/api/get-resource-list`);
-  const data = await res.json();
-
-  return data.resources;
 }

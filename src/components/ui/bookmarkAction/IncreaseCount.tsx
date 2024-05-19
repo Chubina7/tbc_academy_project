@@ -1,19 +1,12 @@
 "use client";
+
 import { actIncreaseCount } from "../../../lib/actions";
 
-export default function IncreaseCount({
-  resource_id,
-}: {
-  resource_id: string;
-}) {
-  const handleIncreaseCount = () => {
-    actIncreaseCount({ resource_id });
-  };
-
+export default function IncreaseCount({ id }: { id: string }) {
   return (
     <button
       className="border border-gray-300 p-2 rounded-lg"
-      onClick={handleIncreaseCount}
+      onClick={() => actIncreaseCount(id)}
     >
       +1
     </button>

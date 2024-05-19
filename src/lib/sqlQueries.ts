@@ -56,79 +56,37 @@ export async function psqlEditUser({ username, email, age, user_id }: any) {
   await sql`UPDATE user_credentials SET username = ${username}, email = ${email} WHERE user_id = ${user_id}`;
 }
 
-export async function psqAddToBookmarks({
-  user_id,
-  resource_id,
-  count,
-}: {
-  user_id: string;
-  resource_id: string;
-  count: number;
-}) {
-  await sql`INSERT INTO bookmarks (user_id, count, resource_id) VALUES  (${user_id}, ${count}, ${resource_id});`;
+export async function psqAddToBookmarks(user_id: string, resource_id: string, count: number,) {
+  await sql`INSERT INTO bookmarks (user_id, count, resource_id) VALUES (${user_id}, ${count}, ${resource_id});`;
 }
 
-export async function psqIncrementBookmarkCount({
-  resource_id,
-}: {
-  resource_id: string;
-}): Promise<void> {
-  await sql`
-      UPDATE bookmarks
-      SET count = count + 1
-      WHERE resource_id = ${resource_id};
-    `;
+export async function psqIncrementBookmarkCount(user_id: string, resource_id: string) {
+  await sql`UPDATE bookmarks SET count = count + 1 WHERE resource_id = ${resource_id} AND user_id = ${user_id}`;
 }
 
-export async function psqDecrementBookmarkCount({
-  resource_id,
-}: {
-  resource_id: string;
-}): Promise<void> {
-  const { rows } = await sql`
-      SELECT count FROM bookmarks
-      WHERE resource_id = ${resource_id};
-    `;
-  const count = rows[0]?.count;
+export async function psqDecrementBookmarkCount(user_id: string, resource_id: string,) {
+  const { rows } = await sql`SELECT count FROM bookmarks WHERE resource_id = ${resource_id} AND user_id = ${user_id}`
+  const count = rows[0].count;
 
   if (count === 1) {
-    await sql`
-      DELETE FROM bookmarks
-      WHERE resource_id = ${resource_id};
-    `;
+    await sql`DELETE FROM bookmarks WHERE resource_id = ${resource_id} AND user_id = ${user_id}`;
   } else if (count > 1) {
-    await sql`
-      UPDATE bookmarks
-      SET count = count - 1
-      WHERE resource_id = ${resource_id};
-    `;
+    await sql`UPDATE bookmarks SET count = count - 1 WHERE resource_id = ${resource_id} AND user_id = ${user_id}`;
   }
 }
 
-export async function psqDeleteBookmarks({
-  user_id,
-}: {
-  user_id: string;
-}): Promise<void> {
-  await sql`
-      DELETE FROM bookmarks
-      WHERE user_id = ${user_id};
-    `;
+export async function psqDeleteBookmarks({ user_id }: { user_id: string }) {
+  await sql`DELETE FROM bookmarks WHERE user_id = ${user_id}`;
 }
 
 export async function psqlGetResources() {
-  const { rows } = await sql`
-  SELECT * FROM resources
-  ORDER BY resources.resource_id
-  `;
-
+  const { rows } = await sql`SELECT * FROM resources ORDER BY resources.resource_id`;
   return rows;
 }
 
-//Get all bookmarks
 export async function psqlGetBookmarks(userId: string) {
   const { rows } = await sql`
-      SELECT resources.title, resources.description, bookmarks.count
+      SELECT resources.resource_id, resources.title, resources.description, bookmarks.count
       FROM bookmarks
       JOIN users ON bookmarks.user_id = users.user_id
       JOIN resources ON bookmarks.resource_id = resources.resource_id
@@ -136,4 +94,10 @@ export async function psqlGetBookmarks(userId: string) {
       ORDER BY bookmarks.bookmark_id
     `;
   return rows;
+}
+
+export async function psqlGetBookmarkListLength() {
+  const { rows } = await sql`SELECT SUM(count) AS total_count FROM bookmarks WHERE user_id = 'U1234'`;
+
+  return rows
 }
