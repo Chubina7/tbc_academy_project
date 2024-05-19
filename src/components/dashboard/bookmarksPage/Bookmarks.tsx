@@ -1,9 +1,9 @@
 import React from "react";
-import ResourceItem from "../resources/ResourceItem";
+import ResourceItem from "../resourcesPage/resourceItem/ResourceItem";
 
 export default function Bookmarks({ data }: { data: any[] }) {
   return (
-    <div className="rounded flex flex-wrap gap-5 shadow-lg m-4 justify-center lg:justify-normal">
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
       {data.length !== 0 ? (
         data.map((item: any) => (
           <ResourceItem item={item} key={item.resource_id} />

@@ -1,5 +1,5 @@
-import Bookmarks from "../../../../../components/dashboard/Bookmarks/Bookmarks";
-import DeleteBookmarks from "../../../../../components/ui/bookmarkAction/DeleteBookmarks";
+import Bookmarks from "../../../../../components/dashboard/bookmarksPage/Bookmarks";
+import DeleteBookmarks from "../../../../../components/dashboard/resourcesPage/resourceItem/actions/DeleteBookmarks";
 import { getBookmarks } from "../../../../../lib/helpers";
 
 export default async function page() {

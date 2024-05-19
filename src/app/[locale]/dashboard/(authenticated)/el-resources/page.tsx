@@ -1,4 +1,4 @@
-import Resources from "../../../../../components/dashboard/resources/Resources";
+import Resources from "../../../../../components/dashboard/resourcesPage/Resources";
 import { getResouces } from "../../../../../lib/helpers";
 
 export default async function ElResources() {

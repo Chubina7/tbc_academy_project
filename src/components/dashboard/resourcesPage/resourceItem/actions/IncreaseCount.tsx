@@ -1,6 +1,6 @@
 "use client";
 
-import { actIncreaseCount } from "../../../lib/actions";
+import { actIncreaseCount } from "../../../../../lib/actions";
 
 export default function IncreaseCount({ id }: { id: string }) {
   return (
@@ -8,7 +8,7 @@ export default function IncreaseCount({ id }: { id: string }) {
       className="border border-gray-300 p-2 rounded-lg"
       onClick={() => actIncreaseCount(id)}
     >
-      +1
+      + 1
     </button>
   );
 }

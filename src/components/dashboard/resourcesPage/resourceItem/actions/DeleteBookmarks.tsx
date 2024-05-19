@@ -1,6 +1,6 @@
 "use client";
 
-import { actResetBookmarks } from "../../../lib/actions";
+import { actResetBookmarks } from "../../../../../lib/actions";
 
 export default function DeleteBookmarks() {
   return (
