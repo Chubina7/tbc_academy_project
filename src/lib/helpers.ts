@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache";
-import { psqlGetAllUsers } from "./sqlQueries";
+import { psqlGetAllUsers, psqlGetBookmarkedItemCount, psqlGetBookmarks, psqlGetResources } from "./sqlQueries";
 
 // Products
 export async function getAllProducts() {
@@ -51,7 +51,33 @@ export const getUsers = unstable_cache(
   },
   ["user_list"],
   { tags: ["user_list"] }
-);
+)
+
+export const getResouces = unstable_cache(
+  async () => {
+    const data = await psqlGetResources();
+    return data;
+  },
+  ["resources_list"],
+  { tags: ["resources_list"] }
+)
+
+export const getBookmarks = unstable_cache(
+  async () => {
+    const id = "U1234" // change dynamicly
+    const data = await psqlGetBookmarks(id);
+    return data;
+  },
+  ["bookmarks_list"],
+  { tags: ["bookmarks_list"] }
+)
+
+export const getBookmarkedItemCount = unstable_cache(
+  async (resource_id) => {
+    const result = await psqlGetBookmarkedItemCount(resource_id)
+    return result
+  }, ["item_count"], { tags: ["item_count"] }
+)
 
 // Preferences
 export function setTheme(pref: string) {
@@ -91,24 +117,4 @@ export function detectEnviro() {
   } else {
     return "http://localhost:3000";
   }
-}
-
-export async function getAllBookmarks() {
-  const domain = detectEnviro();
-  const res = await fetch(`${domain}/api/get-bookmark-list`, {
-    next: {
-      revalidate: 0,
-    },
-  });
-  const data = await res.json();
-
-  return data.bookmarks;
-}
-
-export async function getAllRsources() {
-  const domain = detectEnviro();
-  const res = await fetch(`${domain}/api/get-resource-list`);
-  const data = await res.json();
-
-  return data.resources;
 }

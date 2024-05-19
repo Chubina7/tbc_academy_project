@@ -79,56 +79,48 @@ export const actEditUser = async (formData: FormData, user_id: string) => {
   revalidateTag("user_list");
 };
 
-export const actAddToBookmarks = async ({
-  resource_id,
-}: {
-  resource_id: string;
-}): Promise<void> => {
+// Bookmarking
+export const actAddToBookmarks = async (resource_id: string) => {
   const count = 1;
-  const user_id = "U1234";
-  console.log(user_id, resource_id);
+  const user_id = "U1234" // change dinamicly
 
   try {
-    await psqAddToBookmarks({ resource_id, user_id, count });
-    console.log(
-      `Product ${resource_id} added to bookmarks for user ${user_id}`
-    );
+    await psqAddToBookmarks(user_id, resource_id, count);
+    revalidateTag("bookmarks_list")
+    revalidateTag("item_count")
   } catch (error) {
     console.error("Failed to add to bookmarks:", error);
   }
 };
 
-export const actIncreaseCount = async ({
-  resource_id,
-}: {
-  resource_id: string;
-}): Promise<void> => {
+export const actIncreaseCount = async (resource_id: string) => {
+  const user_id = "U1234" // change dinamically
   try {
-    await psqIncrementBookmarkCount({ resource_id });
-    console.log(`Count for bookmark ${resource_id} incremented successfully`);
+    await psqIncrementBookmarkCount(user_id, resource_id);
+    revalidateTag("bookmarks_list")
+    revalidateTag("item_count")
   } catch (error) {
     console.error("Failed to increment bookmark count:", error);
   }
 };
 
-export const actDecreaseCount = async ({
-  resource_id,
-}: {
-  resource_id: string;
-}): Promise<void> => {
+export const actDecreaseCount = async (resource_id: string) => {
+  const user_id = "U1234" // change dinamically
   try {
-    await psqDecrementBookmarkCount({ resource_id });
-    console.log(`Count for bookmark ${resource_id} decremented successfully`);
+    await psqDecrementBookmarkCount(user_id, resource_id);
+    revalidateTag("bookmarks_list")
+    revalidateTag("item_count")
   } catch (error) {
     console.error("Failed to decrement bookmark count:", error);
   }
 };
 
-export const actDeleteBookmarks = async (): Promise<void> => {
+export const actResetBookmarks = async () => {
   const user_id = "U1234";
   try {
     await psqDeleteBookmarks({ user_id });
-    console.log(`All bookmarks deleted successfully for user ${user_id}`);
+    revalidateTag("bookmarks_list")
+    revalidateTag("item_count")
   } catch (error) {
     console.error("Failed to delete bookmarks:", error);
   }
