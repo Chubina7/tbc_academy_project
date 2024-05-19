@@ -2,9 +2,9 @@ import Image from "next/image";
 import libraryImage from "/public/test.jpg";
 import AddToBookmark from "../../ui/bookmarkAction/AddToBookmark";
 import DecreaseCount from "../../ui/bookmarkAction/DecreaseCount";
-import DeleteBookmarks from "../../ui/bookmarkAction/DeleteBookmarks";
 import IncreaseCount from "../../ui/bookmarkAction/IncreaseCount";
 import React from "react";
+import ItemCount from "../../ui/bookmarkAction/ItemCount";
 
 export default function ResourceItem({ item }: { item: any }) {
   return (
@@ -27,7 +27,7 @@ export default function ResourceItem({ item }: { item: any }) {
         <AddToBookmark id={item.resource_id} />
         <DecreaseCount id={item.resource_id} />
         <IncreaseCount id={item.resource_id} />
-        <DeleteBookmarks />
+        <ItemCount id={item.resource_id} />
       </div>
     </div>
   );

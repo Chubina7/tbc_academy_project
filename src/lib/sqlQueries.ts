@@ -99,5 +99,11 @@ export async function psqlGetBookmarks(userId: string) {
 export async function psqlGetBookmarkListLength() {
   const { rows } = await sql`SELECT SUM(count) AS total_count FROM bookmarks WHERE user_id = 'U1234'`;
 
-  return rows
+  return rows[0].total_count
+}
+
+export async function psqlGetBookmarkedItemCount(resoucre_id: string) {
+  const user_id = "U1234"
+  const { rows } = await sql`SELECT count FROM bookmarks WHERE resource_id = ${resoucre_id} AND user_id = ${user_id}`
+  return rows[0]?.count
 }

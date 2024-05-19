@@ -1,7 +1,5 @@
 import { unstable_cache } from "next/cache";
-import { psqlGetAllUsers, psqlGetBookmarks, psqlGetResources } from "./sqlQueries";
-
-const domain = detectEnviro();
+import { psqlGetAllUsers, psqlGetBookmarkedItemCount, psqlGetBookmarks, psqlGetResources } from "./sqlQueries";
 
 // Products
 export async function getAllProducts() {
@@ -53,7 +51,7 @@ export const getUsers = unstable_cache(
   },
   ["user_list"],
   { tags: ["user_list"] }
-);
+)
 
 export const getResouces = unstable_cache(
   async () => {
@@ -62,7 +60,7 @@ export const getResouces = unstable_cache(
   },
   ["resources_list"],
   { tags: ["resources_list"] }
-);
+)
 
 export const getBookmarks = unstable_cache(
   async () => {
@@ -72,22 +70,14 @@ export const getBookmarks = unstable_cache(
   },
   ["bookmarks_list"],
   { tags: ["bookmarks_list"] }
-);
+)
 
-export async function getAllBookmarks() {
-  const res = await fetch(`${domain}/api/get-bookmark-list`);
-  const data = await res.json();
-
-  return data.bookmarks;
-}
-
-export async function getAllRsources() {
-  const domain = detectEnviro();
-  const res = await fetch(`${domain}/api/get-resource-list`);
-  const data = await res.json();
-
-  return data.resources;
-}
+export const getBookmarkedItemCount = unstable_cache(
+  async (resource_id) => {
+    const result = await psqlGetBookmarkedItemCount(resource_id)
+    return result
+  }, ["item_count"], { tags: ["item_count"] }
+)
 
 // Preferences
 export function setTheme(pref: string) {

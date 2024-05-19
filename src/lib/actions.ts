@@ -87,6 +87,7 @@ export const actAddToBookmarks = async (resource_id: string) => {
   try {
     await psqAddToBookmarks(user_id, resource_id, count);
     revalidateTag("bookmarks_list")
+    revalidateTag("item_count")
   } catch (error) {
     console.error("Failed to add to bookmarks:", error);
   }
@@ -97,6 +98,7 @@ export const actIncreaseCount = async (resource_id: string) => {
   try {
     await psqIncrementBookmarkCount(user_id, resource_id);
     revalidateTag("bookmarks_list")
+    revalidateTag("item_count")
   } catch (error) {
     console.error("Failed to increment bookmark count:", error);
   }
@@ -107,6 +109,7 @@ export const actDecreaseCount = async (resource_id: string) => {
   try {
     await psqDecrementBookmarkCount(user_id, resource_id);
     revalidateTag("bookmarks_list")
+    revalidateTag("item_count")
   } catch (error) {
     console.error("Failed to decrement bookmark count:", error);
   }
@@ -117,6 +120,7 @@ export const actResetBookmarks = async () => {
   try {
     await psqDeleteBookmarks({ user_id });
     revalidateTag("bookmarks_list")
+    revalidateTag("item_count")
   } catch (error) {
     console.error("Failed to delete bookmarks:", error);
   }
