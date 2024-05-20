@@ -22,7 +22,7 @@ export default function ResourceItem({ item }: { item: any }) {
         </p>
       </div>
       <div className="pt-4 pb-2">
-        <Actions id={item.resource_id} />
+        <Actions resource_id={item.resource_id} />
       </div>
     </div>
   );

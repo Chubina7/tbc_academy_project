@@ -11,14 +11,14 @@ async function AuthorInfo({ userId }: { userId: number | undefined }) {
       <div className="w-14 h-14">
         <Image
           className="rounded-full object-cover"
-          src={userId ? author.image : fallback_img}
+          src={fallback_img}
           alt={"Test"}
           width={64}
           height={64}
         />
       </div>
       <h1>
-        {author.firstName} {author.lastName}
+        {author.username} {author.surname}
       </h1>
     </div>
   );

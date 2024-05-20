@@ -11,6 +11,7 @@ function RegisterForm() {
   const t = useTranslations("Auth.register.form");
   const router = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
+  const roleRef = useRef<HTMLSelectElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const reTypePasswordRef = useRef<HTMLInputElement>(null);
@@ -21,12 +22,13 @@ function RegisterForm() {
     const username = usernameRef.current?.value;
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
+    const role = roleRef.current?.value;
 
     // Validate input values
     // ...
 
     try {
-      const user = { username, email, password };
+      const user = { username, email, password, role };
       const res = await fetch(`${domain}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -49,6 +51,13 @@ function RegisterForm() {
       method="POST"
       onSubmit={registerHandler}
     >
+      <div className="w-full flex flex-col gap-1">
+        <label htmlFor="role">Choose role</label>
+        <select ref={roleRef} id="role" name="role" className="text-black">
+          <option value="teacher">Teacher</option>
+          <option value="student">Student</option>
+        </select>
+      </div>
       <div className="w-full flex flex-col gap-1">
         <label htmlFor="username">{t("usernameLabel")}</label>
         <input

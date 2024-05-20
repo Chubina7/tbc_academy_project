@@ -3,7 +3,7 @@
         "login": {
             "title": "Login",
             "form": {
-                "usernameLabel": "Enter your username",
+                "usernameLabel": "Enter your email",
                 "usernameInput": "example123",
                 "passwordLabel": "Enter valid password",
                 "passwordInput": "Password",

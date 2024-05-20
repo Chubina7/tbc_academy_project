@@ -5,12 +5,7 @@ import { MdDelete } from "react-icons/md";
 import Modal from "./Modal";
 import Backdrop from "../../ui/Backdrop";
 
-interface Props {
-  id: string;
-  // setUsers: React.Dispatch<React.SetStateAction<IUserPublics[]>>;
-}
-
-export default function RemoveUser({ id }: Props) {
+export default function RemoveUser({ user_id }: { user_id: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleModal = () => setIsOpen((prev) => !prev);
@@ -21,7 +16,7 @@ export default function RemoveUser({ id }: Props) {
       {isOpen && (
         <>
           <Backdrop modalCloser={handleModal} />
-          <Modal userId={id} handleModal={handleModal} />
+          <Modal user_id={user_id} handleModal={handleModal} />
         </>
       )}
     </>
