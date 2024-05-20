@@ -1,7 +1,9 @@
+import { cookies } from "next/headers";
 import { psqlGetBookmarkListLength } from "../../../../../lib/sqlQueries";
 
 export default async function BookmarkNum() {
-  const sum = await psqlGetBookmarkListLength();
+  const user_id = cookies().get("user_id")?.value || "";
+  const sum = await psqlGetBookmarkListLength(user_id);
 
   if (sum > 0) {
     return (

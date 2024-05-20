@@ -3,15 +3,15 @@ import { actDeleteUser } from "../../../lib/actions";
 
 interface Props {
   handleModal: () => void;
-  userId: string;
+  user_id: string;
 }
 
-export default function Modal({ handleModal, userId }: Props) {
+export default function Modal({ handleModal, user_id }: Props) {
   return (
     <form
       className="fixed top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center gap-5 bg-white text-[#2B3674] rounded-xl p-5 z-50"
       action={() => {
-        actDeleteUser(userId);
+        actDeleteUser(user_id);
         handleModal();
       }}
     >

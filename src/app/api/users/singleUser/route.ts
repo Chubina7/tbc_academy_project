@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
 
     try {
         const user = await psqlGetUserById(userId)
-        return NextResponse.json({ user }, { status: 200 })
+        return NextResponse.json(user, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Error occured", error }, { status: 500 })
     }

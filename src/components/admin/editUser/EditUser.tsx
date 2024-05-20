@@ -5,7 +5,7 @@ import { BsPencilFill } from "react-icons/bs";
 import Backdrop from "../../ui/Backdrop";
 import Modal from "./Modal";
 
-export default function EditUser({ id }: { id: string }) {
+export default function EditUser({ user_id }: { user_id: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleModal = () => setIsOpen((prev) => !prev);
@@ -16,7 +16,7 @@ export default function EditUser({ id }: { id: string }) {
       {isOpen && (
         <>
           <Backdrop modalCloser={handleModal} />
-          <Modal userId={id} handleModal={handleModal} />
+          <Modal user_id={user_id} handleModal={handleModal} />
         </>
       )}
     </>

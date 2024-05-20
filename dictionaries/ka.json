@@ -3,7 +3,7 @@
         "login": {
             "title": "შესვლა",
             "form": {
-                "usernameLabel": "მომხმარებლის სახელი",
+                "usernameLabel": "მომხმარებლის იმეილი",
                 "usernameInput": "სახელი123",
                 "passwordLabel": "მომხმარებლის პაროლი",
                 "passwordInput": "პაროლი",

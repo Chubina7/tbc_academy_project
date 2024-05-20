@@ -11,3 +11,6 @@ type ThemeListType = Array<IThemeListItem>;
 type LangPrefListType = Array<ILandPrefListItem>
 type LandingNavItemsType = Array<ILandingNavItem>
 type DashboardNavListType = Array<IDashboardNavListItem>
+
+// General
+type RoleType = "teacher" | "student" | "admin"

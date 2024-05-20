@@ -9,28 +9,28 @@ function LoginForm() {
   const [problem, setProblem] = useState<{ type: string; message: string }>();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const usernameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const signInHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const username = usernameRef.current?.value;
+    const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
 
-    if (username?.trim() === "" && password?.trim() === "") {
+    if (email?.trim() === "" && password?.trim() === "") {
       setProblem({
         type: "error",
         message: t("messages.empty"),
       });
-    } else if (username?.trim() === "" || password?.trim() === "") {
+    } else if (email?.trim() === "" || password?.trim() === "") {
       setProblem({
         type: "error",
         message: t("messages.fillBoth"),
       });
     } else {
       setIsLoading(true);
-      const userCredentials: IUserLoginInfo = { username, password };
+      const userCredentials: IUserLoginInfo = { email, password };
       const res = await fetch(`/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -56,14 +56,14 @@ function LoginForm() {
       onSubmit={signInHandler}
     >
       <div className="w-full flex flex-col gap-1">
-        <label htmlFor="username">{t("usernameLabel")}</label>
-        <i className="w-full text-right">user: admin</i>
+        <label htmlFor="email">{t("usernameLabel")}</label>
+        <i className="w-full text-right">email: admin@admin.com</i>
         <input
-          ref={usernameRef}
+          ref={emailRef}
           className="bg-transparent border-2 border-white py-1 px-3"
           placeholder={t("usernameInput")}
           type="text"
-          name="username"
+          name="email"
         />
       </div>
       <div className="w-full flex flex-col gap-1">

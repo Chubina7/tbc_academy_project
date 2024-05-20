@@ -7,8 +7,11 @@ const domain = detectEnviro();
 
 export default function Form({ user_id }: { user_id: string }) {
   const [username, setUsername] = useState<string>("");
-  const [age, setAge] = useState<string>("");
+  const [surname, setSurname] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [role, setRole] = useState<string>("");
+  const [age, setAge] = useState<number>();
 
   useEffect(() => {
     const getData = async () => {
@@ -17,9 +20,12 @@ export default function Form({ user_id }: { user_id: string }) {
       );
       const data = await res.json();
 
-      setUsername(data.user.username);
-      setAge(data.user.age || "unknow");
-      setEmail(data.user.email);
+      setUsername(data.username);
+      setSurname(data.surname);
+      setEmail(data.email);
+      setPassword(data.password);
+      setRole(data.role);
+      setAge(data.age);
     };
     getData();
   }, [user_id]);
@@ -39,6 +45,19 @@ export default function Form({ user_id }: { user_id: string }) {
           />
         </div>
         <div className="flex flex-col items-start justify-center">
+          <label htmlFor="surname">Enter new Surname</label>
+          <input
+            className="border border-black px-4 py-1 rounded-xl"
+            name="surname"
+            type="surname"
+            value={surname}
+            onChange={(e) => setSurname(e.target.value)}
+            placeholder={surname ? "" : "example"}
+          />
+        </div>
+      </div>
+      <div className="flex flex-col justify-center items-center gap-5">
+        <div className="flex flex-col items-start justify-center">
           <label htmlFor="email">Enter new email</label>
           <input
             className="border border-black px-4 py-1 rounded-xl"
@@ -49,6 +68,17 @@ export default function Form({ user_id }: { user_id: string }) {
             placeholder={email ? "" : "example@example.com"}
           />
         </div>
+        <div className="flex flex-col items-start justify-center">
+          <label htmlFor="password">Enter new Password</label>
+          <input
+            className="border border-black px-4 py-1 rounded-xl"
+            name="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder={password ? "" : "example123"}
+          />
+        </div>
       </div>
       <div className="flex flex-col justify-center items-center gap-5">
         <div className="flex flex-col items-start justify-center">
@@ -56,11 +86,24 @@ export default function Form({ user_id }: { user_id: string }) {
           <input
             className="border border-black px-4 py-1 rounded-xl"
             name="age"
-            type="text"
+            type="age"
             value={age}
-            onChange={(e) => setAge(e.target.value)}
-            placeholder={age ? "" : "age..."}
+            onChange={(e) => setAge(Number(e.target.value))}
+            placeholder={age ? "" : "18"}
           />
+        </div>
+        <div className="flex flex-col items-start justify-center">
+          <label htmlFor="role">Enter new Role</label>
+          <select
+            name="role"
+            id="role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="admin">Admin</option>
+            <option value="teacher">Teacher</option>
+            <option value="student">Student</option>
+          </select>
         </div>
       </div>
     </div>

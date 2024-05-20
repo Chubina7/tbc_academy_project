@@ -30,7 +30,7 @@ export const getUserLoginInfo = async () => {
 
   return { email, password: "admin" };
 };
-export const setSession = async (userId: string) => {
+export const setSession = async (user_id: string) => {
   const options: Partial<ResponseCookie> = {
     secure: true,
     sameSite: "none",
@@ -39,7 +39,7 @@ export const setSession = async (userId: string) => {
   };
 
   cookies().set(AUTH_COOKIE_KEY, "development_session_token", options);
-  cookies().set("user_id", userId, options);
+  cookies().set("user_id", user_id, options);
 };
 
 // Preferences
@@ -57,32 +57,23 @@ export const readCookieForClient = async (searchCookie: string) => {
 };
 
 // Admin actions
-export const actDeleteUser = async (id: string) => {
-  await psqlDeleteUser(id);
+export const actDeleteUser = async (user_id: string) => {
+  await psqlDeleteUser(user_id);
   revalidateTag("user_list");
 };
-export const actAddUser = async (formData: FormData) => {
-  const username = formData.get("username");
-  const email = formData.get("email");
-  const password = formData.get("password");
-  const age = formData.get("age");
-
-  await psqlAddUser({ username, email, password, age });
+export const actAddUser = async (userData: IUser) => {
+  await psqlAddUser(userData);
   revalidateTag("user_list");
 };
-export const actEditUser = async (formData: FormData, user_id: string) => {
-  const username = formData.get("username");
-  const email = formData.get("email");
-  let age = formData.get("age");
-  if (age === "unknow" || age === "") age = null;
-  await psqlEditUser({ username, email, age, user_id });
+export const actEditUser = async (userData: IUser, user_id: string) => {
+  await psqlEditUser(userData, user_id);
   revalidateTag("user_list");
 };
 
 // Bookmarking
 export const actAddToBookmarks = async (resource_id: string) => {
   const count = 1;
-  const user_id = "U1234" // change dinamicly
+  const user_id = cookies().get("user_id")?.value || ""
 
   try {
     await psqAddToBookmarks(user_id, resource_id, count);
@@ -92,9 +83,8 @@ export const actAddToBookmarks = async (resource_id: string) => {
     console.error("Failed to add to bookmarks:", error);
   }
 };
-
 export const actIncreaseCount = async (resource_id: string) => {
-  const user_id = "U1234" // change dinamically
+  const user_id = cookies().get("user_id")?.value || ""
   try {
     await psqIncrementBookmarkCount(user_id, resource_id);
     revalidateTag("bookmarks_list")
@@ -103,9 +93,8 @@ export const actIncreaseCount = async (resource_id: string) => {
     console.error("Failed to increment bookmark count:", error);
   }
 };
-
 export const actDecreaseCount = async (resource_id: string) => {
-  const user_id = "U1234" // change dinamically
+  const user_id = cookies().get("user_id")?.value || ""
   try {
     await psqDecrementBookmarkCount(user_id, resource_id);
     revalidateTag("bookmarks_list")
@@ -114,11 +103,11 @@ export const actDecreaseCount = async (resource_id: string) => {
     console.error("Failed to decrement bookmark count:", error);
   }
 };
-
 export const actResetBookmarks = async () => {
-  const user_id = "U1234";
+  const user_id = cookies().get("user_id")?.value || "";
+
   try {
-    await psqDeleteBookmarks({ user_id });
+    await psqDeleteBookmarks(user_id);
     revalidateTag("bookmarks_list")
     revalidateTag("item_count")
   } catch (error) {

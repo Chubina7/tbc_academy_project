@@ -52,7 +52,6 @@ export const getUsers = unstable_cache(
   ["user_list"],
   { tags: ["user_list"] }
 )
-
 export const getResouces = unstable_cache(
   async () => {
     const data = await psqlGetResources();
@@ -61,20 +60,17 @@ export const getResouces = unstable_cache(
   ["resources_list"],
   { tags: ["resources_list"] }
 )
-
 export const getBookmarks = unstable_cache(
-  async () => {
-    const id = "U1234" // change dynamicly
-    const data = await psqlGetBookmarks(id);
+  async (user_id: string) => {
+    const data = await psqlGetBookmarks(user_id);
     return data;
   },
   ["bookmarks_list"],
   { tags: ["bookmarks_list"] }
 )
-
 export const getBookmarkedItemCount = unstable_cache(
-  async (resource_id) => {
-    const result = await psqlGetBookmarkedItemCount(resource_id)
+  async (user_id, resource_id) => {
+    const result = await psqlGetBookmarkedItemCount(user_id, resource_id)
     return result
   }, ["item_count"], { tags: ["item_count"] }
 )
@@ -94,19 +90,19 @@ export function setTheme(pref: string) {
 }
 
 // Generators
-export function generateUniqueId() {
-  const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+export function generateUniqueId(indicator: string) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = chars.length;
   let userID = "";
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 4; i++) {
     userID += chars.charAt(Math.floor(Math.random() * charactersLength));
   }
 
-  return userID;
+  return indicator + userID;
 }
 
+// General
 export function dbError() {
   // should get error code and show different text messages
 }
