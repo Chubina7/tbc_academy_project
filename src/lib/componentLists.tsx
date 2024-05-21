@@ -30,10 +30,8 @@ export const langPrefList: LangPrefListType = [
 ];
 export const navItems: LandingNavItemsType = [
   { placeholder: "home", href: "/", whenActive: "/" },
-  { placeholder: "products", href: "/products", whenActive: "/products" },
-  { placeholder: "blog", href: "/blog", whenActive: "/blog" },
   { placeholder: "contact", href: "/contact", whenActive: "/contact" },
-  { placeholder: "profile", href: "/profile", whenActive: "/profile" },
+  { placeholder: "about", href: "/about", whenActive: "/about" },
   { placeholder: "admin", href: "/admin", whenActive: "/admin" },
 ];
 export const dashboardNavigationList: DashboardNavListType = [

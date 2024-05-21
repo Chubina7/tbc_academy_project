@@ -2,8 +2,8 @@ import React from "react";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../../../../lib/variables";
-import RegisterForm from "../../../../components/registerComp/RegisterForm";
-import ToLoginAction from "../../../../components/registerComp/ToLoginAction";
+import RegisterForm from "../../../../components/auth/registerComp/RegisterForm";
+import ToLoginAction from "../../../../components/auth/registerComp/ToLoginAction";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
