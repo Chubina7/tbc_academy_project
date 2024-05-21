@@ -108,9 +108,13 @@ export function dbError() {
 }
 export function detectEnviro() {
   const enviro = process.env.NODE_ENV;
-  if (enviro === "production") {
-    return "https://tbc-accelerator-project.vercel.app";
-  } else {
-    return "http://localhost:3000";
+
+  switch (enviro) {
+    case "production":
+      return "https://tbc-accelerator-project.vercel.app";
+    case "development":
+      return "http://localhost:3000";
+    case "test":
+      return "http://localhost:3000";
   }
 }

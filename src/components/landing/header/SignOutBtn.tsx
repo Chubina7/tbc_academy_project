@@ -19,7 +19,7 @@ export default function SignOutBtn() {
     const result: LogOutResponse = await res.json();
 
     if (res.status === 200) {
-      router.replace("/login");
+      router.replace("/dashboard/login");
     } else {
       console.log(res.status);
       console.log(result);

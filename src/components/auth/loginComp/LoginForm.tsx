@@ -36,16 +36,13 @@ function LoginForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userCredentials),
       });
-      const result = await res.json();
 
-      if (res.status === 200) {
-        router.refresh();
+      if (res.ok) {
+        router.replace("/dashboard");
+        setIsLoading(false);
       } else {
         console.log({ status: res.status });
       }
-
-      console.log(result);
-      setIsLoading(false);
     }
   };
 
