@@ -7,7 +7,7 @@ interface Props {
   params: IParams;
 }
 
-export default async function Contact({ params: { locale } }: Props) {
+export default async function ContactPage({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale);
 
   return (
