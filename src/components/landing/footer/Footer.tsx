@@ -1,5 +1,4 @@
 import React from "react";
-import EmailInput from "./EmailInput";
 import { useTranslations } from "next-intl";
 
 export default function Footer() {
@@ -10,13 +9,7 @@ export default function Footer() {
       <footer className="w-full flex justify-between items-center p-3 bg-inherit shadow-xl">
         <div>
           <h1 className="text-inherit">© {t("title")}</h1>
-          <h1 className="text-inherit">© {t("title")}</h1>
-          <h1 className="text-inherit">© {t("title")}</h1>
-          <h1 className="text-inherit">© {t("title")}</h1>
-          <h1 className="text-inherit">© {t("title")}</h1>
-          <h1 className="text-inherit">© {t("title")}</h1>
         </div>
-        <EmailInput />
       </footer>
     </div>
   );

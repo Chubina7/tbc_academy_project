@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { dashboardNavigationList } from "../../../lib/componentLists";
+import { dashboardNavigationList } from "../../../lib/ListsWithComponents";
 import { usePathname } from "next/navigation";
 
 export default function PageHeading() {

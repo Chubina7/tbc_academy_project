@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { langPrefList } from "../../../lib/componentLists";
+import { langPrefList } from "../../../lib/ListsWithComponents";
 
 interface Props {
   storedLang: string | undefined;

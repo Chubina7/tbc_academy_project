@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { themeList } from "../../../lib/componentLists";
+import { themeList } from "../../../lib/ListsWithComponents";
 import { setTheme } from "../../../lib/helpers";
 import { storeThemeInCookies } from "../../../lib/actions";
 

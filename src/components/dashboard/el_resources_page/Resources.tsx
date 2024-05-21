@@ -1,5 +1,5 @@
 import React from "react";
-import ResourceItem from "./resourceItem/ResourceItem";
+import ResourceItem from "./el_resource_item/ResourceItem";
 
 interface Resources {
   resource_id: string;

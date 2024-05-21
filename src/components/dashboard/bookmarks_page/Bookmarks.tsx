@@ -1,5 +1,5 @@
 import React from "react";
-import ResourceItem from "../resourcesPage/resourceItem/ResourceItem";
+import ResourceItem from "../el_resources_page/el_resource_item/ResourceItem";
 
 export default function Bookmarks({ data }: { data: any[] }) {
   return (
