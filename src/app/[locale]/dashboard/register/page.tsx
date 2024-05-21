@@ -1,5 +1,32 @@
 import React from "react";
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+import { AUTH_COOKIE_KEY } from "../../../../lib/variables";
+import RegisterForm from "../../../../components/auth/registerComp/RegisterForm";
+import ToLoginAction from "../../../../components/auth/registerComp/ToLoginAction";
+import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-export default function Register() {
-  return <div>Register page</div>;
+// Types
+interface Props {
+  params: IParams;
+}
+
+// Component
+export default function RegisterPage({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale);
+  if (cookies().has(AUTH_COOKIE_KEY)) {
+    redirect(`/`); // possible to redirect to the previous requested page
+  }
+  const t = useTranslations("Auth.register");
+
+  return (
+    <main className="w-full h-screen flex flex-col justify-center items-center gap-16 sm:p-14">
+      <h1 className="text-4xl sm:text-5xl">{t("title")}</h1>
+      <div className="flex flex-col gap-10 bg-gray-700 p-6 rounded-xl sm:text-xl">
+        <RegisterForm />
+      </div>
+      <ToLoginAction />
+    </main>
+  );
 }

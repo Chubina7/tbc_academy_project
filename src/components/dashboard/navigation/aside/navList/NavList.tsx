@@ -1,5 +1,5 @@
 import React from "react";
-import { dashboardNavigationList } from "../../../../../lib/componentLists";
+import { dashboardNavigationList } from "../../../../../lib/ListsWithComponents";
 import NavItem from "./NavItem";
 
 export default function NavList() {

@@ -1,8 +1,8 @@
 import React from "react";
 import UserProfPic from "./UserProfPic";
 import SearchInput from "./SearchInput";
-import ThemeChanger from "../../../header/themeComponent/ThemeChanger";
-import LangChanger from "../../../header/langComponent/LangChanger";
+import ThemeChanger from "../../../ui/themePreference/ThemeChanger";
+import LangChanger from "../../../ui/languagePreference/LangChanger";
 import Bookmark from "./bookmark/Bookmark";
 import Navigation from "../../navigation/Navigation";
 

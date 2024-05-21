@@ -118,9 +118,9 @@ interface ILandPrefListItem {
     icon: React.ReactNode
 }
 interface ILandingNavItem {
-    placeholder: "home" | "products" | "blog" | "contact" | "profile" | "admin";
-    href: "/" | "/products" | "/blog" | "/contact" | "/profile" | "/admin";
-    whenActive: "/" | "/products" | "/blog" | "/contact" | "/profile" | "/admin";
+    placeholder: "home" | "about" | "contact" | "admin";
+    href: "/" | "/about" | "/contact" | "/admin";
+    whenActive: "/" | "/about" | "/contact" | "/admin";
 }
 interface IDashboardNavListItem {
     title: "Home" | "Courses" | "Schedule" | "Annoucements" | "El-Resources",
