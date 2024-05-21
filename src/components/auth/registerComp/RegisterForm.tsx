@@ -35,11 +35,9 @@ function RegisterForm() {
         body: JSON.stringify(user),
       });
 
-      const result = await res.json();
-
-      router.replace("/");
-
-      console.log(result);
+      if (res.ok) {
+        router.replace("/dashboard");
+      }
     } catch (error) {
       console.error("error", error);
     }
