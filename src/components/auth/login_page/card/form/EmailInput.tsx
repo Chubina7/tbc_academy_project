@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IoMailOutline } from "react-icons/io5";
 
 interface Props {
@@ -8,27 +7,10 @@ interface Props {
     email: string,
     setEmail: React.Dispatch<React.SetStateAction<string>>
   ];
-  isValidState: [
-    isInvalid: boolean,
-    setIsInvalid: React.Dispatch<React.SetStateAction<boolean>>
-  ];
 }
 
-export default function EmailInput({ inputValueState, isValidState }: Props) {
+export default function EmailInput({ inputValueState }: Props) {
   const [email, setEmail] = inputValueState;
-  const [isInvalid, setIsInvalid] = isValidState;
-
-  useEffect(() => {
-    if (email.length > 0) {
-      if (!email.includes("@") || !email.includes(".")) {
-        setIsInvalid(true);
-      } else {
-        setIsInvalid(false);
-      }
-    } else {
-      setIsInvalid(false);
-    }
-  }, [email, isInvalid]);
 
   return (
     <div className="relative w-full">

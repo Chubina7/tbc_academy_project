@@ -3,14 +3,14 @@
 import { IoLockClosedOutline } from "react-icons/io5";
 
 interface Props {
-  state: [
+  inputValueState: [
     password: string,
     setPassword: React.Dispatch<React.SetStateAction<string>>
   ];
 }
 
-export default function PasswordInput({ state }: Props) {
-  const [password, setPassword] = state;
+export default function PasswordInput({ inputValueState }: Props) {
+  const [password, setPassword] = inputValueState;
 
   return (
     <div className="relative w-full">

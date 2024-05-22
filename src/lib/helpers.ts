@@ -118,3 +118,25 @@ export function detectEnviro() {
       return "http://localhost:3000";
   }
 }
+
+// Validation
+export function validateLogin(password: string, email: string) {
+  if (password.length < 5 && password.trim() !== "") {
+    return "Password length must be more than 5";
+  } else if (email.split("@").length <= 1 && email.trim() !== "") {
+    return "Email must include '@' symbol";
+  } else if (!email.includes(".") && email.trim() !== "") {
+    return "Email must include '.' symbol";
+  } else if (
+    email.trim().charAt(email.length - 1) === "." &&
+    email.trim() !== ""
+  ) {
+    return "Email must not end with '.' symbol";
+  } else if (email.length < 5 && email.trim() !== "") {
+    return "Email form is not valid";
+  } else if (email.trim() === "" || password.trim() === "") {
+    return "Sending empty values is not allowed";
+  } else {
+    return null;
+  }
+}

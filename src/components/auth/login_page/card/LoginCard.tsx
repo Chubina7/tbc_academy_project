@@ -6,7 +6,7 @@ import ToRegister from "./ToRegister";
 
 export default function LoginCard() {
   return (
-    <section className="w-full max-w-xl lg:w-[80%] lg:max-w-none h-full flex justify-center items-center p-4">
+    <section className="w-full max-w-xl lg:w-[65%] lg:max-w-none h-full flex justify-center items-center p-4">
       <div className="w-full max-w-lg flex flex-col justify-center items-center">
         <Heading />
         <Form />
