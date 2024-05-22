@@ -37,7 +37,7 @@ export default function RootLayout({ children, params }: Props) {
   return (
     <html lang={lngPref} className={themePref}>
       <body
-        className={`${english.className} bg-[#2B3674] text-[#F4F7FF] dark:text-[#F4F7FF] dark:bg-[#2B3674] w-full flex flex-col transition-colors duration-300`}
+        className={`${english.className} bg-[#F4F7FF] text-[#2B3674] dark:bg-[#2A2438] dark:text-[#DBD8E3] w-full flex flex-col transition-colors duration-300`}
       >
         <NextIntlClientProvider locale={lngPref} messages={translations}>
           {children}
