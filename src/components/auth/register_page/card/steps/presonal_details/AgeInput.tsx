@@ -6,8 +6,8 @@ import { RegistrationInputsContext } from "../../../../../../context/ctx";
 // import { IoMailOutline } from "react-icons/io5";
 
 export default function AgeInput() {
-  const { ageState } = useContext(RegistrationInputsContext);
-  const { value, setValue } = ageState;
+  const { inputs } = useContext(RegistrationInputsContext);
+  const { value, setValue } = inputs.ageState;
   return (
     <div className="relative w-full">
       {/* <IoMailOutline

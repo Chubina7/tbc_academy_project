@@ -15,33 +15,38 @@ export default function RegistrationProvider({ children }: Props) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const [step, setStep] = useState(0);
+
   return (
     <RegistrationInputsContext.Provider
       value={{
-        roleState: {
-          value: role,
-          setValue: setRole,
+        inputs: {
+          roleState: {
+            value: role,
+            setValue: setRole,
+          },
+          usernameState: {
+            value: username,
+            setValue: setUsername,
+          },
+          surnameState: {
+            value: surname,
+            setValue: setSurname,
+          },
+          ageState: {
+            value: age,
+            setValue: setAge,
+          },
+          emailState: {
+            value: email,
+            setValue: setEmail,
+          },
+          passwordState: {
+            value: password,
+            setValue: setPassword,
+          },
         },
-        usernameState: {
-          value: username,
-          setValue: setUsername,
-        },
-        surnameState: {
-          value: surname,
-          setValue: setSurname,
-        },
-        ageState: {
-          value: age,
-          setValue: setAge,
-        },
-        emailState: {
-          value: email,
-          setValue: setEmail,
-        },
-        passwordState: {
-          value: password,
-          setValue: setPassword,
-        },
+        stepIdxState: { step, setStep },
       }}
     >
       {children}

@@ -4,8 +4,8 @@ import { useContext } from "react";
 import { RegistrationInputsContext } from "../../../../../context/ctx";
 
 export default function RoleCheckmark() {
-  const { roleState } = useContext(RegistrationInputsContext);
-  const { setValue } = roleState;
+  const { inputs } = useContext(RegistrationInputsContext);
+  const { setValue } = inputs.roleState;
 
   return (
     <div className="w-full flex flex-col gap-2">

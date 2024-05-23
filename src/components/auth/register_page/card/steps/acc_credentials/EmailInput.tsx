@@ -5,8 +5,8 @@ import { IoMailOutline } from "react-icons/io5";
 import { RegistrationInputsContext } from "../../../../../../context/ctx";
 
 export default function EmailInput() {
-  const { emailState } = useContext(RegistrationInputsContext);
-  const { value, setValue } = emailState;
+  const { inputs } = useContext(RegistrationInputsContext);
+  const { value, setValue } = inputs.emailState;
 
   return (
     <div className="relative w-full">

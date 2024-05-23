@@ -5,8 +5,8 @@ import { IoAttachOutline } from "react-icons/io5";
 import { RegistrationInputsContext } from "../../../../../../context/ctx";
 
 export default function SurnameInput() {
-  const { surnameState } = useContext(RegistrationInputsContext);
-  const { value, setValue } = surnameState;
+  const { inputs } = useContext(RegistrationInputsContext);
+  const { value, setValue } = inputs.surnameState;
 
   return (
     <div className="relative w-full">

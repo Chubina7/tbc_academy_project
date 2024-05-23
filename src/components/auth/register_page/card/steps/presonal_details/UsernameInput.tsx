@@ -5,8 +5,8 @@ import { IoPersonOutline } from "react-icons/io5";
 import { RegistrationInputsContext } from "../../../../../../context/ctx";
 
 export default function UsernameInput() {
-  const { usernameState } = useContext(RegistrationInputsContext);
-  const { value, setValue } = usernameState;
+  const { inputs } = useContext(RegistrationInputsContext);
+  const { value, setValue } = inputs.usernameState;
 
   return (
     <div className="relative w-full">
