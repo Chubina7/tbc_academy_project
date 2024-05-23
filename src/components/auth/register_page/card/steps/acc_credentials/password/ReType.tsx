@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+
 import { IoLockClosedOutline } from "react-icons/io5";
 
 export default function ReType() {
+  //
   return (
     <div className="relative w-full">
       <IoLockClosedOutline

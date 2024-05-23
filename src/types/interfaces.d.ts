@@ -1,51 +1,3 @@
-// Products
-interface IProduct {
-    id?: number
-    title: string
-    description: string
-    price: number
-    discountPercentage?: number
-    rating?: number
-    stock?: number
-    brand?: string
-    category?: string
-    thumbnail: string
-    images?: string[]
-    route?: string
-}
-interface IProducts {
-    products: Array<IProduct>
-    total: number
-    skip: number
-    limit: number
-}
-
-// Recipes
-interface IRecipe {
-    id?: number
-    name: string
-    ingredients?: Array<string>
-    instructions?: Array<string>
-    prepTimeMinutes: number
-    cookTimeMinutes?: number
-    servings: number
-    difficulty: string
-    cuisine?: string
-    caloriesPerServing?: number
-    tags: Array<string>
-    userId?: number
-    image: string
-    rating: number
-    reviewCount?: number
-    mealType: Array<string>
-}
-interface IRecipes {
-    recipes: Array<IRecipe>
-    total: number
-    skip: number
-    limit: number
-}
-
 // Users
 interface IUser {
     username: string
@@ -108,7 +60,7 @@ interface IBookmarkCtx {
     resetList: () => void;
 }
 
-// 
+// General
 interface IThemeListItem {
     title: "light" | "os" | "dark";
     icon: React.ReactNode
@@ -128,4 +80,15 @@ interface IDashboardNavListItem {
     onActive: React.ReactNode,
     href: "" | "/courses" | "/schedule" | "/annoucements" | "/el-resources",
     forHeading: string
+}
+
+// 
+interface IRegisterPersonalDetails {
+    username: string
+    surname: string | undefined | null
+    age: number | undefined | null
+}
+interface IRegisterCredentials {
+    email: string
+    password: string
 }

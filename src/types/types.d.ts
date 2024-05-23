@@ -14,3 +14,7 @@ type DashboardNavListType = Array<IDashboardNavListItem>
 
 // General
 type RoleType = "teacher" | "student" | "admin"
+
+// Registration
+type RegSurnameType = string
+type RegAgeType = number
