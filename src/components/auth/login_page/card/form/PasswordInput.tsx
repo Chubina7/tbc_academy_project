@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { IoLockClosedOutline } from "react-icons/io5";
 
 interface Props {
@@ -10,10 +11,7 @@ interface Props {
   loadingState: boolean;
 }
 
-export default function PasswordInput({
-  inputValueState,
-  loadingState,
-}: Props) {
+const PasswordInput = ({ inputValueState, loadingState }: Props) => {
   const [password, setPassword] = inputValueState;
 
   return (
@@ -36,4 +34,6 @@ export default function PasswordInput({
       />
     </div>
   );
-}
+};
+
+export default React.memo(PasswordInput);

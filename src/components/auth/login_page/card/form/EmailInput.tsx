@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { IoMailOutline } from "react-icons/io5";
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
   loadingState: boolean;
 }
 
-export default function EmailInput({ inputValueState, loadingState }: Props) {
+const EmailInput = ({ inputValueState, loadingState }: Props) => {
   const [email, setEmail] = inputValueState;
 
   return (
@@ -33,4 +34,6 @@ export default function EmailInput({ inputValueState, loadingState }: Props) {
       />
     </div>
   );
-}
+};
+
+export default React.memo(EmailInput);

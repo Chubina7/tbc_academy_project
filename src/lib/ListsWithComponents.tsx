@@ -71,3 +71,11 @@ export const dashboardNavigationList: DashboardNavListType = [
     forHeading: "Book that you need.",
   },
 ];
+export const loginHeadingWords = [
+  <span key={0} className="transition-all duration-300 font-bold">
+    STUDENT
+  </span>,
+  <span key={1} className="transition-all duration-300 font-bold">
+    TEACHER
+  </span>,
+];
