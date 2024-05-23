@@ -8,12 +8,13 @@ interface Props {
 }
 
 export default function RegistrationProvider({ children }: Props) {
-  const [role, setRole] = useState<RoleType>("student");
+  const [role, setRole] = useState<RoleType | "">("");
   const [username, setUsername] = useState<string>("");
   const [surname, setSurname] = useState<RegSurnameType>("");
   const [age, setAge] = useState<RegAgeType>(Number(""));
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [reTypedPassword, setReTypedPassword] = useState<string>("");
 
   const [step, setStep] = useState(0);
 
@@ -44,6 +45,10 @@ export default function RegistrationProvider({ children }: Props) {
           passwordState: {
             value: password,
             setValue: setPassword,
+          },
+          reTypedPasswordState: {
+            value: reTypedPassword,
+            setValue: setReTypedPassword,
           },
         },
         stepIdxState: { step, setStep },

@@ -9,6 +9,9 @@ import {
   IoSunny,
   IoDesktop,
 } from "react-icons/io5";
+import RoleCheckmark from "../components/auth/register_page/card/steps/RoleCheckmark";
+import PersonalDetailInputs from "../components/auth/register_page/card/steps/presonal_details/PersonalDetailInputs";
+import CredentialInputs from "../components/auth/register_page/card/steps/acc_credentials/CredentialInputs";
 
 export const themeList: ThemeListType = [
   {
@@ -78,4 +81,12 @@ export const loginHeadingWords = [
   <span key={1} className="transition-all duration-300 font-bold">
     TEACHER
   </span>,
+];
+export const registrationSteps = [
+  { component: <RoleCheckmark key={0} />, heading: "Choose Role" },
+  {
+    component: <PersonalDetailInputs key={1} />,
+    heading: "Enter Personal Details",
+  },
+  { component: <CredentialInputs key={2} />, heading: "Account Credentials" },
 ];

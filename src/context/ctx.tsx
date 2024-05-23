@@ -12,7 +12,7 @@ export const RegistrationInputsContext = createContext({
   inputs: {
     roleState: {
       value: "",
-      setValue: (() => {}) as Dispatch<SetStateAction<RoleType>>,
+      setValue: (() => {}) as Dispatch<SetStateAction<RoleType | "">>,
     },
     usernameState: {
       value: "",
@@ -31,6 +31,10 @@ export const RegistrationInputsContext = createContext({
       setValue: (() => {}) as Dispatch<SetStateAction<string>>,
     },
     passwordState: {
+      value: "",
+      setValue: (() => {}) as Dispatch<SetStateAction<string>>,
+    },
+    reTypedPasswordState: {
       value: "",
       setValue: (() => {}) as Dispatch<SetStateAction<string>>,
     },

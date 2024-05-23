@@ -1,10 +1,17 @@
-import React from "react";
+"use client";
 
-const Heading = ({ subHeading }: { subHeading: any }) => {
+import React, { useContext } from "react";
+import { registrationSteps } from "../../../../../lib/ListsWithComponents";
+import { RegistrationInputsContext } from "../../../../../context/ctx";
+
+const Heading = () => {
+  const { stepIdxState } = useContext(RegistrationInputsContext);
+  const { step } = stepIdxState;
+
   return (
     <div className="w-full flex flex-col justify-center items-center gap-2 mb-8">
       <h1 className="text-4xl font-bold">REGISTER</h1>
-      <p className="w-full text-center">{subHeading}</p>
+      <p className="w-full text-center">{registrationSteps[step].heading}</p>
     </div>
   );
 };
