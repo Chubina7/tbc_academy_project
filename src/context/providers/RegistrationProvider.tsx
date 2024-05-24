@@ -1,32 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RegistrationInputsContext } from "../ctx";
+import { minimumDatePrevention } from "../../lib/helpers";
 
 interface Props {
   children: React.ReactNode;
 }
 
-const minimumDatePrevention = () => {
-  const today = new Date();
-  const minimumDate = new Date(today.setFullYear(today.getFullYear() - 18));
-  const minimumAge = minimumDate.toISOString().split("T")[0];
-
-  return minimumAge;
-};
-
 export default function RegistrationProvider({ children }: Props) {
   // input states
   const [role, setRole] = useState<RoleType | "">("");
-  const [username, setUsername] = useState<string>("");
-  const [surname, setSurname] = useState<string>("");
-  const [birthDate, setBirthDate] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [reTypedPassword, setReTypedPassword] = useState<string>("");
+  const [username, setUsername] = useState("");
+  const [surname, setSurname] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [reTypedPassword, setReTypedPassword] = useState("");
 
   // steps state
   const [step, setStep] = useState(0);
+
+  // messages
+  const [credentialsMessage, setCredentialsMessage] = useState("");
+
+  useEffect(() => {
+    setCredentialsMessage("");
+  }, [email, password, reTypedPassword]);
 
   return (
     <RegistrationInputsContext.Provider
@@ -63,6 +63,12 @@ export default function RegistrationProvider({ children }: Props) {
           },
         },
         stepIdxState: { step, setStep },
+        messages: {
+          credentialsMessage: {
+            value: credentialsMessage,
+            setValue: setCredentialsMessage,
+          },
+        },
       }}
     >
       {children}

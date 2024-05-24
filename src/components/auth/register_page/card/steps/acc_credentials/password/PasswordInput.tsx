@@ -17,7 +17,7 @@ export default function PasswordInput() {
           className="absolute top-[50%] left-4 -translate-y-[50%] text-[#2B3674] dark:text-[#F4F7FF] opacity-60 z-50"
         />
         <input
-          type="text"
+          type="password"
           id="password"
           name="password"
           placeholder="Enter password"

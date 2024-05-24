@@ -44,4 +44,10 @@ export const RegistrationInputsContext = createContext({
     step: 0,
     setStep: (() => {}) as Dispatch<SetStateAction<number>>,
   },
+  messages: {
+    credentialsMessage: {
+      value: "",
+      setValue: (() => {}) as Dispatch<SetStateAction<string>>,
+    },
+  },
 });

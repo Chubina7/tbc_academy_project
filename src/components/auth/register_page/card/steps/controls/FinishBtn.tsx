@@ -1,17 +1,41 @@
+"use client";
+
 import { useContext } from "react";
-import { RegistrationInputsContext } from "../../../../../../context/ctx";
+import { RegistrationInputsContext as ctx } from "../../../../../../context/ctx";
+import { credentialsValidationMessage } from "../../../../../../lib/helpers";
 
 export default function FinishBtn() {
-  const { inputs, stepIdxState } = useContext(RegistrationInputsContext);
+  const { inputs, stepIdxState, messages } = useContext(ctx);
   const { step } = stepIdxState;
+  const email = inputs.emailState.value;
+  const pass = inputs.passwordState.value;
+  const reTypedPass = inputs.reTypedPasswordState.value;
+  const setValidationMessage = messages.credentialsMessage.setValue;
   const disable =
     step === 2 &&
-    (inputs.emailState.value === "" ||
-      inputs.passwordState.value === "" ||
-      inputs.reTypedPasswordState.value === "");
+    (email.trim() === "" || pass.trim() === "" || reTypedPass.trim() === "");
 
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    // validate
+    const validationResult = credentialsValidationMessage(
+      email,
+      pass,
+      reTypedPass
+    );
+    if (validationResult) {
+      setValidationMessage(validationResult);
+      return;
+    } else {
+      setValidationMessage("");
+    }
+    // check if email is not unique
+    // ...
+    // make a call
+    // ...
+    // show error message
+    // ...
 
     console.log({
       email: inputs.emailState.value,

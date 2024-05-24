@@ -4,7 +4,10 @@ import { useState } from "react";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import LoginBtn from "../LoginBtn";
-import { detectEnviro, validateLogin } from "../../../../../lib/helpers";
+import {
+  detectEnviro,
+  loginValidationMessage,
+} from "../../../../../lib/helpers";
 import { useRouter } from "next/navigation";
 
 export default function Form() {
@@ -19,7 +22,7 @@ export default function Form() {
     e.preventDefault();
 
     // Validate
-    const validationResult = validateLogin(pass, email);
+    const validationResult = loginValidationMessage(email, pass);
     if (validationResult) {
       setMessage(validationResult);
       return;
