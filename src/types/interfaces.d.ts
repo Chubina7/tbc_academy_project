@@ -1,51 +1,3 @@
-// Products
-interface IProduct {
-    id?: number
-    title: string
-    description: string
-    price: number
-    discountPercentage?: number
-    rating?: number
-    stock?: number
-    brand?: string
-    category?: string
-    thumbnail: string
-    images?: string[]
-    route?: string
-}
-interface IProducts {
-    products: Array<IProduct>
-    total: number
-    skip: number
-    limit: number
-}
-
-// Recipes
-interface IRecipe {
-    id?: number
-    name: string
-    ingredients?: Array<string>
-    instructions?: Array<string>
-    prepTimeMinutes: number
-    cookTimeMinutes?: number
-    servings: number
-    difficulty: string
-    cuisine?: string
-    caloriesPerServing?: number
-    tags: Array<string>
-    userId?: number
-    image: string
-    rating: number
-    reviewCount?: number
-    mealType: Array<string>
-}
-interface IRecipes {
-    recipes: Array<IRecipe>
-    total: number
-    skip: number
-    limit: number
-}
-
 // Users
 interface IUser {
     username: string
@@ -78,6 +30,8 @@ interface IUserLogin {
 interface IUserRegister extends IUserLogin {
     username: string,
     role: RoleType
+    surname: string,
+    birth_date: string
 }
 interface IUserCredentials extends IUserRegister {
     user_id: string
@@ -86,7 +40,7 @@ interface IUserPublics {
     user_id: string,
     username: string,
     email: string,
-    age: number
+    birth_date: string
 }
 
 // General for Components
@@ -108,7 +62,7 @@ interface IBookmarkCtx {
     resetList: () => void;
 }
 
-// 
+// General
 interface IThemeListItem {
     title: "light" | "os" | "dark";
     icon: React.ReactNode
@@ -118,9 +72,9 @@ interface ILandPrefListItem {
     icon: React.ReactNode
 }
 interface ILandingNavItem {
-    placeholder: "home" | "products" | "blog" | "contact" | "profile" | "admin";
-    href: "/" | "/products" | "/blog" | "/contact" | "/profile" | "/admin";
-    whenActive: "/" | "/products" | "/blog" | "/contact" | "/profile" | "/admin";
+    placeholder: "home" | "about" | "contact" | "admin";
+    href: "/" | "/about" | "/contact" | "/admin";
+    whenActive: "/" | "/about" | "/contact" | "/admin";
 }
 interface IDashboardNavListItem {
     title: "Home" | "Courses" | "Schedule" | "Annoucements" | "El-Resources",
@@ -128,4 +82,15 @@ interface IDashboardNavListItem {
     onActive: React.ReactNode,
     href: "" | "/courses" | "/schedule" | "/annoucements" | "/el-resources",
     forHeading: string
+}
+
+// 
+interface IRegisterPersonalDetails {
+    username: string
+    surname: string | undefined | null
+    age: number | undefined | null
+}
+interface IRegisterCredentials {
+    email: string
+    password: string
 }

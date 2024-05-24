@@ -1,40 +1,42 @@
-import { NextRequest } from 'next/server';
-import { AUTH_COOKIE_KEY, defaultLocale, supportedLocales } from './lib/variables';
-import { cookies } from 'next/headers';
-import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from "next/server";
+import { AUTH_COOKIE_KEY, defaultLocale, supportedLocales } from "./lib/variables";
+import { cookies } from "next/headers";
+import createMiddleware from "next-intl/middleware";
 
 export default async function middleware(request: NextRequest) {
+  const cookieStore = cookies();
   const path = request.nextUrl.pathname;
-  // const ka = supportedLocales[0];
-  // const en = supportedLocales[1];
 
-  // Checking authentification
-  if (
-    !cookies().has(AUTH_COOKIE_KEY) &&
-    (path === `/` ||
-      path.startsWith(`/products`) ||
-      path.startsWith(`/blog`) ||
-      path === `/contact` ||
-      path === `/profile` ||
-      path === `/` ||
-      path.startsWith(`/products`) ||
-      path.startsWith(`/blog`) ||
-      path === `/contact` ||
-      path === `/profile`)
-  ) {
-    request.nextUrl.pathname = "/login"
+  // Check authentication
+  if (path.startsWith("/dashboard")) {
+    const isAuthenticated = cookieStore.has(AUTH_COOKIE_KEY);
+
+    if (!isAuthenticated && path !== "/dashboard/login" && path !== "/dashboard/register") {
+      request.nextUrl.pathname = "/dashboard/login";
+      return NextResponse.redirect(request.nextUrl);
+    }
+
+    if (isAuthenticated && (path === "/dashboard/login" || path === "/dashboard/register")) {
+      request.nextUrl.pathname = "/dashboard";
+      return NextResponse.redirect(request.nextUrl);
+    }
   }
 
-  // Rewriting on the supported language
+  // Locale rewrite middleware
   const localeRewrite = createMiddleware({
     locales: supportedLocales,
     defaultLocale: defaultLocale,
-    localePrefix: 'never'
+    localePrefix: "never",
   });
-  const response = localeRewrite(request);
-  return response;
+
+  try {
+    return localeRewrite(request);
+  } catch (error) {
+    console.error("Error in locale rewrite middleware:", error);
+    return NextResponse.next();
+  }
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
