@@ -5,6 +5,8 @@ import { cookies } from "next/headers";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 // import { supportedLocales } from "../../lib/variables";
 import { unstable_setRequestLocale } from "next-intl/server";
+import NotificationsProvider from "../../context/providers/NotificationsProvider";
+import Notification from "../../components/dashboard/notifications/Notification";
 
 // Types
 interface Props {
@@ -39,9 +41,12 @@ export default function RootLayout({ children, params }: Props) {
       <body
         className={`${english.className} bg-[#F4F7FF] text-[#2B3674] dark:bg-[#2A2438] dark:text-[#DBD8E3] w-full flex flex-col transition-colors duration-300`}
       >
-        <NextIntlClientProvider locale={lngPref} messages={translations}>
-          {children}
-        </NextIntlClientProvider>
+        <NotificationsProvider>
+          <Notification />
+          <NextIntlClientProvider locale={lngPref} messages={translations}>
+            {children}
+          </NextIntlClientProvider>
+        </NotificationsProvider>
       </body>
     </html>
   );

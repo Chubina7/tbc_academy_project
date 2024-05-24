@@ -1,12 +1,16 @@
 "use client";
 
 import { useContext, useState } from "react";
-import { RegistrationInputsContext as ctx } from "../../../../../../context/ctx";
+import {
+  RegistrationInputsContext as regCtx,
+  NotificationsContext as notifCtx,
+} from "../../../../../../context/ctx";
 import { credentialsValidationMessage } from "../../../../../../lib/helpers";
 import { useRouter } from "next/navigation";
 
 export default function FinishBtn() {
-  const { inputs, stepIdxState, messages } = useContext(ctx);
+  const { inputs, stepIdxState, messages } = useContext(regCtx);
+  const { showNotification } = useContext(notifCtx);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const { step } = stepIdxState;
@@ -49,10 +53,12 @@ export default function FinishBtn() {
       const result = await response.json();
 
       if (!response.ok) {
+        showNotification(true, "error", "Erorr while registrating");
         setMessage(result.message);
         console.error(result.error);
       } else {
         router.replace("/dashboard");
+        showNotification(true, "success", "Successfully registered", 5000);
       }
     } catch (error) {
       console.error(error);
