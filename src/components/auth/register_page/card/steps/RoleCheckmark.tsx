@@ -9,7 +9,7 @@ export default function RoleCheckmark() {
   const { setValue } = inputs.roleState;
 
   return (
-    <div className="w-full flex flex-col gap-2">
+    <div className="w-full flex flex-col gap-2 select-none">
       <i className="w-full text-right text-red-700">DISPLAY ERROR CODE</i>
       <span
         className={`w-full | bg-[#2A2438] border-2 border-[#2A2438] text-[#DBD8E3] dark:bg-[#DBD8E3] dark:text-[#2A2438] dark:border-[#DBD8E3] | rounded-xl | px-6 py-2 | text-md | transition-all duration-300 | hover:scale-105 | cursor-pointer | flex justify-between items-center ${

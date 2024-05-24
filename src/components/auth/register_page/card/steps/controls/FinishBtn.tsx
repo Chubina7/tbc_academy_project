@@ -19,7 +19,7 @@ export default function FinishBtn() {
       reTypedPassword: inputs.reTypedPasswordState.value,
       surname: inputs.surnameState.value,
       username: inputs.usernameState.value,
-      age: inputs.ageState.value,
+      birthDate: inputs.birthDateState.value,
       role: inputs.roleState.value,
     });
   };

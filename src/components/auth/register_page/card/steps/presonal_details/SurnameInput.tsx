@@ -18,11 +18,10 @@ export default function SurnameInput() {
         type="text"
         id="surname"
         name="surname"
-        placeholder="Surname"
+        placeholder="Surname (optional)"
         className={`relative w-full bg-[#FFFFFF] text-[#2B3674] dark:bg-[#5C5470] dark:text-[#F4F7FF] rounded-xl px-3 py-3 pl-12 outline-none focus:outline-none text-lg opacity-60 focus:opacity-100 | transition-all duration-300`}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        // disabled={loadingState}
       />
     </div>
   );

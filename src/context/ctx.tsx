@@ -19,12 +19,13 @@ export const RegistrationInputsContext = createContext({
       setValue: (() => {}) as Dispatch<SetStateAction<string>>,
     },
     surnameState: {
-      value: "" as RegSurnameType,
-      setValue: (() => {}) as Dispatch<SetStateAction<RegSurnameType>>,
+      value: "" as string,
+      setValue: (() => {}) as Dispatch<SetStateAction<string>>,
     },
-    ageState: {
-      value: Number() as RegAgeType,
-      setValue: (() => {}) as Dispatch<SetStateAction<RegAgeType>>,
+    birthDateState: {
+      value: "" as string,
+      setValue: (() => {}) as Dispatch<SetStateAction<string>>,
+      max: "",
     },
     emailState: {
       value: "",
