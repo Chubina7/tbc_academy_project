@@ -6,10 +6,15 @@ export async function psqlCheckUserCredentials({ email, password, }: IUserLogin)
   const { rows } = await sql`SELECT user_id FROM users WHERE email = ${email} AND password = ${password}`;
   return rows[0];
 }
-export async function psqlInsertUserCredentials({ username, email, password, role }: IUserRegister) {
+export async function psqlInsertUserCredentials({ username, email, password, role, birth_date, surname }: IUserRegister) {
   const user_id = generateUniqueId("U");
-  await sql`INSERT INTO users (user_id, username, email, password, role) VALUES (${user_id}, ${username}, ${email}, ${password}, ${role})`;
+  await sql`INSERT INTO users (user_id, username, surname, email, password, role, birth_date)
+      VALUES (${user_id}, ${username}, ${surname.trim() === "" ? null : surname}, ${email}, ${password}, ${role}, ${birth_date.trim() === "" ? null : birth_date})`
   return user_id
+}
+export async function psqlIsEmailInUse(email: string) {
+  const result = await sql`SELECT COUNT(*) FROM users WHERE email = ${email}`
+  return Number(result.rows[0].count) === 0 ? false : true
 }
 
 // Admin actions

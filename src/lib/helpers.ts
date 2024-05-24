@@ -1,48 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { psqlGetAllUsers, psqlGetBookmarkedItemCount, psqlGetBookmarks, psqlGetResources } from "./sqlQueries";
 
-// Products
-export async function getAllProducts() {
-  const res = await fetch("https://dummyjson.com/products");
-  const data: IProducts = await res.json();
-
-  return data.products;
-}
-export async function getSingleProduct(id: number) {
-  const res = await fetch(`https://dummyjson.com/products/${id}`);
-  const data: IProduct = await res.json();
-
-  return data;
-}
-
-// Recipies
-export async function getAllRecipes() {
-  const res = await fetch("https://dummyjson.com/recipes");
-  const data: IRecipes = await res.json();
-
-  return data.recipes;
-}
-export async function getSingleRecipe(id: number) {
-  const res = await fetch(`https://dummyjson.com/recipes/${id}`);
-  const data: IRecipe = await res.json();
-
-  return data;
-}
-export async function getAllRecipesByTag(tag: string) {
-  const res = await fetch(`https://dummyjson.com/recipes/tag/${tag}`);
-  const data: IRecipes = await res.json();
-
-  return data.recipes;
-}
-
-// Users
-export async function getAuthor(id: number) {
-  const res = await fetch(`https://dummyjson.com/users/${id}`);
-  const data: IUser = await res.json();
-
-  return data;
-}
-
 // sql
 export const getUsers = unstable_cache(
   async () => {
@@ -118,3 +76,54 @@ export function detectEnviro() {
       return "http://localhost:3000";
   }
 }
+export const minimumDatePrevention = () => {
+  const today = new Date();
+  const minimumDate = new Date(today.setFullYear(today.getFullYear() - 18));
+  const minimumAge = minimumDate.toISOString().split("T")[0];
+
+  return minimumAge;
+};
+
+// Validation
+export function loginValidationMessage(email: string, password: string) {
+  if (password.length < 5 && password.trim() !== "") {
+    return "Password length must be more than 5";
+  } else if (email.split("@").length <= 1 && email.trim() !== "") {
+    return "Email must contain '@' symbol";
+  } else if (!email.includes(".") && email.trim() !== "") {
+    return "Email must contain '.' symbol";
+  } else if (
+    email.trim().charAt(email.length - 1) === "." &&
+    email.trim() !== ""
+  ) {
+    return "Email must not end with '.' symbol";
+  } else if (email.length < 5 && email.trim() !== "") {
+    return "Email form is not valid";
+  } else if (email.trim() === "" || password.trim() === "") {
+    return "Sending empty values is not allowed";
+  } else {
+    return null;
+  }
+}
+export const credentialsValidationMessage = (email: string, password: string, reTypedPass: string) => {
+  if (password.length < 5 && password.trim() !== "") {
+    return "Password length must be more than 5";
+  } else if (email.split("@").length <= 1 && email.trim() !== "") {
+    return "Email must contain '@' symbol";
+  } else if (!email.includes(".") && email.trim() !== "") {
+    return "Email must contain '.' symbol";
+  } else if (
+    email.trim().charAt(email.length - 1) === "." &&
+    email.trim() !== ""
+  ) {
+    return "Email must not end with '.' symbol";
+  } else if (email.length < 5 && email.trim() !== "") {
+    return "Email form is not valid";
+  } else if (email.trim() === "" || password.trim() === "") {
+    return "Sending empty values is not allowed";
+  } else if (password.trim() !== reTypedPass.trim()) {
+    return "Passwords are not matching! Spell correctly";
+  } else {
+    return null;
+  }
+};

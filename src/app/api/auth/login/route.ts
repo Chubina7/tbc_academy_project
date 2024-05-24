@@ -3,22 +3,22 @@ import { setSession } from "../../../../lib/actions";
 import { psqlCheckUserCredentials } from "../../../../lib/sqlQueries";
 
 export async function POST(req: NextRequest) {
-  const { email, password }: IUserLoginInfo = await req.json();
+  const { email, password } = await req.json();
 
   // Validation
-  if (!email || !password) return NextResponse.json({ message: "Unable to pass empty values" }, { status: 500 })
-
-  // Signing in
-  try {
-    const credentials = await psqlCheckUserCredentials({ email, password })
-    if (!credentials) {
-      throw new Error()
-    } else {
-      setSession(credentials.user_id)
-    }
-  } catch (error) {
-    return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 })
+  if (!email || !password) {
+    return NextResponse.json({ message: "Email and password are required" }, { status: 400 });
   }
 
-  return NextResponse.json({ message: "Successfully authenticated!" }, { status: 200 })
+  try {
+    const credentials = await psqlCheckUserCredentials({ email, password });
+    if (!credentials) {
+      return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 });
+    } else {
+      setSession(credentials.user_id);
+      return NextResponse.json({ message: "Successfully authenticated!" }, { status: 200 });
+    }
+  } catch (error) {
+    return NextResponse.json({ message: "Server error occured. Try again later or contact support", error: error }, { status: 500 });
+  }
 }

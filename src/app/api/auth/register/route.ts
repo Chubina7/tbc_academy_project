@@ -1,26 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { setSession } from '../../../../lib/actions';
-import { psqlInsertUserCredentials } from '../../../../lib/sqlQueries';
-import { revalidateTag } from 'next/cache';
+import { psqlInsertUserCredentials, psqlIsEmailInUse } from '../../../../lib/sqlQueries';
 
 export async function POST(req: NextRequest) {
-    const { username, email, password, role } = await req.json()
+    const { username, email, password, role, birth_date, surname } = await req.json()
 
     // Validation
-    if (!username || !email || !password || !role) return NextResponse.json({ message: "Unable to pass empty values" }, { status: 400 });
+    if (!username || !email || !password || !role) return NextResponse.json({ message: "Required values are empty! Try to fill all of them." }, { status: 400 });
 
     // Signing up
     try {
-        const user = await psqlInsertUserCredentials({ username, email, password, role })
-        if (user) {
+        const isInUse = await psqlIsEmailInUse(email)
+
+        if (!isInUse) {
+            const user = await psqlInsertUserCredentials({ birth_date, email, password, role, surname, username })
             setSession(user)
-            revalidateTag("user_list")
+            return NextResponse.json({ message: "Successfully registered!" }, { status: 200 });
         } else {
-            throw new Error()
+            return NextResponse.json({ message: "Email is already in use. Try different one" }, { status: 409 });
         }
     } catch (error) {
-        return NextResponse.json({ message: "Error occured! Try again later.", dbError: error }, { status: 409 });
+        return NextResponse.json({ message: "Unexpected error occured! Check console for details.", error: error }, { status: 409 });
     }
-
-    return NextResponse.json({ message: "Successfully registered!" }, { status: 200 });
 }

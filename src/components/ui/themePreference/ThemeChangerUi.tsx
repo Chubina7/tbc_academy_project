@@ -31,7 +31,7 @@ function ThemeChangerUi({ storedTheme }: Props) {
 
   return (
     <div
-      className={`flex h-full justify-center items-center cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100`}
+      className={`flex justify-center items-center cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100`}
       onClick={() => setIdx((prev) => (prev + 1) % 3)}
     >
       {themeList[idx].icon}
