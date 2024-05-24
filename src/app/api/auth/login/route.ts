@@ -19,6 +19,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "Successfully authenticated!" }, { status: 200 });
     }
   } catch (error) {
-    return NextResponse.json({ message: "Server error occured. Try again later or contact support" }, { status: 500 });
+    return NextResponse.json({ message: "Server error occured. Try again later or contact support", error: error }, { status: 500 });
   }
 }

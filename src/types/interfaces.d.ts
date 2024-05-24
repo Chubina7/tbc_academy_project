@@ -30,6 +30,8 @@ interface IUserLogin {
 interface IUserRegister extends IUserLogin {
     username: string,
     role: RoleType
+    surname: string,
+    birth_date: string
 }
 interface IUserCredentials extends IUserRegister {
     user_id: string
@@ -38,7 +40,7 @@ interface IUserPublics {
     user_id: string,
     username: string,
     email: string,
-    age: number
+    birth_date: string
 }
 
 // General for Components
