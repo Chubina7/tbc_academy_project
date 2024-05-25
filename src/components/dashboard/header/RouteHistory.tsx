@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import Appear from "../../ui/framerMotionDivs/Appear";
 
 export default function RouteHistory() {
   const path = usePathname();
@@ -13,7 +14,10 @@ export default function RouteHistory() {
     .slice(1);
 
   return (
-    <div className="w-full flex justify-start items-center gap-3 opacity-50 text-xs">
+    <Appear
+      delay={1.5}
+      className="w-full flex justify-start items-center gap-3 opacity-50 text-xs"
+    >
       <Link href={"/dashboard"}>
         <p>Dashboard</p>
       </Link>
@@ -29,6 +33,6 @@ export default function RouteHistory() {
           </Link>
         </div>
       ))}
-    </div>
+    </Appear>
   );
 }

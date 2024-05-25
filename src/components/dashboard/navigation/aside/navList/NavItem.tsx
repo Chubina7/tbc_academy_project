@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import Tooltip from "./Tooltip";
+import VariantsListItem from "../../../../ui/framerMotionDivs/variants/VariantsListItem";
 
 interface Props {
   data: IDashboardNavListItem;
@@ -28,8 +29,8 @@ export default function NavItem({ data }: Props) {
 
   return (
     <Link href={`/dashboard${data.href}`} onClick={handleMouseLeave}>
-      <li
-        className={`h-6 flex justify-start items-center gap-7 hover:scale-105 transition-all duration-300 ${
+      <VariantsListItem
+        className={`h-6 flex justify-start items-center gap-7 hover:scale-105 transition-colors duration-300 ${
           isActive && "scale-105"
         }`}
       >
@@ -56,7 +57,7 @@ export default function NavItem({ data }: Props) {
         >
           {data.title}
         </p>
-      </li>
+      </VariantsListItem>
     </Link>
   );
 }

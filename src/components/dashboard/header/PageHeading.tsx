@@ -3,6 +3,7 @@
 import React from "react";
 import { dashboardNavigationList } from "../../../lib/ListsWithComponents";
 import { usePathname } from "next/navigation";
+import TopToDown from "../../ui/framerMotionDivs/directions/TopToDown";
 
 export default function PageHeading() {
   const path = usePathname();
@@ -10,5 +11,9 @@ export default function PageHeading() {
     (item) => item.href === path.substring(10)
   );
 
-  return <h1 className="text-2xl sm:text-3xl font-bold">{heading?.forHeading}</h1>;
+  return (
+    <TopToDown>
+      <h1 className="text-2xl sm:text-3xl font-bold">{heading?.forHeading}</h1>
+    </TopToDown>
+  );
 }
