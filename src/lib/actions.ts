@@ -20,10 +20,13 @@ export async function getCoursesList() {
 
   try {
     const res = await fetch("http://localhost:3000/api/dashboard/courses", {
-      cache: "no-store",
+      cache: "no-cache",
       headers: {
         Cookie: `user_id=${user_id}`,
       },
+      next: {
+        tags: ["test_tag"]
+      }
     });
 
     const result = await res.json();

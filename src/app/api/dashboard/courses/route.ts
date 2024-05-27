@@ -1,5 +1,6 @@
 import { sql } from "@vercel/postgres";
 import { NextRequest, NextResponse } from "next/server";
+import { generateUniqueId } from "../../../../lib/helpers";
 
 export async function GET(req: NextRequest) {
     try {
@@ -31,4 +32,27 @@ export async function GET(req: NextRequest) {
         console.error("Error retrieving courses:", error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
+}
+
+export async function POST(req: NextRequest) {
+    const { course_title, course_description, category, created_at, updated_at } = await req.json()
+    const user_id = req.cookies.get("user_id")?.value;
+
+    // validate
+    if (!course_title || !category) return NextResponse.json({ message: "Unable to pass empty values" }, { status: 400 })
+
+
+    // insert data into all courses and relation
+    try {
+        const course_id = generateUniqueId("C")
+        await sql`INSERT INTO courses (course_id, course_title, course_description, category, created_at, updated_at)
+                    VALUES (${course_id}, ${course_title}, ${course_description}, ${category}, ${created_at}, ${updated_at})`;
+        await sql`INSERT INTO enrollments (course_id, user_id)
+                    VALUES (${course_id}, ${user_id})`;
+
+        return NextResponse.json({ message: "Success" }, { status: 200 })
+    } catch (error) {
+        return NextResponse.json({ error }, { status: 500 })
+    }
+
 }
