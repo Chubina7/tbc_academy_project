@@ -8,7 +8,7 @@ function Header() {
   return (
     <header className="bg-inherit text-inherit | w-full flex flex-col justify-center items-center gap-3 lg:gap-1 py-3 pt-0 lg:pt-5 rounded-xl">
       <RouteHistory />
-      <div className="w-full flex flex-col-reverse items-start justify-start gap-2 lg:flex-row lg:justify-between lg:items-center">
+      <div className="w-full flex flex-col-reverse items-start justify-start gap-4 lg:flex-row lg:justify-between lg:items-center">
         <PageHeading />
         <HeaderSettings />
       </div>
