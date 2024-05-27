@@ -14,33 +14,30 @@ import {
   psqDeleteBookmarks,
 } from "./sqlQueries";
 
-// User Data
-export const getUserInfo = async () => {
-  const cookieStore = cookies();
-  const firstName = cookieStore.get("firstName")?.value;
-  const lastName = cookieStore.get("lastName")?.value;
-  const image = cookieStore.get("image")?.value;
-  const gender = cookieStore.get("gender")?.value;
+// Courses
+export async function getCoursesList() {
+  const user_id = cookies().get("user_id")?.value || "";
 
-  return { firstName, lastName, image, gender };
-};
-export const getUserLoginInfo = async () => {
-  const cookieStore = cookies();
-  const email = cookieStore.get("email")?.value;
+  try {
+    const res = await fetch("http://localhost:3000/api/dashboard/courses", {
+      cache: "no-store",
+      headers: {
+        Cookie: `user_id=${user_id}`,
+      },
+    });
 
-  return { email, password: "admin" };
-};
-export const setSession = async (user_id: string) => {
-  const options: Partial<ResponseCookie> = {
-    secure: true,
-    sameSite: "none",
-    httpOnly: true,
-    path: "/",
-  };
+    const result = await res.json();
 
-  cookies().set(AUTH_COOKIE_KEY, "development_session_token", options);
-  cookies().set("user_id", user_id, options);
-};
+    if (res.ok) {
+      return result;
+    } else {
+      throw new Error("Failed to fetch data");
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return { error: "Failed to fetch data" };
+  }
+}
 
 // Preferences
 export const storeThemeInCookies = (pref: string) => {
@@ -54,6 +51,17 @@ export const storeThemeInCookies = (pref: string) => {
 // General
 export const readCookieForClient = async (searchCookie: string) => {
   return cookies().get(searchCookie)?.value;
+};
+export const setSession = async (user_id: string) => {
+  const options: Partial<ResponseCookie> = {
+    secure: true,
+    sameSite: "none",
+    httpOnly: true,
+    path: "/",
+  };
+
+  cookies().set(AUTH_COOKIE_KEY, "development_session_token", options);
+  cookies().set("user_id", user_id, options);
 };
 
 // Admin actions
