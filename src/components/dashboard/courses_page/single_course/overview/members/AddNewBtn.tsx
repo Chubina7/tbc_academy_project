@@ -1,4 +1,3 @@
-import React from "react";
 import BottomToTop from "../../../../../ui/framerMotionDivs/directions/BottomToTop";
 
 export default function AddNewBtn() {
