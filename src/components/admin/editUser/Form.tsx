@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { detectEnviro } from "../../../lib/helpers";
+import { detectEnviro } from "../../../lib/helpers/regular_funcs/general";
 
 const domain = detectEnviro();
 

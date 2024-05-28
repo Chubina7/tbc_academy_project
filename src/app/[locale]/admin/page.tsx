@@ -1,7 +1,7 @@
 import React from "react";
 import UserList from "../../../components/admin/UserList";
 import AddUser from "../../../components/admin/addUser/AddUser";
-import { getUsers } from "../../../lib/helpers";
+import { getUsers } from "../../../lib/helpers/regular_funcs/helpers";
 
 interface IFullUser extends IUser {
   user_id: string;

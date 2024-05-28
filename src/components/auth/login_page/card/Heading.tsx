@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { loginHeadingWords } from "../../../../lib/ListsWithComponents";
+import { loginHeadingWords } from "../../../../lib/lists/ListsWithComponents";
 
 export default function Heading() {
   const [idx, setIdx] = useState(0);

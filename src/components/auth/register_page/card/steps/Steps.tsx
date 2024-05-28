@@ -3,7 +3,7 @@
 import Controls from "./controls/Controls";
 import { useContext } from "react";
 import { RegistrationInputsContext } from "../../../../../context/ctx";
-import { registrationSteps } from "../../../../../lib/ListsWithComponents";
+import { registrationSteps } from "../../../../../lib/lists/ListsWithComponents";
 
 export default function Steps() {
   const { stepIdxState } = useContext(RegistrationInputsContext);

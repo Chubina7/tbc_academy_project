@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { psqlGetBookmarks } from "../../../lib/sqlQueries";
+import { psqlGetBookmarks } from "../../../lib/sql/sqlQueries";
 import { cookies } from "next/headers";
 
 export async function GET() {

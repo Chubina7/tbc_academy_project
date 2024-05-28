@@ -11,16 +11,6 @@ interface IUserLoginInfo {
     email: string | undefined
     password: string | undefined
 }
-interface IUserIsAuthed {
-    id: number
-    username: string
-    email: string
-    firstName: string
-    lastName: string
-    gender: string
-    image: string
-    token: string
-}
 
 // sql
 interface IUserLogin {
@@ -50,8 +40,7 @@ interface IMetaData {
 }
 interface IParams {
     locale: string
-    productId: number
-    blogId: number
+    slug: string
 }
 
 // Context

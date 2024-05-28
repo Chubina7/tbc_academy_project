@@ -1,7 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "./variables";
+import { AUTH_COOKIE_KEY } from "../../variables";
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { revalidateTag } from "next/cache";
 import {
@@ -12,35 +12,7 @@ import {
   psqIncrementBookmarkCount,
   psqDecrementBookmarkCount,
   psqDeleteBookmarks,
-} from "./sqlQueries";
-
-// User Data
-export const getUserInfo = async () => {
-  const cookieStore = cookies();
-  const firstName = cookieStore.get("firstName")?.value;
-  const lastName = cookieStore.get("lastName")?.value;
-  const image = cookieStore.get("image")?.value;
-  const gender = cookieStore.get("gender")?.value;
-
-  return { firstName, lastName, image, gender };
-};
-export const getUserLoginInfo = async () => {
-  const cookieStore = cookies();
-  const email = cookieStore.get("email")?.value;
-
-  return { email, password: "admin" };
-};
-export const setSession = async (user_id: string) => {
-  const options: Partial<ResponseCookie> = {
-    secure: true,
-    sameSite: "none",
-    httpOnly: true,
-    path: "/",
-  };
-
-  cookies().set(AUTH_COOKIE_KEY, "development_session_token", options);
-  cookies().set("user_id", user_id, options);
-};
+} from "../../sql/sqlQueries";
 
 // Preferences
 export const storeThemeInCookies = (pref: string) => {
@@ -54,6 +26,17 @@ export const storeThemeInCookies = (pref: string) => {
 // General
 export const readCookieForClient = async (searchCookie: string) => {
   return cookies().get(searchCookie)?.value;
+};
+export const setSession = async (user_id: string) => {
+  const options: Partial<ResponseCookie> = {
+    secure: true,
+    sameSite: "none",
+    httpOnly: true,
+    path: "/",
+  };
+
+  cookies().set(AUTH_COOKIE_KEY, "development_session_token", options);
+  cookies().set("user_id", user_id, options);
 };
 
 // Admin actions

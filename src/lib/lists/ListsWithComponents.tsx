@@ -9,10 +9,10 @@ import {
   IoSunny,
   IoDesktop,
 } from "react-icons/io5";
-import RoleCheckmark from "../components/auth/register_page/card/steps/RoleCheckmark";
-import PersonalDetailInputs from "../components/auth/register_page/card/steps/presonal_details/PersonalDetailInputs";
-import CredentialInputs from "../components/auth/register_page/card/steps/acc_credentials/CredentialInputs";
-import Appear from "../components/ui/framerMotionDivs/Appear";
+import Appear from "../../components/ui/framerMotionDivs/Appear";
+import RoleCheckmark from "../../components/auth/register_page/card/steps/RoleCheckmark";
+import PersonalDetailInputs from "../../components/auth/register_page/card/steps/presonal_details/PersonalDetailInputs";
+import CredentialInputs from "../../components/auth/register_page/card/steps/acc_credentials/CredentialInputs";
 
 export const themeList: ThemeListType = [
   {
