@@ -24,9 +24,6 @@ export async function getCoursesList() {
       headers: {
         Cookie: `user_id=${user_id}`,
       },
-      next: {
-        tags: ["test_tag"]
-      }
     });
 
     const result = await res.json();
@@ -39,6 +36,29 @@ export async function getCoursesList() {
   } catch (error) {
     console.error("Error fetching data:", error);
     return { error: "Failed to fetch data" };
+  }
+}
+export async function getSingleCourse(course_id: string) {
+  try {
+    const res = await fetch(
+      `http://localhost:3000/api/dashboard/courses/${course_id}`,
+      {
+        cache: "no-store",
+      }
+    );
+
+    if (!res.ok) {
+      console.error(
+        `Failed to fetch course: ${res.status} - ${res.statusText}`
+      );
+      return undefined;
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching course:", error);
+    return undefined;
   }
 }
 

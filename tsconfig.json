@@ -33,7 +33,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/footer/EmailInput.jsx"  ],
+, "src/components/footer/EmailInput.jsx", "src/app/[locale]/dashboard/(authenticated)/courses/[slug]/page.tss"  ],
   "exclude": [
     "node_modules"
   ]

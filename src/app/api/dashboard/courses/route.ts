@@ -36,11 +36,11 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
     const { course_title, course_description, category, created_at, updated_at } = await req.json()
+    // Authorization
     const user_id = req.cookies.get("user_id")?.value;
 
     // validate
     if (!course_title || !category) return NextResponse.json({ message: "Unable to pass empty values" }, { status: 400 })
-
 
     // insert data into all courses and relation
     try {

@@ -50,8 +50,7 @@ interface IMetaData {
 }
 interface IParams {
     locale: string
-    productId: number
-    blogId: number
+    slug: string
 }
 
 // Context
