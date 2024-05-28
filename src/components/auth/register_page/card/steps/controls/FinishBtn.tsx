@@ -5,8 +5,8 @@ import {
   RegistrationInputsContext as regCtx,
   NotificationsContext as notifCtx,
 } from "../../../../../../context/ctx";
-import { credentialsValidationMessage } from "../../../../../../lib/helpers";
 import { useRouter } from "next/navigation";
+import { credentialsValidationMessage } from "../../../../../../lib/helpers/regular_funcs/validators";
 
 export default function FinishBtn() {
   const { inputs, stepIdxState, messages } = useContext(regCtx);

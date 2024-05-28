@@ -1,6 +1,6 @@
 "use client";
 
-import { actResetBookmarks } from "../../../../../lib/actions";
+import { actResetBookmarks } from "../../../../../lib/helpers/server_act_funcs/actions";
 import Appear from "../../../../ui/framerMotionDivs/Appear";
 
 export default function DeleteBookmarks() {

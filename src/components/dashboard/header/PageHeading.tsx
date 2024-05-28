@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { dashboardNavigationList } from "../../../lib/ListsWithComponents";
+import { dashboardNavigationList } from "../../../lib/lists/ListsWithComponents";
 import { usePathname } from "next/navigation";
 import TopToDown from "../../ui/framerMotionDivs/directions/TopToDown";
 

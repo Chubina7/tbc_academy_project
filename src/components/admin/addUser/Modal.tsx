@@ -1,5 +1,5 @@
 import React from "react";
-import { actAddUser } from "../../../lib/actions";
+import { actAddUser } from "../../../lib/helpers/server_act_funcs/actions";
 import Form from "./Form";
 
 interface Props {

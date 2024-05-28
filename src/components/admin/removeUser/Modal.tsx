@@ -1,5 +1,5 @@
 import React from "react";
-import { actDeleteUser } from "../../../lib/actions";
+import { actDeleteUser } from "../../../lib/helpers/server_act_funcs/actions";
 
 interface Props {
   handleModal: () => void;

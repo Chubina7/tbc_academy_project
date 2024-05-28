@@ -1,4 +1,4 @@
-import { getSingleCourse } from "../../../../../../lib/actions";
+import { getSingleCourse } from "../../../../../../lib/helpers/regular_funcs/courses_api";
 
 interface Props {
   params: IParams;

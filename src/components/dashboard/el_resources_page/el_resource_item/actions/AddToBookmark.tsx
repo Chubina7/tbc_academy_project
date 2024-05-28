@@ -1,6 +1,6 @@
 "use client";
 
-import { actAddToBookmarks } from "../../../../../lib/actions";
+import { actAddToBookmarks } from "../../../../../lib/helpers/server_act_funcs/actions";
 
 export default function AddToBookmark({ id }: { id: string }) {
   return (

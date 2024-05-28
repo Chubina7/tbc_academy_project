@@ -1,6 +1,6 @@
 import { sql } from "@vercel/postgres";
 import { NextRequest, NextResponse } from "next/server";
-import { generateUniqueId } from "../../../../lib/helpers";
+import { generateUniqueId } from "../../../../lib/helpers/regular_funcs/general";
 
 export async function GET(req: NextRequest) {
     try {

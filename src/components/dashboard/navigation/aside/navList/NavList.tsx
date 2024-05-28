@@ -1,5 +1,5 @@
 import React from "react";
-import { dashboardNavigationList } from "../../../../../lib/ListsWithComponents";
+import { dashboardNavigationList } from "../../../../../lib/lists/ListsWithComponents";
 import NavItem from "./NavItem";
 import VariantsList from "../../../../ui/framerMotionDivs/variants/VariantsList";
 

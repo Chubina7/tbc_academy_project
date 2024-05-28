@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { psqlGetBookmarkListLength } from "../../../../../lib/sqlQueries";
+import { psqlGetBookmarkListLength } from "../../../../../lib/sql/sqlQueries";
 
 export default async function BookmarkNum() {
   const user_id = cookies().get("user_id")?.value || "";

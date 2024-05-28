@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { psqlGetUserById } from "../../../../lib/sqlQueries";
+import { psqlGetUserById } from "../../../../lib/sql/sqlQueries";
 
 export async function GET(req: NextRequest) {
     const url = new URL(req.url)

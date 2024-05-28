@@ -1,7 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "./variables";
+import { AUTH_COOKIE_KEY } from "../../variables";
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { revalidateTag } from "next/cache";
 import {
@@ -12,55 +12,7 @@ import {
   psqIncrementBookmarkCount,
   psqDecrementBookmarkCount,
   psqDeleteBookmarks,
-} from "./sqlQueries";
-
-// Courses
-export async function getCoursesList() {
-  const user_id = cookies().get("user_id")?.value || "";
-
-  try {
-    const res = await fetch("http://localhost:3000/api/dashboard/courses", {
-      cache: "no-cache",
-      headers: {
-        Cookie: `user_id=${user_id}`,
-      },
-    });
-
-    const result = await res.json();
-
-    if (res.ok) {
-      return result;
-    } else {
-      throw new Error("Failed to fetch data");
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return { error: "Failed to fetch data" };
-  }
-}
-export async function getSingleCourse(course_id: string) {
-  try {
-    const res = await fetch(
-      `http://localhost:3000/api/dashboard/courses/${course_id}`,
-      {
-        cache: "no-store",
-      }
-    );
-
-    if (!res.ok) {
-      console.error(
-        `Failed to fetch course: ${res.status} - ${res.statusText}`
-      );
-      return undefined;
-    }
-
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching course:", error);
-    return undefined;
-  }
-}
+} from "../../sql/sqlQueries";
 
 // Preferences
 export const storeThemeInCookies = (pref: string) => {

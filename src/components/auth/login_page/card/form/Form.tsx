@@ -4,12 +4,10 @@ import { useContext, useState } from "react";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import LoginBtn from "../LoginBtn";
-import {
-  detectEnviro,
-  loginValidationMessage,
-} from "../../../../../lib/helpers";
 import { useRouter } from "next/navigation";
 import { NotificationsContext } from "../../../../../context/ctx";
+import { loginValidationMessage } from "../../../../../lib/helpers/regular_funcs/validators";
+import { detectEnviro } from "../../../../../lib/helpers/regular_funcs/general";
 
 export default function Form() {
   const { showNotification } = useContext(NotificationsContext);

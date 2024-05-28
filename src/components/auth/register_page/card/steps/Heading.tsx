@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext } from "react";
-import { registrationSteps } from "../../../../../lib/ListsWithComponents";
+import { registrationSteps } from "../../../../../lib/lists/ListsWithComponents";
 import { RegistrationInputsContext } from "../../../../../context/ctx";
 
 const Heading = () => {

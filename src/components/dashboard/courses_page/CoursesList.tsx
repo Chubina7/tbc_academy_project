@@ -1,6 +1,6 @@
 import CourseItem from "./CourseItem";
 import VariantsList from "../../ui/framerMotionDivs/variants/VariantsList";
-import { getCoursesList } from "../../../lib/actions";
+import { getCoursesList } from "../../../lib/helpers/regular_funcs/courses_api";
 
 export default async function CoursesList() {
   const courses = await getCoursesList();

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { psqlGetResources } from "../../../lib/sqlQueries";
+import { psqlGetResources } from "../../../lib/sql/sqlQueries";
 
 export async function GET() {
   try {

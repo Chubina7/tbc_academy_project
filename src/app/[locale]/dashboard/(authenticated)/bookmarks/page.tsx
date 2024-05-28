@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import Bookmarks from "../../../../../components/dashboard/bookmarks_page/Bookmarks";
 import DeleteBookmarks from "../../../../../components/dashboard/el_resources_page/el_resource_item/actions/DeleteBookmarks";
-import { getBookmarks } from "../../../../../lib/helpers";
+import { getBookmarks } from "../../../../../lib/helpers/regular_funcs/helpers";
 
 export default async function page() {
   const user_id = cookies().get("user_id")?.value || "";
