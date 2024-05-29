@@ -1,5 +1,6 @@
 import Image from "next/image";
 import backup_img from "/public/anonym_user.webp";
+import VariantsListItem from "../../../../../ui/framerMotionDivs/variants/VariantsListItem";
 
 interface Props {
   data: any;
@@ -7,8 +8,9 @@ interface Props {
 
 export default function AnnouncementItem({ data }: Props) {
   const { author_username, announcement } = data;
+  
   return (
-    <div className="w-full flex justify-start items-center gap-3 p-3 px-5 hover:bg-[#5C5470]">
+    <VariantsListItem className="w-full flex justify-start items-center gap-3 p-3 px-5 hover:bg-[#5C5470]">
       <Image
         src={backup_img}
         alt={""}
@@ -21,6 +23,6 @@ export default function AnnouncementItem({ data }: Props) {
         <p className="absolute top-0 right-0 font-normal text-sm"> 1 min ago</p>
         <p>{announcement}</p>
       </div>
-    </div>
+    </VariantsListItem>
   );
 }

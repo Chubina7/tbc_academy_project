@@ -2,6 +2,7 @@ import VariantsList from "../../../../../ui/framerMotionDivs/variants/VariantsLi
 import MemberItem from "./MemberItem";
 import Heading from "./Heading";
 import Switcher from "./Switcher";
+import Appear from "../../../../../ui/framerMotionDivs/Appear";
 // import AddNewBtn from "./AddNewBtn";
 
 const test_students_list = [
@@ -24,7 +25,7 @@ const test_students_list = [
 
 export default function Members() {
   return (
-    <div className="relative h-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-colors duration-300 | w-full flex flex-col gap-3">
+    <Appear className="relative h-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-colors duration-300 | w-full flex flex-col gap-3 overflow-hidden">
       <Heading />
       <Switcher />
       <VariantsList className="w-full flex flex-col gap-3">
@@ -33,6 +34,6 @@ export default function Members() {
         ))}
         {/* <AddNewBtn /> */}
       </VariantsList>
-    </div>
+    </Appear>
   );
 }

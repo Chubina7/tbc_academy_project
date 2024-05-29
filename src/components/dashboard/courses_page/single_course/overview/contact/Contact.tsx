@@ -3,6 +3,7 @@ import Heading from "./Heading";
 import VariantsList from "../../../../../ui/framerMotionDivs/variants/VariantsList";
 import AnnouncementItem from "./AnnouncementItem";
 import Switcher from "./Switcher";
+import Appear from "../../../../../ui/framerMotionDivs/Appear";
 
 const test_announcement_list = [
   {
@@ -27,9 +28,9 @@ const test_announcement_list = [
   },
 ];
 
-export default function Connections() {
+export default function Contact() {
   return (
-    <div className="w-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-colors duration-300 | flex flex-col gap-3">
+    <Appear className="w-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-colors duration-300 | flex flex-col gap-3 overflow-hidden">
       <Heading />
       <Switcher />
       <VariantsList className="w-full h-full flex flex-col gap-3 overflow-hid">
@@ -37,6 +38,6 @@ export default function Connections() {
           <AnnouncementItem key={item.user_id} data={item} />
         ))}
       </VariantsList>
-    </div>
+    </Appear>
   );
 }
