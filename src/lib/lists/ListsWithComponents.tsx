@@ -8,6 +8,8 @@ import {
   IoMoon,
   IoSunny,
   IoDesktop,
+  IoSettings,
+  IoHelpCircle,
 } from "react-icons/io5";
 import Appear from "../../components/ui/framerMotionDivs/Appear";
 import RoleCheckmark from "../../components/auth/register_page/card/steps/RoleCheckmark";
@@ -90,4 +92,17 @@ export const registrationSteps = [
     heading: "Enter Personal Details",
   },
   { component: <CredentialInputs key={2} />, heading: "Account Credentials" },
+];
+
+export const modalListItems = [
+  {
+    title: "Settings",
+    icon: <IoSettings size={20} />,
+    link: "/dashboard/settings",
+  },
+  {
+    title: "Help Center",
+    icon: <IoHelpCircle size={20} />,
+    link: "/dashboard/help",
+  },
 ];
