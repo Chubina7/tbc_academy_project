@@ -3,7 +3,7 @@ import AddToBookmark from "./AddToBookmark";
 import DecreaseCount from "./DecreaseCount";
 import IncreaseCount from "./IncreaseCount";
 import ItemCount from "./ItemCount";
-import { getBookmarkedItemCount } from "../../../../../lib/helpers";
+import { getBookmarkedItemCount } from "../../../../../lib/helpers/regular_funcs/helpers";
 import { cookies } from "next/headers";
 
 interface Props {

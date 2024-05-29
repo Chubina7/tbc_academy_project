@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { RegistrationInputsContext } from "../ctx";
-import { minimumDatePrevention } from "../../lib/helpers";
+import { minimumDatePrevention } from "../../lib/helpers/regular_funcs/general";
 
 interface Props {
   children: React.ReactNode;

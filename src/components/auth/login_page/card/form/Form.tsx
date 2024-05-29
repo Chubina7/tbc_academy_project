@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import LoginBtn from "../LoginBtn";
-import {
-  detectEnviro,
-  loginValidationMessage,
-} from "../../../../../lib/helpers";
 import { useRouter } from "next/navigation";
+import { NotificationsContext } from "../../../../../context/ctx";
+import { loginValidationMessage } from "../../../../../lib/helpers/regular_funcs/validators";
+import { detectEnviro } from "../../../../../lib/helpers/regular_funcs/general";
 
 export default function Form() {
+  const { showNotification } = useContext(NotificationsContext);
   const router = useRouter();
   const domain = detectEnviro();
   const [isLoading, setIsLoading] = useState(false);
@@ -46,6 +46,7 @@ export default function Form() {
         setMessage(result.message);
       } else {
         router.replace("/dashboard");
+        showNotification(true, "success", "Successfully logined in", 5000);
       }
     } catch (error) {
       console.error(error);

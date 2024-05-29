@@ -9,9 +9,10 @@ import {
   IoSunny,
   IoDesktop,
 } from "react-icons/io5";
-import RoleCheckmark from "../components/auth/register_page/card/steps/RoleCheckmark";
-import PersonalDetailInputs from "../components/auth/register_page/card/steps/presonal_details/PersonalDetailInputs";
-import CredentialInputs from "../components/auth/register_page/card/steps/acc_credentials/CredentialInputs";
+import Appear from "../../components/ui/framerMotionDivs/Appear";
+import RoleCheckmark from "../../components/auth/register_page/card/steps/RoleCheckmark";
+import PersonalDetailInputs from "../../components/auth/register_page/card/steps/presonal_details/PersonalDetailInputs";
+import CredentialInputs from "../../components/auth/register_page/card/steps/acc_credentials/CredentialInputs";
 
 export const themeList: ThemeListType = [
   {
@@ -75,12 +76,12 @@ export const dashboardNavigationList: DashboardNavListType = [
   },
 ];
 export const loginHeadingWords = [
-  <span key={0} className="transition-all duration-300 font-bold">
+  <Appear key={0} className="transition-colors duration-300 font-bold">
     STUDENT
-  </span>,
-  <span key={1} className="transition-all duration-300 font-bold">
+  </Appear>,
+  <Appear key={1} className="transition-colors duration-300 font-bold">
     TEACHER
-  </span>,
+  </Appear>,
 ];
 export const registrationSteps = [
   { component: <RoleCheckmark key={0} />, heading: "Choose Role" },

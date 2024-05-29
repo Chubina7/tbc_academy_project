@@ -1,6 +1,6 @@
 "use client";
 
-import { actIncreaseCount } from "../../../../../lib/actions";
+import { actIncreaseCount } from "../../../../../lib/helpers/server_act_funcs/actions";
 
 export default function IncreaseCount({ id }: { id: string }) {
   return (

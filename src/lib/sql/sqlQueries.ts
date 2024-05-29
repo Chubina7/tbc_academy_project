@@ -1,5 +1,5 @@
 import { sql } from "@vercel/postgres";
-import { generateUniqueId } from "./helpers";
+import { generateUniqueId } from "../helpers/regular_funcs/general";
 
 // Auth
 export async function psqlCheckUserCredentials({ email, password, }: IUserLogin) {

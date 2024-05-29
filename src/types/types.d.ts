@@ -14,3 +14,22 @@ type DashboardNavListType = Array<IDashboardNavListItem>
 
 // General
 type RoleType = "teacher" | "student" | "admin"
+
+// Courses
+type AnnouncementComponentType = {
+    announcement_id: number,
+    title: string
+    body: string
+    created_at: string
+    author_id: string
+    author_name: string
+    author_surname: string
+    user_image: null
+}
+type MemberComponentType = {
+    user_id: string;
+    username: string;
+    surname: string;
+    email: string;
+    image: string | null;
+};

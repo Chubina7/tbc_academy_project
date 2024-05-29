@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { themeList } from "../../../lib/ListsWithComponents";
-import { setTheme } from "../../../lib/helpers";
-import { storeThemeInCookies } from "../../../lib/actions";
+import { themeList } from "../../../lib/lists/ListsWithComponents";
+import { setTheme } from "../../../lib/helpers/regular_funcs/helpers";
+import { storeThemeInCookies } from "../../../lib/helpers/server_act_funcs/actions";
 
 interface Props {
   storedTheme: string | undefined;

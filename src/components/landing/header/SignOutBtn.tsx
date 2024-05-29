@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FaSignOutAlt } from "react-icons/fa";
-import { detectEnviro } from "../../../lib/helpers";
+import { detectEnviro } from "../../../lib/helpers/regular_funcs/general";
 
 const domain = detectEnviro();
 

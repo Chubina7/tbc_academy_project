@@ -6,7 +6,6 @@ export const BookmarkContext: Context<IBookmarkCtx> = createContext({
   removeItem: (param) => param,
   resetList: () => {},
 });
-// add other contexts
 
 export const RegistrationInputsContext = createContext({
   inputs: {
@@ -50,4 +49,16 @@ export const RegistrationInputsContext = createContext({
       setValue: (() => {}) as Dispatch<SetStateAction<string>>,
     },
   },
+});
+
+export const NotificationsContext = createContext({
+  showNotification: (() => {}) as (
+    isShown: boolean,
+    type: "success" | "error" | "loading",
+    title: string,
+    duration?: number
+  ) => void,
+  isShown: false,
+  notifType: "" as "success" | "error" | "loading",
+  notifTitle: "",
 });

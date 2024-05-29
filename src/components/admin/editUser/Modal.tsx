@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "./Form";
-import { actEditUser } from "../../../lib/actions";
+import { actEditUser } from "../../../lib/helpers/server_act_funcs/actions";
 
 interface Props {
   handleModal: () => void;
