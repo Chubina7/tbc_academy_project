@@ -9,7 +9,7 @@ export default function Title({ data }: Props) {
   const { course_id, course_title } = data;
 
   return (
-    <h1 className="relative font-bold text-xl pr-8">
+    <h1 className="relative flex-1 font-bold text-xl pr-8">
       <Link href={`/dashboard/courses/${course_id}`}>{course_title}</Link>
       <IoEllipsisHorizontal
         size={18}

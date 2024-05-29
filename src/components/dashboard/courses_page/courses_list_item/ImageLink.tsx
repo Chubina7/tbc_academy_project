@@ -16,6 +16,8 @@ export default function ImageLink({ data }: Props) {
         <Image
           src={image ? image : backup_img}
           alt=""
+          width={540}
+          height={420}
           className="w-full object-cover rounded-lg"
         />
       </Appear>
