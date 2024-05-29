@@ -10,13 +10,13 @@ export async function GET(req: NextRequest) {
             throw new Error("User ID not found in cookies");
         }
 
-        const { rows } = await sql`SELECT c.* FROM courses c INNER JOIN enrollments e ON c.course_id = e.course_id WHERE e.user_id = ${user_id}`;
+        const { rows } = await sql`SELECT c.* FROM courses c INNER JOIN enrollments e ON c.course_id = e.course_id WHERE e.user_id = ${user_id} ORDER BY c.course_id`;
 
         // Modifing data
         let result = rows;
         for (let idx = 0; idx < rows.length; idx++) {
             const enrolled = await sql`
-                SELECT u.*
+                SELECT u.user_id, u.username, u.surname, u.image, u.role
                 FROM users u
                 INNER JOIN enrollments e ON u.user_id = e.user_id
                 WHERE e.course_id = ${rows[idx].course_id}

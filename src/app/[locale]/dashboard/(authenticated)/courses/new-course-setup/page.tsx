@@ -7,7 +7,7 @@ const test_data = {
   course_title: "TEST_TITLE",
   category: "CATEGORY",
   course_description: "DESCRIPTION",
-  created_at: "2024-12-11",
+  created_at: new Date(),
   updated_at: "2024-12-11",
 };
 

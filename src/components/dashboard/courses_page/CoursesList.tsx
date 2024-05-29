@@ -1,4 +1,4 @@
-import CourseItem from "./CourseItem";
+import CourseItem from "./courses_list_item/CourseItem";
 import VariantsList from "../../ui/framerMotionDivs/variants/VariantsList";
 import { getCoursesList } from "../../../lib/helpers/regular_funcs/courses_api";
 
