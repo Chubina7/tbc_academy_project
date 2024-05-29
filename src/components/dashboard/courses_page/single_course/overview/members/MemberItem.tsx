@@ -4,16 +4,16 @@ import backup_img from "/public/anonym_user.webp";
 import { IoEllipsisHorizontal } from "react-icons/io5";
 
 interface Props {
-  data: any;
+  data: MemberComponentType;
 }
 
 export default function MemberItem({ data }: Props) {
-  const { username, email } = data;
+  const { username, surname, email, image } = data;
 
   return (
     <VariantsListItem className="w-full flex justify-start items-center gap-3 p-3 px-5">
       <Image
-        src={backup_img}
+        src={image ? image : backup_img}
         alt={username}
         width={64}
         height={64}
@@ -21,7 +21,7 @@ export default function MemberItem({ data }: Props) {
       />
       <div className="w-full flex flex-col">
         <h1 className="relative font-bold text-lg">
-          {username}
+          {username} {surname}
           <IoEllipsisHorizontal
             size={18}
             className="absolute right-0 top-[50%] transform translate-y-[-50%] cursor-pointer hover:scale-110"

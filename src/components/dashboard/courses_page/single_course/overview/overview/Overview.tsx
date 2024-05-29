@@ -8,7 +8,7 @@ interface Props {
     course_title: string;
     course_description: string;
     created_at: string;
-    image: string;
+    image: string | null;
   };
 }
 

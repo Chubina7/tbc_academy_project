@@ -2,7 +2,7 @@ import Image from "next/image";
 import backup_img from "/public/library.jpg";
 
 interface Props {
-  data: { image: string; course_title: string };
+  data: { image: string | null; course_title: string };
 }
 
 export default function CourseImage({ data }: Props) {

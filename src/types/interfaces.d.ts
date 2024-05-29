@@ -83,3 +83,15 @@ interface IRegisterCredentials {
     email: string
     password: string
 }
+
+// Courses
+interface ISingleCourse {
+    course_title: string
+    course_description: string
+    category: string
+    created_at: string
+    updated_at: string
+    image: string | null
+    announcements: Array<AnnouncementComponentType>
+    members: Array<MemberComponentType>
+}

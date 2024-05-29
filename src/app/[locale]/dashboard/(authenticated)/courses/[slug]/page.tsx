@@ -10,11 +10,18 @@ interface Props {
 }
 
 export default async function Page({ params }: Props) {
-  const data = await getSingleCourse(params.slug);
+  const data: ISingleCourse = await getSingleCourse(params.slug);
 
   if (!data) return <p>No data found</p>;
 
-  const { course_title, course_description, created_at, image } = data;
+  const {
+    course_title,
+    course_description,
+    created_at,
+    image,
+    announcements,
+    members,
+  } = data;
 
   return (
     <section className="h-full flex flex-col md:flex-row gap-5">
@@ -23,8 +30,8 @@ export default async function Page({ params }: Props) {
           data={{ course_description, course_title, created_at, image }}
         />
         <div className="w-full h-full flex flex-col xl:flex-row gap-5">
-          <Contact />
-          <Members />
+          <Contact data={announcements} />
+          <Members data={members} />
         </div>
       </div>
       <div className="w-full h-full flex-col sm:flex-row md:max-w-60 flex md:flex-col gap-5">

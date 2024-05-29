@@ -5,38 +5,30 @@ import AnnouncementItem from "./AnnouncementItem";
 import Switcher from "./Switcher";
 import Appear from "../../../../../ui/framerMotionDivs/Appear";
 
-const test_announcement_list = [
-  {
-    user_id: "asd",
-    author_username: "tope",
-    announcement:
-      "test anouncement anouafsjakn jslgn ajsnrgjang;kja lmg;k amtkm baetbknaet bjktbn 'rnoncmasfojan oan onadfjasfasf oa ",
-    created_at: "YYYY/MM/DD",
-  },
-  {
-    user_id: "asfafs",
-    author_username: "dtope",
-    announcement:
-      "test anouncement anouncma afs  afafgadfaf a as adg ad ad sfsaf asf sf a gwrrg e ggrgrgrgrgr gr gr oqaejf lkanf ewjk  qenfl nwadipg,mwsdgopl sfojan oan onadfjoa ",
-    created_at: "YYYY/MM/DD",
-  },
-  {
-    user_id: "asasfasfad",
-    author_username: "maradona",
-    announcement: "test anouncement ano  asfasf aadfuncmasfojan oan onadfjoa ",
-    created_at: "YYYY/MM/DD",
-  },
-];
+interface Props {
+  data: Array<AnnouncementComponentType>;
+}
 
-export default function Contact() {
+export default function Contact({ data }: Props) {
   return (
-    <Appear className="w-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-colors duration-300 | flex flex-col gap-3 overflow-hidden">
+    <Appear className="w-full h-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-colors duration-300 | flex flex-col gap-3">
       <Heading />
       <Switcher />
       <VariantsList className="w-full h-full flex flex-col gap-3 overflow-hid">
-        {test_announcement_list.map((item) => (
-          <AnnouncementItem key={item.user_id} data={item} />
-        ))}
+        {data.length >= 1 ? (
+          data
+            .slice(0, 4)
+            .map((announcement) => (
+              <AnnouncementItem
+                key={announcement.announcement_id}
+                data={announcement}
+              />
+            ))
+        ) : (
+          <p className="w-full text-center pb-3">
+            No announcements yet. Start writing new!
+          </p>
+        )}
       </VariantsList>
     </Appear>
   );
