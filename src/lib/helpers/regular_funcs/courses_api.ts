@@ -1,11 +1,12 @@
 import { USER } from "../server_act_funcs/authorization";
+import { detectEnviro } from "./general";
 
 // Courses
 export async function getCoursesList() {
     const { user_id } = await USER()
 
     try {
-        const res = await fetch("http://localhost:3000/api/dashboard/courses", {
+        const res = await fetch(`${detectEnviro()}/api/dashboard/courses`, {
             cache: "no-cache",
             headers: {
                 Cookie: `user_id=${user_id}`,
@@ -28,7 +29,7 @@ export async function getCoursesList() {
 export async function getSingleCourse(course_id: string) {
     try {
         const res = await fetch(
-            `http://localhost:3000/api/dashboard/courses/${course_id}`,
+            `${detectEnviro()}/api/dashboard/courses/${course_id}`,
             {
                 cache: "no-store",
             }

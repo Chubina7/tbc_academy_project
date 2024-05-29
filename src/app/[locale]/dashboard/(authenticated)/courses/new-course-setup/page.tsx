@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import BottomToTop from "../../../../../../components/ui/framerMotionDivs/directions/BottomToTop";
+import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
 
 const test_data = {
   course_title: "TEST_TITLE",
@@ -18,7 +19,7 @@ export default function Page() {
     // read data from inputs
     // ...
     // make request
-    const res = await fetch("http://localhost:3000/api/dashboard/courses", {
+    const res = await fetch(`${detectEnviro}/api/dashboard/courses`, {
       method: "POST",
       body: JSON.stringify(test_data),
     });
