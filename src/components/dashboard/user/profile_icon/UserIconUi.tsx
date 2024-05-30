@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import anonym from "/public/anonym_user.webp";
-import Modal from "./Modal";
+import Modal from "./modal/Modal";
 
 interface Props {
   data: {
@@ -14,26 +14,21 @@ interface Props {
 }
 
 export default function UserIconUi({ data }: Props) {
-  const [isOpen, setIsOpen] = useState(false);
+  const modalState = useState(false);
   const { image, user_id, email } = data;
 
-  const handleModal = () => setIsOpen((prev) => !prev);
-
   return (
-    <div className="relative">
-      <div
-        className="flex gap-2 justify-center items-center cursor-pointer"
-        onClick={handleModal}
-      >
-        <Image
-          src={image ? image : anonym}
-          alt="anonym"
-          width={36}
-          height={36}
-          className="rounded-full"
-        />
-      </div>
-      {isOpen && <Modal data={{ user_id, email }} modalCloser={handleModal} />}
+    <div className="relative flex gap-2 justify-center items-center">
+      <Image
+        src={image ? image : anonym}
+        alt="anonym"
+        width={36}
+        height={36}
+        className="rounded-full cursor-pointer"
+        onClick={() => modalState[1]((prev) => !prev)}
+        id="profile_modal"
+      />
+      <Modal data={{ user_id, email }} modalState={modalState} />
     </div>
   );
 }
