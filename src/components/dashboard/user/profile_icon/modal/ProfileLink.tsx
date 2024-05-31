@@ -18,11 +18,14 @@ export default function ProfileLink({
       href="/dashboard/profile"
       className="w-full flex flex-col justify-center items-start px-3 py-1 rounded-xl hover:bg-[#5C5470]"
       onClick={modalCloser}
+      id="profile_modal"
     >
-      <h1 className="text-lg">
+      <h1 className="text-lg" id="profile_modal">
         {username} {surname}
       </h1>
-      <p className="text-sm opacity-60">{email}</p>
+      <p className="text-sm opacity-60" id="profile_modal">
+        {email}
+      </p>
     </Link>
   );
 }

@@ -6,7 +6,7 @@ interface Props {
 
 export default function SignOut({ modalCloser }: Props) {
   return (
-    <span className="w-full" onClick={modalCloser}>
+    <span className="w-full" onClick={modalCloser} id="profile_modal">
       <SignOutBtn />
     </span>
   );

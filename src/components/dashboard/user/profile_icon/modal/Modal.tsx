@@ -14,7 +14,7 @@ export default function Modal({ data, modalState }: Props) {
   const { user_id, email } = data;
   const [isOpen, setIsOpen] = modalState;
 
-  const handleModal = () => setIsOpen((prev) => !prev);
+  const handleModal = () => setIsOpen(false);
 
   useEffect(() => {
     const handleMouseEvent = (e: MouseEvent) => {
@@ -28,7 +28,8 @@ export default function Modal({ data, modalState }: Props) {
     return () => {
       window.removeEventListener("mousedown", handleMouseEvent);
     };
-  }, [setIsOpen]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   if (isOpen) {
     return (

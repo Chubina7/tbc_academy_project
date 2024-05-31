@@ -97,12 +97,12 @@ export const registrationSteps = [
 export const modalListItems = [
   {
     title: "Settings",
-    icon: <IoSettings size={20} />,
+    icon: <IoSettings id="profile_modal" size={20} />,
     link: "/dashboard/settings",
   },
   {
     title: "Help Center",
-    icon: <IoHelpCircle size={20} />,
+    icon: <IoHelpCircle id="profile_modal" size={20} />,
     link: "/dashboard/help",
   },
 ];
