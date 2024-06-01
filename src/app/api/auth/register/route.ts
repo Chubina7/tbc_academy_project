@@ -1,6 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { setSession } from '../../../../lib/helpers/server_act_funcs/actions';
 import { psqlInsertUserCredentials, psqlIsEmailInUse } from '../../../../lib/sql/sqlQueries';
+import bcrypt from "bcrypt"
+
+async function hashPassword(password: string) {
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        return hashedPassword;
+    } catch (err) {
+        console.error('Error hashing password:', err);
+        throw err;
+    }
+};
 
 export async function POST(req: NextRequest) {
     const { username, email, password, role, birth_date, surname } = await req.json()
@@ -13,7 +24,8 @@ export async function POST(req: NextRequest) {
         const isInUse = await psqlIsEmailInUse(email)
 
         if (!isInUse) {
-            const user = await psqlInsertUserCredentials({ birth_date, email, password, role, surname, username })
+            const hashedPassword = await hashPassword(password)
+            const user = await psqlInsertUserCredentials({ birth_date, email, password: hashedPassword, role, surname, username })
             setSession(user)
             return NextResponse.json({ message: "Successfully registered!" }, { status: 200 });
         } else {
