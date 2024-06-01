@@ -21,7 +21,7 @@ export default function CourseItem({ data }: Props) {
     data;
 
   return (
-    <VariantsListItem className="bg-[#FFFFFF] dark:bg-[#352F44] | w-full rounded-lg p-3 | transition-colors duration-300 flex flex-col gap-2 ">
+    <VariantsListItem className="bg-[#FFFFFF] dark:bg-[#352F44] | rounded-lg p-3 | transition-colors duration-300 flex flex-col gap-2 ">
       <Title data={{ course_id, course_title }} />
       <div className="w-full flex flex-col justify-start items-center gap-2">
         <ImageLink data={{ course_id, image }} />
