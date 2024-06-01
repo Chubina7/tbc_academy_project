@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -30,11 +30,12 @@ export default function SignOutBtn() {
 
   return (
     <button
-      className="text-[#EEE8F6] bg-[#3D52A1] dark:text-[#3D52A1] dark:bg-[#EEE8F6] px-5 py-1 font-bold rounded-full flex justify-center items-center gap-2 transition-all duration-300 opacity-70 hover:opacity-100"
+      className="w-full flex justify-start items-center px-3 py-1 gap-2 rounded-xl hover:bg-[#5C5470]"
       onClick={signOutHandler}
+      id="profile_modal"
     >
-      {isLoading ? "Signing out..." : t("signOutBtn")}
       <FaSignOutAlt size={18} />
+      {isLoading ? "Signing out..." : t("signOutBtn")}
     </button>
   );
 }
