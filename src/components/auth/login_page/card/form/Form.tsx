@@ -7,12 +7,13 @@ import LoginBtn from "../LoginBtn";
 import { useRouter } from "next/navigation";
 import { NotificationsContext } from "../../../../../context/ctx";
 import { loginValidationMessage } from "../../../../../lib/helpers/regular_funcs/validators";
-import { detectEnviro } from "../../../../../lib/helpers/regular_funcs/general";
+// import { detectEnviro } from "../../../../../lib/helpers/regular_funcs/general";
 
 export default function Form() {
   const { showNotification } = useContext(NotificationsContext);
   const router = useRouter();
-  const domain = detectEnviro();
+  // const domain = detectEnviro();
+  const domain = "http://localhost:3000"
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");

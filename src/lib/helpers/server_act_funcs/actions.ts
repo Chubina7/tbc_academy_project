@@ -27,7 +27,7 @@ export const storeThemeInCookies = (pref: string) => {
 export const readCookieForClient = async (searchCookie: string) => {
   return cookies().get(searchCookie)?.value;
 };
-export const setSession = async (user_id: string) => {
+export const setSession = async (token: string) => {
   const options: Partial<ResponseCookie> = {
     secure: true,
     sameSite: "none",
@@ -35,8 +35,8 @@ export const setSession = async (user_id: string) => {
     path: "/",
   };
 
-  cookies().set(AUTH_COOKIE_KEY, "development_session_token", options);
-  cookies().set("user_id", user_id, options);
+  cookies().set(AUTH_COOKIE_KEY, token, options);
+  // cookies().set("user_id", user_id, options);
 };
 
 // Admin actions
