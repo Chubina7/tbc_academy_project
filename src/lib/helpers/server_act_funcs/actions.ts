@@ -1,8 +1,6 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "../../variables";
-import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { revalidateTag } from "next/cache";
 import {
   psqlAddUser,
@@ -27,28 +25,17 @@ export const storeThemeInCookies = (pref: string) => {
 export const readCookieForClient = async (searchCookie: string) => {
   return cookies().get(searchCookie)?.value;
 };
-export const setSession = async (user_id: string) => {
-  const options: Partial<ResponseCookie> = {
-    secure: true,
-    sameSite: "none",
-    httpOnly: true,
-    path: "/",
-  };
-
-  cookies().set(AUTH_COOKIE_KEY, "development_session_token", options);
-  cookies().set("user_id", user_id, options);
-};
 
 // Admin actions
 export const actDeleteUser = async (user_id: string) => {
   await psqlDeleteUser(user_id);
   revalidateTag("user_list");
 };
-export const actAddUser = async (userData: IUser) => {
+export const actAddUser = async (userData: IUserAdmin) => {
   await psqlAddUser(userData);
   revalidateTag("user_list");
 };
-export const actEditUser = async (userData: IUser, user_id: string) => {
+export const actEditUser = async (userData: IUserAdmin, user_id: string) => {
   await psqlEditUser(userData, user_id);
   revalidateTag("user_list");
 };

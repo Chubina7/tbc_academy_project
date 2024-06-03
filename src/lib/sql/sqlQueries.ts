@@ -2,9 +2,13 @@ import { sql } from "@vercel/postgres";
 import { generateUniqueId } from "../helpers/regular_funcs/general";
 
 // Auth
-export async function psqlCheckUserCredentials({ email, password, }: IUserLogin) {
-  const { rows } = await sql`SELECT user_id FROM users WHERE email = ${email} AND password = ${password}`;
-  return rows[0];
+export async function psqlCheckUserInDb(email: string) {
+  const emailIndb = await sql`SELECT password FROM users WHERE email = ${email}`
+  if (emailIndb.rows[0]) {
+    return emailIndb.rows[0].password
+  } else {
+    return undefined
+  }
 }
 export async function psqlInsertUserCredentials({ username, email, password, role, birth_date, surname }: IUserRegister) {
   const user_id = generateUniqueId("U");
@@ -18,14 +22,14 @@ export async function psqlIsEmailInUse(email: string) {
 }
 
 // Admin actions
-export async function psqlAddUser({ username, surname, email, password, role, age }: IUser) {
+export async function psqlAddUser({ username, surname, email, password, role, age }: IUserAdmin) {
   const user_id = generateUniqueId("U");
   await sql`INSERT INTO users (user_id, username, surname, email, password, role, age) VALUES (${user_id}, ${username}, ${surname}, ${email}, ${password}, ${role}, ${age});`;
 }
 export async function psqlDeleteUser(user_id: string) {
   await sql`DELETE FROM users WHERE user_id = ${user_id}`;
 }
-export async function psqlEditUser({ username, surname, email, password, role, age }: IUser, user_id: string) {
+export async function psqlEditUser({ username, surname, email, password, role, age }: IUserAdmin, user_id: string) {
   await sql`UPDATE users SET
             username = ${username}, surname = ${surname},
             email = ${email}, password = ${password},
