@@ -12,7 +12,7 @@ export default function RoomImage({ src }: Props) {
       alt=""
       width={600}
       height={540}
-      className="w-full object-cover max-h-44"
+      className="w-full h-44 object-cover"
     />
   );
 }
