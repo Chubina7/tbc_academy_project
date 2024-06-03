@@ -10,11 +10,11 @@ interface Props {
 export default function DashboardLayout({ children }: Props) {
   return (
     <BookmarkProvider>
-      <div className="bg-[#F4F7FF] text-[#2B3674] dark:bg-[#2A2438] dark:text-[#DBD8E3] | relative w-full min-h-screen  md:h-screen flex flex-col md:flex-row p-3 gap-5 transition-all duration-300">
+      <div className="bg-[#F4F7FF] text-[#2B3674] dark:bg-[#2A2438] dark:text-[#DBD8E3] | relative w-full min-h-screen md:h-screen flex flex-col md:flex-row  transition-all duration-300">
         <Navigation type="dekstop" />
         <div className="w-full flex flex-col">
           <Header />
-          <main className="w-full h-full overflow-y-scroll overflow-x-hidden scroll-hidden">
+          <main className="w-full h-full overflow-y-scroll scroll-hidden">
             {children}
           </main>
         </div>

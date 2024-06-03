@@ -6,9 +6,9 @@ import HeaderSettings from "./headerSettings/HeaderSettings";
 
 function Header() {
   return (
-    <header className="bg-inherit text-inherit | w-full flex flex-col justify-center items-center gap-3 lg:gap-1 py-3 pt-0  rounded-xl">
+    <header className="bg-inherit text-inherit | w-full flex flex-col justify-center items-center gap-3 lg:gap-1 py-3 px-3 md:px-7 rounded-xl">
       <RouteHistory />
-      <div className="w-full flex flex-col-reverse items-start justify-start gap-4 lg:flex-row lg:justify-between lg:items-center">
+      <div className="w-full flex flex-col-reverse items-start justify-start lg:flex-row lg:justify-between lg:items-center">
         <PageHeading />
         <HeaderSettings />
       </div>

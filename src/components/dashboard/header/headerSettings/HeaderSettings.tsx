@@ -16,7 +16,6 @@ export default function HeaderSettings() {
           <ThemeChanger />
           <LangChanger />
           <Bookmark />
-          {/* ნოტიფიკაციები ან რაიმე მსგავსი; შესაძლებელია ჩამოსაშლელი ფანჯარა ბოლო 3 აითემით */}
           <UserIcon />
         </div>
         <Navigation type="mobile" />
