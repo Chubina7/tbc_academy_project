@@ -5,17 +5,15 @@ import { cookies } from "next/headers";
 import bcrypt from "bcrypt"
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { AUTH_COOKIE_KEY } from "../../variables";
+import { decrypt } from "../../../middleware";
 
 const key = new TextEncoder().encode(process.env.JWT_SECRET_SIGN_KEY)
 const algorithm = process.env.JWT_ALGORITHM
 
 export const USER = async () => {
-    const user_id = cookies().get("user_id")?.value || "";
-    const image = ""
-    const email = "example@gmail.com"
-    // other information which will be needed for authorization
-    // ...
-    return { user_id, image, email }
+    const token = cookies().get(AUTH_COOKIE_KEY)?.value || ""
+
+    return (await decrypt(token)) as IUser
 }
 
 export const setSessionCookie = async (user: any) => {

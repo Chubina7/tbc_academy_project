@@ -33,3 +33,14 @@ type MemberComponentType = {
     email: string;
     image: string | null;
 };
+
+// User
+type IUser = {
+    user_id: string,
+    username: string,
+    surname: string | null,
+    email: string,
+    role: RoleType
+    birth_date: string,
+    image: string | null,
+}

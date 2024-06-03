@@ -22,14 +22,14 @@ export async function psqlIsEmailInUse(email: string) {
 }
 
 // Admin actions
-export async function psqlAddUser({ username, surname, email, password, role, age }: IUser) {
+export async function psqlAddUser({ username, surname, email, password, role, age }: IUserAdmin) {
   const user_id = generateUniqueId("U");
   await sql`INSERT INTO users (user_id, username, surname, email, password, role, age) VALUES (${user_id}, ${username}, ${surname}, ${email}, ${password}, ${role}, ${age});`;
 }
 export async function psqlDeleteUser(user_id: string) {
   await sql`DELETE FROM users WHERE user_id = ${user_id}`;
 }
-export async function psqlEditUser({ username, surname, email, password, role, age }: IUser, user_id: string) {
+export async function psqlEditUser({ username, surname, email, password, role, age }: IUserAdmin, user_id: string) {
   await sql`UPDATE users SET
             username = ${username}, surname = ${surname},
             email = ${email}, password = ${password},

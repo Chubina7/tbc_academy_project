@@ -3,7 +3,7 @@ import Link from "next/link";
 interface Props {
   modalCloser: () => void;
   username: string;
-  surname: string;
+  surname: string | null;
   email: string;
 }
 

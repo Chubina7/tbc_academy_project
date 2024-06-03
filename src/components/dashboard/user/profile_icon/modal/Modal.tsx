@@ -6,12 +6,12 @@ import ProfileLink from "./ProfileLink";
 import { useEffect } from "react";
 
 interface Props {
-  data: { user_id: string; email: string };
+  data: { username: string; surname: string | null; email: string };
   modalState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 }
 
 export default function Modal({ data, modalState }: Props) {
-  const { user_id, email } = data;
+  const { surname, username, email } = data;
   const [isOpen, setIsOpen] = modalState;
 
   const handleModal = () => setIsOpen(false);
@@ -40,8 +40,8 @@ export default function Modal({ data, modalState }: Props) {
         <ProfileLink
           email={email}
           modalCloser={handleModal}
-          surname={user_id}
-          username={user_id}
+          username={username}
+          surname={surname}
         />
         <List modalCloser={handleModal} />
         <hr className="w-full border rounded-full border-[#F4F7FF] dark:border-[#2A2438] opacity-60 my-1" />

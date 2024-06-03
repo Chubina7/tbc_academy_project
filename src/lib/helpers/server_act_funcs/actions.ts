@@ -31,11 +31,11 @@ export const actDeleteUser = async (user_id: string) => {
   await psqlDeleteUser(user_id);
   revalidateTag("user_list");
 };
-export const actAddUser = async (userData: IUser) => {
+export const actAddUser = async (userData: IUserAdmin) => {
   await psqlAddUser(userData);
   revalidateTag("user_list");
 };
-export const actEditUser = async (userData: IUser, user_id: string) => {
+export const actEditUser = async (userData: IUserAdmin, user_id: string) => {
   await psqlEditUser(userData, user_id);
   revalidateTag("user_list");
 };

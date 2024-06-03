@@ -6,16 +6,12 @@ import anonym from "/public/anonym_user.webp";
 import Modal from "./modal/Modal";
 
 interface Props {
-  data: {
-    user_id: string;
-    image: string;
-    email: string;
-  };
+  data: IUser;
 }
 
 export default function UserIconUi({ data }: Props) {
   const modalState = useState(false);
-  const { image, user_id, email } = data;
+  const { image, username, surname, email } = data;
 
   return (
     <div className="relative flex gap-2 justify-center items-center">
@@ -28,7 +24,7 @@ export default function UserIconUi({ data }: Props) {
         onClick={() => modalState[1]((prev) => !prev)}
         id="profile_modal"
       />
-      <Modal data={{ user_id, email }} modalState={modalState} />
+      <Modal data={{ username, surname, email }} modalState={modalState} />
     </div>
   );
 }

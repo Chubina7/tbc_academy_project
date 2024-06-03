@@ -3,7 +3,7 @@ import UserList from "../../../components/admin/UserList";
 import AddUser from "../../../components/admin/addUser/AddUser";
 import { getUsers } from "../../../lib/helpers/regular_funcs/helpers";
 
-interface IFullUser extends IUser {
+interface IFullUser extends IUserAdmin {
   user_id: string;
 }
 
