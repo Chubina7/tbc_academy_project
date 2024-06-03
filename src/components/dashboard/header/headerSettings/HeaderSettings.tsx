@@ -1,11 +1,11 @@
 import React from "react";
-import UserProfPic from "./UserProfPic";
 import SearchInput from "./SearchInput";
 import ThemeChanger from "../../../ui/themePreference/ThemeChanger";
 import LangChanger from "../../../ui/languagePreference/LangChanger";
 import Bookmark from "./bookmark/Bookmark";
 import Navigation from "../../navigation/Navigation";
 import TopToDown from "../../../ui/framerMotionDivs/directions/TopToDown";
+import UserIcon from "../../user/profile_icon/UserIcon";
 
 export default function HeaderSettings() {
   return (
@@ -17,7 +17,7 @@ export default function HeaderSettings() {
           <LangChanger />
           <Bookmark />
           {/* ნოტიფიკაციები ან რაიმე მსგავსი; შესაძლებელია ჩამოსაშლელი ფანჯარა ბოლო 3 აითემით */}
-          <UserProfPic />
+          <UserIcon />
         </div>
         <Navigation type="mobile" />
       </div>

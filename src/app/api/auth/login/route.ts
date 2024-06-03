@@ -1,23 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
-import { setSession } from "../../../../lib/helpers/server_act_funcs/actions";
-import { psqlCheckUserCredentials } from "../../../../lib/sql/sqlQueries";
+import { psqlCheckUserInDb } from "../../../../lib/sql/sqlQueries";
+import { sql } from "@vercel/postgres";
+import { hasAccess, setSessionCookie } from "../../../../lib/helpers/server_act_funcs/authorization";
 
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
 
   // Validation
-  if (!email || !password) {
-    return NextResponse.json({ message: "Email and password are required" }, { status: 400 });
-  }
+  if (!email || !password) return NextResponse.json({ message: "Email and password are required" }, { status: 400 });
 
   try {
-    const credentials = await psqlCheckUserCredentials({ email, password });
-    if (!credentials) {
-      return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 });
-    } else {
-      setSession(credentials.user_id);
-      return NextResponse.json({ message: "Successfully authenticated!" }, { status: 200 });
-    }
+    const passwordInDb = await psqlCheckUserInDb(email)
+    const hasAccessOrNot = await hasAccess(password, await passwordInDb)
+
+    if (!passwordInDb || !hasAccessOrNot) return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 });
+
+    const user = await sql`SELECT * FROM users WHERE email = ${email}`
+    await setSessionCookie(user.rows[0])
+
+    return NextResponse.json({ message: "Successfully authenticated!" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: "Server error occured. Try again later or contact support", error: error }, { status: 500 });
   }

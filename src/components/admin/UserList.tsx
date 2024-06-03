@@ -2,7 +2,7 @@ import React from "react";
 import RemoveUser from "./removeUser/RemoveUser";
 import EditUser from "./editUser/EditUser";
 
-interface IFullUser extends IUser {
+interface IFullUser extends IUserAdmin {
   user_id: string;
 }
 

@@ -16,7 +16,7 @@ export default function RtoL({ children, className, delay }: Props) {
       animate={{ x: 0, opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, delay: delay || 0 }}
-      className={className}
+      className={className || ""}
     >
       {children}
     </motion.div>

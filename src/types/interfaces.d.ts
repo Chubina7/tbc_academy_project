@@ -1,5 +1,5 @@
 // Users
-interface IUser {
+interface IUserAdmin {
     username: string
     surname: string | null
     email: string

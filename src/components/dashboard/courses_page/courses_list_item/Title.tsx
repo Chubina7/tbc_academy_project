@@ -9,12 +9,9 @@ export default function Title({ data }: Props) {
   const { course_id, course_title } = data;
 
   return (
-    <h1 className="relative flex-1 font-bold text-xl pr-8">
+    <h1 className="flex-1 font-bold text-xl flex w-full justify-between items-start gap-3">
       <Link href={`/dashboard/courses/${course_id}`}>{course_title}</Link>
-      <IoEllipsisHorizontal
-        size={18}
-        className="absolute right-0 top-0 cursor-pointer"
-      />
+      <IoEllipsisHorizontal size={18} className="cursor-pointer" />
     </h1>
   );
 }
