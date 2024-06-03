@@ -95,3 +95,16 @@ interface ISingleCourse {
     announcements: Array<AnnouncementComponentType>
     members: Array<MemberComponentType>
 }
+
+
+// Rooms
+interface IRoom {
+    room_id: string
+    room_name: string
+    description: string
+    image: string | null
+    teacher: string
+    enrolled_number: number
+    category: Array<string>
+    created_at: string
+}

@@ -1,6 +1,11 @@
 // import { IoCalendarClearOutline } from "react-icons/io5";
 
-export default function CreatedAt() {
+interface Props {
+  created_at: string;
+}
+
+export default function CreatedAt({ created_at }: Props) {
+  console.log(created_at);
   //   render depending on the role
   //
   //   return (

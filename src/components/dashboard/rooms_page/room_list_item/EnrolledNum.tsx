@@ -1,10 +1,14 @@
 import { IoPeopleOutline } from "react-icons/io5";
 
-export default function EnrolledNum() {
+interface Props {
+  number: number;
+}
+
+export default function EnrolledNum({ number }: Props) {
   return (
     <div className="w-fit flex gap-1 justify-center items-center">
       <IoPeopleOutline size={20} />
-      <p>9,999</p>
+      <p>{number}</p>
     </div>
   );
 }

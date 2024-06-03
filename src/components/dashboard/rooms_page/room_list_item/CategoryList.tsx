@@ -1,15 +1,18 @@
-export default function CategoryList() {
+interface Props {
+  categories: Array<string>;
+}
+
+export default function CategoryList({ categories }: Props) {
   return (
     <ul className="my-1 px-[15px]">
-      <li className="w-fit inline-block border border-[#2B3674] dark:border-[#5C5470] rounded-full px-3 mx-1 text-sm transition-all duration-300">
-        IT
-      </li>
-      <li className="w-fit inline-block border border-[#2B3674] dark:border-[#5C5470] rounded-full px-3 mx-1 text-sm transition-all duration-300">
-        math
-      </li>
-      <li className="w-fit inline-block border border-[#2B3674] dark:border-[#5C5470] rounded-full px-3 mx-1 text-sm transition-all duration-300">
-        physics
-      </li>
+      {categories.map((category, idx) => (
+        <li
+          key={idx}
+          className="w-fit inline-block border border-[#2B3674] dark:border-[#5C5470] rounded-full px-3 py-0.5 mx-1 text-sm transition-all duration-300"
+        >
+          {category}
+        </li>
+      ))}
     </ul>
   );
 }
