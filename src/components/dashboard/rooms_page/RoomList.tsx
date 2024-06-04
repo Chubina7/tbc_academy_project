@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import RoomListItem from "./room_list_item/RoomListItem";
 import { RoomsListFilterContext as ctx } from "../../../context/ctx";
+import VariantsList from "../../ui/framerMotionDivs/variants/VariantsList";
 
 interface Props {
   rooms: Array<IRoom>;
@@ -12,7 +13,7 @@ export default function RoomList({ rooms }: Props) {
   const { selectedCategories } = useContext(ctx);
 
   const list = (
-    <section className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <VariantsList className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible">
       {rooms
         .filter((room) => {
           if (selectedCategories.includes("all")) return room;
@@ -31,7 +32,7 @@ export default function RoomList({ rooms }: Props) {
             created_at={room.created_at}
           />
         ))}
-    </section>
+    </VariantsList>
   );
 
   const emptyList = (

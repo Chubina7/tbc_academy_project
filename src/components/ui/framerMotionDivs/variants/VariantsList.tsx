@@ -24,7 +24,6 @@ export default function VariantsList({ children, className }: Props) {
       initial="hidden"
       animate="visible"
       className={className ? className : ""}
-      style={{overflow: "hidden"}}
     >
       {children}
     </motion.ul>
