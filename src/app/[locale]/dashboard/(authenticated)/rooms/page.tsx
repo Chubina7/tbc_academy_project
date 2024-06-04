@@ -143,7 +143,7 @@ export default function RoomsPage() {
   return (
     <RoomsListFilterProvider>
       <div className="w-full min-h-screen flex flex-col px-3 md:px-7 pt-1 gap-5">
-        <section className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3">
+        <section className="flex flex-col-reverse sm:flex-row justify-between items-center gap-6 sm:gap-10">
           <RoomsFilter filters={allCategories} />
           <CreateRoomBtn />
         </section>

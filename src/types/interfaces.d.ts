@@ -66,10 +66,10 @@ interface ILandingNavItem {
     whenActive: "/" | "/about" | "/contact" | "/admin";
 }
 interface IDashboardNavListItem {
-    title: "Home" | "Courses" | "Schedule" | "Annoucements" | "El-Resources",
+    title: "Home" | "Rooms" | "Schedule" | "Annoucements" | "El-Resources",
     icon: React.ReactNode,
     onActive: React.ReactNode,
-    href: "" | "/courses" | "/schedule" | "/annoucements" | "/el-resources",
+    href: "" | "/rooms" | "/schedule" | "/annoucements" | "/el-resources",
     forHeading: string
 }
 

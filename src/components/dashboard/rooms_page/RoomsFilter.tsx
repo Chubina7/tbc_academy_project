@@ -17,15 +17,18 @@ export default function RoomsFilter({ filters }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategories]);
 
-  const isInList = (ctg: string) => selectedCategories.includes(ctg);
-
+  // checkeer functoin
+  const isInList = (ctg: string) => {
+    return selectedCategories.includes(ctg);
+  };
+  // styles
   const styles = (ctg: string) => {
     const baseStyle =
       "bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] rounded-full py-0.5 px-5 text-sm hover:cursor-pointer transition-all duration-300 select-none opacity-100 text-nowrap";
     const unActiveStl = " opacity-60 hover:opacity-80 ";
     return isInList(ctg) ? baseStyle : unActiveStl + baseStyle;
   };
-
+  // onClick handler
   const handleCategorySelection = (category: string) => {
     if (selectedCategories.includes(category)) {
       setSelectedCategories((prev) => prev.filter((ctg) => ctg !== category));
@@ -45,15 +48,17 @@ export default function RoomsFilter({ filters }: Props) {
       >
         All
       </li>
-      {filters.map((category, idx) => (
-        <li
-          key={idx}
-          className={styles(category)}
-          onClick={() => handleCategorySelection(category)}
-        >
-          {category.charAt(0).toUpperCase() + category.slice(1)}
-        </li>
-      ))}
+      {filters.map((category, idx) => {
+        const word = category.charAt(0).toUpperCase() + category.slice(1);
+        const className = styles(category);
+        const handler = () => handleCategorySelection(category);
+
+        return (
+          <li key={idx} className={className} onClick={handler}>
+            {word}
+          </li>
+        );
+      })}
     </ul>
   );
 }

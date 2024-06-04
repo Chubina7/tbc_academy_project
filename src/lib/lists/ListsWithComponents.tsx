@@ -4,12 +4,12 @@ import {
   IoCalendarSharp,
   IoReceipt,
   IoInformationCircle,
-  IoSchool,
   IoMoon,
   IoSunny,
   IoDesktop,
   IoSettings,
   IoHelpCircle,
+  IoChatbubbles,
 } from "react-icons/io5";
 import Appear from "../../components/ui/framerMotionDivs/Appear";
 import RoleCheckmark from "../../components/auth/register_page/card/steps/RoleCheckmark";
@@ -49,11 +49,11 @@ export const dashboardNavigationList: DashboardNavListType = [
     forHeading: "Welcome, STUDENT!",
   },
   {
-    title: "Courses",
-    icon: <IoSchool size={20} color="inherit" />,
-    onActive: <IoSchool size={20} color="inherit" />,
-    href: "/courses",
-    forHeading: "Your courses",
+    title: "Rooms",
+    icon: <IoChatbubbles size={20} color="inherit" />,
+    onActive: <IoChatbubbles size={20} color="inherit" />,
+    href: "/rooms",
+    forHeading: "Rooms you enrolled",
   },
   {
     title: "Schedule",
