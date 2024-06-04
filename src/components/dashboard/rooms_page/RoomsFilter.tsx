@@ -21,7 +21,7 @@ export default function RoomsFilter({ filters }: Props) {
 
   const styles = (ctg: string) => {
     const baseStyle =
-      "bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] rounded-full py-0.5 px-5 text-sm hover:cursor-pointer transition-all duration-300 select-none opacity-100";
+      "bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] rounded-full py-0.5 px-5 text-sm hover:cursor-pointer transition-all duration-300 select-none opacity-100 text-nowrap";
     const unActiveStl = " opacity-60 hover:opacity-80 ";
     return isInList(ctg) ? baseStyle : unActiveStl + baseStyle;
   };
