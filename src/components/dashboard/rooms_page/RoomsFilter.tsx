@@ -1,18 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { RoomsListFilterContext as ctx } from "../../../context/ctx";
 
 interface Props {
   filters: Array<string>;
 }
 
 export default function RoomsFilter({ filters }: Props) {
-  const [selectedCategories, setSelectedCategories] = useState(["all"]);
+  const { selectedCategories, setSelectedCategories } = useContext(ctx);
 
   useEffect(() => {
     if (selectedCategories.length === 0) {
       setSelectedCategories(["all"]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategories]);
 
   const isInList = (ctg: string) => selectedCategories.includes(ctg);
@@ -23,7 +25,7 @@ export default function RoomsFilter({ filters }: Props) {
     const unActiveStl = " opacity-60 hover:opacity-80 ";
     return isInList(ctg) ? baseStyle : unActiveStl + baseStyle;
   };
-  
+
   const handleCategorySelection = (category: string) => {
     if (selectedCategories.includes(category)) {
       setSelectedCategories((prev) => prev.filter((ctg) => ctg !== category));

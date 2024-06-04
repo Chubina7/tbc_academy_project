@@ -62,3 +62,8 @@ export const NotificationsContext = createContext({
   notifType: "" as "success" | "error" | "loading",
   notifTitle: "",
 });
+
+export const RoomsListFilterContext = createContext({
+  selectedCategories: ["all"],
+  setSelectedCategories: (() => {}) as Dispatch<SetStateAction<string[]>>,
+});

@@ -22,7 +22,9 @@ export default function RoomListItem({
     >
       <RoomImage src={image} />
       <div className="w-full h-full flex flex-col justify-center items-end py-3">
-        <h1 className="w-full flex-grow  font-bold text-xl px-5">{room_name}</h1>
+        <h1 className="w-full flex-grow  font-bold text-xl px-5">
+          {room_name}
+        </h1>
         <CategoryList categories={category} />
         <p className="opacity-60 text-sm px-5">{description}</p>
         <div className="w-full flex justify-between items-end py-3 px-5 opacity-60 text-sm text-nowrap">
