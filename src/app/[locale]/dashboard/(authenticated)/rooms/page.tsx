@@ -1,6 +1,6 @@
-import RoomsFilter from "../../../../../components/dashboard/rooms_page/RoomsFilter";
-import CreateRoomBtn from "../../../../../components/dashboard/rooms_page/CreateRoomBtn";
-import RoomList from "../../../../../components/dashboard/rooms_page/RoomList";
+import RoomsFilter from "../../../../../components/dashboard/rooms_page/all_page/RoomsFilter";
+import CreateRoomBtn from "../../../../../components/dashboard/rooms_page/all_page/CreateRoomBtn";
+import RoomList from "../../../../../components/dashboard/rooms_page/all_page/RoomList";
 import RoomsListFilterProvider from "../../../../../context/providers/RoomsListFilterProvider";
 
 const roomList = [

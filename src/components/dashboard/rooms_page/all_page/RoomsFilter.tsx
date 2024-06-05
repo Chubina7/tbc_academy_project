@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect } from "react";
-import { RoomsListFilterContext as ctx } from "../../../context/ctx";
+import { RoomsListFilterContext as ctx } from "../../../../context/ctx";
 
 interface Props {
   filters: Array<string>;

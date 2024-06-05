@@ -15,7 +15,7 @@ interface Props {
 
 export default function Members({ data }: Props) {
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col shadow-custom">
       <ul className="flex justify-end items-center gap-1">
         {data.length >= 1 ? (
           data.slice(0, 3).map((student: IMember) => (

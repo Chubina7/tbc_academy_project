@@ -4,7 +4,7 @@ import EnrolledNum from "./EnrolledNum";
 import Link from "next/link";
 import CreatedAt from "./CreatedAt";
 import Author from "./Author";
-import VariantsListItem from "../../../ui/framerMotionDivs/variants/VariantsListItem";
+import VariantsListItem from "../../../../ui/framerMotionDivs/variants/VariantsListItem";
 
 export default function RoomListItem({
   room_id,

@@ -16,7 +16,7 @@ export default function Overview({ data }: Props) {
   const { course_description, course_title, created_at, image } = data;
 
   return (
-    <Appear className="w-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl p-3 transition-colors duration-300 | flex flex-col gap-3">
+    <Appear className="w-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl p-3 transition-colors duration-300 | flex flex-col gap-3 shadow-custom">
       <Heading />
       <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-start items-start sm:items-center gap-4 lg:gap-10">
         <CourseImage data={{ course_title, image }} />

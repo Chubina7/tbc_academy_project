@@ -1,9 +1,9 @@
 "use client";
 
 import { useContext } from "react";
+import { RoomsListFilterContext as ctx } from "../../../../context/ctx";
+import VariantsList from "../../../ui/framerMotionDivs/variants/VariantsList";
 import RoomListItem from "./room_list_item/RoomListItem";
-import { RoomsListFilterContext as ctx } from "../../../context/ctx";
-import VariantsList from "../../ui/framerMotionDivs/variants/VariantsList";
 
 interface Props {
   rooms: Array<IRoom>;

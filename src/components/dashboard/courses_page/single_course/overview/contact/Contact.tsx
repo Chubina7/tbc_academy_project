@@ -11,7 +11,7 @@ interface Props {
 
 export default function Contact({ data }: Props) {
   return (
-    <Appear className="w-full h-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-colors duration-300 | flex flex-col gap-3">
+    <Appear className="w-full h-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-colors duration-300 | flex flex-col gap-3 shadow-custom">
       <Heading />
       <Switcher />
       <VariantsList className="w-full h-full flex flex-col gap-3 overflow-hid">
