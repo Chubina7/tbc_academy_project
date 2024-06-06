@@ -3,13 +3,13 @@ import fallback_img from "/public/library.jpg";
 
 export default function Intro() {
   return (
-    <div className="relative bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl overflow-hidden shadow-custom | w-full max-h-96">
+    <div className="relative bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl overflow-hidden shadow-custom | w-full lg:h-96">
       <Image
         src={fallback_img}
         alt=""
         width={732}
         height={540}
-        className="w-full"
+        className="w-full h-full object-cover"
       />
       <div className="absolute top-0 left-0 p-3 text-white">
         <h1>TITLE</h1>
