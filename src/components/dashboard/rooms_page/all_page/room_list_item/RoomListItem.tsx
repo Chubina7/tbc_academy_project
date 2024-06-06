@@ -20,7 +20,7 @@ export default function RoomListItem({
     <VariantsListItem className="h-full">
       <Link
         href={`/dashboard/rooms/${room_id}`}
-        className="bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl overflow-hidden | h-full flex flex-col justify-start items-start shadow-custom transition-all duration-300 "
+        className="bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl overflow-hidden | h-full flex flex-col justify-start items-start shadow-custom hover:scale-105 transition-all duration-300"
       >
         <RoomImage src={image} />
         <div className="w-full h-full flex flex-col justify-center items-end py-3">

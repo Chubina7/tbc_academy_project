@@ -34,7 +34,7 @@ export default function Modal({ data, modalState }: Props) {
   if (isOpen) {
     return (
       <div
-        className="bg-[#FFFFFF] dark:bg-[#352F44] text-inherit rounded-lg p-3 text-nowrap | fixed top-[120%] right-0 min-w-52 | flex flex-col justify-center items-center gap-2 | transition-colors duration-300 z-50 | shadow-custom"
+        className="bg-[#FFFFFF] dark:bg-[#352F44] text-inherit rounded-lg p-3 text-nowrap | fixed top-[120%] right-0 min-w-52 | flex flex-col justify-center items-center gap-2 | transition-colors duration-300 | shadow-custom"
         id="profile_modal"
       >
         <ProfileLink

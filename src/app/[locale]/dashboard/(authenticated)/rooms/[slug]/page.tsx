@@ -1,7 +1,7 @@
 import Announcements from "../../../../../../components/dashboard/rooms_page/single_page/announcements_comp/Announcements";
 import Assignments from "../../../../../../components/dashboard/rooms_page/single_page/assignments_comp/Assignments";
 import Grades from "../../../../../../components/dashboard/rooms_page/single_page/Grades";
-import Intro from "../../../../../../components/dashboard/rooms_page/single_page/Intro";
+import Intro from "../../../../../../components/dashboard/rooms_page/single_page/intro_comp/Intro";
 import Members from "../../../../../../components/dashboard/rooms_page/single_page/members_comp/Members";
 import Schedule from "../../../../../../components/dashboard/rooms_page/single_page/Schedule";
 
