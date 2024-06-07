@@ -67,3 +67,10 @@ export const RoomsListFilterContext = createContext({
   selectedCategories: ["all"],
   setSelectedCategories: (() => {}) as Dispatch<SetStateAction<string[]>>,
 });
+
+export const MemberSettingsDialogContext = createContext({
+  removeDialog: false,
+  setRemoveDialog: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+  roleDialog: false,
+  setRoleDialog: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});

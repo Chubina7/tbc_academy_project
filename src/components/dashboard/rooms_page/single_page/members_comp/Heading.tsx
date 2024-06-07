@@ -5,7 +5,7 @@ export default async function Heading() {
   const { role } = await USER();
 
   return (
-    <div className="w-full flex justify-between items-center">
+    <div className="w-full flex justify-between items-center p-3">
       <h1 className="w-full font-bold text-2xl">Members</h1>
       {role === "teacher" && <Btn />}
     </div>

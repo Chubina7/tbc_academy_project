@@ -1,8 +1,12 @@
+import Link from "next/link";
 import { IoAlertCircle, IoChatbubbleOutline } from "react-icons/io5";
 
 export default function Announcement() {
   return (
-    <div className="w-full flex justify-start items-start gap-3">
+    <Link
+      href={`/dashboard/annoucements`}
+      className="w-full flex justify-start items-start gap-3 px-3 sm:px-6 py-3 hover:bg-red-300 hover:dark:bg-[#5C5470]"
+    >
       <IoAlertCircle size={36} />
       <div className="w-full flex flex-col items-start justify-center">
         <div className="w-full flex justify-between items-center">
@@ -22,6 +26,6 @@ export default function Announcement() {
           <p>12 comments</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

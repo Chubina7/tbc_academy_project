@@ -1,8 +1,8 @@
-import Member from "./Member";
+import Member from "./item/Member";
 
 export default function List() {
   return (
-    <div className="w-full 2xl:h-[670px] overflow-scroll scroll-hidden flex justify-start items-start flex-col gap-6 sm:px-3">
+    <div className="w-full 2xl:h-[658px] overflow-scroll scroll-hidden flex justify-start items-start flex-col">
       <Member />
       <Member />
       <Member />
