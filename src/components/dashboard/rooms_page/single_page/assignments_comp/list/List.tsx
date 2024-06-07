@@ -6,6 +6,8 @@ export default function List() {
       <Assignment />
       <Assignment />
       <Assignment />
+      <Assignment />
+      <Assignment />
     </div>
   );
 }

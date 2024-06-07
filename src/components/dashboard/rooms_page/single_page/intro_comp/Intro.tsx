@@ -4,8 +4,11 @@ import Description from "./Description";
 import CreatedAt from "./CreatedAt";
 import EditBtn from "./EditBtn";
 import Backdrop from "./Backdrop";
+import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
 
-export default function Intro() {
+export default async function Intro() {
+  const { role } = await USER();
+  
   return (
     <div className="relative bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl overflow-hidden shadow-custom z-10 | w-full h-96">
       <BgImage />
@@ -14,7 +17,7 @@ export default function Intro() {
         <Title />
         <Description />
         <CreatedAt />
-        <EditBtn />
+        {role === "teacher" && <EditBtn />}
       </div>
     </div>
   );
