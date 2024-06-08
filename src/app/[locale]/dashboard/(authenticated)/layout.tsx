@@ -13,7 +13,7 @@ export default function DashboardLayout({ children }: Props) {
       <Navigation type="dekstop" />
       <div className="w-full h-screen md:pl-[88px] xl:pl-[244px] flex flex-col">
         <Header />
-        <main className="overflow-y-scroll scroll-hidden">{children}</main>
+        <main className="w-full h-full overflow-y-scroll scroll-hidden">{children}</main>
       </div>
     </BookmarkProvider>
   );
