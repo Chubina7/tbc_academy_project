@@ -22,7 +22,7 @@ export default async function SettingsPage({ params }: Props) {
     );
 
   return (
-    <section className="w-full flex flex-col justify-start items-center p-3 md:p-7 md:pb-3 gap-5">
+    <section className="w-full flex flex-col justify-start items-center p-3 md:p-7 gap-5">
       <Information />
       <Categories />
       <CoverPicture />

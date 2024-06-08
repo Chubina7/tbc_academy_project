@@ -1,21 +1,45 @@
-import { IoCloudUpload } from "react-icons/io5";
+"use client";
+
+import { useState } from "react";
+import BrowseBtn from "./BrowseBtn";
+import Info from "./Info";
+import ChangeBtn from "./ChangeBtn";
+import UploadedImg from "./UploadedImg";
 
 export default function CoverPicture() {
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [error, setError] = useState("");
+
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (!file || file.type.split("/")[0] !== "image") {
+      setError("Unable to read non-image files");
+      return;
+    }
+
+    const url = URL.createObjectURL(file);
+
+    setImageUrl(url);
+    if (error.trim() !== "") setError("");
+    return () => URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-all duration-300 shadow-custom p-3 | w-full lg:max-w-[70%] flex flex-col gap-3">
-      <h1 className="w-full font-bold text-2xl select-none">Cover Picture</h1>
-      <div className="w-full flex flex-col justify-center items-center border-2 border-dashed rounded-lg py-10">
-        <IoCloudUpload size={32} />
-        <h1 className="text-center font-semibold md:text-2xl select-none">
-          Upload new cover photo
-        </h1>
-        <p className="text-center text-xs md:text-sm opacity-60 select-none">
-          Accepting png, jpg, svg, webp
-        </p>
-        <button className="mt-5 px-3 py-1 border rounded-lg select-none">
-          Browse Files
-        </button>
+      <div className="w-full flex justify-between items-center">
+        <h1 className="w-full font-bold text-2xl select-none">Cover Picture</h1>
+        {imageUrl.trim() !== "" && <ChangeBtn source={imageUrl} />}
       </div>
+      {imageUrl ? (
+        <UploadedImg src={imageUrl} />
+      ) : (
+        <div className="w-full flex flex-col justify-center items-center border-2 border-dashed rounded-lg py-20">
+          <Info />
+          <BrowseBtn action={handleUpload} />
+        </div>
+      )}
+      <p className="text-sm text-red-600">{error.trim() !== "" && error}</p>
     </div>
   );
 }
