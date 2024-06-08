@@ -1,5 +1,3 @@
-import CoursesList from "../../courses_page/CoursesList";
-
 export default function UserRooms() {
   return (
     <section className="w-full flex flex-col gap-2">
@@ -7,7 +5,6 @@ export default function UserRooms() {
         <h1 className="font-bold text-xl">Rooms</h1>
         <p>edit</p>
       </div>
-      <CoursesList />
     </section>
   );
 }

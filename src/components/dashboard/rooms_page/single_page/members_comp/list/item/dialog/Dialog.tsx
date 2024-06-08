@@ -2,8 +2,8 @@
 
 import { useContext } from "react";
 import { MemberSettingsDialogContext as ctx } from "../../../../../../../../context/ctx";
-import RemoveUserDialog from "./RemoveUserDialog";
-import ChangeUserRoleDialog from "./ChangeUserRoleDialog";
+import RemoveUserDialog from "./remove_user_dialog/RemoveUserDialog";
+import ChangeUserRoleDialog from "./change_user_role/ChangeUserRoleDialog";
 
 export default function Dialog() {
   const { removeDialog, roleDialog, setRemoveDialog, setRoleDialog } =

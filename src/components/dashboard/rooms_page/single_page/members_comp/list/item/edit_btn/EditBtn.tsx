@@ -13,6 +13,7 @@ export default function EditBtn() {
         size={24}
         className="hover:cursor-pointer hover:scale-110 transition-all duration-300"
         onClick={() => settingsModalState[1]((prev) => !prev)}
+        id="three_dots"
       />
       <div className="relative z-40">
         <Modal state={settingsModalState} />
