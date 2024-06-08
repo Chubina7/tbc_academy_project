@@ -1,10 +1,17 @@
 import Link from "next/link";
 import { USER } from "../../../../../../../lib/helpers/server_act_funcs/authorization";
-import SettingsSideNav from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/SettingsSideNav";
-import Setting from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/setting_list/Setting";
+import Categories from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/change_categories/Categories";
+import CoverPicture from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/change_picture/CoverPicture";
+import DeleteRoom from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/delete_room/DeleteRoom";
+import Information from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/change_information/Information";
 
-export default async function SettingsPage() {
+interface Props {
+  params: IParams;
+}
+
+export default async function SettingsPage({ params }: Props) {
   const { role } = await USER();
+  console.log("ჩემი სლაგია", params.slug);
 
   if (role !== "teacher")
     return (
@@ -15,9 +22,11 @@ export default async function SettingsPage() {
     );
 
   return (
-    <section className="w-full h-full flex justify-center items-start sm:items-start p-3 md:p-7 md:pb-3 gap-5">
-      <Setting />
-      <SettingsSideNav />
+    <section className="w-full flex flex-col justify-start items-center p-3 md:p-7 md:pb-3 gap-5">
+      <Information />
+      <Categories />
+      <CoverPicture />
+      <DeleteRoom />
     </section>
   );
 }

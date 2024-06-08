@@ -1,4 +1,4 @@
-import { Context, createContext, Dispatch, SetStateAction } from "react";
+import React, { Context, createContext, Dispatch, SetStateAction } from "react";
 
 export const BookmarkContext: Context<IBookmarkCtx> = createContext({
   list: [],
@@ -73,4 +73,17 @@ export const MemberSettingsDialogContext = createContext({
   setRemoveDialog: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
   roleDialog: false,
   setRoleDialog: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});
+
+export const AddNewCategoryContext = createContext({
+  inputValue: "",
+  setInputValue: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  suggestionList: [] as Array<string>,
+  setSuggestionList: (() => {}) as React.Dispatch<
+    React.SetStateAction<Array<string>>
+  >,
+  showSuggestions: false,
+  setShowSuggestions: (() => {}) as React.Dispatch<
+    React.SetStateAction<boolean>
+  >,
 });
