@@ -7,7 +7,7 @@ export default async function Member() {
 
   return (
     <MemberSettingsDialogProvider>
-      <MemberUi isTeacher={role === "teacher"} />
+      <MemberUi isTeacherOrAdmin={role !== "student"} />
     </MemberSettingsDialogProvider>
   );
 }

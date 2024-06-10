@@ -7,10 +7,10 @@ import Dialog from "../dialog/Dialog";
 import { useState } from "react";
 
 interface Props {
-  isTeacher: boolean;
+  isTeacherOrAdmin: boolean;
 }
 
-export default function MemberUi({ isTeacher }: Props) {
+export default function MemberUi({ isTeacherOrAdmin }: Props) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -23,7 +23,7 @@ export default function MemberUi({ isTeacher }: Props) {
         <ProfPic />
         <ContactInfo />
       </div>
-      {isHovered && isTeacher && <EditBtn />}
+      {isHovered && isTeacherOrAdmin && <EditBtn />}
       <Dialog />
     </div>
   );

@@ -11,22 +11,38 @@ interface Props {
 
 export default async function SettingsPage({ params }: Props) {
   const { role } = await USER();
-  console.log("ჩემი სლაგია", params.slug);
+  console.log("log from /rooms/[slug]/settings", params.slug);
 
-  if (role !== "teacher")
+  if (role === "student") {
     return (
       <section className="w-full h-full flex flex-col p-3 md:p-7 gap-5 overflow-visible">
         <h1>You dont have access to see the page!</h1>
         <Link href="/dashboard">DASHBOARD</Link>
       </section>
     );
+  }
 
-  return (
-    <section className="w-full flex flex-col justify-start items-center p-3 md:p-7 gap-5">
-      <Information />
-      <Categories />
-      <CoverPicture />
-      <DeleteRoom />
-    </section>
-  );
+  if (role === "admin") {
+    return (
+      <section className="w-full h-full flex flex-col p-3 md:p-7 gap-5 overflow-visible">
+        <h1>
+          admin only have access to delete room. not to change the settings
+        </h1>
+        <Link href="/dashboard">DASHBOARD</Link>
+      </section>
+    );
+  }
+
+  if (role === "teacher") {
+    return (
+      <section className="w-full flex flex-col justify-start items-center p-3 md:p-7 gap-5">
+        <Information />
+        <Categories />
+        <CoverPicture />
+        <DeleteRoom />
+      </section>
+    );
+  }
+
+  return;
 }

@@ -7,7 +7,7 @@ export default async function Heading() {
   return (
     <div className="w-full flex justify-between items-center p-3">
       <h1 className="w-full font-bold text-2xl">Members</h1>
-      {role === "teacher" && <Btn />}
+      {role !== "student" && <Btn />}
     </div>
   );
 }

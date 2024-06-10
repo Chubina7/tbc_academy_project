@@ -15,7 +15,7 @@ export default async function Intro() {
         <Title />
         <Description />
         <CreatedAt />
-        {role === "teacher" && <EditBtn />}
+        {role !== "student" && <EditBtn />}
       </div>
     </div>
   );
