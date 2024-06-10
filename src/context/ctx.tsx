@@ -87,3 +87,8 @@ export const AddNewCategoryContext = createContext({
     React.SetStateAction<boolean>
   >,
 });
+
+export const AddNewRoomContext = createContext({
+  activeIdx: 0,
+  setActiveIdx: (() => {}) as React.Dispatch<React.SetStateAction<number>>,
+});

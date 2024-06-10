@@ -10,11 +10,19 @@ import {
   IoSettings,
   IoHelpCircle,
   IoChatbubbles,
+  IoFileTrayFull,
+  IoImage,
+  IoList,
+  IoPeople,
 } from "react-icons/io5";
 import Appear from "../../components/ui/framerMotionDivs/Appear";
 import RoleCheckmark from "../../components/auth/register_page/card/steps/RoleCheckmark";
 import PersonalDetailInputs from "../../components/auth/register_page/card/steps/presonal_details/PersonalDetailInputs";
 import CredentialInputs from "../../components/auth/register_page/card/steps/acc_credentials/CredentialInputs";
+import GeneralInfo from "../../components/dashboard/rooms_page/all_page/new_room_setup/parts/general_info_field/GeneralInfo";
+import CoverPicture from "../../components/dashboard/rooms_page/all_page/new_room_setup/parts/cover_pict_field/CoverPicture";
+import Categories from "../../components/dashboard/rooms_page/all_page/new_room_setup/parts/categories_field/Categories";
+import Members from "../../components/dashboard/rooms_page/all_page/new_room_setup/parts/members_field/Members";
 
 export const themeList: ThemeListType = [
   {
@@ -93,7 +101,6 @@ export const registrationSteps = [
   },
   { component: <CredentialInputs key={2} />, heading: "Account Credentials" },
 ];
-
 export const modalListItems = [
   {
     title: "Settings",
@@ -104,5 +111,27 @@ export const modalListItems = [
     title: "Help Center",
     icon: <IoHelpCircle id="profile_modal" size={20} />,
     link: "/dashboard/help",
+  },
+];
+export const settingUpNewRoomSteps = [
+  {
+    title: "General Information",
+    icon: <IoFileTrayFull size={26} />,
+    component: <GeneralInfo key={0} />,
+  },
+  {
+    title: "Cover Picture",
+    icon: <IoImage size={26} />,
+    component: <CoverPicture key={1} />,
+  },
+  {
+    title: "Add Categories",
+    icon: <IoList size={26} />,
+    component: <Categories key={2} />,
+  },
+  {
+    title: "Room Members",
+    icon: <IoPeople size={26} />,
+    component: <Members key={3} />,
   },
 ];

@@ -1,6 +1,12 @@
-import React from "react";
 import Backdrop from "../../../../ui/Backdrop";
 import BottomToTop from "../../../../ui/framerMotionDivs/directions/BottomToTop";
+import Steps from "./parts/steps/Steps";
+import AddNewRoomProvider from "../../../../../context/providers/AddNewRoomProvider";
+import Heading from "./Heading";
+import Close from "./Close";
+import PrevBtn from "./buttons/PrevBtn";
+import NextBtn from "./buttons/NextBtn";
+import Components from "./parts/Components";
 
 interface Props {
   modalHandler: () => void;
@@ -9,10 +15,19 @@ interface Props {
 export default function Modal({ modalHandler }: Props) {
   return (
     <>
-      <Backdrop modalCloser={modalHandler} />
-      <BottomToTop className="fixed top-12 rounded-t-xl left-0 w-full h-full z-50 bg-[#FFFFFF] dark:bg-[#352F44] p-3 pb-16 flex">
-        <h1>test</h1>
-      </BottomToTop>
+      <Backdrop />
+      <AddNewRoomProvider>
+        <BottomToTop className="fixed z-50 w-full h-[95%] bottom-0 left-0 bg-[#FFFFFF] dark:bg-[#352F44] rounded-t-2xl | px-3 py-10 flex flex-col justify-center items-center gap-3">
+          <Close action={modalHandler} />
+          <Heading />
+          <Steps />
+          <Components />
+          <div className="w-full min-h-20 sm:w-96 sm:min-h-fit flex flex-col sm:flex-row justify-end sm:justify-center items-center gap-3">
+            <PrevBtn />
+            <NextBtn />
+          </div>
+        </BottomToTop>
+      </AddNewRoomProvider>
     </>
   );
 }
