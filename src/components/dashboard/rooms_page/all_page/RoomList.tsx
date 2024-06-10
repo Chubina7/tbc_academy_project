@@ -7,9 +7,10 @@ import RoomListItem from "./room_list_item/RoomListItem";
 
 interface Props {
   rooms: Array<IRoom>;
+  role: RoleType;
 }
 
-export default function RoomList({ rooms }: Props) {
+export default function RoomList({ rooms, role }: Props) {
   const { selectedCategories } = useContext(ctx);
 
   const list = (
@@ -20,17 +21,7 @@ export default function RoomList({ rooms }: Props) {
           return room.category.some((ctg) => selectedCategories.includes(ctg));
         })
         .map((room) => (
-          <RoomListItem
-            key={room.room_id}
-            room_id={room.room_id}
-            room_name={room.room_name}
-            description={room.description}
-            image={room.image}
-            teacher={room.teacher}
-            enrolled_number={room.enrolled_number}
-            category={room.category}
-            created_at={room.created_at}
-          />
+          <RoomListItem key={room.room_id} data={room} role={role} />
         ))}
     </VariantsList>
   );

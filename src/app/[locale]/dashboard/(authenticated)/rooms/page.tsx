@@ -1,7 +1,8 @@
 import RoomsFilter from "../../../../../components/dashboard/rooms_page/all_page/RoomsFilter";
-import CreateRoomBtn from "../../../../../components/dashboard/rooms_page/all_page/CreateRoomBtn";
+import CreateRoomBtn from "../../../../../components/dashboard/rooms_page/all_page/new_room_setup/CreateRoomBtn";
 import RoomList from "../../../../../components/dashboard/rooms_page/all_page/RoomList";
 import RoomsListFilterProvider from "../../../../../context/providers/RoomsListFilterProvider";
+import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
 
 const roomList = [
   {
@@ -115,7 +116,6 @@ const roomList = [
     image: null,
   },
 ];
-
 const allCategories: Array<string> = [
   "marketing",
   "math",
@@ -137,17 +137,18 @@ const allCategories: Array<string> = [
   "humanities",
 ];
 
-export default function RoomsPage() {
-  // getting data dynamicly from DB
-  // ...
+export default async function RoomsPage() {
+  // Get data dinamically
+  const { role } = await USER();
+
   return (
     <RoomsListFilterProvider>
       <div className="w-full min-h-screen flex flex-col px-3 md:px-7 pt-1 gap-5">
         <section className="flex flex-col-reverse sm:flex-row justify-between items-center gap-6 sm:gap-20">
           <RoomsFilter filters={allCategories} />
-          <CreateRoomBtn />
+          {role !== "student" && <CreateRoomBtn />}
         </section>
-        <RoomList rooms={roomList} />
+        <RoomList rooms={roomList} role={role} />
       </div>
     </RoomsListFilterProvider>
   );
