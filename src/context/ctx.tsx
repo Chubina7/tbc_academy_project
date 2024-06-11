@@ -89,6 +89,24 @@ export const AddNewCategoryContext = createContext({
 });
 
 export const AddNewRoomContext = createContext({
-  activeIdx: 0,
-  setActiveIdx: (() => {}) as React.Dispatch<React.SetStateAction<number>>,
+  steps: {
+    activeIdx: 0,
+    setActiveIdx: (() => {}) as React.Dispatch<React.SetStateAction<number>>,
+  },
+  data: {
+    title: "",
+    description: "",
+    coverPicture: "",
+    categories: [] as Array<string>,
+    members: [] as Array<any>,
+  },
+  setters: {
+    setTitle: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+    setDescription: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+    setCoverPicture: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+    setCategories: (() => {}) as React.Dispatch<
+      React.SetStateAction<Array<string>>
+    >,
+    setMembers: (() => {}) as React.Dispatch<React.SetStateAction<Array<any>>>,
+  },
 });

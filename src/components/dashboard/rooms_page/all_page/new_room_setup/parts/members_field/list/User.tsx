@@ -1,7 +1,8 @@
 import Image from "next/image";
 import fallback_img from "/public/anonym_user.webp";
+import EnrollBtn from "./EnrollBtn";
 
-export default function User() {
+export default function User({ user_id }: { user_id: string }) {
   return (
     <div className="hover:bg-red-300 | w-full px-2 sm:px-4 py-3 flex gap-3 justify-center items-center rounded-lg">
       <Image
@@ -18,7 +19,7 @@ export default function User() {
           <p>JOINED: 12/12/1212</p>
         </div>
       </div>
-      <h1>Enroll</h1>
+      <EnrollBtn user_id={user_id} />
     </div>
   );
 }

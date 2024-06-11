@@ -1,29 +1,21 @@
 "use client";
 
 import { useContext } from "react";
-import { AddNewRoomContext } from "../../../../../../context/ctx";
+import { AddNewRoomContext as ctx } from "../../../../../../context/ctx";
 
 export default function NextBtn() {
-  const { activeIdx, setActiveIdx } = useContext(AddNewRoomContext);
+  const { steps } = useContext(ctx);
 
-  const condition = activeIdx === 3;
-
-  const onClickAction = () => {
-    if (condition) {
-      // finish logic
-      // ...
-      console.log("finished");
-      return;
-    }
-    setActiveIdx((prev) => prev + 1);
-  };
+  if (steps.activeIdx === 3) return null;
 
   return (
     <button
       className={`w-full px-12 py-1 rounded-xl bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] transition-all duration-300`}
-      onClick={onClickAction}
+      onClick={() => {
+        steps.setActiveIdx((prev) => prev + 1);
+      }}
     >
-      {condition ? "FINISH" : "NEXT"}
+      NEXT
     </button>
   );
 }

@@ -1,11 +1,11 @@
 "use client";
 
 import { useContext } from "react";
-import { AddNewRoomContext } from "../../../../../../context/ctx";
+import { AddNewRoomContext as ctx } from "../../../../../../context/ctx";
 import { settingUpNewRoomSteps } from "../../../../../../lib/lists/ListsWithComponents";
 
 export default function Components() {
-  const { activeIdx } = useContext(AddNewRoomContext);
+  const { steps } = useContext(ctx);
 
-  return <>{settingUpNewRoomSteps[activeIdx].component}</>;
+  return <>{settingUpNewRoomSteps[steps.activeIdx].component}</>;
 }

@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { AddNewRoomContext } from "../../../../../../context/ctx";
 
 export default function PrevBtn() {
-  const { activeIdx, setActiveIdx } = useContext(AddNewRoomContext);
+  const { steps } = useContext(AddNewRoomContext);
 
-  const condition = activeIdx === 0;
+  const condition = steps.activeIdx === 0;
 
   const onClickAction = () => {
     if (condition) return;
-    setActiveIdx((prev) => prev - 1);
+    steps.setActiveIdx((prev) => prev - 1);
   };
 
   return (
