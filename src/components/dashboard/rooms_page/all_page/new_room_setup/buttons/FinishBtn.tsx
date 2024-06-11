@@ -8,20 +8,22 @@ export default function FinishBtn() {
 
   if (steps.activeIdx !== 3) return null;
 
-  const handleSubmition = () => {
-    const { categories, members } = data;
-    const description = data.description.trim();
-    const title = data.title.trim();
-    const coverPicture = data.coverPicture.trim();
+  // getting data
+  const { categories, members } = data;
+  const description = data.description.trim();
+  const title = data.title.trim();
+  const coverPicture = data.coverPicture.trim();
 
+  const condition =
+    categories.length < 3 ||
+    coverPicture === "" ||
+    description === "" ||
+    members.length < 1 ||
+    title === "";
+
+  const handleSubmition = () => {
     // validate
-    if (
-      categories.length < 1 ||
-      coverPicture === "" ||
-      description === "" ||
-      members.length < 1 ||
-      title === ""
-    ) {
+    if (condition) {
       // throw error message
       console.error("Empty values detected!");
       // ...
@@ -41,8 +43,9 @@ export default function FinishBtn() {
 
   return (
     <button
-      className={`w-full px-12 py-1 rounded-xl bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] transition-all duration-300`}
+      className="w-full px-12 py-1 rounded-xl bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
       onClick={handleSubmition}
+      disabled={condition}
     >
       FINISH
     </button>
