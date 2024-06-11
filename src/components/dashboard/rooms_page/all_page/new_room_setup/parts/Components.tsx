@@ -7,9 +7,5 @@ import { settingUpNewRoomSteps } from "../../../../../../lib/lists/ListsWithComp
 export default function Components() {
   const { activeIdx } = useContext(AddNewRoomContext);
 
-  return (
-    <div className="w-full h-full flex justify-center items-center">
-      {settingUpNewRoomSteps[activeIdx].component}
-    </div>
-  );
+  return <>{settingUpNewRoomSteps[activeIdx].component}</>;
 }

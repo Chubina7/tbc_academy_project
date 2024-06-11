@@ -117,21 +117,21 @@ export const settingUpNewRoomSteps = [
   {
     title: "General Information",
     icon: <IoFileTrayFull size={26} />,
-    component: <GeneralInfo key={0} />,
+    component: <GeneralInfo />,
   },
   {
     title: "Cover Picture",
     icon: <IoImage size={26} />,
-    component: <CoverPicture key={1} />,
+    component: <CoverPicture />,
   },
   {
     title: "Add Categories",
     icon: <IoList size={26} />,
-    component: <Categories key={2} />,
+    component: <Categories />,
   },
   {
     title: "Room Members",
     icon: <IoPeople size={26} />,
-    component: <Members key={3} />,
+    component: <Members />,
   },
 ];
