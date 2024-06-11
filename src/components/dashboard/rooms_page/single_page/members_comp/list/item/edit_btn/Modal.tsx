@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ChangeRole from "./options/ChangeRole";
+// import ChangeRole from "./options/ChangeRole";
 import RemoveUser from "./options/RemoveUser";
 import SeeProfile from "./options/SeeProfile";
 
@@ -41,7 +41,7 @@ export default function Modal({ state }: Props) {
         shouldChangeDir ? "bottom-[10px]" : "top-[10px]"
       } right-0 | flex flex-col justify-center items-start | transition-colors duration-300 | shadow-custom select-none`}
     >
-      <ChangeRole onClick={() => state[1]((prev) => !prev)} />
+      {/* <ChangeRole onClick={() => state[1]((prev) => !prev)} /> */}
       <RemoveUser onClick={() => state[1]((prev) => !prev)} />
       <SeeProfile />
     </div>
