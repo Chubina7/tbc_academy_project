@@ -1,4 +1,4 @@
-import { Context, createContext, Dispatch, SetStateAction } from "react";
+import React, { Context, createContext, Dispatch, SetStateAction } from "react";
 
 export const BookmarkContext: Context<IBookmarkCtx> = createContext({
   list: [],
@@ -61,4 +61,52 @@ export const NotificationsContext = createContext({
   isShown: false,
   notifType: "" as "success" | "error" | "loading",
   notifTitle: "",
+});
+
+export const RoomsListFilterContext = createContext({
+  selectedCategories: ["all"],
+  setSelectedCategories: (() => {}) as Dispatch<SetStateAction<string[]>>,
+});
+
+export const MemberSettingsDialogContext = createContext({
+  removeDialog: false,
+  setRemoveDialog: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+  roleDialog: false,
+  setRoleDialog: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});
+
+export const AddNewCategoryContext = createContext({
+  inputValue: "",
+  setInputValue: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  suggestionList: [] as Array<string>,
+  setSuggestionList: (() => {}) as React.Dispatch<
+    React.SetStateAction<Array<string>>
+  >,
+  showSuggestions: false,
+  setShowSuggestions: (() => {}) as React.Dispatch<
+    React.SetStateAction<boolean>
+  >,
+});
+
+export const AddNewRoomContext = createContext({
+  steps: {
+    activeIdx: 0,
+    setActiveIdx: (() => {}) as React.Dispatch<React.SetStateAction<number>>,
+  },
+  data: {
+    title: "",
+    description: "",
+    coverPicture: "",
+    categories: [] as Array<string>,
+    members: [] as Array<any>,
+  },
+  setters: {
+    setTitle: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+    setDescription: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+    setCoverPicture: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+    setCategories: (() => {}) as React.Dispatch<
+      React.SetStateAction<Array<string>>
+    >,
+    setMembers: (() => {}) as React.Dispatch<React.SetStateAction<Array<any>>>,
+  },
 });

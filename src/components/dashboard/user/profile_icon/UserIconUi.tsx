@@ -14,7 +14,7 @@ export default function UserIconUi({ data }: Props) {
   const { image, username, surname, email } = data;
 
   return (
-    <div className="relative flex gap-2 justify-center items-center">
+    <div className="flex gap-2 justify-center items-center">
       <Image
         src={image ? image : anonym}
         alt="anonym"

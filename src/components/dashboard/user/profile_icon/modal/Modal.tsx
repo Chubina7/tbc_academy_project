@@ -4,6 +4,7 @@ import SignOut from "./SignOut";
 import List from "./List";
 import ProfileLink from "./ProfileLink";
 import { useEffect } from "react";
+import useOutsideClickTrack from "../../../../../hooks/useOutsideClickTrack";
 
 interface Props {
   data: { username: string; surname: string | null; email: string };
@@ -13,28 +14,19 @@ interface Props {
 export default function Modal({ data, modalState }: Props) {
   const { surname, username, email } = data;
   const [isOpen, setIsOpen] = modalState;
+  const trackerValue = useOutsideClickTrack("profile_modal", modalState);
 
   const handleModal = () => setIsOpen(false);
 
   useEffect(() => {
-    const handleMouseEvent = (e: MouseEvent) => {
-      if (e.target instanceof Element && e.target.id !== "profile_modal") {
-        setIsOpen(false);
-      }
-    };
-
-    window.addEventListener("mousedown", handleMouseEvent);
-
-    return () => {
-      window.removeEventListener("mousedown", handleMouseEvent);
-    };
+    setIsOpen(trackerValue);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [trackerValue]);
 
   if (isOpen) {
     return (
       <div
-        className="bg-[#FFFFFF] dark:bg-[#352F44] text-inherit rounded-lg p-3 text-nowrap | absolute top-[140%] right-0 min-w-52 | flex flex-col justify-center items-center gap-2 | transition-colors duration-300 z-50 | shadow-custom"
+        className="bg-[#FFFFFF] dark:bg-[#352F44] text-inherit rounded-lg p-3 text-nowrap | fixed top-[120%] right-0 min-w-52 | flex flex-col justify-center items-center gap-2 | transition-colors duration-300 | shadow-custom"
         id="profile_modal"
       >
         <ProfileLink
