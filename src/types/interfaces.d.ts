@@ -66,10 +66,10 @@ interface ILandingNavItem {
     whenActive: "/" | "/about" | "/contact" | "/admin";
 }
 interface IDashboardNavListItem {
-    title: "Home" | "Courses" | "Schedule" | "Annoucements" | "El-Resources",
+    title: "Home" | "Rooms" | "Schedule" | "Annoucements" | "El-Resources",
     icon: React.ReactNode,
     onActive: React.ReactNode,
-    href: "" | "/courses" | "/schedule" | "/annoucements" | "/el-resources",
+    href: "" | "/rooms" | "/schedule" | "/annoucements" | "/el-resources",
     forHeading: string
 }
 
@@ -94,4 +94,17 @@ interface ISingleCourse {
     image: string | null
     announcements: Array<AnnouncementComponentType>
     members: Array<MemberComponentType>
+}
+
+
+// Rooms
+interface IRoom {
+    room_id: string
+    room_name: string
+    description: string
+    image: string | null
+    teacher: string
+    enrolled_number: number
+    category: Array<string>
+    created_at: string
 }
