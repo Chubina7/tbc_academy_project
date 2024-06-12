@@ -1,4 +1,4 @@
-import List from "../../../../../components/dashboard/announcements_page/list/List";
+import List from "../../../../../components/dashboard/announcements_page/all_page/list/List";
 
 const announcementList: IAnnouncementList[] = [
   {

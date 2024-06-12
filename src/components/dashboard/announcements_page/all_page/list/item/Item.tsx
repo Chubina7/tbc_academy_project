@@ -3,7 +3,7 @@ import Comments from "./Comments";
 import Author from "./Author";
 import PostDate from "./PostDate";
 import Announcement from "./Announcement";
-import VariantsListItem from "../../../../ui/framerMotionDivs/variants/VariantsListItem";
+import VariantsListItem from "../../../../../ui/framerMotionDivs/variants/VariantsListItem";
 
 interface Props {
   author: {

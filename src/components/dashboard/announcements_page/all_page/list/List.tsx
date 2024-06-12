@@ -1,4 +1,4 @@
-import VariantsList from "../../../ui/framerMotionDivs/variants/VariantsList";
+import VariantsList from "../../../../ui/framerMotionDivs/variants/VariantsList";
 import Item from "./item/Item";
 
 interface Props {
