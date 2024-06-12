@@ -71,10 +71,10 @@ export const dashboardNavigationList: DashboardNavListType = [
     forHeading: "Plans here!",
   },
   {
-    title: "Annoucements",
+    title: "Announcements",
     icon: <IoInformationCircle size={20} color="inherit" />,
     onActive: <IoInformationCircle size={20} color="inherit" />,
-    href: "/annoucements",
+    href: "/announcements",
     forHeading: "Sssch!",
   },
   {
