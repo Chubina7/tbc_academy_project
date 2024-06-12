@@ -1,4 +1,7 @@
+import Filter from "../../../../../components/dashboard/announcements_page/all_page/filter/Filter";
 import List from "../../../../../components/dashboard/announcements_page/all_page/list/List";
+import AddNewAnnouncement from "../../../../../components/dashboard/announcements_page/all_page/new_announcement/AddNewAnnouncement";
+import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
 
 const announcementList: IAnnouncementList[] = [
   {
@@ -153,13 +156,25 @@ const announcementList: IAnnouncementList[] = [
   },
 ];
 
-export default function AnnouncementsPage() {
+export default async function AnnouncementsPage() {
+  const { role } = await USER();
   // get all announcements dynamically
   // ...
 
   return (
     <div className="w-full min-h-screen flex flex-col items-center px-3 md:px-7 py-3 gap-5">
-      <h1>FILTER</h1>
+      {role !== "student" && (
+        <>
+          <h1 className="w-full max-w-4xl font-bold text-2xl">
+            Make announcement
+          </h1>
+          <AddNewAnnouncement />
+          <h1 className="w-full max-w-4xl font-bold text-2xl">
+            All announcements
+          </h1>
+        </>
+      )}
+      <Filter />
       <List data={announcementList} />
     </div>
   );

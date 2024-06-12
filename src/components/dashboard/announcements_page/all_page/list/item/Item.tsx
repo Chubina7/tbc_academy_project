@@ -4,6 +4,8 @@ import Author from "./Author";
 import PostDate from "./PostDate";
 import Announcement from "./Announcement";
 import VariantsListItem from "../../../../../ui/framerMotionDivs/variants/VariantsListItem";
+import DeleteBtn from "./DeleteBtn";
+import { USER } from "../../../../../../lib/helpers/server_act_funcs/authorization";
 
 interface Props {
   author: {
@@ -22,7 +24,8 @@ interface Props {
   };
 }
 
-export default function Item({ data, author }: Props) {
+export default async function Item({ data, author }: Props) {
+  const loginedUser = await USER();
   const { room_id, room_title, surname, user_id, username } = author;
 
   return (
@@ -43,6 +46,9 @@ export default function Item({ data, author }: Props) {
           <PostDate data={data.announced_at} />
         </div>
         <Announcement data={data.announcement} />
+        {loginedUser.user_id === author.user_id && (
+          <DeleteBtn announcement_id={data.announcement_id} />
+        )}
       </div>
     </VariantsListItem>
   );
