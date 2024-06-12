@@ -12,7 +12,7 @@ export default function AnnouncementPage({ params }: Props) {
   return (
     <div className="w-full min-h-screen flex flex-col items-center px-3 md:px-7 py-3 gap-5">
       <Details />
-      <hr className="w-full max-w-4xl border-2 rounded-full" />
+      <hr className="w-full max-w-4xl border-2 rounded-full mt-12" />
       <Comments />
     </div>
   );
