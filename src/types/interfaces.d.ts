@@ -66,10 +66,10 @@ interface ILandingNavItem {
     whenActive: "/" | "/about" | "/contact" | "/admin";
 }
 interface IDashboardNavListItem {
-    title: "Home" | "Rooms" | "Schedule" | "Annoucements" | "El-Resources",
+    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "El-Resources",
     icon: React.ReactNode,
     onActive: React.ReactNode,
-    href: "" | "/rooms" | "/schedule" | "/annoucements" | "/el-resources",
+    href: "" | "/rooms" | "/schedule" | "/announcements" | "/el-resources",
     forHeading: string
 }
 
@@ -107,4 +107,20 @@ interface IRoom {
     enrolled_number: number
     category: Array<string>
     created_at: string
+}
+
+// Announcements
+interface IAnnouncementList {
+    author: {
+        user_id: string;
+        username: string;
+        surname: string | null;
+        room_id: string;
+        room_title: string;
+    }
+    announcement_id: string;
+    announcement_title: string;
+    announcement: string;
+    comments_number: number;
+    announced_at: string;
 }
