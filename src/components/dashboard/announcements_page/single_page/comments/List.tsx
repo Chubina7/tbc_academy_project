@@ -1,13 +1,15 @@
 import Item from "./item/Item";
 
-export default function List() {
+interface Props {
+  data: Array<IAnnouncementComment>;
+}
+
+export default function List({ data }: Props) {
   return (
     <div className="w-full max-w-4xl flex flex-col justify-center items-center ">
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+      {data.map((item) => (
+        <Item key={item.comment_id} data={item} />
+      ))}
     </div>
   );
 }

@@ -154,6 +154,9 @@ const announcementList: IAnnouncementList[] = [
 ];
 
 export default function AnnouncementsPage() {
+  // get all announcements dynamically
+  // ...
+
   return (
     <div className="w-full min-h-screen flex flex-col items-center px-3 md:px-7 py-3 gap-5">
       <h1>FILTER</h1>

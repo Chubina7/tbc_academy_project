@@ -112,15 +112,31 @@ interface IRoom {
 // Announcements
 interface IAnnouncementList {
     author: {
-        user_id: string;
-        username: string;
-        surname: string | null;
-        room_id: string;
-        room_title: string;
+        user_id: string
+        username: string
+        surname: string | null
+        room_id: string
+        room_title: string
     }
-    announcement_id: string;
-    announcement_title: string;
-    announcement: string;
-    comments_number: number;
-    announced_at: string;
+    announcement_id: string
+    announcement_title: string
+    announcement: string
+    comments_number: number
+    announced_at: string
+}
+interface IAnnouncementComment {
+    author: {
+        user_id: string
+        username: string
+        surname: string | null
+        user_img: string | null
+        role: RoleType
+    },
+    comment_id: string
+    comment: string
+    likes: {
+        isLiked: boolean
+        quantity: number
+    }
+    commented_at: string
 }

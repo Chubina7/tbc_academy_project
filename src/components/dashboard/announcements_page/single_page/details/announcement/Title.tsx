@@ -1,8 +1,7 @@
-export default function Title() {
-  return (
-    <h1 className="font-semibold text-xl sm:text-2xl">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque corporis
-      modi non laborum.
-    </h1>
-  );
+interface Props {
+  data: string;
+}
+
+export default function Title({ data }: Props) {
+  return <h1 className="font-semibold text-xl sm:text-2xl">{data}</h1>;
 }
