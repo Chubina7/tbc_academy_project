@@ -5,9 +5,11 @@ interface Props {
   username: string;
   surname: string | null;
   email: string;
+  user_id: string;
 }
 
 export default function ProfileLink({
+  user_id,
   modalCloser,
   surname,
   username,
@@ -15,7 +17,7 @@ export default function ProfileLink({
 }: Props) {
   return (
     <Link
-      href="/dashboard/profile"
+      href={`/dashboard/profile/${user_id}`}
       className="w-full flex flex-col justify-center items-start px-3 py-1 rounded-xl hover:bg-[#5C5470]"
       onClick={modalCloser}
       id="profile_modal"

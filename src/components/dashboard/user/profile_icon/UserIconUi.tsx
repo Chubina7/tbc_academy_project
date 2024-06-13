@@ -11,7 +11,7 @@ interface Props {
 
 export default function UserIconUi({ data }: Props) {
   const modalState = useState(false);
-  const { image, username, surname, email } = data;
+  const { image, username, surname, email, user_id } = data;
 
   return (
     <div className="flex gap-2 justify-center items-center">
@@ -24,7 +24,10 @@ export default function UserIconUi({ data }: Props) {
         onClick={() => modalState[1]((prev) => !prev)}
         id="profile_modal"
       />
-      <Modal data={{ username, surname, email }} modalState={modalState} />
+      <Modal
+        data={{ username, surname, email, user_id }}
+        modalState={modalState}
+      />
     </div>
   );
 }

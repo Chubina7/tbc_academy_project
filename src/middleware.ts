@@ -33,6 +33,12 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
+  // 
+  if (path === "/dashboard/profile") {
+    request.nextUrl.pathname = "/dashboard";
+    return NextResponse.redirect(request.nextUrl);
+  }
+
   // Locale rewrite middleware
   const localeRewrite = createMiddleware({
     locales: supportedLocales,
