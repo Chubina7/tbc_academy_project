@@ -11,12 +11,12 @@ interface Props {
 
 export default function UserIconUi({ data }: Props) {
   const modalState = useState(false);
-  const { image, username, surname, email, user_id } = data;
+  const { profile_picture, username, surname, email, user_id } = data;
 
   return (
     <div className="flex gap-2 justify-center items-center">
       <Image
-        src={image ? image : anonym}
+        src={profile_picture ? profile_picture : anonym}
         alt="anonym"
         width={36}
         height={36}
