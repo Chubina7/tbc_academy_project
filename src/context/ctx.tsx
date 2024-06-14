@@ -112,6 +112,12 @@ export const AddNewRoomContext = createContext({
 });
 
 export const PersonalInfoChangingContext = createContext({
+  prevValues: {
+    username: "",
+    surname: ("" || null) as string | null,
+    birth_date: ("" || null) as string | null,
+    profile_picture: ("" || null) as string | null,
+  },
   value: {
     username: "",
     surname: ("" || null) as string | null,

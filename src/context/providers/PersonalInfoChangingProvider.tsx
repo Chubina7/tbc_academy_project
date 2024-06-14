@@ -5,18 +5,19 @@ import { PersonalInfoChangingContext } from "../ctx";
 
 interface Props {
   children: React.ReactNode;
+  prevValues: any;
 }
 
-export default function PersonalInfoChangingProvider({ children }: Props) {
-  const [value, setValue] = useState({
-    username: "",
-    surname: ("" || null) as string | null,
-    birth_date: ("" || null) as string | null,
-    profile_picture: ("" || null) as string | null,
-  });
+export default function PersonalInfoChangingProvider({
+  children,
+  prevValues,
+}: Props) {
+  const [value, setValue] = useState(prevValues);
 
   return (
-    <PersonalInfoChangingContext.Provider value={{ value, setValue }}>
+    <PersonalInfoChangingContext.Provider
+      value={{ value, setValue, prevValues }}
+    >
       {children}
     </PersonalInfoChangingContext.Provider>
   );

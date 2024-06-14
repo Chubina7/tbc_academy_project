@@ -1,17 +1,10 @@
 "use client";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { PersonalInfoChangingContext as ctx } from "../../../../../../context/ctx";
 
-interface Props {
-  data: string;
-}
-
-export default function Username({ data }: Props) {
+export default function Username() {
   const { value, setValue } = useContext(ctx);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => setValue((prev) => ({ ...prev, username: data })), [data]);
 
   return (
     <div className="w-full flex flex-col gap-2 justify-start items-start ">

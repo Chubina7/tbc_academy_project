@@ -1,17 +1,20 @@
-import Image, { StaticImageData } from "next/image";
+"use client";
 
-interface Props {
-  src: string | StaticImageData;
-}
+import Image from "next/image";
+import fallback_img from "/public/anonym_user.webp";
+import { useContext } from "react";
+import { PersonalInfoChangingContext as ctx } from "../../../../../../context/ctx";
 
-export default function ShownImg({ src }: Props) {
+export default function ShownImg() {
+  const { value } = useContext(ctx);
+
   return (
     <Image
-      src={src}
+      src={value.profile_picture || fallback_img}
       alt="profile_pic"
       width={384}
       height={384}
-      className="rounded-lg"
+      className="rounded-lg object-cover w-full h-full max-w-96 max-h-96"
     />
   );
 }
