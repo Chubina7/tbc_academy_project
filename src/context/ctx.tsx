@@ -110,3 +110,20 @@ export const AddNewRoomContext = createContext({
     setMembers: (() => {}) as React.Dispatch<React.SetStateAction<Array<any>>>,
   },
 });
+
+export const PersonalInfoChangingContext = createContext({
+  value: {
+    username: "",
+    surname: ("" || null) as string | null,
+    birth_date: ("" || null) as string | null,
+    profile_picture: ("" || null) as string | null,
+  },
+  setValue: (() => {}) as React.Dispatch<
+    React.SetStateAction<{
+      username: string;
+      surname: string | null;
+      birth_date: string | null;
+      profile_picture: string | null;
+    }>
+  >,
+});
