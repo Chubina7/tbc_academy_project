@@ -24,7 +24,7 @@ export default function LoginedUserUi({ searchParam }: Props) {
     }
   };
   return (
-    <div className="w-full min-h-full flex flex-col-reverse lg:flex-row justify-end px-3 md:px-7 py-3 pb-6 gap-5">
+    <div className="w-full flex flex-col-reverse lg:flex-row justify-end px-3 md:px-7 py-3 pb-6 gap-5">
       {segment()}
       <Navigation />
     </div>

@@ -11,7 +11,7 @@ const algorithm = process.env.JWT_ALGORITHM
 export async function decrypt(token: string) {
   try {
     const { payload } = await jwtVerify(token, key, { algorithms: [`${algorithm}`] });
-    return payload
+    return payload as IUser
   } catch (error) {
     return false
   }
@@ -35,14 +35,17 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
-  // 
+  // Secure "profile" route
   if (path === "/dashboard/profile") {
     request.nextUrl.pathname = "/dashboard";
     return NextResponse.redirect(request.nextUrl);
   }
-  if (path.startsWith("/dashboard/profile/") && !profileSegments.some(item => item.queryValue === searchParams.get("segment"))) {
-    request.nextUrl.searchParams.set("segment", "personal_info")
-    return NextResponse.redirect(request.nextUrl);
+  // Catch authenticated user profile page to show only edit page
+  if (isSessionValid && path.includes(isSessionValid.user_id)) {
+    if (path.startsWith("/dashboard/profile/") && !profileSegments.some(item => item.queryValue === searchParams.get("segment"))) {
+      request.nextUrl.searchParams.set("segment", "personal_info")
+      return NextResponse.redirect(request.nextUrl);
+    }
   }
 
   // Locale rewrite middleware
@@ -52,6 +55,7 @@ export default async function middleware(request: NextRequest) {
     localePrefix: "never",
   });
 
+  // Finish
   try {
     return localeRewrite(request);
   } catch (error) {
