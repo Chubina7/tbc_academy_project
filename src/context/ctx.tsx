@@ -133,3 +133,10 @@ export const PersonalInfoChangingContext = createContext({
     }>
   >,
 });
+export const AuthDetailsChangingContext = createContext({
+  emailVal: "",
+  setEmailVal: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  passVal: "",
+  setPassVal: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  prevData: { password: "", email: "" },
+});
