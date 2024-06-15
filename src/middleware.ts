@@ -3,6 +3,7 @@ import { AUTH_COOKIE_KEY, defaultLocale, supportedLocales } from "./lib/variable
 import { cookies } from "next/headers";
 import createMiddleware from "next-intl/middleware";
 import { jwtVerify } from "jose";
+import { profileSegments } from "./components/dashboard/profile_page/logined_user_ui/ui/nav/Navigation";
 
 const key = new TextEncoder().encode(process.env.JWT_SECRET_SIGN_KEY)
 const algorithm = process.env.JWT_ALGORITHM
@@ -10,7 +11,7 @@ const algorithm = process.env.JWT_ALGORITHM
 export async function decrypt(token: string) {
   try {
     const { payload } = await jwtVerify(token, key, { algorithms: [`${algorithm}`] });
-    return payload
+    return payload as IUser
   } catch (error) {
     return false
   }
@@ -19,6 +20,7 @@ export async function decrypt(token: string) {
 export default async function middleware(request: NextRequest) {
   const cookieStore = cookies();
   const path = request.nextUrl.pathname;
+  const searchParams = request.nextUrl.searchParams
   const isSessionValid = await decrypt(cookieStore.get(AUTH_COOKIE_KEY)?.value || "")
 
   // Check authentication
@@ -33,6 +35,19 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
+  // Secure "profile" route
+  if (path === "/dashboard/profile") {
+    request.nextUrl.pathname = "/dashboard";
+    return NextResponse.redirect(request.nextUrl);
+  }
+  // Catch authenticated user profile page to show only edit page
+  if (isSessionValid && path.includes(isSessionValid.user_id)) {
+    if (path.startsWith("/dashboard/profile/") && !profileSegments.some(item => item.queryValue === searchParams.get("segment"))) {
+      request.nextUrl.searchParams.set("segment", "personal_info")
+      return NextResponse.redirect(request.nextUrl);
+    }
+  }
+
   // Locale rewrite middleware
   const localeRewrite = createMiddleware({
     locales: supportedLocales,
@@ -40,6 +55,7 @@ export default async function middleware(request: NextRequest) {
     localePrefix: "never",
   });
 
+  // Finish
   try {
     return localeRewrite(request);
   } catch (error) {

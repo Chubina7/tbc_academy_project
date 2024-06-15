@@ -36,11 +36,12 @@ type MemberComponentType = {
 
 // User
 type IUser = {
-    user_id: string,
-    username: string,
-    surname: string | null,
-    email: string,
+    user_id: string
+    username: string
+    surname: string | null
+    email: string
+    password: string
     role: RoleType
-    birth_date: string,
-    image: string | null,
+    birth_date: string | null
+    profile_picture: string | null
 }

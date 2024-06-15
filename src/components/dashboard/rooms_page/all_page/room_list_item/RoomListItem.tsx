@@ -27,7 +27,7 @@ export default function RoomListItem({ data, role }: Props) {
           <p className="w-full text-sm px-5">{data.description}</p>
           <div className="w-full flex flex-grow justify-between items-end py-3 px-5 text-sm text-nowrap">
             <EnrolledNum number={data.enrolled_number} />
-            {role !== "student" ? (
+            {role === "student" ? (
               <Author teacher={data.teacher} />
             ) : (
               <CreatedAt created_at={data.created_at} />

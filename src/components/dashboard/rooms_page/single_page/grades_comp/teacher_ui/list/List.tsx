@@ -14,11 +14,11 @@ export default function List() {
         </tr>
       </thead>
       <tbody>
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+        <Item user_id="Utest" />
+        <Item user_id="Utest" />
+        <Item user_id="Utest" />
+        <Item user_id="Utest" />
+        <Item user_id="Utest" />
       </tbody>
     </table>
   );

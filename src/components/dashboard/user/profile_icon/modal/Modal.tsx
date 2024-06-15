@@ -7,12 +7,17 @@ import { useEffect } from "react";
 import useOutsideClickTrack from "../../../../../hooks/useOutsideClickTrack";
 
 interface Props {
-  data: { username: string; surname: string | null; email: string };
+  data: {
+    username: string;
+    surname: string | null;
+    email: string;
+    user_id: string;
+  };
   modalState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 }
 
 export default function Modal({ data, modalState }: Props) {
-  const { surname, username, email } = data;
+  const { surname, username, email, user_id } = data;
   const [isOpen, setIsOpen] = modalState;
   const trackerValue = useOutsideClickTrack("profile_modal", modalState);
 
@@ -30,6 +35,7 @@ export default function Modal({ data, modalState }: Props) {
         id="profile_modal"
       >
         <ProfileLink
+          user_id={user_id}
           email={email}
           modalCloser={handleModal}
           username={username}
