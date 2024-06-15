@@ -13,5 +13,5 @@ export default async function ProfilePage({ params, searchParams }: Props) {
   if (loginedUser.user_id === params.slug)
     return <LoginedUserUi searchParam={searchParams.segment} />;
 
-  return <VisitorProfileUi />;
+  return <VisitorProfileUi user_id={params.slug} />;
 }
