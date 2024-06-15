@@ -19,7 +19,7 @@ export default function Author({ author, room }: Props) {
       <IoPersonOutline size={20} className="min-w-5" />
       <p>
         <Link
-          href={`/dashboard/users/${author.user_id}`}
+          href={`/dashboard/profile/${author.user_id}`}
           className="cursor-pointer hover:underline"
         >
           {author.username} {author.surname}

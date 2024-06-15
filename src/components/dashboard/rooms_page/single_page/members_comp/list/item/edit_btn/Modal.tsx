@@ -43,7 +43,7 @@ export default function Modal({ state }: Props) {
     >
       {/* <ChangeRole onClick={() => state[1]((prev) => !prev)} /> */}
       <RemoveUser onClick={() => state[1]((prev) => !prev)} />
-      <SeeProfile />
+      <SeeProfile user_id="Utest" />
     </div>
   );
 }
