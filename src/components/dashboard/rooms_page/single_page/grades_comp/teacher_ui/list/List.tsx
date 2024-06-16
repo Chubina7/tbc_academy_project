@@ -1,50 +1,15 @@
 import Item from "./Item";
 
-const dataToBeReturned = [
-  {
-    user_id: "U0001",
-    username: "name",
-    surname: "surname",
-    student_avg_grade: 12,
-  },
-  {
-    user_id: "U0001",
-    username: "name",
-    surname: "surname",
-    student_avg_grade: 13,
-  },
-  {
-    user_id: "U0001",
-    username: "name",
-    surname: "surname",
-    student_avg_grade: 17,
-  },
-  {
-    user_id: "U0001",
-    username: "name",
-    surname: "surname",
-    student_avg_grade: 98,
-  },
-  {
-    user_id: "U0001",
-    username: "name",
-    surname: "surname",
-    student_avg_grade: 74,
-  },
-];
-
 interface Props {
-  room_id: string;
+  data: Array<IRoomTeacherAvgs> | null;
 }
 
-export default function List({ room_id }: Props) {
-  console.log(room_id);
-  // fetch data
-  // ...
-
+export default function List({ data }: Props) {
+  if (!data) return null;
+  
   return (
     <>
-      {dataToBeReturned.length > 0 ? (
+      {data.length > 0 ? (
         <table className="w-full">
           <thead>
             <tr>
@@ -55,7 +20,7 @@ export default function List({ room_id }: Props) {
             </tr>
           </thead>
           <tbody>
-            {dataToBeReturned.map((item) => (
+            {data.map((item) => (
               <Item key={item.user_id} data={item} />
             ))}
           </tbody>

@@ -118,6 +118,26 @@ interface IRoomMember {
     email: string;
     profile_picture: string | null;
 }
+interface IRoomTeacherAvgs {
+    user_id: string;
+    username: string;
+    surname: string;
+    student_avg_grade: number;
+}
+interface IRoomStudentAvgs {
+    user_avg: number,
+    class_avg: number,
+}
+interface ISingleRoomApiReturn {
+    intro: IRoomIntro;
+    assignments: Array<IRoomAssignment>;
+    announcement: Array<IRoomAnnouncement>;
+    grades: {
+        student_data: IRoomStudentAvgs | null;
+        teacher_data: Array<IRoomTeacherAvgs> | null;
+    };
+    members: Array<IRoomMember>;
+}
 
 
 // Announcements

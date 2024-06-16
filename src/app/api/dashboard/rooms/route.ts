@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import { decrypt } from "../../../../lib/helpers/server_act_funcs/decrypt";
 
 export async function GET(req: NextRequest) {
+    const token = req.headers.get("Authorization") || ""
+    const user = await decrypt(token)
+
+    if (!user) return NextResponse.json({ message: "Unauthorized! You do not have persmission to get data." }, { status: 401 })
+
     const data: IRoomsApiReturn = {
         rooms: [
             {

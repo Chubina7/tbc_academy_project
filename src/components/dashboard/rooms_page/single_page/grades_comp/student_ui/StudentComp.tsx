@@ -3,14 +3,14 @@ import Heading from "./Heading";
 import SeeAllBtn from "./SeeAllBtn";
 
 interface Props {
-  room_id: string;
+  data: IRoomStudentAvgs | null;
 }
 
-export default function StudentComp({ room_id }: Props) {
+export default function StudentComp({ data }: Props) {
   return (
     <>
       <Heading />
-      <Averages room_id={room_id} />
+      <Averages data={data} />
       <SeeAllBtn />
     </>
   );

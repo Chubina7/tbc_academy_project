@@ -3,14 +3,14 @@ import SeeAllBtn from "./SeeAllBtn";
 import List from "./list/List";
 
 interface Props {
-  room_id: string;
+  data: Array<IRoomTeacherAvgs> | null;
 }
 
-export default function TeacherComp({ room_id }: Props) {
+export default function TeacherComp({ data }: Props) {
   return (
     <>
       <Heading />
-      <List room_id={room_id} />
+      <List data={data} />
       <SeeAllBtn />
     </>
   );

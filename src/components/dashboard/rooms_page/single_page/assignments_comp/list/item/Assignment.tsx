@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { IoExtensionPuzzle } from "react-icons/io5";
 import Status from "./Status";
+import Posted from "./Posted";
+import Due from "./Due";
 
 interface Props {
   data: {
@@ -38,8 +40,8 @@ export default function Assignment({ data }: Props) {
         </div>
         <p className="line-clamp-3 text-sm">{assignment_description}</p>
         <div className="w-full flex justify-between text-xs">
-          <p>POSTED: {created_at}</p>
-          <p>DUE: {assignment_past_due}</p>
+          <Posted created_at={created_at} />
+          <Due due={assignment_past_due} />
         </div>
       </div>
     </Link>

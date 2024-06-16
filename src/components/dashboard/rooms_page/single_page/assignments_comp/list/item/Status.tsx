@@ -11,7 +11,7 @@ export default async function Status({ data }: Props) {
 
   return (
     <p className="w-fit text-xs border border-[#2B3674] dark:border-[#5C5470] rounded-full px-3 py-0.5 transition-all duration-300 text-nowrap">
-      {data ? "COMPLETED" : "NOT"}
+      {data ? "COMPLETED" : "PENDING"}
     </p>
   );
 }
