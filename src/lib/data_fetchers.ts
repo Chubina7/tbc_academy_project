@@ -3,6 +3,7 @@ import { detectEnviro } from "./helpers/regular_funcs/general";
 import { AUTH_COOKIE_KEY } from "./variables";
 
 const domain = detectEnviro();
+// const domain = "http://localhost:3000"
 
 export async function getEnrolledRoomsList() {
     const token = cookies().get(AUTH_COOKIE_KEY);

@@ -1,7 +1,7 @@
 import React, { createContext, Dispatch, SetStateAction } from "react";
 
 export const BookmarkContext = createContext({
-  list: [],
+  list: [] as Array<any>,
   addItem: (param: any) => param,
   removeItem: (param: any) => param,
   resetList: () => {},
