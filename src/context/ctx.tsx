@@ -1,9 +1,9 @@
-import React, { Context, createContext, Dispatch, SetStateAction } from "react";
+import React, { createContext, Dispatch, SetStateAction } from "react";
 
-export const BookmarkContext: Context<IBookmarkCtx> = createContext({
+export const BookmarkContext = createContext({
   list: [],
-  addItem: (param) => param,
-  removeItem: (param) => param,
+  addItem: (param: any) => param,
+  removeItem: (param: any) => param,
   resetList: () => {},
 });
 

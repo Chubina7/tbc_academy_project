@@ -1,3 +1,33 @@
+// General
+interface IMetaData {
+    title: string
+    description: string
+}
+interface IParams {
+    locale: string
+    slug: string
+}
+interface IThemeListItem {
+    title: "light" | "os" | "dark";
+    icon: React.ReactNode
+}
+interface ILandPrefListItem {
+    title: "ka" | "en";
+    icon: React.ReactNode
+}
+interface ILandingNavItem {
+    placeholder: "home" | "about" | "contact" | "admin";
+    href: "/" | "/about" | "/contact" | "/admin";
+    whenActive: "/" | "/about" | "/contact" | "/admin";
+}
+interface IDashboardNavListItem {
+    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "El-Resources",
+    icon: React.ReactNode,
+    onActive: React.ReactNode,
+    href: "" | "/rooms" | "/schedule" | "/announcements" | "/el-resources",
+    forHeading: string
+}
+
 // Users
 interface IUserAdmin {
     username: string
@@ -33,46 +63,6 @@ interface IUserPublics {
     birth_date: string
 }
 
-// General for Components
-interface IMetaData {
-    title: string
-    description: string
-}
-interface IParams {
-    locale: string
-    slug: string
-}
-
-// Context
-interface IBookmarkCtx {
-    list: any;
-    addItem: (param: any) => void;
-    removeItem: (param: any) => void;
-    resetList: () => void;
-}
-
-// General
-interface IThemeListItem {
-    title: "light" | "os" | "dark";
-    icon: React.ReactNode
-}
-interface ILandPrefListItem {
-    title: "ka" | "en";
-    icon: React.ReactNode
-}
-interface ILandingNavItem {
-    placeholder: "home" | "about" | "contact" | "admin";
-    href: "/" | "/about" | "/contact" | "/admin";
-    whenActive: "/" | "/about" | "/contact" | "/admin";
-}
-interface IDashboardNavListItem {
-    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "El-Resources",
-    icon: React.ReactNode,
-    onActive: React.ReactNode,
-    href: "" | "/rooms" | "/schedule" | "/announcements" | "/el-resources",
-    forHeading: string
-}
-
 // 
 interface IRegisterPersonalDetails {
     username: string
@@ -84,19 +74,6 @@ interface IRegisterCredentials {
     password: string
 }
 
-// Courses
-interface ISingleCourse {
-    course_title: string
-    course_description: string
-    category: string
-    created_at: string
-    updated_at: string
-    image: string | null
-    announcements: Array<AnnouncementComponentType>
-    members: Array<MemberComponentType>
-}
-
-
 // Rooms
 interface IRoom {
     room_id: string
@@ -107,6 +84,10 @@ interface IRoom {
     enrolled_number: number
     category: Array<string>
     created_at: string
+}
+interface IRoomsApiReturn {
+    rooms: Array<IRoom>
+    categories: Array<string>;
 }
 
 // Announcements
