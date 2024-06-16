@@ -2,11 +2,15 @@ import Averages from "./Averages";
 import Heading from "./Heading";
 import SeeAllBtn from "./SeeAllBtn";
 
-export default function StudentComp() {
+interface Props {
+  room_id: string;
+}
+
+export default function StudentComp({ room_id }: Props) {
   return (
     <>
       <Heading />
-      <Averages />
+      <Averages room_id={room_id} />
       <SeeAllBtn />
     </>
   );

@@ -1,18 +1,16 @@
 import Member from "./item/Member";
 
-export default function List() {
+interface Props {
+  data: Array<IRoomMember>;
+  room_id: string;
+}
+
+export default function List({ data, room_id }: Props) {
   return (
     <div className="w-full 2xl:h-[658px] overflow-scroll scroll-hidden flex justify-start items-start flex-col">
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
+      {data.map((item) => (
+        <Member key={item.user_id} data={item} room_id={room_id} />
+      ))}
     </div>
   );
 }

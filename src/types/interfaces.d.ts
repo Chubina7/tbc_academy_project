@@ -89,6 +89,36 @@ interface IRoomsApiReturn {
     rooms: Array<IRoom>
     categories: Array<string>;
 }
+// single room
+interface IRoomAssignment {
+    assignment_id: string;
+    assignment_title: string;
+    assignment_description: string;
+    assignment_status: boolean;
+    created_at: string;
+    assignment_past_due: string;
+}
+interface IRoomIntro {
+    room_name: string,
+    room_description: string,
+    created_at: string,
+    room_image: string | null,
+}
+interface IRoomAnnouncement {
+    announcement_id: string;
+    announcement_title: string;
+    annonced_at: string;
+    announcement_description: string;
+    announcement_comment_num: number;
+}
+interface IRoomMember {
+    user_id: string;
+    username: string;
+    surname: string | null;
+    email: string;
+    profile_picture: string | null;
+}
+
 
 // Announcements
 interface IAnnouncementList {
@@ -121,3 +151,4 @@ interface IAnnouncementComment {
     }
     commented_at: string
 }
+

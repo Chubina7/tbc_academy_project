@@ -10,22 +10,20 @@ interface Props {
 }
 
 export default function RoomPage({ params }: Props) {
-  console.log(params.slug);
-
   return (
     <section className="w-full min-h-screen flex flex-col p-3 md:p-7 gap-5 overflow-visible">
       <div className="w-full flex flex-col xl:flex-row items-start gap-5">
         <div className="w-full flex flex-col gap-5 justify-center items-center">
           <div className="w-full flex flex-col 2xl:flex-row gap-5">
-            <Intro />
-            <Assignments />
+            <Intro room_id={params.slug} />
+            <Assignments room_id={params.slug} />
           </div>
           <div className="w-full flex flex-col sm:flex-row justify-start items-start gap-5">
-            <Announcements />
-            <Grades />
+            <Announcements room_id={params.slug} />
+            <Grades room_id={params.slug} />
           </div>
         </div>
-        <Members />
+        <Members room_id={params.slug} />
       </div>
       <Schedule />
     </section>

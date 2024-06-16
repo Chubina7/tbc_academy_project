@@ -7,9 +7,10 @@ import SeeProfile from "./options/SeeProfile";
 
 interface Props {
   state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+  user_id: string;
 }
 
-export default function Modal({ state }: Props) {
+export default function Modal({ state, user_id }: Props) {
   // track and change direction of modal opening
   const [shouldChangeDir, setShouldChangeDir] = useState(false);
   const calculateDistance = () => {
@@ -42,8 +43,8 @@ export default function Modal({ state }: Props) {
       } right-0 | flex flex-col justify-center items-start | transition-colors duration-300 | shadow-custom select-none`}
     >
       {/* <ChangeRole onClick={() => state[1]((prev) => !prev)} /> */}
-      <RemoveUser onClick={() => state[1]((prev) => !prev)} />
-      <SeeProfile user_id="Utest" />
+      <RemoveUser mocalHandler={() => state[1]((prev) => !prev)} />
+      <SeeProfile user_id={user_id} />
     </div>
   );
 }
