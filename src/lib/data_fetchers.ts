@@ -5,6 +5,7 @@ import { AUTH_COOKIE_KEY } from "./variables";
 const domain = detectEnviro();
 // const domain = "http://localhost:3000"
 
+// Rooms
 export async function getEnrolledRoomsList() {
     const token = cookies().get(AUTH_COOKIE_KEY);
 
@@ -25,7 +26,6 @@ export async function getEnrolledRoomsList() {
         return null;
     }
 }
-
 export async function getSingleRoomData(room_id: string) {
     const token = cookies().get(AUTH_COOKIE_KEY);
 
@@ -46,6 +46,29 @@ export async function getSingleRoomData(room_id: string) {
         return result;
     } catch (error) {
         console.error({ message: "Error happened", error });
+        return null;
+    }
+}
+
+// Announcements
+export async function getAnnouncementList() {
+    const domain = detectEnviro();
+    const token = cookies().get(AUTH_COOKIE_KEY)?.value;
+
+    try {
+        const res = await fetch(`${domain}/api/dashboard/announcements`, {
+            cache: "no-cache",
+            headers: {
+                Authorization: token || "",
+            },
+        });
+
+        if (!res.ok) throw new Error();
+
+        const result: IAnnouncemenetApiReturn = await res.json();
+        return result;
+    } catch (error) {
+        console.error(error);
         return null;
     }
 }

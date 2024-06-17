@@ -89,7 +89,7 @@ interface IRoomsApiReturn {
     rooms: Array<IRoom>
     categories: Array<string>;
 }
-// single room
+// Single Room
 interface IRoomAssignment {
     assignment_id: string;
     assignment_title: string;
@@ -139,9 +139,13 @@ interface ISingleRoomApiReturn {
     members: Array<IRoomMember>;
 }
 
-
 // Announcements
-interface IAnnouncementList {
+interface IAnnouncement {
+    announcement_id: string
+    announcement_title: string
+    announcement: string
+    comments_number: number
+    announced_at: string
     author: {
         user_id: string
         username: string
@@ -149,12 +153,13 @@ interface IAnnouncementList {
         room_id: string
         room_title: string
     }
-    announcement_id: string
-    announcement_title: string
-    announcement: string
-    comments_number: number
-    announced_at: string
 }
+interface IAnnouncemenetApiReturn {
+    announcements: Array<IAnnouncement>
+    room_names: Array<string>
+
+}
+// Single Announcemenet
 interface IAnnouncementComment {
     author: {
         user_id: string
@@ -171,4 +176,3 @@ interface IAnnouncementComment {
     }
     commented_at: string
 }
-
