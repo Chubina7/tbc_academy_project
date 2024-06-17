@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
                     enrolled_number: 78,
                     teacher: "Emzar Emzarashvili",
                     created_at: "09/04/1997",
-                    image: null,
+                    room_image: null,
                 },
                 // ....
             ],

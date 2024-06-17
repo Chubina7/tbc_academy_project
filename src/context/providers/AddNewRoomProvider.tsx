@@ -13,7 +13,7 @@ export default function AddNewRoomProvider({ children }: Props) {
   const [description, setDescription] = useState("");
   const [coverPicture, setCoverPicture] = useState("");
   const [categories, setCategories] = useState<Array<string>>([]);
-  const [members, setMembers] = useState<Array<any>>([]);
+  const [members, setMembers] = useState<Array<string>>([]);
 
   const steps = {
     activeIdx,

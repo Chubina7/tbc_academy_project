@@ -98,7 +98,7 @@ export const AddNewRoomContext = createContext({
     description: "",
     coverPicture: "",
     categories: [] as Array<string>,
-    members: [] as Array<any>,
+    members: [] as Array<string>,
   },
   setters: {
     setTitle: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
@@ -107,7 +107,9 @@ export const AddNewRoomContext = createContext({
     setCategories: (() => {}) as React.Dispatch<
       React.SetStateAction<Array<string>>
     >,
-    setMembers: (() => {}) as React.Dispatch<React.SetStateAction<Array<any>>>,
+    setMembers: (() => {}) as React.Dispatch<
+      React.SetStateAction<Array<string>>
+    >,
   },
 });
 

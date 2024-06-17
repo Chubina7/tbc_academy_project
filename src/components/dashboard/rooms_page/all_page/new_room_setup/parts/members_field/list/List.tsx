@@ -4,7 +4,7 @@ import User from "./User";
 
 interface Props {
   keyword: string;
-  data: Array<IRoomUserList>;
+  data: Array<IRoomUserListItem>;
 }
 
 export default function List({ keyword, data }: Props) {

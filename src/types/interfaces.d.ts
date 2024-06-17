@@ -79,7 +79,7 @@ interface IRoom {
     room_id: string
     room_name: string
     description: string
-    image: string | null
+    room_image: string | null
     teacher: string
     enrolled_number: number
     category: Array<string>

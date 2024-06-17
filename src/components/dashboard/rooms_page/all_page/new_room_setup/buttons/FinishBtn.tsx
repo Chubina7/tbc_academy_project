@@ -1,9 +1,18 @@
+"use client";
+
 import { useContext } from "react";
-import { AddNewRoomContext as ctx } from "../../../../../../context/ctx";
+import {
+  AddNewRoomContext as roomCtx,
+  NotificationsContext as notifCtx,
+} from "../../../../../../context/ctx";
 import { useRouter } from "next/navigation";
+import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
+
+const domain = detectEnviro();
 
 export default function FinishBtn() {
-  const { steps, data } = useContext(ctx);
+  const { steps, data } = useContext(roomCtx);
+  const { showNotification } = useContext(notifCtx);
   const router = useRouter();
 
   if (steps.activeIdx !== 3) return null;
@@ -21,24 +30,38 @@ export default function FinishBtn() {
     members.length < 1 ||
     title === "";
 
-  const handleSubmition = () => {
-    // validate
+  const handleSubmition = async () => {
     if (condition) {
-      // throw error message
       console.error("Empty values detected!");
-      // ...
       return;
     }
-    // ...
 
-    // save in db
-    // თუ ბაზას ჩაწერილი რელაციის ოთახის აიდი დავაბრუნებინეთ, მაშინ router.replace(-რუმის აიდი-) და გამოიტანოს success მესიჯი
-    // ...
+    const dataToBeStored = {
+      room: {
+        room_name: data.title,
+        room_description: data.description,
+        category: data.categories,
+        cover_picture: data.coverPicture,
+      },
+      members: data.members,
+    };
 
-    // redirect
-    router.replace("/dashboard/");
-    // ...
-    console.log({ categories, coverPicture, description, members, title });
+    try {
+      const res = await fetch(`${domain}/api/dashboard/rooms/new_room_setup`, {
+        method: "POST",
+        body: JSON.stringify(dataToBeStored),
+      });
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result);
+      }
+      router.push(`/dashboard/rooms/${result.room_id}`);
+      showNotification(true, "success", result.message);
+    } catch (error: any) {
+      console.error(error.message);
+      showNotification(true, "error", error.message);
+    }
   };
 
   return (
