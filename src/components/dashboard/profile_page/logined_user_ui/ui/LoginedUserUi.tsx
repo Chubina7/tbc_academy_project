@@ -1,3 +1,4 @@
+import ProfileLoadingStateProvider from "../../../../../context/providers/ProfileLoadingStateProvider";
 import AuthDetails from "../auth_details/AuthDetails";
 import DeleteAcc from "../delete_acc/DeleteAcc";
 import PaymentDetails from "../payment_details/PaymentDetails";
@@ -24,9 +25,11 @@ export default function LoginedUserUi({ searchParam }: Props) {
     }
   };
   return (
-    <div className="w-full flex flex-col-reverse lg:flex-row justify-end px-3 md:px-7 py-3 pb-6 gap-5">
-      {segment()}
-      <Navigation />
-    </div>
+    <ProfileLoadingStateProvider>
+      <div className="w-full flex flex-col-reverse lg:flex-row justify-end px-3 md:px-7 py-3 pb-6 gap-5">
+        {segment()}
+        <Navigation />
+      </div>
+    </ProfileLoadingStateProvider>
   );
 }

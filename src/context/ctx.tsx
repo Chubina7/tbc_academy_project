@@ -111,6 +111,9 @@ export const AddNewRoomContext = createContext({
   },
 });
 
+export const ProfileLoadingStateContext = createContext({
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});
 export const PersonalInfoChangingContext = createContext({
   prevValues: {
     username: "",

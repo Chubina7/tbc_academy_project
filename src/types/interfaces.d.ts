@@ -194,3 +194,13 @@ interface ISingleAnnouncementApiReturn {
     }
     comments: Array<IAnnouncementComment>
 }
+
+// Profile page
+interface IUserPublicInfo {
+    username: string;
+    surname: string | null;
+    birth_date: string | null;
+    email: string;
+    profile_image: string | null;
+    role: RoleType;
+}
