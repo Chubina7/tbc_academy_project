@@ -23,7 +23,12 @@ export async function POST(req: NextRequest) {
         // set new token in cookies
         // cookies().set(AUTH_COOKIE_KEY, "test")
 
-        console.log(body)
+        const pairsToBeChanged = Object.entries(body)
+            .map(([key, value]) => `${key} = '${value}'`)
+            .join(', ');
+        // await sql`UPDATE users SET ${pairsToBeChanged} WHERE user_id = ${user.user_id}`
+
+        console.log(`UPDATE users SET ${pairsToBeChanged} WHERE user_id = '${user.user_id}'`)
 
         return NextResponse.json({ message: "User details changed successfully." }, { status: 200 })
     } catch (error) {
