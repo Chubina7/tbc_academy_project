@@ -89,6 +89,14 @@ interface IRoomsApiReturn {
     rooms: Array<IRoom>
     categories: Array<string>;
 }
+interface IRoomUserListItem {
+    user_id: string;
+    profile_picture: null;
+    username: string;
+    surname: null;
+    role: RoleType;
+    joined_at: string;
+}
 // Single Room
 interface IRoomAssignment {
     assignment_id: string;
