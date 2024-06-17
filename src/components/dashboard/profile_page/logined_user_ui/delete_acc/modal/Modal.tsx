@@ -1,12 +1,17 @@
+"use client";
+
 import Backdrop from "../../../../../ui/Backdrop";
 import YesBtn from "./YesBtn";
 import NoBtn from "./NoBtn";
+import { useState } from "react";
 
 interface Props {
   modalCloser: () => void;
 }
 
 export default function Modal({ modalCloser }: Props) {
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <>
       <Backdrop />
@@ -17,8 +22,11 @@ export default function Modal({ modalCloser }: Props) {
           <span className="font-bold">can not be undone</span>!
         </p>
         <div className="w-full flex gap-2 justify-end items-end">
-          <NoBtn closeModal={modalCloser} />
-          <YesBtn closeModal={modalCloser} />
+          <NoBtn closeModal={modalCloser} isLoading={isLoading} />
+          <YesBtn
+            closeModal={modalCloser}
+            loadingState={{ isLoading, setIsLoading }}
+          />
         </div>
       </div>
     </>
