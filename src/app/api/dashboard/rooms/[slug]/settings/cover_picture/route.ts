@@ -17,7 +17,8 @@ export async function PUT(req: NextRequest) {
 
         const data = await req.json()
 
-        // store categories in this format JSON.stringify(data.categories))
+        // blob upload
+        // ...
 
         console.log(data)
 

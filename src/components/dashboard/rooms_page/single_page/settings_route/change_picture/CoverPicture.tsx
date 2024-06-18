@@ -14,7 +14,7 @@ export default function CoverPicture({ data }: Props) {
   const [imageUrl, setImageUrl] = useState(data || "");
   const [error, setError] = useState("");
 
-  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
     if (!file || file.type.split("/")[0] !== "image") {
@@ -23,10 +23,16 @@ export default function CoverPicture({ data }: Props) {
     }
 
     const url = URL.createObjectURL(file);
-
     setImageUrl(url);
-    if (error.trim() !== "") setError("");
-    return () => URL.revokeObjectURL(url);
+
+    // vercel blob upload
+    // ...
+    // const newBlob = await upload(file.name, file, {
+    //   access: 'public',
+    //   handleUploadUrl: '/api/avatar/upload',
+    // });
+
+    // setBlob(newBlob);
   };
 
   return (

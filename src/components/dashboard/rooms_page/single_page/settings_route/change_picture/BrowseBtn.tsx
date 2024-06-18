@@ -3,7 +3,7 @@
 import { useRef } from "react";
 
 interface Props {
-  action: (e: React.ChangeEvent<HTMLInputElement>) => (() => void) | undefined;
+  action: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function BrowseBtn({ action }: Props) {
