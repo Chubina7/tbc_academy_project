@@ -47,7 +47,7 @@ export default function FinishBtn() {
     };
 
     try {
-      const res = await fetch(`${domain}/api/dashboard/rooms/new_room_setup`, {
+      const res = await fetch(`${domain}/api/dashboard/rooms`, {
         method: "POST",
         body: JSON.stringify(dataToBeStored),
       });

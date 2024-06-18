@@ -1,5 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { decrypt } from "../../../../lib/helpers/server_act_funcs/decrypt";
+import { cookies } from "next/headers";
+import { AUTH_COOKIE_KEY } from "../../../../lib/variables";
+
+interface IPostReqData {
+    announcement: string,
+    announcement_title: string,
+    room_id: string
+}
+
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export async function GET(req: NextRequest) {
     const token = req.headers.get("Authorization")
@@ -92,4 +102,21 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ message: "Error getting data from API", error }, { status: 500 })
     }
 
+}
+
+export async function POST(req: NextRequest) {
+    const token = cookies().get(AUTH_COOKIE_KEY)?.value
+    if (!token) return NextResponse.json({ message: "Unauthorized. No token provided" }, { status: 401 })
+    const user = await decrypt(token)
+    if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
+
+    try {
+        await delay(2500)
+
+        const data: IPostReqData = await req.json()
+
+        return NextResponse.json(data, { status: 200 })
+    } catch (error) {
+        return NextResponse.json({ message: "Something went wrong", error }, { status: 500 })
+    }
 }

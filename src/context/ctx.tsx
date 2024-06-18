@@ -145,3 +145,15 @@ export const AuthDetailsChangingContext = createContext({
   setPassVal: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
   prevData: { password: "", email: "" },
 });
+
+export const AddNewAnnouncementContext = createContext({
+  title: "",
+  setTitle: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  announcement: "",
+  setAnnouncement: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  roomId: "",
+  setRoomId: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+  error: false,
+  setError: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});

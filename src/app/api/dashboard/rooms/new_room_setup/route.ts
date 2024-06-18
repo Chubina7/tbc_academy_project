@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../../../../../lib/variables";
 import { generateUniqueId } from "../../../../../lib/helpers/regular_funcs/general";
 
-
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export async function POST(req: NextRequest) {
@@ -14,7 +13,7 @@ export async function POST(req: NextRequest) {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        delay(2500)
+        await delay(2500)
         const data: {
             room: {
                 room_name: string;
