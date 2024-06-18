@@ -39,10 +39,13 @@ export default function Actions() {
     };
 
     try {
-      const res = await fetch(`${domain}/api/dashboard/rooms/${room_id}`, {
-        method: "PUT",
-        body: JSON.stringify(dataToBeStored),
-      });
+      const res = await fetch(
+        `${domain}/api/dashboard/rooms/${room_id}/settings/information`,
+        {
+          method: "PUT",
+          body: JSON.stringify(dataToBeStored),
+        }
+      );
       const result = await res.json();
 
       if (!res.ok) {

@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function CoverPicture({ data }: Props) {
-  const [imageUrl, setImageUrl] = useState<string>(data || "");
+  const [imageUrl, setImageUrl] = useState(data || "");
   const [error, setError] = useState("");
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {

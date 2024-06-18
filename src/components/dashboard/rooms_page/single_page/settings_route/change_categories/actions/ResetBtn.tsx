@@ -8,7 +8,7 @@ export default function ResetBtn() {
 
   return (
     <button className="px-3 py-1 rounded-lg bg-green-400" onClick={handleReset}>
-      ResetBtn
+      RESET
     </button>
   );
 }

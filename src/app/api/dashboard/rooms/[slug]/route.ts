@@ -160,27 +160,3 @@ export async function DELETE(_req: NextRequest, { params }: Props) {
         return NextResponse.json({ message: "Something went wrong! Unable to delete room." }, { status: 500 })
     }
 }
-
-export async function PUT(req: NextRequest) {
-    const token = cookies().get(AUTH_COOKIE_KEY)?.value
-    if (!token) return NextResponse.json({ message: "Unauthorized. No token provided" }, { status: 401 })
-    const user = await decrypt(token)
-    if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
-    if (user.role === "student") return NextResponse.json({ message: "You do not have persmission to make delete action" }, { status: 401 })
-
-    try {
-        await delay(2500)
-
-        const data = await req.json()
-
-        // store categories in this format JSON.stringify(data.categories))
-
-        console.log(data)
-
-        throw new Error()
-
-        return NextResponse.json({ message: "Changed successfullly!" }, { status: 200 })
-    } catch (error) {
-        return NextResponse.json({ message: "Internal server error. Unable to change room settings." }, { status: 500 })
-    }
-}

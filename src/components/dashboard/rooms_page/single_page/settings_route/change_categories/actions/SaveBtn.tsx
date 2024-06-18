@@ -19,10 +19,13 @@ export default function SaveBtn() {
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch(`${domain}/api/dashboard/rooms/${room_id}`, {
-        method: "PUT",
-        body: JSON.stringify({ categories }),
-      });
+      const res = await fetch(
+        `${domain}/api/dashboard/rooms/${room_id}/settings/categories`,
+        {
+          method: "PUT",
+          body: JSON.stringify({ categories }),
+        }
+      );
       const result = await res.json();
 
       if (!res.ok) {
@@ -40,7 +43,7 @@ export default function SaveBtn() {
 
   return (
     <button className="px-3 py-1 bg-red-400 rounded-lg" onClick={handleSubmit}>
-      SaveBtn
+      Save
     </button>
   );
 }
