@@ -6,6 +6,15 @@ import { generateUniqueId } from "../../../../lib/helpers/regular_funcs/general"
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
+interface IPostReqData {
+    room: {
+        room_name: string;
+        room_description: string;
+        category: string[];
+        cover_picture: string;
+    },
+    members: Array<string>
+}
 
 export async function GET(req: NextRequest) {
     const token = req.headers.get("Authorization")
@@ -45,15 +54,7 @@ export async function POST(req: NextRequest) {
 
     try {
         await delay(2500)
-        const data: {
-            room: {
-                room_name: string;
-                room_description: string;
-                category: string[];
-                cover_picture: string;
-            },
-            members: Array<string>
-        } = await req.json()
+        const data: IPostReqData = await req.json()
 
         // insert into rooms data.room
         // ...
