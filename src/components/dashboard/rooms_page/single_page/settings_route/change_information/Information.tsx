@@ -1,46 +1,30 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import ChangeBtn from "./ChangeBtn";
 import ChangeDescription from "./ChangeDescription";
 import ChangeTitle from "./ChangeTitle";
+import Actions from "./btns/Actions";
+import EditRoomInformationProvider from "../../../../../../context/providers/EditRoomInformationProvider";
+import ErrorMsg from "./ErrorMsg";
 
-export default function Information() {
-  const state = useState({ title: "", description: "" });
-  const [validationMessage, setValidationMessage] = useState("");
-  
-  useEffect(() => {
-    if (validationMessage !== "") {
-      setTimeout(() => {
-        setValidationMessage("");
-      }, 5000);
-    }
-  }, [validationMessage]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (state[0].description.trim() === "" || state[0].title.trim() === "") {
-      setValidationMessage("Unable to pass empty values.");
-      return;
-    }
-    // handle data change
-    // ...
-
-    console.log(state[0]);
+interface Props {
+  data: {
+    title: string;
+    description: string;
   };
+}
 
+export default function Information({ data }: Props) {
   return (
-    <div className="bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-all duration-300 shadow-custom p-3 | w-full lg:max-w-[70%] flex flex-col gap-3">
-      <div className="w-full flex justify-between items-center">
-        <h1 className="w-full font-bold text-2xl select-none">Information</h1>
-        <ChangeBtn changeHandler={handleSubmit} />
+    <EditRoomInformationProvider prevData={data}>
+      <div className="bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-all duration-300 shadow-custom p-3 | w-full flex flex-col gap-3">
+        <div className="w-full flex flex-col sm:flex-row justify-start smjustify-between items-center">
+          <h1 className="w-full font-bold text-2xl select-none">Information</h1>
+          <Actions />
+        </div>
+        <form className="w-full flex flex-col gap-3">
+          <ChangeTitle />
+          <ChangeDescription />
+          <ErrorMsg />
+        </form>
       </div>
-      <form className="w-full flex flex-col gap-3">
-        <ChangeTitle state={state} />
-        <ChangeDescription state={state} />
-        <p className="text-sm pl-5 text-red-600">{validationMessage}</p>
-      </form>
-    </div>
+    </EditRoomInformationProvider>
   );
 }

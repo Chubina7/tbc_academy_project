@@ -157,3 +157,19 @@ export const AddNewAnnouncementContext = createContext({
   error: false,
   setError: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
 });
+
+export const EditRoomInformationContext = createContext({
+  details: { title: "", description: "" },
+  setDetails: (() => {}) as React.Dispatch<
+    React.SetStateAction<{ title: string; description: string }>
+  >,
+  validationMessage: "",
+  setValidationMessage: (() => {}) as React.Dispatch<
+    React.SetStateAction<string>
+  >,
+  prevData: {
+    title: "",
+    description: "",
+  },
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});

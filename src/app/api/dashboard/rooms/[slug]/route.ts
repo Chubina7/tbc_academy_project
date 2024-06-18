@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        const data = {
+        const data: ISingleRoomApiReturn = {
             intro: {
                 room_name: "Advanced Mathematics",
                 room_description:
@@ -74,7 +74,7 @@ export async function GET(req: NextRequest) {
                     assignment_past_due: "2024-03-15T08:00:00Z",
                 },
             ],
-            announcement: [
+            announcements: [
                 {
                     announcement_id: "AN0001",
                     announcement_title: "Exam Date Announced",
@@ -92,7 +92,8 @@ export async function GET(req: NextRequest) {
                     announcement_comment_num: 8,
                 },
             ],
-            grades: {
+            categories: ["ctg1", "ctg2", "ctg3"],
+            grade: {
                 student_data: {
                     user_avg: 88.5,
                     class_avg: 75.3,
@@ -157,5 +158,23 @@ export async function DELETE(_req: NextRequest, { params }: Props) {
         return NextResponse.json({ message: "Room deleted successfully" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Something went wrong! Unable to delete room." }, { status: 500 })
+    }
+}
+
+export async function PUT(req: NextRequest) {
+    const token = cookies().get(AUTH_COOKIE_KEY)?.value
+    if (!token) return NextResponse.json({ message: "Unauthorized. No token provided" }, { status: 401 })
+    const user = await decrypt(token)
+    if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
+    if (user.role === "student") return NextResponse.json({ message: "You do not have persmission to make delete action" }, { status: 401 })
+
+    try {
+        await delay(2500)
+
+        console.log(await req.json())
+
+        return NextResponse.json({ message: "Details changed successfullly!" }, { status: 200 })
+    } catch (error) {
+        return NextResponse.json({ message: "Internal server error. Unable to change room settings." }, { status: 500 })
     }
 }

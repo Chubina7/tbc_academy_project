@@ -1,20 +1,19 @@
-type formDataType = {
-  title: string;
-  description: string;
-};
+"use client";
 
-interface Props {
-  state: [formDataType, React.Dispatch<React.SetStateAction<formDataType>>];
-}
+import { useContext } from "react";
+import { EditRoomInformationContext } from "../../../../../../context/ctx";
 
-export default function ChangeTitle({ state }: Props) {
+export default function ChangeTitle() {
+  const { details, setDetails } = useContext(EditRoomInformationContext);
   return (
     <input
       className="border rounded-lg px-3 py-1 focus:outline-none bg-transparent outline-none"
       type="text"
       placeholder="Room title"
-      value={state[0].title}
-      onChange={(e) => state[1]((prev) => ({ ...prev, title: e.target.value }))}
+      value={details.title}
+      onChange={(e) =>
+        setDetails((prev) => ({ ...prev, title: e.target.value }))
+      }
     />
   );
 }

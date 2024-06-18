@@ -137,14 +137,15 @@ interface IRoomStudentAvgs {
     class_avg: number,
 }
 interface ISingleRoomApiReturn {
-    intro: IRoomIntro;
-    assignments: Array<IRoomAssignment>;
-    announcement: Array<IRoomAnnouncement>;
-    grades: {
-        student_data: IRoomStudentAvgs | null;
-        teacher_data: Array<IRoomTeacherAvgs> | null;
-    };
-    members: Array<IRoomMember>;
+    intro: IRoomIntro
+    assignments: Array<IRoomAssignment>
+    categories: Array<string>
+    announcements: Array<IRoomAnnouncement>
+    grade: {
+        student_data: IRoomStudentAvgs | null
+        teacher_data: Array<IRoomTeacherAvgs> | null
+    }
+    members: Array<IRoomMember>
 }
 
 // Announcements

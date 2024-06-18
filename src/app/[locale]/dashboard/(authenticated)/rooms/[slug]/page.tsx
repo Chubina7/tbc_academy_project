@@ -25,8 +25,8 @@ export default async function RoomPage({ params }: Props) {
             <Assignments room_id={params.slug} data={data.assignments} />
           </div>
           <div className="w-full flex flex-col sm:flex-row justify-start items-start gap-5">
-            <Announcements room_id={params.slug} data={data.announcement} />
-            <Grades data={data.grades} />
+            <Announcements room_id={params.slug} data={data.announcements} />
+            <Grades data={data.grade} />
           </div>
         </div>
         <Members room_id={params.slug} data={data.members} />

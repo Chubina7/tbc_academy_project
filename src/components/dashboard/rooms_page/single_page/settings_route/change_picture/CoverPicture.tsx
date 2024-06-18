@@ -6,8 +6,12 @@ import Info from "./Info";
 import ChangeBtn from "./ChangeBtn";
 import UploadedImg from "./UploadedImg";
 
-export default function CoverPicture() {
-  const [imageUrl, setImageUrl] = useState<string>("");
+interface Props {
+  data: string | null;
+}
+
+export default function CoverPicture({ data }: Props) {
+  const [imageUrl, setImageUrl] = useState<string>(data || "");
   const [error, setError] = useState("");
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
