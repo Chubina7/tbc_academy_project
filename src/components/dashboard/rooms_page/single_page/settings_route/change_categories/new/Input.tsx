@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AddNewCategoryContext as ctx } from "../../../../../../../context/ctx";
 
 export default function Input() {
-  const { inputValue, setInputValue } = useContext(ctx);
+  const { inputValue, setInputValue, handleCtgAdd } = useContext(ctx);
 
   return (
     <input
@@ -13,6 +13,11 @@ export default function Input() {
       placeholder="Start typing..."
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          handleCtgAdd(inputValue);
+        }
+      }}
     />
   );
 }

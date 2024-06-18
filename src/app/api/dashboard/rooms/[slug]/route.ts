@@ -92,7 +92,7 @@ export async function GET(req: NextRequest) {
                     announcement_comment_num: 8,
                 },
             ],
-            categories: ["ctg1", "ctg2", "ctg3"],
+            categories: ["ctg1", "ctg2", "ctg3", "ctg5"],
             grade: {
                 student_data: {
                     user_avg: 88.5,
@@ -171,9 +171,15 @@ export async function PUT(req: NextRequest) {
     try {
         await delay(2500)
 
-        console.log(await req.json())
+        const data = await req.json()
 
-        return NextResponse.json({ message: "Details changed successfullly!" }, { status: 200 })
+        // store categories in this format JSON.stringify(data.categories))
+
+        console.log(data)
+
+        throw new Error()
+
+        return NextResponse.json({ message: "Changed successfullly!" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Internal server error. Unable to change room settings." }, { status: 500 })
     }

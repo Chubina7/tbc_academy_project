@@ -1,21 +1,22 @@
-import React from "react";
-import { IoClose } from "react-icons/io5";
+"use client";
 
-interface Props {
-  data: Array<any>;
-}
+import { useContext } from "react";
+import { AddNewCategoryContext as ctgCtx } from "../../../../../../../context/ctx";
+import RemoveCtg from "./RemoveCtg";
 
-export default function List({ data }: Props) {
+export default function List() {
+  const { categories } = useContext(ctgCtx);
+
   return (
     <ul>
-      {data.map((item, idx) => (
+      {categories.map((item, idx) => (
         <li
           key={idx}
           className="w-fit inline-block border border-[#2B3674] dark:border-[#5C5470] rounded-full px-3 py-0.5 m-1.5 transition-all duration-300"
         >
           <div className="flex justify-center items-center gap-2 select-none">
             <p className="text-sm text-nowrap">{item}</p>
-            <IoClose size={18} className="cursor-pointer" />
+            {categories.length > 3 && <RemoveCtg excitingCtg={item} />}
           </div>
         </li>
       ))}

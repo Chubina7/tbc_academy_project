@@ -78,14 +78,16 @@ export const MemberSettingsDialogContext = createContext({
 export const AddNewCategoryContext = createContext({
   inputValue: "",
   setInputValue: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
-  suggestionList: [] as Array<string>,
-  setSuggestionList: (() => {}) as React.Dispatch<
-    React.SetStateAction<Array<string>>
-  >,
   showSuggestions: false,
   setShowSuggestions: (() => {}) as React.Dispatch<
     React.SetStateAction<boolean>
   >,
+  categories: [] as Array<string>,
+  handleCtgAdd: (() => {}) as (item: string) => void,
+  handleCtgRemove: (() => {}) as (excitingCtg: string) => void,
+  errorMsg: "",
+  handleReset: (() => {}) as () => void,
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
 });
 
 export const AddNewRoomContext = createContext({
