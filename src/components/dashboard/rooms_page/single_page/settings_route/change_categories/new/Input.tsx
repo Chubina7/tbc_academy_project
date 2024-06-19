@@ -12,7 +12,7 @@ export default function Input() {
       type="search"
       placeholder="Start typing..."
       value={inputValue}
-      onChange={(e) => setInputValue(e.target.value)}
+      onChange={(e) => setInputValue(e.target.value.replace(/[^a-zA-Z]/g, ''))}
       onKeyDown={(e) => {
         if (e.key === "Enter") {
           handleCtgAdd(inputValue);
