@@ -113,6 +113,8 @@ export const AddNewRoomContext = createContext({
       React.SetStateAction<Array<string>>
     >,
   },
+  isLoading: false,
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
 });
 
 export const ProfileLoadingStateContext = createContext({

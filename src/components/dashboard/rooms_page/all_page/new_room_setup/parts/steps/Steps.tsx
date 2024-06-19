@@ -7,10 +7,14 @@ import OnMobile from "./OnMobile";
 import OnDesktop from "./OnDesktop";
 
 export default function Steps() {
-  const { steps } = useContext(AddNewRoomContext);
+  const { steps, isLoading } = useContext(AddNewRoomContext);
 
   return (
-    <div className="w-full flex sm:flex-row justify-center items-center gap-5 px-4 sm:pb-4">
+    <div
+      className={`w-full flex sm:flex-row justify-center items-center gap-5 px-4 sm:pb-4 ${
+        isLoading ? "opacity-30" : "opacity-100"
+      }`}
+    >
       {settingUpNewRoomSteps.map((item, idx) => (
         <div
           key={idx}

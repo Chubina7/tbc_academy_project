@@ -8,10 +8,14 @@ import {
 import { useRouter } from "next/navigation";
 import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
 
+interface Props {
+  closeModal: () => void;
+}
+
 const domain = detectEnviro();
 
-export default function FinishBtn() {
-  const { steps, data } = useContext(roomCtx);
+export default function FinishBtn({ closeModal }: Props) {
+  const { steps, data, isLoading, setIsLoading } = useContext(roomCtx);
   const { showNotification } = useContext(notifCtx);
   const router = useRouter();
 
@@ -31,6 +35,7 @@ export default function FinishBtn() {
     title === "";
 
   const handleSubmition = async () => {
+    setIsLoading(true);
     if (condition) {
       console.error("Empty values detected!");
       return;
@@ -61,6 +66,9 @@ export default function FinishBtn() {
     } catch (error: any) {
       console.error(error.message);
       showNotification(true, "error", error.message);
+    } finally {
+      setIsLoading(false);
+      closeModal();
     }
   };
 
@@ -68,7 +76,7 @@ export default function FinishBtn() {
     <button
       className="w-full px-12 py-1 rounded-xl bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
       onClick={handleSubmition}
-      disabled={condition}
+      disabled={condition || isLoading}
     >
       FINISH
     </button>
