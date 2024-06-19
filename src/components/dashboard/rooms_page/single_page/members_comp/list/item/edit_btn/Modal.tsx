@@ -13,22 +13,23 @@ interface Props {
 export default function Modal({ state, user_id }: Props) {
   // track and change direction of modal opening
   const [shouldChangeDir, setShouldChangeDir] = useState(false);
-  const calculateDistance = () => {
-    const seeAllBtn = document.getElementById("see_all_btn");
-    const threeDots = document.getElementById("three_dots");
 
-    if (seeAllBtn && threeDots) {
-      const seeAllBtnTop = seeAllBtn.getBoundingClientRect().top;
-      const threeDotsTop = threeDots.getBoundingClientRect().top;
+  useEffect(() => {
+    function calculateDistance() {
+      const seeAllBtn = document.getElementById("see_all_btn");
+      const threeDots = document.getElementById("three_dots");
 
-      if (seeAllBtnTop - threeDotsTop < 200) {
-        setShouldChangeDir(true);
-      } else {
-        setShouldChangeDir(false);
+      if (seeAllBtn && threeDots) {
+        const seeAllBtnTop = seeAllBtn.getBoundingClientRect().top;
+        const threeDotsTop = threeDots.getBoundingClientRect().top;
+
+        if (seeAllBtnTop - threeDotsTop < 200) {
+          setShouldChangeDir(true);
+        } else {
+          setShouldChangeDir(false);
+        }
       }
     }
-  };
-  useEffect(() => {
     calculateDistance();
     window.addEventListener("resize", calculateDistance);
     return () => window.removeEventListener("resize", calculateDistance);
