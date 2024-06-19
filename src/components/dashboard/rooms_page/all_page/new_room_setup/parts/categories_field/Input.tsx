@@ -37,7 +37,7 @@ export default function Input() {
           placeholder="Search categories.."
           className="w-full text-lg rounded-lg border focus:outline-none bg-transparent px-3 py-1"
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => setCategory(e.target.value.replace(/[^a-zA-Z]/g, ""))}
           onKeyDown={(e) => {
             if (e.key === "Enter") addCategory();
           }}

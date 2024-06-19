@@ -2,11 +2,15 @@ import Heading from "../Heading";
 import SeeAllBtn from "./SeeAllBtn";
 import List from "./list/List";
 
-export default function TeacherComp() {
+interface Props {
+  data: Array<IRoomTeacherAvgs> | null;
+}
+
+export default function TeacherComp({ data }: Props) {
   return (
     <>
       <Heading />
-      <List />
+      <List data={data} />
       <SeeAllBtn />
     </>
   );

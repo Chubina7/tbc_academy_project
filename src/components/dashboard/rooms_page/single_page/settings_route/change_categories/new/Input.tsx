@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AddNewCategoryContext as ctx } from "../../../../../../../context/ctx";
 
 export default function Input() {
-  const { inputValue, setInputValue } = useContext(ctx);
+  const { inputValue, setInputValue, handleCtgAdd } = useContext(ctx);
 
   return (
     <input
@@ -12,7 +12,12 @@ export default function Input() {
       type="search"
       placeholder="Start typing..."
       value={inputValue}
-      onChange={(e) => setInputValue(e.target.value)}
+      onChange={(e) => setInputValue(e.target.value.replace(/[^a-zA-Z]/g, ''))}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          handleCtgAdd(inputValue);
+        }
+      }}
     />
   );
 }

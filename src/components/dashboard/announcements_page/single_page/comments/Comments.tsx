@@ -2,7 +2,7 @@ import List from "./List";
 import Sorter from "./Sorter";
 
 interface Props {
-  list: Array<IAnnouncementComment>;
+  list: Array<IAnnouncementComment> | undefined;
 }
 
 export default function Comments({ list }: Props) {

@@ -11,13 +11,11 @@ export default function Actions() {
 
   const handleCancel = () => setValue(prevValues);
 
-  const handleSubmit = () => console.log(value);
-
   if (areObjValuesChanged(prevValues, value))
     return (
       <div className="flex gap-2 justify-center items-center">
         <CancelBtn action={handleCancel} />
-        <SaveBtn action={handleSubmit} />
+        <SaveBtn dataToBeServed={value} />
       </div>
     );
 

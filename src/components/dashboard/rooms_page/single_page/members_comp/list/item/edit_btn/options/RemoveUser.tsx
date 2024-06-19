@@ -5,14 +5,14 @@ import { IoPersonRemove } from "react-icons/io5";
 import { MemberSettingsDialogContext as ctx } from "../../../../../../../../../context/ctx";
 
 interface Props {
-  onClick: () => void;
+  mocalHandler: () => void;
 }
 
-export default function RemoveUser({ onClick }: Props) {
+export default function RemoveUser({ mocalHandler }: Props) {
   const { setRemoveDialog } = useContext(ctx);
 
   const dialogHandler = () => {
-    onClick();
+    mocalHandler();
     setRemoveDialog(true);
   };
 

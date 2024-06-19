@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function Close({ action }: Props) {
-  const { data } = useContext(ctx);
+  const { data, isLoading } = useContext(ctx);
   const { categories, coverPicture, description, members, title } = data;
 
   const handleClose = () => {
@@ -30,12 +30,13 @@ export default function Close({ action }: Props) {
   };
 
   return (
-    <div
-      className="absolute right-4 top-5 cursor-pointer flex gap-2 justify-center items-center"
+    <button
+      className="absolute right-4 top-5 cursor-pointer flex gap-2 justify-center items-center disabled:opacity-30"
       onClick={handleClose}
+      disabled={isLoading}
     >
       <IoClose size={28} />
       <p className="hidden sm:block font-bold text-lg">Close</p>
-    </div>
+    </button>
   );
 }

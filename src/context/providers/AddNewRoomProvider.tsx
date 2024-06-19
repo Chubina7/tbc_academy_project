@@ -13,7 +13,8 @@ export default function AddNewRoomProvider({ children }: Props) {
   const [description, setDescription] = useState("");
   const [coverPicture, setCoverPicture] = useState("");
   const [categories, setCategories] = useState<Array<string>>([]);
-  const [members, setMembers] = useState<Array<any>>([]);
+  const [members, setMembers] = useState<Array<string>>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const steps = {
     activeIdx,
@@ -37,7 +38,9 @@ export default function AddNewRoomProvider({ children }: Props) {
   };
 
   return (
-    <AddNewRoomContext.Provider value={{ steps, data, setters }}>
+    <AddNewRoomContext.Provider
+      value={{ steps, data, setters, isLoading, setIsLoading }}
+    >
       {children}
     </AddNewRoomContext.Provider>
   );

@@ -1,9 +1,22 @@
-import { useContext } from "react";
-import { AddNewRoomContext as ctx } from "../../../../../../context/ctx";
-import { useRouter } from "next/navigation";
+"use client";
 
-export default function FinishBtn() {
-  const { steps, data } = useContext(ctx);
+import { useContext } from "react";
+import {
+  AddNewRoomContext as roomCtx,
+  NotificationsContext as notifCtx,
+} from "../../../../../../context/ctx";
+import { useRouter } from "next/navigation";
+import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
+
+interface Props {
+  closeModal: () => void;
+}
+
+const domain = detectEnviro();
+
+export default function FinishBtn({ closeModal }: Props) {
+  const { steps, data, isLoading, setIsLoading } = useContext(roomCtx);
+  const { showNotification } = useContext(notifCtx);
   const router = useRouter();
 
   if (steps.activeIdx !== 3) return null;
@@ -21,31 +34,49 @@ export default function FinishBtn() {
     members.length < 1 ||
     title === "";
 
-  const handleSubmition = () => {
-    // validate
+  const handleSubmition = async () => {
+    setIsLoading(true);
     if (condition) {
-      // throw error message
       console.error("Empty values detected!");
-      // ...
       return;
     }
-    // ...
 
-    // save in db
-    // თუ ბაზას ჩაწერილი რელაციის ოთახის აიდი დავაბრუნებინეთ, მაშინ router.replace(-რუმის აიდი-) და გამოიტანოს success მესიჯი
-    // ...
+    const dataToBeStored = {
+      room: {
+        room_name: data.title,
+        room_description: data.description,
+        category: data.categories,
+        cover_picture: data.coverPicture,
+      },
+      members: data.members,
+    };
 
-    // redirect
-    router.replace("/dashboard/");
-    // ...
-    console.log({ categories, coverPicture, description, members, title });
+    try {
+      const res = await fetch(`${domain}/api/dashboard/rooms`, {
+        method: "POST",
+        body: JSON.stringify(dataToBeStored),
+      });
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result);
+      }
+      router.push(`/dashboard/rooms/${result.room_id}`);
+      showNotification(true, "success", result.message);
+    } catch (error: any) {
+      console.error(error.message);
+      showNotification(true, "error", error.message);
+    } finally {
+      setIsLoading(false);
+      closeModal();
+    }
   };
 
   return (
     <button
       className="w-full px-12 py-1 rounded-xl bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
       onClick={handleSubmition}
-      disabled={condition}
+      disabled={condition || isLoading}
     >
       FINISH
     </button>

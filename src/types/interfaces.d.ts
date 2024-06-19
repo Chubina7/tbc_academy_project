@@ -1,3 +1,33 @@
+// General
+interface IMetaData {
+    title: string
+    description: string
+}
+interface IParams {
+    locale: string
+    slug: string
+}
+interface IThemeListItem {
+    title: "light" | "os" | "dark";
+    icon: React.ReactNode
+}
+interface ILandPrefListItem {
+    title: "ka" | "en";
+    icon: React.ReactNode
+}
+interface ILandingNavItem {
+    placeholder: "home" | "about" | "contact" | "admin";
+    href: "/" | "/about" | "/contact" | "/admin";
+    whenActive: "/" | "/about" | "/contact" | "/admin";
+}
+interface IDashboardNavListItem {
+    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "El-Resources",
+    icon: React.ReactNode,
+    onActive: React.ReactNode,
+    href: "" | "/rooms" | "/schedule" | "/announcements" | "/el-resources",
+    forHeading: string
+}
+
 // Users
 interface IUserAdmin {
     username: string
@@ -33,46 +63,6 @@ interface IUserPublics {
     birth_date: string
 }
 
-// General for Components
-interface IMetaData {
-    title: string
-    description: string
-}
-interface IParams {
-    locale: string
-    slug: string
-}
-
-// Context
-interface IBookmarkCtx {
-    list: any;
-    addItem: (param: any) => void;
-    removeItem: (param: any) => void;
-    resetList: () => void;
-}
-
-// General
-interface IThemeListItem {
-    title: "light" | "os" | "dark";
-    icon: React.ReactNode
-}
-interface ILandPrefListItem {
-    title: "ka" | "en";
-    icon: React.ReactNode
-}
-interface ILandingNavItem {
-    placeholder: "home" | "about" | "contact" | "admin";
-    href: "/" | "/about" | "/contact" | "/admin";
-    whenActive: "/" | "/about" | "/contact" | "/admin";
-}
-interface IDashboardNavListItem {
-    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "El-Resources",
-    icon: React.ReactNode,
-    onActive: React.ReactNode,
-    href: "" | "/rooms" | "/schedule" | "/announcements" | "/el-resources",
-    forHeading: string
-}
-
 // 
 interface IRegisterPersonalDetails {
     username: string
@@ -84,33 +74,87 @@ interface IRegisterCredentials {
     password: string
 }
 
-// Courses
-interface ISingleCourse {
-    course_title: string
-    course_description: string
-    category: string
-    created_at: string
-    updated_at: string
-    image: string | null
-    announcements: Array<AnnouncementComponentType>
-    members: Array<MemberComponentType>
-}
-
-
 // Rooms
 interface IRoom {
     room_id: string
     room_name: string
     description: string
-    image: string | null
+    room_image: string | null
     teacher: string
     enrolled_number: number
     category: Array<string>
     created_at: string
 }
+interface IRoomsApiReturn {
+    rooms: Array<IRoom>
+    categories: Array<string>;
+}
+interface IRoomUserListItem {
+    user_id: string;
+    profile_picture: null;
+    username: string;
+    surname: null;
+    role: RoleType;
+    joined_at: string;
+}
+// Single Room
+interface IRoomAssignment {
+    assignment_id: string;
+    assignment_title: string;
+    assignment_description: string;
+    assignment_status: boolean;
+    created_at: string;
+    assignment_past_due: string;
+}
+interface IRoomIntro {
+    room_name: string,
+    room_description: string,
+    created_at: string,
+    room_image: string | null,
+}
+interface IRoomAnnouncement {
+    announcement_id: string;
+    announcement_title: string;
+    annonced_at: string;
+    announcement_description: string;
+    announcement_comment_num: number;
+}
+interface IRoomMember {
+    user_id: string;
+    username: string;
+    surname: string | null;
+    email: string;
+    profile_picture: string | null;
+}
+interface IRoomTeacherAvgs {
+    user_id: string;
+    username: string;
+    surname: string;
+    student_avg_grade: number;
+}
+interface IRoomStudentAvgs {
+    user_avg: number,
+    class_avg: number,
+}
+interface ISingleRoomApiReturn {
+    intro: IRoomIntro
+    assignments: Array<IRoomAssignment>
+    categories: Array<string>
+    announcements: Array<IRoomAnnouncement>
+    grade: {
+        student_data: IRoomStudentAvgs | null
+        teacher_data: Array<IRoomTeacherAvgs> | null
+    }
+    members: Array<IRoomMember>
+}
 
 // Announcements
-interface IAnnouncementList {
+interface IAnnouncement {
+    announcement_id: string
+    announcement_title: string
+    announcement: string
+    comments_number: number
+    announced_at: string
     author: {
         user_id: string
         username: string
@@ -118,12 +162,13 @@ interface IAnnouncementList {
         room_id: string
         room_title: string
     }
-    announcement_id: string
-    announcement_title: string
-    announcement: string
-    comments_number: number
-    announced_at: string
 }
+interface IAnnouncemenetApiReturn {
+    announcements: Array<IAnnouncement>
+    room_names: Array<string>
+
+}
+// Single Announcemenet
 interface IAnnouncementComment {
     author: {
         user_id: string
@@ -139,4 +184,32 @@ interface IAnnouncementComment {
         quantity: number
     }
     commented_at: string
+}
+interface ISingleAnnouncementApiReturn {
+    announcement: {
+        author: {
+            user_id: string,
+            room_id: string,
+            username: string,
+            surname: string | null,
+            room_title: string,
+        },
+        data: {
+            announcement_title: string,
+            announcement: string
+            announced_at: string,
+            comments_number: 15,
+        },
+    }
+    comments: Array<IAnnouncementComment>
+}
+
+// Profile page
+interface IUserPublicInfo {
+    username: string;
+    surname: string | null;
+    birth_date: string | null;
+    email: string;
+    profile_image: string | null;
+    role: RoleType;
 }

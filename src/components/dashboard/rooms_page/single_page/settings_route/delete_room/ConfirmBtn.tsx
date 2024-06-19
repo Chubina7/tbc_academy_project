@@ -1,21 +1,53 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
+import { useContext } from "react";
+import { NotificationsContext as notifCtx } from "../../../../../../context/ctx";
 
-export default function ConfirmBtn() {
+interface Props {
+  closeModal: () => void;
+  loadingState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+}
+
+const domain = detectEnviro();
+
+export default function ConfirmBtn({ closeModal, loadingState }: Props) {
+  const { showNotification } = useContext(notifCtx);
   const router = useRouter();
+  const path = usePathname();
+  const room_id = path.split("/")[3];
 
-  const deletionHandler = () => {
-    // room deletion logic
-    // ...
+  const deletionHandler = async () => {
+    loadingState[1](true);
 
-    router.replace("/dashboard");
+    try {
+      const res = await fetch(`${domain}/api/dashboard/rooms/${room_id}`, {
+        method: "DELETE",
+      });
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.message);
+      }
+
+      router.replace("/dashboard");
+      showNotification(true, "success", result.message);
+    } catch (error: any) {
+      showNotification(true, "error", error.message);
+    } finally {
+      loadingState[1](false);
+      closeModal();
+    }
   };
 
   return (
     <button
-      className="px-3 py-1 border border-red-500 bg-red-500 rounded-lg"
+      className={`px-3 py-1 border border-red-500 bg-red-500 rounded-lg ${
+        loadingState[0] ? "opacity-60" : "opacity-100"
+      }`}
       onClick={deletionHandler}
+      disabled={loadingState[0]}
     >
       Confirm
     </button>

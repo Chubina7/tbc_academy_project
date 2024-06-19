@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AddNewRoomContext as ctx } from "../../../../../../context/ctx";
 
 export default function NextBtn() {
-  const { steps, data } = useContext(ctx);
+  const { steps, data, isLoading } = useContext(ctx);
 
   if (steps.activeIdx === 3) return null;
 
@@ -16,11 +16,11 @@ export default function NextBtn() {
 
   return (
     <button
-      className="w-full px-12 py-1 rounded-xl bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+      className="w-full px-12 py-1 rounded-xl bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
       onClick={() => {
         steps.setActiveIdx((prev) => prev + 1);
       }}
-      disabled={condition}
+      disabled={condition || isLoading}
     >
       NEXT
     </button>

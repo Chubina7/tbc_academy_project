@@ -15,7 +15,6 @@ interface Props {
     announcement_title: string;
     announcement: string;
     announced_at: string;
-    comments_number: number;
   };
 }
 
