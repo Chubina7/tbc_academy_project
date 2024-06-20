@@ -9,7 +9,7 @@ interface Props {
 
 export default function LandindPageLayout({ children, params }: Props) {
   unstable_setRequestLocale(params.locale);
-  
+
   return (
     <>
       <Header />
