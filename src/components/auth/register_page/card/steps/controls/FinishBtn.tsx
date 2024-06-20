@@ -58,11 +58,11 @@ export default function FinishBtn() {
         console.error(result.error);
       } else {
         router.replace("/dashboard");
-        showNotification(true, "success", "Successfully registered", 5000);
+        showNotification(true, "success", result.message, 5000);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      setMessage("Client side error occured! Check console for details.");
+      setMessage(error.message);
     } finally {
       setIsLoading(false);
     }

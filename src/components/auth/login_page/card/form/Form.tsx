@@ -47,11 +47,11 @@ export default function Form() {
         setMessage(result.message);
       } else {
         router.replace(params.get("_redirect") || "/dashboard");
-        showNotification(true, "success", "Successfully logined in", 5000);
+        showNotification(true, "success", result.message, 5000);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      setMessage("Unable to login. Check console for details");
+      setMessage(error.message);
     } finally {
       setIsLoading(false);
     }
