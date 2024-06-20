@@ -4,7 +4,7 @@ interface IMetaData {
     description: string
 }
 interface IParams {
-    locale: string
+    locale: "ka" | "en"
     slug: string
 }
 interface IThemeListItem {

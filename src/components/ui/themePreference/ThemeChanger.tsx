@@ -2,7 +2,7 @@ import React from "react";
 import ThemeChangerUi from "./ThemeChangerUi";
 import { cookies } from "next/headers";
 
-async function ThemeChanger() {
+export default async function ThemeChanger() {
   const cookie = cookies().get("theme")?.value;
 
   return (
@@ -11,5 +11,3 @@ async function ThemeChanger() {
     </>
   );
 }
-
-export default ThemeChanger;

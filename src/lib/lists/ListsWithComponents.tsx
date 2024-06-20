@@ -27,28 +27,33 @@ import {
   setLngToEn,
   setLngToGe,
 } from "../helpers/server_act_funcs/locale_change_acts";
+import { setTheme } from "../helpers/regular_funcs/helpers";
+import { storeThemeInCookies } from "../helpers/server_act_funcs/theme_change_act";
 
-export const themeList: ThemeListType = [
-  {
-    title: "os",
+export const themeList: ThemeListType = {
+  os: {
     icon: <IoDesktop size={20} color="inherit" />,
+    setTheme: async () => {
+      setTheme("light");
+      await storeThemeInCookies("light");
+    },
   },
-  {
-    title: "light",
+  light: {
     icon: <IoSunny size={20} color="inherit" />,
+    setTheme: async () => {
+      setTheme("dark");
+      await storeThemeInCookies("dark");
+    },
   },
-  {
-    title: "dark",
+  dark: {
     icon: <IoMoon size={20} color="inherit" />,
+    setTheme: async () => {
+      setTheme("os");
+      await storeThemeInCookies("os");
+    },
   },
-];
-export const langPrefList: Record<
-  string,
-  {
-    icon: React.ReactNode;
-    setLng: () => Promise<void>;
-  }
-> = {
+};
+export const langPrefList: LangPrefListType = {
   ka: {
     icon: (
       <div className="w-20 h-20">

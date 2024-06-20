@@ -7,8 +7,20 @@ type LogOutResponse = { message: string }
 type SetQueryType = React.Dispatch<React.SetStateAction<string>>
 type SetSortRuleType = React.Dispatch<React.SetStateAction<boolean>>
 type SortStateType = { sortRule: boolean; setSortRule: SetSortRuleType };
-type ThemeListType = Array<IThemeListItem>;
-type LangPrefListType = Array<ILandPrefListItem>
+type ThemeListType = Record<
+    string,
+    {
+        icon: React.JSX.Element;
+        setTheme: () => void;
+    }
+>;
+type LangPrefListType = Record<
+    string,
+    {
+        icon: React.ReactNode;
+        setLng: () => Promise<void>;
+    }
+>
 type LandingNavItemsType = Array<ILandingNavItem>
 type DashboardNavListType = Array<IDashboardNavListItem>
 
