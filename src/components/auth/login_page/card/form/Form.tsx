@@ -4,13 +4,14 @@ import { useContext, useState } from "react";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import LoginBtn from "../LoginBtn";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { NotificationsContext } from "../../../../../context/ctx";
 import { loginValidationMessage } from "../../../../../lib/helpers/regular_funcs/validators";
 import { detectEnviro } from "../../../../../lib/helpers/regular_funcs/general";
 
 export default function Form() {
   const { showNotification } = useContext(NotificationsContext);
+  const params = useSearchParams();
   const router = useRouter();
   const domain = detectEnviro();
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +46,7 @@ export default function Form() {
       if (!response.ok) {
         setMessage(result.message);
       } else {
-        router.replace("/dashboard");
+        router.replace(params.get("_redirect") || "/dashboard");
         showNotification(true, "success", "Successfully logined in", 5000);
       }
     } catch (error) {

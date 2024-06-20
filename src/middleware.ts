@@ -13,7 +13,8 @@ export default async function middleware(request: NextRequest) {
   // Check authentication
   if (path.startsWith("/dashboard")) {
     if (!isSessionValid && path !== "/dashboard/login" && path !== "/dashboard/register") {
-      request.nextUrl.pathname = "/dashboard/login";
+      request.nextUrl.search = `_redirect=${request.nextUrl.pathname}`
+      request.nextUrl.pathname = `/dashboard/login`;
       return NextResponse.redirect(request.nextUrl);
     }
     if (isSessionValid && (path === "/dashboard/login" || path === "/dashboard/register")) {
