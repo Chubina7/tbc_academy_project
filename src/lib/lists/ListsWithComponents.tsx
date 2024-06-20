@@ -1,4 +1,3 @@
-import { GE, US } from "country-flag-icons/react/3x2";
 import {
   IoHome,
   IoCalendarSharp,
@@ -23,6 +22,11 @@ import GeneralInfo from "../../components/dashboard/rooms_page/all_page/new_room
 import CoverPicture from "../../components/dashboard/rooms_page/all_page/new_room_setup/parts/cover_pict_field/CoverPicture";
 import Categories from "../../components/dashboard/rooms_page/all_page/new_room_setup/parts/categories_field/Categories";
 import Members from "../../components/dashboard/rooms_page/all_page/new_room_setup/parts/members_field/Members";
+import Image from "next/image";
+import {
+  setLngToEn,
+  setLngToGe,
+} from "../helpers/server_act_funcs/locale_change_acts";
 
 export const themeList: ThemeListType = [
   {
@@ -38,10 +42,47 @@ export const themeList: ThemeListType = [
     icon: <IoMoon size={20} color="inherit" />,
   },
 ];
-export const langPrefList: LangPrefListType = [
-  { title: "ka", icon: <GE className="bg-white w-6 h-4" /> },
-  { title: "en", icon: <US className="bg-white w-6 h-4" /> },
-];
+export const langPrefList: Record<
+  string,
+  {
+    icon: React.ReactNode;
+    setLng: () => Promise<void>;
+  }
+> = {
+  ka: {
+    icon: (
+      <div className="w-20 h-20">
+        <Image
+          src={
+            "https://purecatamphetamine.github.io/country-flag-icons/3x2/GE.svg"
+          }
+          alt="georgia"
+          width={20}
+          height={20}
+          className="w-5 h-5"
+        />
+      </div>
+    ),
+    setLng: async () => await setLngToEn(),
+  },
+  en: {
+    icon: (
+      <div className="w-20 h-20">
+        <Image
+          src={
+            "https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"
+          }
+          alt="united states"
+          width={20}
+          height={20}
+          className="w-5 h-5"
+        />
+      </div>
+    ),
+    setLng: async () => await setLngToGe(),
+  },
+};
+
 export const navItems: LandingNavItemsType = [
   { placeholder: "home", href: "/", whenActive: "/" },
   { placeholder: "contact", href: "/contact", whenActive: "/contact" },

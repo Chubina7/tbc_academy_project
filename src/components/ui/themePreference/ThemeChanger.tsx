@@ -1,9 +1,9 @@
 import React from "react";
 import ThemeChangerUi from "./ThemeChangerUi";
-import { readCookieForClient } from "../../../lib/helpers/server_act_funcs/actions";
+import { cookies } from "next/headers";
 
 async function ThemeChanger() {
-  const cookie = await readCookieForClient("theme");
+  const cookie = cookies().get("theme")?.value;
 
   return (
     <>

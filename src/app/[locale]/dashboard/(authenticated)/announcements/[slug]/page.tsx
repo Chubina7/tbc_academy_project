@@ -1,3 +1,4 @@
+import { unstable_setRequestLocale } from "next-intl/server";
 import AddNewComment from "../../../../../../components/dashboard/announcements_page/single_page/add_new_comment/AddNewComment";
 import Comments from "../../../../../../components/dashboard/announcements_page/single_page/comments/Comments";
 import Details from "../../../../../../components/dashboard/announcements_page/single_page/details/Details";
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default async function AnnouncementPage({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
   const data = await getSingleAnnouncementData(params.slug);
 
   if (!data) return <p className="w-full text-center">No data</p>;

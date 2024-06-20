@@ -1,11 +1,15 @@
+import { unstable_setRequestLocale } from "next-intl/server";
 import Footer from "../../../components/landing/footer/Footer";
 import Header from "../../../components/landing/header/Header";
 
 interface Props {
   children: React.ReactNode;
+  params: IParams;
 }
 
-export default function LandindPageLayout({ children }: Props) {
+export default function LandindPageLayout({ children, params }: Props) {
+  unstable_setRequestLocale(params.locale);
+  
   return (
     <>
       <Header />

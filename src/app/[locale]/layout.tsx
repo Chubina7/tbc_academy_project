@@ -3,7 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { cookies } from "next/headers";
 import { NextIntlClientProvider, useMessages } from "next-intl";
-// import { supportedLocales } from "../../lib/variables";
+import { supportedLocales } from "../../lib/variables";
 import { unstable_setRequestLocale } from "next-intl/server";
 import NotificationsProvider from "../../context/providers/NotificationsProvider";
 import Notification from "../../components/dashboard/notifications/Notification";
@@ -25,25 +25,24 @@ export const metadata: IMetaData = {
 };
 
 // Static Generation
-// export function generateStaticParams() {
-//   return supportedLocales.map((locale) => ({ locale }));
-// }
+export function generateStaticParams() {
+  return supportedLocales.map((locale) => ({ locale }));
+}
 
 // Component
 export default function RootLayout({ children, params }: Props) {
-  const themePref = cookies().get("theme")?.value;
-  const lngPref = params.locale;
-  unstable_setRequestLocale(lngPref);
+  unstable_setRequestLocale(params.locale);
   const translations = useMessages();
+  const themePref = cookies().get("theme")?.value;
 
   return (
-    <html lang={lngPref} className={`${themePref} scroll-hidden`}>
+    <html lang={params.locale} className={`${themePref} scroll-hidden`}>
       <body
         className={`${english.className} bg-[#F4F7FF] text-[#2B3674] dark:bg-[#2A2438] dark:text-[#DBD8E3] w-full flex flex-col transition-colors duration-300`}
       >
         <NotificationsProvider>
           <Notification />
-          <NextIntlClientProvider locale={lngPref} messages={translations}>
+          <NextIntlClientProvider messages={translations}>
             {children}
           </NextIntlClientProvider>
         </NotificationsProvider>

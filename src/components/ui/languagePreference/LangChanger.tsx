@@ -1,9 +1,8 @@
-import React from "react";
 import LangChangerUi from "./LangChangerUi";
-import { readCookieForClient } from "../../../lib/helpers/server_act_funcs/actions";
+import { cookies } from "next/headers";
 
-async function LangChanger() {
-  const cookie = await readCookieForClient("NEXT_LOCALE");
+export default async function LangChanger() {
+  const cookie = cookies().get("NEXT_LOCALE")?.value || "ka";
 
   return (
     <>
@@ -11,5 +10,3 @@ async function LangChanger() {
     </>
   );
 }
-
-export default LangChanger;

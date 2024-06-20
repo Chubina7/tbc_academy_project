@@ -22,9 +22,9 @@ export const storeThemeInCookies = (pref: string) => {
 };
 
 // General
-export const readCookieForClient = async (searchCookie: string) => {
-  return cookies().get(searchCookie)?.value;
-};
+// export const readCookieForClient = async (searchCookie: string) => {
+//   return cookies().get(searchCookie)?.value;
+// };
 
 // Admin actions
 export const actDeleteUser = async (user_id: string) => {

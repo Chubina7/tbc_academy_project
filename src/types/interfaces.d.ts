@@ -14,6 +14,7 @@ interface IThemeListItem {
 interface ILandPrefListItem {
     title: "ka" | "en";
     icon: React.ReactNode
+    setFunction: () => Promise<void>
 }
 interface ILandingNavItem {
     placeholder: "home" | "about" | "contact" | "admin";

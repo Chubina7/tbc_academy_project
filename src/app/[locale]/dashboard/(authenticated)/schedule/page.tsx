@@ -1,5 +1,11 @@
-import React from "react";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-export default function Schedule() {
+interface Props {
+  params: IParams;
+}
+
+export default function Schedule({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
+
   return <div>Schedule</div>;
 }

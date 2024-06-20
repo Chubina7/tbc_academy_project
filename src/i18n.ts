@@ -3,7 +3,8 @@ import { getRequestConfig } from 'next-intl/server';
 import { supportedLocales } from './lib/variables';
 
 export default getRequestConfig(async ({ locale }) => {
-  if (!supportedLocales.includes(locale as string)) notFound();
+  const baseLocal = new Intl.Locale(locale).baseName
+  if (!supportedLocales.includes(baseLocal)) notFound();
 
   return {
     messages: (await import(`../dictionaries/${locale}.json`)).default
