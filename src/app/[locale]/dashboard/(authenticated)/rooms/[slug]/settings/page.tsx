@@ -5,6 +5,7 @@ import CoverPicture from "../../../../../../../components/dashboard/rooms_page/s
 import DeleteRoom from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/delete_room/DeleteRoom";
 import Information from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/change_information/Information";
 import { getSingleRoomData } from "../../../../../../../lib/data_fetchers";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
   params: IParams;
@@ -18,6 +19,7 @@ const NoAccessPage = ({ message }: { message: string }) => (
 );
 
 export default async function SettingsPage({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
   const { role } = await USER();
 
   if (role === "student") {

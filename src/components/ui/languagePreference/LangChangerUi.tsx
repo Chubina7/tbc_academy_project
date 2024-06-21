@@ -1,36 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import React from "react";
 import { langPrefList } from "../../../lib/lists/ListsWithComponents";
 
 interface Props {
-  storedLang: string | undefined;
+  storedLang: string;
 }
 
 function LangChangerUi({ storedLang }: Props) {
-  const [idx, setIdx] = useState(() => {
-    switch (storedLang) {
-      case "ka":
-        return 0;
-      case "en":
-        return 1;
-      default:
-        return 0;
-    }
-  });
+  const router = useRouter();
 
-  useEffect(() => {
-    console.log("changing language..");
-  }, []);
+  const handleLangChange = () => {
+    langPrefList[storedLang].setLng();
+    router.refresh();
+  };
 
   return (
-    <div
-      className={`flex h-full justify-center items-center gap-1 cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100`}
-      onClick={() => setIdx((prev) => (prev + 1) % 2)}
-    >
-      {langPrefList[idx].icon}
+    <div className="flex flex-col justify-center items-center cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100">
+      <div onClick={handleLangChange}>{langPrefList[storedLang].icon}</div>
     </div>
   );
 }
 
-export default LangChangerUi;
+const areEqual = (prevProps: Props, nextProps: Props) => {
+  return prevProps.storedLang === nextProps.storedLang;
+};
+
+export default React.memo(LangChangerUi, areEqual);

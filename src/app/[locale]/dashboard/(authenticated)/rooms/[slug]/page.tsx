@@ -1,3 +1,4 @@
+import { unstable_setRequestLocale } from "next-intl/server";
 import Announcements from "../../../../../../components/dashboard/rooms_page/single_page/announcements_comp/Announcements";
 import Assignments from "../../../../../../components/dashboard/rooms_page/single_page/assignments_comp/Assignments";
 import Grades from "../../../../../../components/dashboard/rooms_page/single_page/grades_comp/Grades";
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default async function RoomPage({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
   const data = await getSingleRoomData(params.slug);
 
   if (!data)

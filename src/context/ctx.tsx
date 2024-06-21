@@ -58,9 +58,6 @@ export const NotificationsContext = createContext({
     title: string,
     duration?: number
   ) => void,
-  isShown: false,
-  notifType: "" as "success" | "error" | "loading",
-  notifTitle: "",
 });
 
 export const RoomsListFilterContext = createContext({

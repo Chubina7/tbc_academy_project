@@ -4,8 +4,14 @@ import RoomList from "../../../../../components/dashboard/rooms_page/all_page/Ro
 import RoomsListFilterProvider from "../../../../../context/providers/RoomsListFilterProvider";
 import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
 import { getEnrolledRoomsList } from "../../../../../lib/data_fetchers";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-export default async function RoomsPage() {
+interface Props {
+  params: IParams;
+}
+
+export default async function RoomsPage({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
   const { role } = await USER();
   const data = await getEnrolledRoomsList();
 

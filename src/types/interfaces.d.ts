@@ -4,7 +4,7 @@ interface IMetaData {
     description: string
 }
 interface IParams {
-    locale: string
+    locale: "ka" | "en"
     slug: string
 }
 interface IThemeListItem {
@@ -14,6 +14,7 @@ interface IThemeListItem {
 interface ILandPrefListItem {
     title: "ka" | "en";
     icon: React.ReactNode
+    setFunction: () => Promise<void>
 }
 interface ILandingNavItem {
     placeholder: "home" | "about" | "contact" | "admin";

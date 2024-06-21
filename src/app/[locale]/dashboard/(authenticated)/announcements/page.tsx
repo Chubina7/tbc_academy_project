@@ -3,8 +3,14 @@ import List from "../../../../../components/dashboard/announcements_page/all_pag
 import AddNewAnnouncement from "../../../../../components/dashboard/announcements_page/all_page/new_announcement/AddNewAnnouncement";
 import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
 import { getAnnouncementList } from "../../../../../lib/data_fetchers";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-export default async function AnnouncementsPage() {
+interface Props {
+  params: IParams;
+}
+
+export default async function AnnouncementsPage({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
   const { role } = await USER();
   const data = await getAnnouncementList();
 
