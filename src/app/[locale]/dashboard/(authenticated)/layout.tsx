@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../../../../components/dashboard/header/Header";
 import Navigation from "../../../../components/dashboard/navigation/Navigation";
-import BookmarkProvider from "../../../../context/providers/BookmarkProvider";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
@@ -13,7 +12,7 @@ export default function DashboardLayout({ children, params }: Props) {
   unstable_setRequestLocale(params.locale);
 
   return (
-    <BookmarkProvider>
+    <>
       <Navigation type="dekstop" />
       <div className="w-full h-screen md:pl-[88px] xl:pl-[244px] flex flex-col">
         <Header />
@@ -21,6 +20,6 @@ export default function DashboardLayout({ children, params }: Props) {
           {children}
         </main>
       </div>
-    </BookmarkProvider>
+    </>
   );
 }

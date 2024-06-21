@@ -8,19 +8,8 @@ import useOutsideClickTrack from "../../../../../../../../hooks/useOutsideClickT
 export default function SelectRoom() {
   const [isOpen, setIsOpen] = useState(false);
   useOutsideClickTrack("room_selecting_in_new_book", [isOpen, setIsOpen]);
-  const [selectedRoom, setSelectedRoom] = useState({
-    room_id: "",
-    room_name: "",
-  });
 
-  const handleSelectionModal = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const selectRoom = (selection: typeof selectedRoom) => {
-    setSelectedRoom(selection);
-    setIsOpen(false);
-  };
+  const handleSelectionModal = () => setIsOpen((prev) => !prev);
 
   return (
     <>
@@ -28,14 +17,8 @@ export default function SelectRoom() {
         className="relative w-full rounded-lg border bg-transparent"
         id="room_selecting_in_new_book"
       >
-        {isOpen && <Options selectRoom={selectRoom} />}
-        <Select
-          closeOptions={handleSelectionModal}
-          isOpen={isOpen}
-          selected={
-            selectedRoom.room_name === "" ? undefined : selectedRoom.room_name
-          }
-        />
+        {isOpen && <Options closeOptions={handleSelectionModal} />}
+        <Select closeOptions={handleSelectionModal} isOpen={isOpen} />
       </div>
     </>
   );

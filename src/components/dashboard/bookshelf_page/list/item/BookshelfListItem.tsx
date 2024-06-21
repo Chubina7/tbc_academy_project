@@ -13,7 +13,7 @@ interface Props {
     book_description: string;
     book_type: BookTypes;
     author: {
-      room: { room_id: string; room_name: string };
+      room: { room_id: string; room_name: string } | null;
       user: { surname: string | null; user_id: string; username: string };
     };
   };
@@ -21,8 +21,8 @@ interface Props {
 
 export default function BookshelfListItem({ data }: Props) {
   return (
-    <VariantsListItem className="w-full">
-      <div className="relative bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl shadow-custom transition-all duration-300 | p-3 py-10 flex flex-col justify-center items-center gap-3 hover:scale-105">
+    <VariantsListItem className="w-full select-none">
+      <div className="relative h-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl shadow-custom transition-all duration-300 | p-3 pt-10 flex flex-col justify-center items-center gap-3 hover:scale-105">
         <BookmarkCheck />
         <Link
           href={`/dashboard/bookshelf/${data.book_id}`}

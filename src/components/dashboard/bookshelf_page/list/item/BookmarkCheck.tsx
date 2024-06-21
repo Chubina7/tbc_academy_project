@@ -10,7 +10,7 @@ export default function BookmarkCheck() {
 
   return (
     <span
-      className="absolute right-3 -top-[4px] cursor-pointer opacity-80"
+      className="absolute right-3 top-3 cursor-pointer opacity-80"
       onClick={handleBookmarking}
     >
       {isInBookmark ? (

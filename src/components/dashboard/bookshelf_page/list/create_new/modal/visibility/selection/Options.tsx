@@ -1,5 +1,8 @@
 "use client";
 
+import { useContext } from "react";
+import { UploadNewBookContext as ctx } from "../../../../../../../../context/ctx";
+
 const list = [
   {
     room_id: "U0001",
@@ -20,10 +23,12 @@ const list = [
 ];
 
 interface Props {
-  selectRoom: (selection: { room_id: string; room_name: string }) => void;
+  closeOptions: () => void;
 }
 
-export default function Options({ selectRoom }: Props) {
+export default function Options({ closeOptions }: Props) {
+  const { setData, setError } = useContext(ctx);
+
   return (
     <div
       className="absolute bottom-9 left-0 w-full max-h-96 bg-[#FFFFFF] border rounded-lg overflow-hidden"
@@ -34,7 +39,11 @@ export default function Options({ selectRoom }: Props) {
           <li
             key={item.room_id}
             className="px-3 py-1 hover:bg-[#8BA8FF] w-full text-left truncate cursor-pointer"
-            onClick={() => selectRoom(item)}
+            onClick={() => {
+              setError("");
+              closeOptions();
+              setData((prev) => ({ ...prev, room: item }));
+            }}
             id="room_selecting_in_new_book"
           >
             {item.room_name}

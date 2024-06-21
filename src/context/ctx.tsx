@@ -174,3 +174,11 @@ export const EditRoomInformationContext = createContext({
   },
   setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
 });
+
+export const UploadNewBookContext = createContext({
+  data: {} as IUploadNewBook,
+  setData: (() => {}) as React.Dispatch<React.SetStateAction<IUploadNewBook>>,
+  error: "",
+  setError: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  initialValue: {} as IUploadNewBook,
+});

@@ -214,3 +214,17 @@ interface IUserPublicInfo {
     profile_image: string | null;
     role: RoleType;
 }
+
+// Bookshelf
+interface IUploadNewBook {
+    title: string;
+    description: string;
+    book: {
+        name: string;
+        type: BookTypes;
+    };
+    room: {
+        room_id: string;
+        room_name: string;
+    } | null;
+}
