@@ -65,3 +65,6 @@ type BookTypes = "image/bmp" | "image/gif" | "image/jpeg" | "image/png" | "image
     "application/msword" |
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document" |
     "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+
+
+type BookmarkItemType = string

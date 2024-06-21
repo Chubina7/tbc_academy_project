@@ -1,22 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useContext } from "react";
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
+import { BookmarkContext as ctx } from "../../../../../context/ctx";
 
-export default function BookmarkCheck() {
-  const [isInBookmark, setIsInBookmark] = useState(false);
+interface Props {
+  book_id: string;
+}
 
-  const handleBookmarking = () => setIsInBookmark((prev) => !prev);
+export default function BookmarkCheck({ book_id }: Props) {
+  const states = useContext(ctx);
+  const { addToBookmark, removeFromBookmark } = states.actions;
+  const { includes } = states.properties;
+
+  const handleBookmarking = () => {
+    if (includes(book_id)) {
+      removeFromBookmark(book_id);
+    } else {
+      addToBookmark(book_id);
+    }
+  };
 
   return (
     <span
       className="absolute right-3 top-3 cursor-pointer opacity-80"
       onClick={handleBookmarking}
     >
-      {isInBookmark ? (
-        <IoBookmark size={32} />
+      {includes(book_id) ? (
+        <IoBookmark size={28} />
       ) : (
-        <IoBookmarkOutline size={32} />
+        <IoBookmarkOutline size={28} />
       )}
     </span>
   );

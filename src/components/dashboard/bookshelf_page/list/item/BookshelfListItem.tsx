@@ -23,7 +23,7 @@ export default function BookshelfListItem({ data }: Props) {
   return (
     <VariantsListItem className="w-full select-none">
       <div className="relative h-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl shadow-custom transition-all duration-300 | p-3 pt-10 flex flex-col justify-center items-center gap-3 hover:scale-105">
-        <BookmarkCheck />
+        <BookmarkCheck book_id={data.book_id} />
         <Link
           href={`/dashboard/bookshelf/${data.book_id}`}
           className="w-full flex flex-col gap-3 justify-center items-center"
