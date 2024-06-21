@@ -22,10 +22,10 @@ interface ILandingNavItem {
     whenActive: "/" | "/about" | "/contact" | "/admin";
 }
 interface IDashboardNavListItem {
-    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "El-Resources",
+    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "Bookshelf",
     icon: React.ReactNode,
     onActive: React.ReactNode,
-    href: "" | "/rooms" | "/schedule" | "/announcements" | "/el-resources",
+    href: "" | "/rooms" | "/schedule" | "/announcements" | "/bookshelf",
     forHeading: string
 }
 

@@ -57,3 +57,6 @@ type IUser = {
     birth_date: string | null
     profile_picture: string | null
 }
+
+// bookshelf
+type BookTypes = "pdf"
