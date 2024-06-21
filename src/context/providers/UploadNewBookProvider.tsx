@@ -19,10 +19,19 @@ const initialValue: IUploadNewBook = {
 export default function UploadNewBookProvider({ children }: Props) {
   const [data, setData] = useState<IUploadNewBook>(initialValue);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <UploadNewBookContext.Provider
-      value={{ data, setData, error, setError, initialValue }}
+      value={{
+        data,
+        setData,
+        error,
+        setError,
+        initialValue,
+        isLoading,
+        setIsLoading,
+      }}
     >
       {children}
     </UploadNewBookContext.Provider>

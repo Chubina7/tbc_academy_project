@@ -3,17 +3,22 @@ import { IoCaretDown } from "react-icons/io5";
 import { UploadNewBookContext as ctx } from "../../../../../../../../context/ctx";
 
 interface Props {
-  closeOptions: () => void;
+  handleOptions: () => void;
   isOpen: boolean;
 }
 
-export default function Select({ closeOptions, isOpen }: Props) {
-  const { data } = useContext(ctx);
+export default function Select({ handleOptions, isOpen }: Props) {
+  const { data, isLoading } = useContext(ctx);
 
   return (
     <div
-      className="w-full max-w-52 flex justify-center items-center gap-1 cursor-pointer px-3 py-1 select-none"
-      onClick={closeOptions}
+      className={`w-full max-w-52 flex justify-center items-center gap-1 px-3 py-1 select-none ${
+        isLoading ? "opacity-60 cursor-default" : "opacity-100 cursor-pointer "
+      }`}
+      onClick={() => {
+        if (isLoading) return;
+        handleOptions();
+      }}
       id="room_selecting_in_new_book"
     >
       <p

@@ -181,4 +181,6 @@ export const UploadNewBookContext = createContext({
   error: "",
   setError: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
   initialValue: {} as IUploadNewBook,
+  isLoading: false,
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
 });

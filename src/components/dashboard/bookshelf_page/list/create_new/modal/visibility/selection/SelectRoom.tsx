@@ -17,8 +17,8 @@ export default function SelectRoom() {
         className="relative w-full rounded-lg border bg-transparent"
         id="room_selecting_in_new_book"
       >
-        {isOpen && <Options closeOptions={handleSelectionModal} />}
-        <Select closeOptions={handleSelectionModal} isOpen={isOpen} />
+        {isOpen && <Options handleOptions={handleSelectionModal} />}
+        <Select handleOptions={handleSelectionModal} isOpen={isOpen} />
       </div>
     </>
   );

@@ -23,10 +23,10 @@ const list = [
 ];
 
 interface Props {
-  closeOptions: () => void;
+  handleOptions: () => void;
 }
 
-export default function Options({ closeOptions }: Props) {
+export default function Options({ handleOptions }: Props) {
   const { setData, setError } = useContext(ctx);
 
   return (
@@ -42,7 +42,7 @@ export default function Options({ closeOptions }: Props) {
             onClick={() => {
               setData((prev) => ({ ...prev, room: item }));
               setError("");
-              closeOptions();
+              handleOptions();
             }}
             id="room_selecting_in_new_book"
           >
