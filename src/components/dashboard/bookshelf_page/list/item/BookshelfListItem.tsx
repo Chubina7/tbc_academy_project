@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Author from "./Author";
-import FileIcon from "./FileIcon";
 import Title from "./Title";
 import Desc from "./Desc";
 import VariantsListItem from "../../../../ui/framerMotionDivs/variants/VariantsListItem";
+import BookmarkCheck from "./BookmarkCheck";
+import FileIcon from "../../../../ui/FileIcon";
 
 interface Props {
   data: {
@@ -21,7 +22,8 @@ interface Props {
 export default function BookshelfListItem({ data }: Props) {
   return (
     <VariantsListItem className="w-full">
-      <div className="bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl overflow-hidden shadow-custom transition-all duration-300 | p-3 py-10 flex flex-col justify-center items-center gap-3 hover:scale-105">
+      <div className="relative bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl shadow-custom transition-all duration-300 | p-3 py-10 flex flex-col justify-center items-center gap-3 hover:scale-105">
+        <BookmarkCheck />
         <Link
           href={`/dashboard/bookshelf/${data.book_id}`}
           className="w-full flex flex-col gap-3 justify-center items-center"
