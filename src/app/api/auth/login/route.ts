@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     if (!passwordInDb || !hasAccessOrNot) return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 });
 
     const user = await sql`SELECT * FROM users WHERE email = ${email}`
-    await setSessionCookie(user.rows[0])
+    await setSessionCookie(user.rows[0] as IUser)
 
     return NextResponse.json({ message: "Successfully authenticated!" }, { status: 200 });
   } catch (error) {

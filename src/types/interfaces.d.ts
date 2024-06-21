@@ -211,7 +211,7 @@ interface IUserPublicInfo {
     surname: string | null;
     birth_date: string | null;
     email: string;
-    profile_image: string | null;
+    profile_picture: string | null;
     role: RoleType;
 }
 

@@ -122,7 +122,7 @@ export async function getUserPublicProfileInfo(user_id: string) {
         const result: IUserPublicInfo = await res.json();
         return result;
     } catch (error) {
-        console.error("Failed to fetch rooms data:", error);
+        console.error("Failed to fetch user data:", error);
         return null;
     }
 }

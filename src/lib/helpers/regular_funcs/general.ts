@@ -21,6 +21,8 @@ export function detectEnviro() {
         case "test":
             return "http://localhost:3000";
     }
+
+    // return "http://localhost:3000"
 }
 
 export function minimumDatePrevention() {

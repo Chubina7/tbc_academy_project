@@ -6,6 +6,7 @@ import {
   ProfileLoadingStateContext as loadingCtx,
   NotificationsContext as notifCtx,
 } from "../../../../../../context/ctx";
+import { useRouter } from "next/navigation";
 
 interface Props {
   dataToBeServed: {
@@ -19,6 +20,7 @@ interface Props {
 const domain = detectEnviro();
 
 export default function SaveBtn({ dataToBeServed }: Props) {
+  const router = useRouter();
   const { setIsLoading } = useContext(loadingCtx);
   const { showNotification } = useContext(notifCtx);
 
@@ -40,6 +42,7 @@ export default function SaveBtn({ dataToBeServed }: Props) {
     } catch (error: any) {
       showNotification(true, "error", error.message);
     } finally {
+      router.refresh();
       setIsLoading(false);
     }
   };

@@ -26,6 +26,7 @@ export default function SignOutBtn() {
     }
 
     setIsLoading(false);
+    router.refresh();
   };
 
   return (

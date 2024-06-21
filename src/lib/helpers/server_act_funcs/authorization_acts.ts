@@ -16,7 +16,7 @@ export const USER = async () => {
     return (await decrypt(token)) as IUser
 }
 
-export const setSessionCookie = async (user: any) => {
+export const setSessionCookie = async (user: IUser) => {
     const value = await encrypt(user)
     const options: Partial<ResponseCookie> = {
         secure: true,
