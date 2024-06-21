@@ -216,15 +216,32 @@ interface IUserPublicInfo {
 }
 
 // Bookshelf
-interface IUploadNewBook {
-    title: string;
-    description: string;
-    book: {
-        name: string;
-        type: BookTypes;
+interface IBook {
+    book_id: string;
+    book_title: string;
+    book_description: string;
+    book_type: BookTypes;
+    author: {
+        room: {
+            room_id: string;
+            room_name: string;
+        } | null;
+        user: {
+            surname: string;
+            user_id: string;
+            username: string;
+        };
     };
+}
+interface IUploadNewBook {
+    book: {
+        name: string,
+        type: BookTypes,
+    },
+    description: string,
     room: {
         room_id: string;
         room_name: string;
-    } | null;
+    } | null,
+    title: string,
 }

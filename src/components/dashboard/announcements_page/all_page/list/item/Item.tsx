@@ -5,7 +5,7 @@ import PostDate from "./PostDate";
 import Announcement from "./Announcement";
 import VariantsListItem from "../../../../../ui/framerMotionDivs/variants/VariantsListItem";
 import DeleteBtn from "./DeleteBtn";
-import { USER } from "../../../../../../lib/helpers/server_act_funcs/authorization";
+import { USER } from "../../../../../../lib/helpers/server_act_funcs/authorization_acts";
 
 interface Props {
   author: {

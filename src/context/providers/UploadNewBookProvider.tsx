@@ -5,6 +5,10 @@ import { UploadNewBookContext } from "../ctx";
 
 interface Props {
   children: React.ReactNode;
+  suggestions: Array<{
+    room_id: string;
+    room_name: string;
+  }> | null;
 }
 const initialValue: IUploadNewBook = {
   book: {
@@ -16,7 +20,10 @@ const initialValue: IUploadNewBook = {
   title: "",
 };
 
-export default function UploadNewBookProvider({ children }: Props) {
+export default function UploadNewBookProvider({
+  children,
+  suggestions,
+}: Props) {
   const [data, setData] = useState<IUploadNewBook>(initialValue);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +38,7 @@ export default function UploadNewBookProvider({ children }: Props) {
         initialValue,
         isLoading,
         setIsLoading,
+        roomSuggestions: suggestions,
       }}
     >
       {children}

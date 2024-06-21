@@ -176,6 +176,10 @@ export const UploadNewBookContext = createContext({
   initialValue: {} as IUploadNewBook,
   isLoading: false,
   setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+  roomSuggestions: [] as Array<{
+    room_id: string;
+    room_name: string;
+  }> | null,
 });
 
 export const BookmarkContext = createContext({

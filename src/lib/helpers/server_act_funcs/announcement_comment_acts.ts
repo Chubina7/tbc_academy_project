@@ -1,6 +1,6 @@
 "use server"
 
-import { USER } from "./authorization"
+import { USER } from "./authorization_acts"
 
 export const likeComment = async ({ announcement_id, comment_id }: { comment_id: string, announcement_id: string }) => {
     const { user_id } = await USER()

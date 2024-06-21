@@ -5,7 +5,7 @@ import { BookmarkContext } from "../ctx";
 import {
   addBookmarkAct,
   removeBookmarkAct,
-} from "../../lib/helpers/server_act_funcs/bookmarking";
+} from "../../lib/helpers/server_act_funcs/bookmarking_acts";
 
 interface Props {
   children: React.ReactNode;
