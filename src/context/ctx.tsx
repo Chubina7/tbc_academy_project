@@ -1,9 +1,9 @@
-import React, { Context, createContext, Dispatch, SetStateAction } from "react";
+import React, { createContext, Dispatch, SetStateAction } from "react";
 
-export const BookmarkContext: Context<IBookmarkCtx> = createContext({
-  list: [],
-  addItem: (param) => param,
-  removeItem: (param) => param,
+export const BookmarkContext = createContext({
+  list: [] as Array<any>,
+  addItem: (param: any) => param,
+  removeItem: (param: any) => param,
   resetList: () => {},
 });
 
@@ -58,9 +58,6 @@ export const NotificationsContext = createContext({
     title: string,
     duration?: number
   ) => void,
-  isShown: false,
-  notifType: "" as "success" | "error" | "loading",
-  notifTitle: "",
 });
 
 export const RoomsListFilterContext = createContext({
@@ -78,14 +75,16 @@ export const MemberSettingsDialogContext = createContext({
 export const AddNewCategoryContext = createContext({
   inputValue: "",
   setInputValue: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
-  suggestionList: [] as Array<string>,
-  setSuggestionList: (() => {}) as React.Dispatch<
-    React.SetStateAction<Array<string>>
-  >,
   showSuggestions: false,
   setShowSuggestions: (() => {}) as React.Dispatch<
     React.SetStateAction<boolean>
   >,
+  categories: [] as Array<string>,
+  handleCtgAdd: (() => {}) as (item: string) => void,
+  handleCtgRemove: (() => {}) as (excitingCtg: string) => void,
+  errorMsg: "",
+  handleReset: (() => {}) as () => void,
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
 });
 
 export const AddNewRoomContext = createContext({
@@ -98,7 +97,7 @@ export const AddNewRoomContext = createContext({
     description: "",
     coverPicture: "",
     categories: [] as Array<string>,
-    members: [] as Array<any>,
+    members: [] as Array<string>,
   },
   setters: {
     setTitle: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
@@ -107,6 +106,71 @@ export const AddNewRoomContext = createContext({
     setCategories: (() => {}) as React.Dispatch<
       React.SetStateAction<Array<string>>
     >,
-    setMembers: (() => {}) as React.Dispatch<React.SetStateAction<Array<any>>>,
+    setMembers: (() => {}) as React.Dispatch<
+      React.SetStateAction<Array<string>>
+    >,
   },
+  isLoading: false,
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});
+
+export const ProfileLoadingStateContext = createContext({
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});
+export const PersonalInfoChangingContext = createContext({
+  prevValues: {
+    username: "",
+    surname: ("" || null) as string | null,
+    birth_date: ("" || null) as string | null,
+    profile_picture: ("" || null) as string | null,
+  },
+  value: {
+    username: "",
+    surname: ("" || null) as string | null,
+    birth_date: ("" || null) as string | null,
+    profile_picture: ("" || null) as string | null,
+  },
+  setValue: (() => {}) as React.Dispatch<
+    React.SetStateAction<{
+      username: string;
+      surname: string | null;
+      birth_date: string | null;
+      profile_picture: string | null;
+    }>
+  >,
+});
+export const AuthDetailsChangingContext = createContext({
+  emailVal: "",
+  setEmailVal: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  passVal: "",
+  setPassVal: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  prevData: { password: "", email: "" },
+});
+
+export const AddNewAnnouncementContext = createContext({
+  title: "",
+  setTitle: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  announcement: "",
+  setAnnouncement: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  roomId: "",
+  setRoomId: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+  error: false,
+  setError: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});
+
+export const EditRoomInformationContext = createContext({
+  details: { title: "", description: "" },
+  setDetails: (() => {}) as React.Dispatch<
+    React.SetStateAction<{ title: string; description: string }>
+  >,
+  validationMessage: "",
+  setValidationMessage: (() => {}) as React.Dispatch<
+    React.SetStateAction<string>
+  >,
+  prevData: {
+    title: "",
+    description: "",
+  },
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
 });

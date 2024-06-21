@@ -7,27 +7,29 @@ import SeeProfile from "./options/SeeProfile";
 
 interface Props {
   state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+  user_id: string;
 }
 
-export default function Modal({ state }: Props) {
+export default function Modal({ state, user_id }: Props) {
   // track and change direction of modal opening
   const [shouldChangeDir, setShouldChangeDir] = useState(false);
-  const calculateDistance = () => {
-    const seeAllBtn = document.getElementById("see_all_btn");
-    const threeDots = document.getElementById("three_dots");
 
-    if (seeAllBtn && threeDots) {
-      const seeAllBtnTop = seeAllBtn.getBoundingClientRect().top;
-      const threeDotsTop = threeDots.getBoundingClientRect().top;
+  useEffect(() => {
+    function calculateDistance() {
+      const seeAllBtn = document.getElementById("see_all_btn");
+      const threeDots = document.getElementById("three_dots");
 
-      if (seeAllBtnTop - threeDotsTop < 200) {
-        setShouldChangeDir(true);
-      } else {
-        setShouldChangeDir(false);
+      if (seeAllBtn && threeDots) {
+        const seeAllBtnTop = seeAllBtn.getBoundingClientRect().top;
+        const threeDotsTop = threeDots.getBoundingClientRect().top;
+
+        if (seeAllBtnTop - threeDotsTop < 200) {
+          setShouldChangeDir(true);
+        } else {
+          setShouldChangeDir(false);
+        }
       }
     }
-  };
-  useEffect(() => {
     calculateDistance();
     window.addEventListener("resize", calculateDistance);
     return () => window.removeEventListener("resize", calculateDistance);
@@ -42,8 +44,8 @@ export default function Modal({ state }: Props) {
       } right-0 | flex flex-col justify-center items-start | transition-colors duration-300 | shadow-custom select-none`}
     >
       {/* <ChangeRole onClick={() => state[1]((prev) => !prev)} /> */}
-      <RemoveUser onClick={() => state[1]((prev) => !prev)} />
-      <SeeProfile />
+      <RemoveUser mocalHandler={() => state[1]((prev) => !prev)} />
+      <SeeProfile user_id={user_id} />
     </div>
   );
 }

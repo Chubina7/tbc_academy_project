@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import bcrypt from "bcrypt"
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { AUTH_COOKIE_KEY } from "../../variables";
-import { decrypt } from "../../../middleware";
+import { decrypt } from "./decrypt";
 
 const key = new TextEncoder().encode(process.env.JWT_SECRET_SIGN_KEY)
 const algorithm = process.env.JWT_ALGORITHM

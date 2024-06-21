@@ -5,16 +5,29 @@ import { MemberSettingsDialogContext as ctx } from "../../../../../../../../cont
 import RemoveUserDialog from "./remove_user_dialog/RemoveUserDialog";
 // import ChangeUserRoleDialog from "./change_user_role/ChangeUserRoleDialog";
 
-export default function Dialog() {
-  const { removeDialog, roleDialog, setRemoveDialog } =
-    useContext(ctx);
+interface Props {
+  data: {
+    user_id: string;
+    room_id: string;
+    username: string;
+    surname: string | null;
+  };
+}
+
+export default function Dialog({ data }: Props) {
+  const { removeDialog, roleDialog, setRemoveDialog } = useContext(ctx);
 
   if ((removeDialog && roleDialog) || (!removeDialog && !roleDialog)) {
     return null;
   }
 
   if (removeDialog && !roleDialog) {
-    return <RemoveUserDialog modalHandler={() => setRemoveDialog(false)} />;
+    return (
+      <RemoveUserDialog
+        modalHandler={() => setRemoveDialog(false)}
+        data={data}
+      />
+    );
   }
   // if (roleDialog && !removeDialog) {
   //   return <ChangeUserRoleDialog modalHandler={() => setRoleDialog(false)} />;

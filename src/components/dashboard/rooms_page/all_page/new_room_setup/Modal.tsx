@@ -1,3 +1,5 @@
+"use client";
+
 import Backdrop from "../../../../ui/Backdrop";
 import BottomToTop from "../../../../ui/framerMotionDivs/directions/BottomToTop";
 import Steps from "./parts/steps/Steps";
@@ -26,7 +28,7 @@ export default function Modal({ modalHandler }: Props) {
           <div className="w-full min-h-20 sm:w-96 sm:min-h-fit flex flex-col sm:flex-row justify-end sm:justify-center items-center gap-3">
             <PrevBtn />
             <NextBtn />
-            <FinishBtn />
+            <FinishBtn closeModal={modalHandler} />
           </div>
         </BottomToTop>
       </AddNewRoomProvider>

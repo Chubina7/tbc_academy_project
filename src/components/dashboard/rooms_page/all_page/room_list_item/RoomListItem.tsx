@@ -18,7 +18,7 @@ export default function RoomListItem({ data, role }: Props) {
         href={`/dashboard/rooms/${data.room_id}`}
         className="bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl overflow-hidden | h-full flex flex-col justify-start items-start shadow-custom hover:scale-105 transition-all duration-300"
       >
-        <RoomImage src={data.image} />
+        <RoomImage src={data.room_image} />
         <div className="w-full h-full flex flex-col justify-center items-end py-3">
           <h1 className="w-full font-bold text-xl px-5 truncate">
             {data.room_name}
@@ -27,7 +27,7 @@ export default function RoomListItem({ data, role }: Props) {
           <p className="w-full text-sm px-5">{data.description}</p>
           <div className="w-full flex flex-grow justify-between items-end py-3 px-5 text-sm text-nowrap">
             <EnrolledNum number={data.enrolled_number} />
-            {role !== "student" ? (
+            {role === "student" ? (
               <Author teacher={data.teacher} />
             ) : (
               <CreatedAt created_at={data.created_at} />

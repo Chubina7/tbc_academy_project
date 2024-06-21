@@ -12,20 +12,6 @@ import {
   psqDeleteBookmarks,
 } from "../../sql/sqlQueries";
 
-// Preferences
-export const storeThemeInCookies = (pref: string) => {
-  if (pref === "os") {
-    cookies().delete("theme");
-  } else {
-    cookies().set("theme", pref, { secure: true, sameSite: "none" });
-  }
-};
-
-// General
-export const readCookieForClient = async (searchCookie: string) => {
-  return cookies().get(searchCookie)?.value;
-};
-
 // Admin actions
 export const actDeleteUser = async (user_id: string) => {
   await psqlDeleteUser(user_id);

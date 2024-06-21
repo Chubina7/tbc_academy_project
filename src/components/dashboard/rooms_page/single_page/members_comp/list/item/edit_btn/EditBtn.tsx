@@ -4,7 +4,11 @@ import { useState } from "react";
 import { IoEllipsisHorizontal } from "react-icons/io5";
 import Modal from "./Modal";
 
-export default function EditBtn() {
+interface Props {
+  user_id: string;
+}
+
+export default function EditBtn({ user_id }: Props) {
   const settingsModalState = useState(false);
 
   return (
@@ -16,7 +20,7 @@ export default function EditBtn() {
         id="three_dots"
       />
       <div className="relative z-40">
-        <Modal state={settingsModalState} />
+        <Modal state={settingsModalState} user_id={user_id} />
       </div>
     </>
   );

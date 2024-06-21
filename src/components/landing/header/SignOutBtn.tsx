@@ -30,7 +30,7 @@ export default function SignOutBtn() {
 
   return (
     <button
-      className="w-full flex justify-start items-center px-3 py-1 gap-2 rounded-xl hover:bg-[#5C5470]"
+      className="flex justify-start items-center px-3 py-1 gap-2 rounded-xl hover:bg-[#5C5470]"
       onClick={signOutHandler}
       id="profile_modal"
     >

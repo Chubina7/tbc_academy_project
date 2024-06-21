@@ -5,7 +5,15 @@ import { AddNewRoomContext as ctx } from "../../../../../../context/ctx";
 import { settingUpNewRoomSteps } from "../../../../../../lib/lists/ListsWithComponents";
 
 export default function Components() {
-  const { steps } = useContext(ctx);
+  const { steps, isLoading } = useContext(ctx);
 
-  return <>{settingUpNewRoomSteps[steps.activeIdx].component}</>;
+  return (
+    <div
+      className={`w-full max-w-4xl h-full ${
+        isLoading ? "opacity-30" : "opacity-100"
+      }`}
+    >
+      {settingUpNewRoomSteps[steps.activeIdx].component}
+    </div>
+  );
 }

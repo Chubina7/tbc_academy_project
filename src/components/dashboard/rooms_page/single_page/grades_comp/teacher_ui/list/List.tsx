@@ -1,25 +1,33 @@
 import Item from "./Item";
 
-export default function List() {
+interface Props {
+  data: Array<IRoomTeacherAvgs> | null;
+}
+
+export default function List({ data }: Props) {
+  if (!data) return null;
+  
   return (
-    <table className="w-full">
-      <thead>
-        <tr>
-          <th className="w-full text-start sm:px-3">
-            Student <span className="text-xs">(TOP 5)</span>
-          </th>
-          <th className="sm:px-3 text-nowrap">
-            Grade <span className="text-xs">(avg.)</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-      </tbody>
-    </table>
+    <>
+      {data.length > 0 ? (
+        <table className="w-full">
+          <thead>
+            <tr>
+              <th className="w-full text-start sm:px-3">Student</th>
+              <th className="sm:px-3 text-nowrap">
+                Grade <span className="text-xs">(avg.)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item) => (
+              <Item key={item.user_id} data={item} />
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p className="w-full h-full text-center">No student found</p>
+      )}
+    </>
   );
 }

@@ -14,7 +14,7 @@ export default function AvgProgressBar({ avgGrade }: Props) {
   }, [avgGrade]);
 
   return (
-    <div className="relative w-48 sm:w-36 2xl:w-44 h-48 sm:h-36 2xl:h-44 hover:scale-105 transition-all duration-300 cursor-pointer">
+    <div className="relative w-48 sm:w-36 2xl:w-44 h-48 sm:h-36 2xl:h-44 hover:scale-105 transition-all duration-300">
       <div
         className="absolute top-0 left-0 w-full h-full rounded-full transition-all duration-300"
         style={{

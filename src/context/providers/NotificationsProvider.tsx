@@ -2,6 +2,7 @@
 
 import React, { ReactNode, useEffect, useState } from "react";
 import { NotificationsContext } from "../ctx";
+import Notification from "../../components/ui/notificationModal/Notification";
 
 interface Props {
   children: ReactNode;
@@ -39,11 +40,9 @@ export default function NotificationsProvider({ children }: Props) {
           setTitle(title);
           if (duration) setDuration(duration);
         },
-        isShown: notifShown,
-        notifType: type,
-        notifTitle: title,
       }}
     >
+      <Notification isShown={notifShown} title={title} type={type} />
       {children}
     </NotificationsContext.Provider>
   );

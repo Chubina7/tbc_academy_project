@@ -1,12 +1,12 @@
-// import { Noto_Sans_Georgian } from "next/font/google";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
 import { cookies } from "next/headers";
-import { NextIntlClientProvider, useMessages } from "next-intl";
-// import { supportedLocales } from "../../lib/variables";
+import { useMessages } from "next-intl";
+import { supportedLocales } from "../../lib/variables";
 import { unstable_setRequestLocale } from "next-intl/server";
-import NotificationsProvider from "../../context/providers/NotificationsProvider";
-import Notification from "../../components/dashboard/notifications/Notification";
+import BodyWrapper from "../../components/layout/root/BodyWrapper";
+import Providers from "../../components/layout/root/Providers";
+import HtmlWrapper from "../../components/layout/root/HtmlWrapper";
 
 // Types
 interface Props {
@@ -14,9 +14,13 @@ interface Props {
   params: IParams;
 }
 
-// Font
-// const georgian = Noto_Sans_Georgian({ subsets: ["georgian"] });
-const english = Montserrat({ subsets: ["latin"] });
+// Fonts
+const georgian = Noto_Sans_Georgian({
+  subsets: ["georgian", "latin", "math", "symbols", "greek-ext"],
+});
+const english = Montserrat({
+  subsets: ["latin", "cyrillic", "latin-ext", "vietnamese"],
+});
 
 // Metadata
 export const metadata: IMetaData = {
@@ -25,29 +29,24 @@ export const metadata: IMetaData = {
 };
 
 // Static Generation
-// export function generateStaticParams() {
-//   return supportedLocales.map((locale) => ({ locale }));
-// }
+export function generateStaticParams() {
+  return supportedLocales.map((locale) => ({ locale }));
+}
 
 // Component
 export default function RootLayout({ children, params }: Props) {
-  const themePref = cookies().get("theme")?.value;
-  const lngPref = params.locale;
-  unstable_setRequestLocale(lngPref);
+  unstable_setRequestLocale(params.locale);
   const translations = useMessages();
 
   return (
-    <html lang={lngPref} className={`${themePref} scroll-hidden`}>
-      <body
-        className={`${english.className} bg-[#F4F7FF] text-[#2B3674] dark:bg-[#2A2438] dark:text-[#DBD8E3] w-full flex flex-col transition-colors duration-300`}
+    <HtmlWrapper locale={params.locale} theme={cookies().get("theme")?.value}>
+      <BodyWrapper
+        engFont={english.className}
+        kaFont={georgian.className}
+        locale={params.locale}
       >
-        <NotificationsProvider>
-          <Notification />
-          <NextIntlClientProvider locale={lngPref} messages={translations}>
-            {children}
-          </NextIntlClientProvider>
-        </NotificationsProvider>
-      </body>
-    </html>
+        <Providers intlProp={translations}>{children}</Providers>
+      </BodyWrapper>
+    </HtmlWrapper>
   );
 }

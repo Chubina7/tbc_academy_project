@@ -38,11 +38,18 @@ export function setTheme(pref: string) {
   if (pref === "os") {
     document.documentElement.classList.remove("light");
     document.documentElement.classList.remove("dark");
-    localStorage.removeItem("theme");
   } else {
     document.documentElement.classList.remove("light");
     document.documentElement.classList.remove("dark");
     document.documentElement.classList.add(pref);
-    localStorage.setItem("theme", pref);
   }
 }
+
+export function areObjValuesChanged(prevVal: Record<string, any>, val: Record<string, any>) {
+  for (const key in prevVal) {
+    if (prevVal[key] !== val[key]) {
+      return true;
+    }
+  }
+  return false;
+};

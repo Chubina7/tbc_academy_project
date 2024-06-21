@@ -2,33 +2,36 @@ import { NextRequest, NextResponse } from "next/server";
 import { AUTH_COOKIE_KEY, defaultLocale, supportedLocales } from "./lib/variables";
 import { cookies } from "next/headers";
 import createMiddleware from "next-intl/middleware";
-import { jwtVerify } from "jose";
-
-const key = new TextEncoder().encode(process.env.JWT_SECRET_SIGN_KEY)
-const algorithm = process.env.JWT_ALGORITHM
-
-export async function decrypt(token: string) {
-  try {
-    const { payload } = await jwtVerify(token, key, { algorithms: [`${algorithm}`] });
-    return payload
-  } catch (error) {
-    return false
-  }
-}
+import { profileSegments } from "./components/dashboard/profile_page/logined_user_ui/ui/nav/Navigation";
+import { decrypt } from "./lib/helpers/server_act_funcs/decrypt";
 
 export default async function middleware(request: NextRequest) {
-  const cookieStore = cookies();
+  const isSessionValid = await decrypt(cookies().get(AUTH_COOKIE_KEY)?.value || "")
   const path = request.nextUrl.pathname;
-  const isSessionValid = await decrypt(cookieStore.get(AUTH_COOKIE_KEY)?.value || "")
+  const searchParams = request.nextUrl.searchParams
 
   // Check authentication
   if (path.startsWith("/dashboard")) {
     if (!isSessionValid && path !== "/dashboard/login" && path !== "/dashboard/register") {
-      request.nextUrl.pathname = "/dashboard/login";
+      request.nextUrl.search = `_redirect=${request.nextUrl.pathname}`
+      request.nextUrl.pathname = `/dashboard/login`;
       return NextResponse.redirect(request.nextUrl);
     }
     if (isSessionValid && (path === "/dashboard/login" || path === "/dashboard/register")) {
       request.nextUrl.pathname = "/dashboard";
+      return NextResponse.redirect(request.nextUrl);
+    }
+  }
+
+  // Secure "profile" route
+  if (path === "/dashboard/profile") {
+    request.nextUrl.pathname = "/dashboard";
+    return NextResponse.redirect(request.nextUrl);
+  }
+  // Catch authenticated user profile page to show only edit page
+  if (isSessionValid && path.includes(isSessionValid.user_id)) {
+    if (path.startsWith("/dashboard/profile/") && !profileSegments.some(item => item.queryValue === searchParams.get("segment"))) {
+      request.nextUrl.searchParams.set("segment", "personal_info")
       return NextResponse.redirect(request.nextUrl);
     }
   }
@@ -40,6 +43,7 @@ export default async function middleware(request: NextRequest) {
     localePrefix: "never",
   });
 
+  // Finish
   try {
     return localeRewrite(request);
   } catch (error) {

@@ -1,20 +1,18 @@
-type formDataType = {
-  title: string;
-  description: string;
-};
+"use client";
 
-interface Props {
-  state: [formDataType, React.Dispatch<React.SetStateAction<formDataType>>];
-}
+import { useContext } from "react";
+import { EditRoomInformationContext } from "../../../../../../context/ctx";
 
-export default function ChangeDescription({ state }: Props) {
+export default function ChangeDescription() {
+  const { details, setDetails } = useContext(EditRoomInformationContext);
+
   return (
     <textarea
       className="border rounded-lg px-3 py-1 focus:outline-none bg-transparent outline-none"
       placeholder="This is a course about..."
-      value={state[0].description}
+      value={details.description}
       onChange={(e) =>
-        state[1]((prev) => ({ ...prev, description: e.target.value }))
+        setDetails((prev) => ({ ...prev, description: e.target.value }))
       }
     />
   );

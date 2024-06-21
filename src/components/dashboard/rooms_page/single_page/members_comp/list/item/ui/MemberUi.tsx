@@ -8,10 +8,13 @@ import { useState } from "react";
 
 interface Props {
   isTeacherOrAdmin: boolean;
+  data: IRoomMember;
+  room_id: string;
 }
 
-export default function MemberUi({ isTeacherOrAdmin }: Props) {
+export default function MemberUi({ isTeacherOrAdmin, data, room_id }: Props) {
   const [isHovered, setIsHovered] = useState(false);
+  const { email, profile_picture, surname, username, user_id } = data;
 
   return (
     <div
@@ -20,11 +23,12 @@ export default function MemberUi({ isTeacherOrAdmin }: Props) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="w-full flex justify-start items-center gap-2">
-        <ProfPic />
-        <ContactInfo />
+        <ProfPic alt={username} src={profile_picture} />
+        <ContactInfo data={{ email, surname, username }} />
       </div>
-      {isHovered && isTeacherOrAdmin && <EditBtn />}
-      <Dialog />
+      {isHovered && isTeacherOrAdmin && <EditBtn user_id={data.user_id} />}
+      <Dialog data={{ room_id, surname, user_id, username }} />
     </div>
   );
 }
+
