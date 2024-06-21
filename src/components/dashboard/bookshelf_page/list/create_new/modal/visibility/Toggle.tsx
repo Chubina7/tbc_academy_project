@@ -13,9 +13,7 @@ export default function Toggle({ state }: Props) {
   const [isChecked, setIsChecked] = state;
 
   useEffect(() => {
-    const room = isChecked
-      ? null
-      : ({} as { room_id: string; room_name: string });
+    const room = isChecked ? null : { room_id: "", room_name: "" };
     setData((prev) => ({ ...prev, room }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isChecked]);

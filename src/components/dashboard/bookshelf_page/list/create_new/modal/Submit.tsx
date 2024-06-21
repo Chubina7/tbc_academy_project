@@ -19,7 +19,8 @@ export default function Submit({ closeModal }: Props) {
     data.description.trim() === "" ||
     data.book.name.trim() === "" ||
     data.book.type.trim() === "" ||
-    data.room;
+    (data.room !== null && data.room.room_id.trim() === "") ||
+    (data.room !== null && data.room.room_name.trim() === "");
 
   const handleNewBookUpload = () => {
     if (condition) {
@@ -27,6 +28,7 @@ export default function Submit({ closeModal }: Props) {
       return;
     }
     closeModal();
+    console.log(data);
     setData(initialValue);
     setError("");
     showNotification(true, "loading", "loading...");

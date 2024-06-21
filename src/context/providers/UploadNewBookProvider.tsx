@@ -12,10 +12,7 @@ const initialValue: IUploadNewBook = {
     type: "" as BookTypes,
   },
   description: "",
-  room: {
-    room_id: "",
-    room_name: "",
-  },
+  room: null,
   title: "",
 };
 

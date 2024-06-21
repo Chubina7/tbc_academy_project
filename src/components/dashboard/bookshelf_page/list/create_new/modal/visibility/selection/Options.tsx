@@ -40,9 +40,9 @@ export default function Options({ closeOptions }: Props) {
             key={item.room_id}
             className="px-3 py-1 hover:bg-[#8BA8FF] w-full text-left truncate cursor-pointer"
             onClick={() => {
+              setData((prev) => ({ ...prev, room: item }));
               setError("");
               closeOptions();
-              setData((prev) => ({ ...prev, room: item }));
             }}
             id="room_selecting_in_new_book"
           >
