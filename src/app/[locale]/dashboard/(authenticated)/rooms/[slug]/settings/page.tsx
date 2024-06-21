@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { USER } from "../../../../../../../lib/helpers/server_act_funcs/authorization";
+import { USER } from "../../../../../../../lib/helpers/server_act_funcs/authorization_acts";
 import Categories from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/change_categories/Categories";
 import CoverPicture from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/change_picture/CoverPicture";
 import DeleteRoom from "../../../../../../../components/dashboard/rooms_page/single_page/settings_route/delete_room/DeleteRoom";

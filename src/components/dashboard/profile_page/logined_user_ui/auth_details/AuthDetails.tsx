@@ -1,5 +1,5 @@
 import AuthDetailsChangingProvider from "../../../../../context/providers/AuthDetailsChangingProvider";
-import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
+import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization_acts";
 import ChangeBtn from "./ChangeBtn";
 import Email from "./Email";
 import Password from "./Password";

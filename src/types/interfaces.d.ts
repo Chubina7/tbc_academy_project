@@ -22,10 +22,10 @@ interface ILandingNavItem {
     whenActive: "/" | "/about" | "/contact" | "/admin";
 }
 interface IDashboardNavListItem {
-    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "El-Resources",
+    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "Bookshelf",
     icon: React.ReactNode,
     onActive: React.ReactNode,
-    href: "" | "/rooms" | "/schedule" | "/announcements" | "/el-resources",
+    href: "" | "/rooms" | "/schedule" | "/announcements" | "/bookshelf",
     forHeading: string
 }
 
@@ -213,4 +213,35 @@ interface IUserPublicInfo {
     email: string;
     profile_image: string | null;
     role: RoleType;
+}
+
+// Bookshelf
+interface IBook {
+    book_id: string;
+    book_title: string;
+    book_description: string;
+    book_type: BookTypes;
+    author: {
+        room: {
+            room_id: string;
+            room_name: string;
+        } | null;
+        user: {
+            surname: string;
+            user_id: string;
+            username: string;
+        };
+    };
+}
+interface IUploadNewBook {
+    book: {
+        name: string,
+        type: BookTypes,
+    },
+    description: string,
+    room: {
+        room_id: string;
+        room_name: string;
+    } | null,
+    title: string,
 }

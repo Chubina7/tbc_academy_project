@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { psqlCheckUserInDb } from "../../../../lib/sql/sqlQueries";
 import { sql } from "@vercel/postgres";
-import { hasAccess, setSessionCookie } from "../../../../lib/helpers/server_act_funcs/authorization";
+import { hasAccess, setSessionCookie } from "../../../../lib/helpers/server_act_funcs/authorization_acts";
 
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();

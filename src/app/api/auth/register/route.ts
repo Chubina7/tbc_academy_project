@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { psqlInsertUserCredentials, psqlIsEmailInUse } from '../../../../lib/sql/sqlQueries';
-import { hashPassword, setSessionCookie } from '../../../../lib/helpers/server_act_funcs/authorization';
+import { hashPassword, setSessionCookie } from '../../../../lib/helpers/server_act_funcs/authorization_acts';
 
 export async function POST(req: NextRequest) {
     const { username, email, password, role, birth_date, surname } = await req.json()

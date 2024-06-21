@@ -5,7 +5,7 @@ import Logo from "../../dashboard/navigation/aside/Logo";
 import { RxDividerVertical } from "react-icons/rx";
 import ThemeChanger from "../../ui/themePreference/ThemeChanger";
 import LangChanger from "../../ui/languagePreference/LangChanger";
-import { USER } from "../../../lib/helpers/server_act_funcs/authorization";
+import { USER } from "../../../lib/helpers/server_act_funcs/authorization_acts";
 import JoinNotAct from "./JoinNotAct";
 
 export default async function Header() {

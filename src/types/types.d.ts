@@ -57,3 +57,14 @@ type IUser = {
     birth_date: string | null
     profile_picture: string | null
 }
+
+// bookshelf
+type BookTypes = "image/bmp" | "image/gif" | "image/jpeg" | "image/png" | "image/tiff" | "image/webp" | "image/x-icon" | "image/svg+xml" |
+    "application/pdf" |
+    "text/plain" |
+    "application/msword" |
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" |
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+
+
+type BookmarkItemType = string

@@ -1,7 +1,7 @@
 import {
   IoHome,
   IoCalendarSharp,
-  IoReceipt,
+  IoBook,
   IoInformationCircle,
   IoMoon,
   IoSunny,
@@ -124,11 +124,11 @@ export const dashboardNavigationList: DashboardNavListType = [
     forHeading: "Sssch!",
   },
   {
-    title: "El-Resources",
-    icon: <IoReceipt size={20} color="inherit" />,
-    onActive: <IoReceipt size={20} color="inherit" />,
-    href: "/el-resources",
-    forHeading: "Book that you need.",
+    title: "Bookshelf",
+    icon: <IoBook size={20} color="inherit" />,
+    onActive: <IoBook size={20} color="inherit" />,
+    href: "/bookshelf",
+    forHeading: "Resources that you need.",
   },
 ];
 export const loginHeadingWords = [

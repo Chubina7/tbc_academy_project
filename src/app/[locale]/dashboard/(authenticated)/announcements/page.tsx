@@ -1,7 +1,7 @@
 import Filter from "../../../../../components/dashboard/announcements_page/all_page/filter/Filter";
 import List from "../../../../../components/dashboard/announcements_page/all_page/list/List";
 import AddNewAnnouncement from "../../../../../components/dashboard/announcements_page/all_page/new_announcement/AddNewAnnouncement";
-import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
+import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization_acts";
 import { getAnnouncementList } from "../../../../../lib/data_fetchers";
 import { unstable_setRequestLocale } from "next-intl/server";
 
