@@ -1,7 +1,12 @@
-import React from "react";
+"use client";
+
+import { usePathname } from "next/navigation";
 import { IoSearch } from "react-icons/io5";
 
 export default function SearchInput() {
+  const path = usePathname();
+
+  const where = path.split("/")[path.split("/").length - 1];
   return (
     <div className="relative rounded-full overflow-hidden text-sm">
       <IoSearch
@@ -11,7 +16,7 @@ export default function SearchInput() {
       />
       <input
         type="search"
-        placeholder="Search"
+        placeholder={`Search in ${where}..`}
         className="bg-[#F4F7FF] text-inherit placeholder:text-inherit dark:bg-[#2A2438] dark:text-inherit |  placeholder:opacity-50 w-full h-full p-2 pl-10 outline-none transition-all duration-300"
       />
     </div>
