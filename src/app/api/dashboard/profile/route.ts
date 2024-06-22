@@ -13,8 +13,6 @@ export async function POST(req: NextRequest) {
     const user = await decrypt(token)
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
-
-
     try {
         await delay(1000)
         const body = await req.json()
@@ -38,7 +36,7 @@ export async function DELETE() {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        await delay(2500)
+        await delay(1000)
 
         await sql`DELETE FROM users WHERE user_id = ${user.user_id}`
         cookies().delete(AUTH_COOKIE_KEY)

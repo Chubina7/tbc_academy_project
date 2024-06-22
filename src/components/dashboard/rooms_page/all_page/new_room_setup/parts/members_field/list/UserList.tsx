@@ -49,7 +49,6 @@ export default function UserList() {
         setIsLoading(false);
       }
     };
-
     getData();
   }, []);
 

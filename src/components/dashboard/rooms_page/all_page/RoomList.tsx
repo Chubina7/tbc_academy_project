@@ -29,7 +29,7 @@ export default function RoomList({ rooms, role }: Props) {
   const emptyList = (
     <section className="w-full pt-5">
       <p className="w-full text-center">
-        Empty rooms list. Join at least one, first!
+        Empty rooms list. Join or create at least one, first!
       </p>
     </section>
   );

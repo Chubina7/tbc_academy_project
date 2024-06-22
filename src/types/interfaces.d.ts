@@ -79,7 +79,7 @@ interface IRegisterCredentials {
 interface IRoom {
     room_id: string
     room_name: string
-    description: string
+    room_description: string
     room_image: string | null
     teacher: string
     enrolled_number: number
@@ -96,7 +96,6 @@ interface IRoomUserListItem {
     username: string;
     surname: null;
     role: RoleType;
-    joined_at: string;
 }
 // Single Room
 interface IRoomAssignment {
