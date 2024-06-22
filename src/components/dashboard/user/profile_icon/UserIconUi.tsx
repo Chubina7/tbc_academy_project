@@ -17,10 +17,10 @@ export default function UserIconUi({ data }: Props) {
     <div className="flex gap-2 justify-center items-center">
       <Image
         src={profile_picture ? profile_picture : anonym}
-        alt="anonym"
+        alt={username}
         width={36}
         height={36}
-        className="rounded-full cursor-pointer"
+        className="w-9 h-9 rounded-full cursor-pointer object-cover"
         onClick={() => modalState[1]((prev) => !prev)}
         id="profile_modal"
       />

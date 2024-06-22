@@ -48,7 +48,10 @@ export default function SaveBtn({ dataToBeServed }: Props) {
   };
 
   return (
-    <button className="px-3 py-1 rounded-lg bg-red-400" onClick={handleSubmit}>
+    <button
+      className="px-3 py-1 rounded-lg border-2 border-[#603CFF] dark:border-[#5C5470] bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 text-sm font-bold"
+      onClick={handleSubmit}
+    >
       Save <span className="hidden md:inline-block">Changes</span>
     </button>
   );
