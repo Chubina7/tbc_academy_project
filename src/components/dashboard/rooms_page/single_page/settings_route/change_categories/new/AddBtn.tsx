@@ -8,7 +8,7 @@ export default function AddBtn() {
 
   return (
     <button
-      className="bg-red-300 rounded-lg px-3 py-1"
+      className="border-2 border-[#603CFF] dark:border-[#5C5470] text-[#603CFF] dark:text-[#DBD8E3] transition-all duration-300 rounded-lg px-3 py-1"
       onClick={() => handleCtgAdd(inputValue)}
     >
       Add

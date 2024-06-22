@@ -80,7 +80,7 @@ interface IRoom {
     room_id: string
     room_name: string
     room_description: string
-    room_image: string | null
+    room_image: string
     teacher: string
     enrolled_number: number
     category: Array<string>
@@ -110,7 +110,7 @@ interface IRoomIntro {
     room_name: string,
     room_description: string,
     created_at: string,
-    room_image: string | null,
+    room_image: string,
 }
 interface IRoomAnnouncement {
     announcement_id: string;
