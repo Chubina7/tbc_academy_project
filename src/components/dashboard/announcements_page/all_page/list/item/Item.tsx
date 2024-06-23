@@ -3,7 +3,7 @@ import Comments from "./Comments";
 import Author from "./Author";
 import Announcement from "./Announcement";
 import VariantsListItem from "../../../../../ui/framerMotionDivs/variants/VariantsListItem";
-import DeleteBtn from "./DeleteBtn";
+import DeleteBtn from "./delete/DeleteBtn";
 import { USER } from "../../../../../../lib/helpers/server_act_funcs/authorization_acts";
 import dynamic from "next/dynamic";
 const PostDate = dynamic(() => import("./PostDate"), { ssr: false });
@@ -31,7 +31,7 @@ export default async function Item({ data, author }: Props) {
 
   return (
     <VariantsListItem className="w-full max-w-4xl">
-      <div className="bg-[#FFFFFF] dark:bg-[#352F44] shadow-custom rounded-xl px-3 sm:px-4 py-6 transition-all duration-300 | w-full max-w-4xl flex flex-col justify-center items-start gap-3 hover:scale-105">
+      <div className="relative bg-[#FFFFFF] dark:bg-[#352F44] shadow-custom rounded-xl px-3 sm:px-4 py-6 transition-all duration-300 | w-full max-w-4xl flex flex-col justify-center items-start gap-3">
         <div className="w-full flex justify-between items-start gap-4">
           <Title
             announcement_id={data.announcement_id}
