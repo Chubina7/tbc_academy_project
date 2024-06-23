@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../../../../lib/variables";
 import { sql } from "@vercel/postgres";
 import { generateUniqueId } from "../../../../lib/helpers/regular_funcs/general";
+import { revalidateTag } from "next/cache";
 
 export async function GET(req: NextRequest) {
     console.log("ესტუმრა ეიპიაის")
@@ -72,6 +73,7 @@ export async function POST(req: NextRequest) {
         await sql`INSERT INTO announcements (room_id, announcement_id, announcement_title, announcement) VALUES (${room_id},${announcement_id}, ${announcement_title}, ${announcement})`
         await sql`INSERT INTO announcement_authors (announcement_id, user_id, room_id) VALUES (${announcement_id}, ${user.user_id}, ${room_id})`
 
+        revalidateTag("all_announcements")
         return NextResponse.json({ message: "Announced successfully" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Something went wrong", error }, { status: 500 })

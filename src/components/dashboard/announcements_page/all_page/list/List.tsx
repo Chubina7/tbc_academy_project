@@ -13,7 +13,7 @@ export default function List({ data, query }: Props) {
         data.length > 0 ? (
           data
             .filter((item) => {
-              if (query) {
+              if (query && query.trim() !== "") {
                 return item.author.room_name === query;
               } else {
                 return item;

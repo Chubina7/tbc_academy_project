@@ -56,10 +56,13 @@ export async function getAnnouncementList() {
 
     try {
         const res = await fetch(`${domain}/api/dashboard/announcements`, {
-            cache: "no-cache",
+            cache: "force-cache",
             headers: {
                 Authorization: token || "",
             },
+            next: {
+                tags: ["all_announcements"]
+            }
         });
 
         if (!res.ok) {
