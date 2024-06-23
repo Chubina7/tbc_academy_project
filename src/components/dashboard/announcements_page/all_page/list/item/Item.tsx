@@ -1,11 +1,12 @@
 import Title from "./Title";
 import Comments from "./Comments";
 import Author from "./Author";
-import PostDate from "./PostDate";
 import Announcement from "./Announcement";
 import VariantsListItem from "../../../../../ui/framerMotionDivs/variants/VariantsListItem";
 import DeleteBtn from "./DeleteBtn";
 import { USER } from "../../../../../../lib/helpers/server_act_funcs/authorization_acts";
+import dynamic from "next/dynamic";
+const PostDate = dynamic(() => import("./PostDate"), { ssr: false });
 
 interface Props {
   author: {
