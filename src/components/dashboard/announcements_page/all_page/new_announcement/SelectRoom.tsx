@@ -3,26 +3,11 @@
 import { useContext } from "react";
 import { AddNewAnnouncementContext as newAnnCtx } from "../../../../../context/ctx";
 
-const room_list = [
-  {
-    title: "Math Introduction",
-    room_id: "R0001",
-  },
-  {
-    title: "Advanced Python",
-    room_id: "R0002",
-  },
-  {
-    title: "Marketing Advisors",
-    room_id: "R0003",
-  },
-  {
-    title: "Introduction to programming with Javascript and native languages",
-    room_id: "R0004",
-  },
-];
+interface Props {
+  roomList: Array<{ room_id: string; room_name: string }>;
+}
 
-export default function SelectRoom() {
+export default function SelectRoom({ roomList }: Props) {
   const { setRoomId, setError } = useContext(newAnnCtx);
 
   return (
@@ -36,9 +21,9 @@ export default function SelectRoom() {
         setRoomId(e.target.value);
       }}
     >
-      {room_list.map((item, idx) => (
+      {roomList.map((item, idx) => (
         <option key={idx} value={item.room_id}>
-          {item.title}
+          {item.room_name}
         </option>
       ))}
       <option value="default" hidden>

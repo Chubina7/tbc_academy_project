@@ -6,11 +6,13 @@ import {
   NotificationsContext as notifCtx,
 } from "../../../../../context/ctx";
 import { detectEnviro } from "../../../../../lib/helpers/regular_funcs/general";
+import { useRouter } from "next/navigation";
 
 const domain = detectEnviro();
 
 export default function Btn() {
   const { showNotification } = useContext(notifCtx);
+  const router = useRouter();
   const {
     announcement,
     roomId,
@@ -52,7 +54,8 @@ export default function Btn() {
         throw new Error(result.message);
       }
 
-      showNotification(true, "success", "Announced successfully!");
+      router.refresh();
+      showNotification(true, "success", result.message);
     } catch (error: any) {
       showNotification(true, "error", error.message);
       console.error(error.message);

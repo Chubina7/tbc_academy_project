@@ -2,14 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { decrypt } from "../../../../lib/helpers/server_act_funcs/decrypt";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../../../../lib/variables";
+import { sql } from "@vercel/postgres";
+import { generateUniqueId } from "../../../../lib/helpers/regular_funcs/general";
+import { getUserRooms } from "../../../../lib/helpers/server_act_funcs/user_relations";
 
 interface IPostReqData {
     announcement: string,
     announcement_title: string,
     room_id: string
 }
-
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export async function GET(req: NextRequest) {
     const token = req.headers.get("Authorization")
@@ -18,90 +19,47 @@ export async function GET(req: NextRequest) {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        const announcementList: IAnnouncement[] = [
-            {
-                author: {
-                    user_id: "U0001",
-                    username: "Alice",
-                    surname: "Johnson",
-                    room_id: "R0001",
-                    room_title: "Science Class",
-                },
-                announcement_id: "A0001",
-                announcement_title: "Lab Safety Rules",
-                announcement:
-                    "Please remember to follow all lab safety rules during our experiments.",
-                comments_number: 5,
-                announced_at: "01/06/2024",
+        const announcements = await sql`
+        SELECT 
+            a.*, 
+            u.user_id,
+            u.username, 
+            u.surname, 
+            r.room_id, 
+            r.room_name
+        FROM 
+            announcements a
+        JOIN 
+            announcement_authors aa ON a.announcement_id = aa.announcement_id
+        JOIN 
+            users u ON aa.user_id = u.user_id
+        JOIN 
+            rooms r ON aa.room_id = r.room_id
+        ORDER BY 
+            a.announced_at DESC
+        `
+        const announcementList = announcements.rows.map(row => ({
+            author: {
+                user_id: row.user_id,
+                username: row.username,
+                surname: row.surname,
+                room_id: row.room_id,
+                room_title: row.room_name,
             },
-            {
-                author: {
-                    user_id: "U0002",
-                    username: "Bob",
-                    surname: "Smith",
-                    room_id: "R0002",
-                    room_title: "Math Class",
-                },
-                announcement_id: "A0002",
-                announcement_title: "Homework Due Date",
-                announcement:
-                    "The homework on calculus is due next Monday. Please submit it on time.",
-                comments_number: 3,
-                announced_at: "02/06/2024",
-            },
-            {
-                author: {
-                    user_id: "U0003",
-                    username: "Charlie",
-                    surname: "Brown",
-                    room_id: "R0003",
-                    room_title: "History Class",
-                },
-                announcement_id: "A0003",
-                announcement_title: "Field Trip",
-                announcement:
-                    "We will be visiting the history museum next Friday. Don't forget to bring your permission slips.",
-                comments_number: 7,
-                announced_at: "03/06/2024",
-            },
-            {
-                author: {
-                    user_id: "U0004",
-                    username: "Diana",
-                    surname: "Miller",
-                    room_id: "R0004",
-                    room_title: "English Class",
-                },
-                announcement_id: "A0004",
-                announcement_title: "Reading Assignment",
-                announcement:
-                    "Please read chapters 4 and 5 of 'To Kill a Mockingbird' for our next class discussion.",
-                comments_number: 2,
-                announced_at: "04/06/2024",
-            },
-            {
-                author: {
-                    user_id: "U0005",
-                    username: "Eve",
-                    surname: "Davis",
-                    room_id: "R0005",
-                    room_title: "Physics Class",
-                },
-                announcement_id: "A0005",
-                announcement_title: "Project Deadline",
-                announcement:
-                    "The project on Newton's laws of motion is due by the end of this month. Start working on it early!",
-                comments_number: 4,
-                announced_at: "05/06/2024",
-            },
-        ];
-        const room_names = ["test1", "test2", "test3"]
+            announcement_id: row.announcement_id,
+            announcement_title: row.announcement_title,
+            announcement: row.announcement,
+            comments_number: row.comments_number,
+            announced_at: row.announced_at
+        }))
+
+        const user_rooms = await getUserRooms(user.user_id)
+        const room_names = user_rooms.map(item => item.room_name)
 
         return NextResponse.json({ announcements: announcementList, room_names: room_names }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Error getting data from API", error }, { status: 500 })
     }
-
 }
 
 export async function POST(req: NextRequest) {
@@ -111,11 +69,14 @@ export async function POST(req: NextRequest) {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        await delay(2500)
+        const { announcement, announcement_title, room_id } = await req.json()
 
-        const data: IPostReqData = await req.json()
+        const announcement_id = generateUniqueId("N")
 
-        return NextResponse.json(data, { status: 200 })
+        await sql`INSERT INTO announcements (announcement_id, announcement_title, announcement) VALUES (${announcement_id}, ${announcement_title}, ${announcement})`
+        await sql`INSERT INTO announcement_authors (announcement_id, user_id, room_id) VALUES (${announcement_id}, ${user.user_id}, ${room_id})`
+
+        return NextResponse.json({ message: "Announced successfully" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Something went wrong", error }, { status: 500 })
     }
