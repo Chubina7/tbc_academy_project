@@ -115,8 +115,8 @@ interface IRoomIntro {
 interface IRoomAnnouncement {
     announcement_id: string;
     announcement_title: string;
-    annonced_at: string;
-    announcement_description: string;
+    announced_at: string;
+    announcement: string;
     announcement_comment_num: number;
 }
 interface IRoomMember {

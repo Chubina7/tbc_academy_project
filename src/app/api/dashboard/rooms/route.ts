@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../../../../lib/variables";
 import { generateUniqueId } from "../../../../lib/helpers/regular_funcs/general";
 import { sql } from "@vercel/postgres";
+import { revalidateTag } from "next/cache";
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -28,7 +29,7 @@ export async function GET(req: NextRequest) {
         const roomData = await sql`SELECT r.room_id, r.room_name, r.room_description, r.room_image, r.category, r.created_at
                                     FROM rooms r
                                     JOIN room_enrollments re ON r.room_id = re.room_id
-                                    WHERE re.user_id = ${user.user_id}`
+                                    WHERE re.user_id = ${user.user_id} ORDER BY r.created_at ASC`
 
         // get all categories list
         const categories = await sql`SELECT ARRAY_AGG(category) AS all_categories
@@ -92,6 +93,8 @@ export async function POST(req: NextRequest) {
             await sql`INSERT INTO room_enrollments (user_id, room_id) VALUES (${data.members[idx]}, ${room_id})`
         }
 
+        revalidateTag("all_announcements")
+        revalidateTag("all_rooms")
         return NextResponse.json({ message: "Room created successfully!", room_id }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Error while connecting API" }, { status: 500 })

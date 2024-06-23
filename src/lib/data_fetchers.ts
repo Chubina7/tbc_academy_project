@@ -10,10 +10,11 @@ export async function getEnrolledRoomsList() {
 
     try {
         const res = await fetch(`${domain}/api/dashboard/rooms`, {
-            cache: "no-cache",
+            cache: "force-cache",
             headers: {
                 Authorization: token?.value || "",
-            }
+            },
+            next: { tags: ["all_rooms"] }
         });
         if (!res.ok) {
             const errorResponse = await res.json();

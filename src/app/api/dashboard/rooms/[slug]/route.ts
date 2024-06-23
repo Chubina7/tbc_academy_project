@@ -3,6 +3,7 @@ import { decrypt } from "../../../../../lib/helpers/server_act_funcs/decrypt";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../../../../../lib/variables";
 import { sql } from "@vercel/postgres";
+import { revalidateTag } from "next/cache";
 
 interface Props {
     params: IParams
@@ -60,24 +61,6 @@ const assignments = [
         assignment_past_due: "2024-03-15T08:00:00Z",
     },
 ]
-const announcements = [
-    {
-        announcement_id: "AN0001",
-        announcement_title: "Exam Date Announced",
-        annonced_at: "2024-04-01T09:00:00Z",
-        announcement_description:
-            "The mid-term exam will be held on April 15th.",
-        announcement_comment_num: 12,
-    },
-    {
-        announcement_id: "AN0002",
-        announcement_title: "New Course Materials Available",
-        annonced_at: "2024-03-15T09:00:00Z",
-        announcement_description:
-            "New materials for the linear algebra section have been uploaded.",
-        announcement_comment_num: 8,
-    },
-]
 const grade = {
     student_data: {
         user_avg: 88.5,
@@ -131,9 +114,26 @@ export async function GET(req: NextRequest, { params }: Props) {
                                     WHERE r.room_id = ${params.slug} AND re.user_id = ${user.user_id}`
         const categories = categoriesData.rows[0].category as Array<string>
 
+        const announcementsData = await sql`SELECT 
+                      a.announcement_id,
+                      a.announcement_title,
+                      a.announced_at,
+                      a.announcement,
+                      COUNT(c.comment_id) AS announcement_comment_num
+                  FROM 
+                      announcements a
+                  LEFT JOIN 
+                      comments c ON a.announcement_id = c.announcement_id
+                  WHERE 
+                      a.room_id = ${params.slug}
+                  GROUP BY 
+                      a.announcement_id,
+                      a.announcement_title,
+                      a.announced_at,
+                      a.announcement`
+        const announcements = announcementsData.rows as IRoomAnnouncement[]
+
         // assignments relation
-        // ...
-        // announcements relation
         // ...
         // grade relation
         // ...
@@ -174,6 +174,8 @@ export async function DELETE(_req: NextRequest, { params }: Props) {
             throw new Error()
         }
 
+        revalidateTag("all_announcements")
+        revalidateTag("all_rooms")
         return NextResponse.json({ message: "Room deleted successfully" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Something went wrong! Unable to delete room." }, { status: 500 })

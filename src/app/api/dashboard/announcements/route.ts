@@ -7,7 +7,6 @@ import { generateUniqueId } from "../../../../lib/helpers/regular_funcs/general"
 import { revalidateTag } from "next/cache";
 
 export async function GET(req: NextRequest) {
-    console.log("ესტუმრა ეიპიაის")
     const token = req.headers.get("Authorization")
     if (!token) return NextResponse.json({ message: "Unauthorized. No token provided" }, { status: 401 })
     const user = await decrypt(token)

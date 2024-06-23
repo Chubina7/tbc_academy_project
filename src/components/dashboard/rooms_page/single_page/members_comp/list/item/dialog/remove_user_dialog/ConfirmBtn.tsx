@@ -25,7 +25,7 @@ export default function ConfirmBtn({
     setIsLoading(true);
     try {
       const res = await fetch(
-        `${domain}/api/dashboard/rooms/${room_id}/members/remove`,
+        `${domain}/api/dashboard/rooms/${room_id}/members`,
         {
           method: "DELETE",
           body: JSON.stringify({ user_id, room_id }),

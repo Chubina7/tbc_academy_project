@@ -48,7 +48,7 @@ export default async function Item({ data, author }: Props) {
         </div>
         <Announcement data={data.announcement} />
         {loginedUser.user_id === author.user_id && (
-          <DeleteBtn announcement_id={data.announcement_id} />
+          <DeleteBtn announcement_id={data.announcement_id} redirect={false} />
         )}
       </div>
     </VariantsListItem>

@@ -68,8 +68,8 @@ export default function FinishBtn({ closeModal }: Props) {
       showNotification(true, "error", error.message);
     } finally {
       router.refresh();
-      setIsLoading(false);
       closeModal();
+      setIsLoading(false);
     }
   };
 

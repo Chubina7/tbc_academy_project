@@ -6,9 +6,10 @@ import ConfirmModal from "./ConfirmModal";
 
 interface Props {
   announcement_id: string;
+  redirect: boolean;
 }
 
-export default function DeleteBtn({ announcement_id }: Props) {
+export default function DeleteBtn({ announcement_id, redirect }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const modalHandler = () => setIsOpen((prev) => !prev);
@@ -23,6 +24,7 @@ export default function DeleteBtn({ announcement_id }: Props) {
           <ConfirmModal
             handleModal={modalHandler}
             idToDelete={announcement_id}
+            redirect={redirect}
           />
         )}
       </div>

@@ -9,11 +9,16 @@ import { useRouter } from "next/navigation";
 interface Props {
   handleModal: () => void;
   idToDelete: string;
+  redirect: boolean;
 }
 
 const domain = detectEnviro();
 
-export default function ConfirmModal({ handleModal, idToDelete }: Props) {
+export default function ConfirmModal({
+  handleModal,
+  idToDelete,
+  redirect,
+}: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const { showNotification } = useContext(notifCtx);
   const router = useRouter();
@@ -32,13 +37,13 @@ export default function ConfirmModal({ handleModal, idToDelete }: Props) {
       if (!res.ok) {
         throw new Error(result.message);
       }
-
-      router.refresh();
+      if (redirect) router.replace("/dashboard/announcements");
       showNotification(true, "success", result.message);
     } catch (error: any) {
       console.error(error.message);
       showNotification(true, "error", error.message);
     } finally {
+      router.refresh();
       handleModal();
       setIsLoading(false);
     }
