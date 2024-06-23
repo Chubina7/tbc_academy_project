@@ -17,6 +17,9 @@ export async function GET(req: NextRequest, { params }: Props) {
     const user = await decrypt(token)
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
+
+    console.log("visited api")
+
     try {
         const sqlResult = await sql`SELECT 
                 c.comment_id,
@@ -33,7 +36,8 @@ export async function GET(req: NextRequest, { params }: Props) {
                 comment_authors ca ON c.comment_id = ca.comment_id
             JOIN 
                 users u ON ca.user_id = u.user_id
-            WHERE c.announcement_id = ${params.slug}`;
+            WHERE c.announcement_id = ${params.slug}
+            ORDER BY c.commented_at DESC`;
 
         const comments = sqlResult.rows.map(row => ({
             comment_id: row.comment_id,

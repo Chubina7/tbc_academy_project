@@ -4,9 +4,10 @@ import Sorter from "./Sorter";
 
 interface Props {
   ann_id: string;
+  query: string | undefined;
 }
 
-export default async function Comments({ ann_id }: Props) {
+export default async function Comments({ ann_id, query }: Props) {
   const data = await getAnnouncementComments(ann_id);
 
   if (!data) return null;
@@ -17,7 +18,7 @@ export default async function Comments({ ann_id }: Props) {
         <h1 className="w-full max-w-4xl font-bold text-2xl">All Comments</h1>
         <Sorter />
       </div>
-      <List data={data} />
+      <List data={data} query={query} />
     </>
   );
 }

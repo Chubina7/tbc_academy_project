@@ -5,9 +5,15 @@ import Details from "../../../../../../components/dashboard/announcements_page/s
 
 interface Props {
   params: IParams;
+  searchParams: {
+    comments: string | undefined;
+  };
 }
 
-export default async function AnnouncementPage({ params }: Props) {
+export default async function AnnouncementPage({
+  params,
+  searchParams,
+}: Props) {
   unstable_setRequestLocale(params.locale);
 
   return (
@@ -15,7 +21,7 @@ export default async function AnnouncementPage({ params }: Props) {
       <Details ann_id={params.slug} />
       <hr className="w-full max-w-4xl border rounded-full mt-6 opacity-60" />
       <AddNewComment />
-      <Comments ann_id={params.slug} />
+      <Comments ann_id={params.slug} query={searchParams.comments} />
     </div>
   );
 }
