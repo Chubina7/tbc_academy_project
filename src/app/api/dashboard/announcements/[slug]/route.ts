@@ -9,117 +9,51 @@ interface Props {
     params: IParams
 }
 
-export async function GET(req: NextRequest) {
+export async function GET(req: NextRequest, { params }: Props) {
     const token = req.headers.get("Authorization")
     if (!token) return NextResponse.json({ message: "Unauthorized. No token provided" }, { status: 401 })
     const user = await decrypt(token)
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        const singleData = {
-            announcement: {
-                author: {
-                    user_id: "U0001",
-                    room_id: "R0001",
-                    username: "john_doe",
-                    surname: "Doe",
-                    room_title: "Mathematics 101",
-                },
-                data: {
-                    announcement_title: "Upcoming Exam",
-                    announcement:
-                        "Dear students, the upcoming exam will cover chapters 1 to 5. Please make sure to review all materials and complete the practice problems provided.",
-                    announced_at: "2024-06-10T09:00:00Z",
-                },
+        const announcement = await sql`SELECT 
+            a.announcement_id,
+            a.announcement_title,
+            a.announcement,
+            a.announced_at,
+            aa.user_id,
+            u.username,
+            u.surname,
+            aa.room_id,
+            r.room_name
+        FROM 
+            announcements a
+        JOIN 
+            announcement_authors aa ON a.announcement_id = aa.announcement_id
+        JOIN 
+            users u ON aa.user_id = u.user_id
+        JOIN 
+            rooms r ON aa.room_id = r.room_id
+        WHERE 
+        a.announcement_id = ${params.slug}`
+
+        const returnVal = announcement.rows.map(row => ({
+            author: {
+                user_id: row.user_id,
+                room_id: row.room_id,
+                username: row.username,
+                surname: row.surname,
+                room_name: row.room_name,
             },
-            comments: [
-                {
-                    author: {
-                        user_id: "U0001",
-                        username: "john_doe",
-                        surname: "Doe",
-                        user_img: null,
-                        role: "student" as RoleType,
-                    },
-                    comment_id: "C0001",
-                    comment: "This is a very helpful announcement. Thank you!",
-                    likes: {
-                        isLiked: true,
-                        quantity: 5,
-                    },
-                    commented_at: "2024-06-01T10:15:30Z",
-                },
-                {
-                    author: {
-                        user_id: "U0002",
-                        username: "jane_smith",
-                        surname: "Smith",
-                        user_img: null,
-                        role: "teacher" as RoleType,
-                    },
-                    comment_id: "C0002",
-                    comment: "I agree with this announcement. Well done!",
-                    likes: {
-                        isLiked: false,
-                        quantity: 3,
-                    },
-                    commented_at: "2024-06-02T08:25:45Z",
-                },
-                {
-                    author: {
-                        user_id: "U0003",
-                        username: "alice_wonder",
-                        surname: null,
-                        user_img: null,
-                        role: "admin" as RoleType,
-                    },
-                    comment_id: "C0003",
-                    comment: "Please follow the guidelines mentioned in the announcement.",
-                    likes: {
-                        isLiked: true,
-                        quantity: 8,
-                    },
-                    commented_at: "2024-06-03T12:45:20Z",
-                },
-                {
-                    author: {
-                        user_id: "U0004",
-                        username: "bob_martin",
-                        surname: "Martin",
-                        user_img: null,
-                        role: "student" as RoleType,
-                    },
-                    comment_id: "C0004",
-                    comment: "Can you provide more details about this?",
-                    likes: {
-                        isLiked: false,
-                        quantity: 2,
-                    },
-                    commented_at: "2024-06-04T14:10:05Z",
-                },
-                {
-                    author: {
-                        user_id: "U0005",
-                        username: "linda_wang",
-                        surname: "Wang",
-                        user_img: null,
-                        role: "teacher" as RoleType,
-                    },
-                    comment_id: "C0005",
-                    comment: "Great announcement, it was much needed.",
-                    likes: {
-                        isLiked: true,
-                        quantity: 6,
-                    },
-                    commented_at: "2024-06-05T09:35:50Z",
-                },
-            ],
-        };
-        return NextResponse.json({ announcement: singleData.announcement, comments: singleData.comments }, { status: 200 })
+            announcement_title: row.announcement_title,
+            announcement: row.announcement,
+            announced_at: row.announced_at,
+        }))[0]
+
+        return NextResponse.json(returnVal, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Error getting data from API", error }, { status: 500 })
     }
-
 }
 
 export async function DELETE(_req: NextRequest, { params }: Props) {

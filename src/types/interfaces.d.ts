@@ -185,23 +185,17 @@ interface IAnnouncementComment {
     }
     commented_at: string
 }
-interface ISingleAnnouncementApiReturn {
-    announcement: {
-        author: {
-            user_id: string,
-            room_id: string,
-            username: string,
-            surname: string | null,
-            room_title: string,
-        },
-        data: {
-            announcement_title: string,
-            announcement: string
-            announced_at: string,
-            comments_number: 15,
-        },
-    }
-    comments: Array<IAnnouncementComment>
+interface ISingleAnnouncementData {
+    author: {
+        user_id: string;
+        room_id: string;
+        username: string;
+        surname: string | null;
+        room_name: string;
+    };
+    announcement_title: string;
+    announcement: string;
+    announced_at: string;
 }
 
 // Profile page

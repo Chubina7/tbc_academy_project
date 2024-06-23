@@ -84,7 +84,7 @@ export async function getSingleAnnouncementData(announcement_id: string) {
         const res = await fetch(
             `${domain}/api/dashboard/announcements/${announcement_id}`,
             {
-                cache: "no-cache",
+                cache: "force-cache",
                 headers: {
                     Authorization: token || "",
                 },
@@ -96,7 +96,36 @@ export async function getSingleAnnouncementData(announcement_id: string) {
             throw new Error(errorResponse.message || "Error while fetching data");
         }
 
-        const result: ISingleAnnouncementApiReturn = await res.json();
+        const result: ISingleAnnouncementData = await res.json();
+        return result;
+    } catch (error) {
+        console.error("Failed to fetch rooms data:", error);
+        return null;
+    }
+}
+export async function getAnnouncementComments(announcement_id: string) {
+    const token = cookies().get(AUTH_COOKIE_KEY)?.value;
+
+    try {
+        const res = await fetch(
+            `${domain}/api/dashboard/announcements/${announcement_id}/comments`,
+            {
+                cache: "force-cache",
+                headers: {
+                    Authorization: token || "",
+                },
+                next: {
+                    tags: ["announcement_all_comments"]
+                }
+            }
+        );
+
+        if (!res.ok) {
+            const errorResponse = await res.json();
+            throw new Error(errorResponse.message || "Error while fetching data");
+        }
+
+        const result: Array<IAnnouncementComment> = await res.json();
         return result;
     } catch (error) {
         console.error("Failed to fetch rooms data:", error);
