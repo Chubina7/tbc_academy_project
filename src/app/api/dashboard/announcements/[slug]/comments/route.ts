@@ -97,6 +97,7 @@ export async function POST(req: NextRequest, { params }: Props) {
         await sql`INSERT INTO announcement_comment_authors (comment_id, user_id, announcement_id) VALUES (${comment_id}, ${user.user_id}, ${params.slug})`
 
         revalidateTag("announcement_all_comments")
+        revalidateTag("all_announcements")
         return NextResponse.json({ message: "Comment added!" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Error while adding comment.", error }, { status: 500 })
@@ -115,6 +116,7 @@ export async function DELETE(req: NextRequest) {
         await sql`DELETE FROM announcement_comments WHERE comment_id = ${announcement_id}`
 
         revalidateTag("announcement_all_comments")
+        revalidateTag("all_announcements")
         return NextResponse.json({ message: "Comment deleted successfully!" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Error while deleting comment." }, { status: 500 })

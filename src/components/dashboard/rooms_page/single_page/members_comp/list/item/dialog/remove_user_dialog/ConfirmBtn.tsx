@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { NotificationsContext as notifCtx } from "../../../../../../../../../context/ctx";
 import { detectEnviro } from "../../../../../../../../../lib/helpers/regular_funcs/general";
+import { useRouter } from "next/navigation";
 
 interface Props {
   modalHandler: () => void;
@@ -20,6 +21,7 @@ export default function ConfirmBtn({
   const { showNotification } = useContext(notifCtx);
   const [isLoading, setIsLoading] = loadingState;
   const { room_id, user_id } = data;
+  const router = useRouter();
 
   const handleConfirmation = async () => {
     setIsLoading(true);
@@ -41,6 +43,7 @@ export default function ConfirmBtn({
     } catch (error: any) {
       showNotification(true, "error", error.message);
     } finally {
+      router.refresh();
       setIsLoading(false);
       modalHandler();
     }

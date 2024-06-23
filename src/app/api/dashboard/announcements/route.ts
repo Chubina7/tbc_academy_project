@@ -20,7 +20,8 @@ export async function GET(req: NextRequest) {
             u.username, 
             u.surname, 
             r.room_id, 
-            r.room_name
+            r.room_name,
+            COALESCE(c.comments_number, 0) AS comments_number
         FROM 
             announcements a
         JOIN 
@@ -29,9 +30,18 @@ export async function GET(req: NextRequest) {
             users u ON aa.user_id = u.user_id
         JOIN 
             rooms r ON aa.room_id = r.room_id
+        LEFT JOIN (
+            SELECT 
+                announcement_id, 
+                COUNT(*) AS comments_number
+            FROM 
+                announcement_comments
+            GROUP BY 
+                announcement_id
+        ) c ON a.announcement_id = c.announcement_id
         ORDER BY 
             a.announced_at DESC`
-        // add comments number querying
+        
         const announcementList = announcements.rows.map(row => ({
             author: {
                 user_id: row.user_id,
@@ -46,6 +56,7 @@ export async function GET(req: NextRequest) {
             comments_number: row.comments_number,
             announced_at: row.announced_at,
         }))
+        
 
         const room_names = await sql`SELECT DISTINCT r.room_name
                                 FROM announcements a

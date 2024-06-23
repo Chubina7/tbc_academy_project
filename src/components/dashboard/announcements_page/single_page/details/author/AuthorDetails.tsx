@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IoPersonOutline } from "react-icons/io5";
 import DeleteBtn from "../../../all_page/list/item/delete/DeleteBtn";
+import { USER } from "../../../../../../lib/helpers/server_act_funcs/authorization_acts";
 
 interface Props {
   author: {
@@ -15,11 +16,13 @@ interface Props {
   announcement_id: string;
 }
 
-export default function AuthorDetails({
+export default async function AuthorDetails({
   author,
   room,
   announcement_id,
 }: Props) {
+  const { user_id } = await USER();
+  
   return (
     <div className="w-full flex gap-2 justify-start items-center">
       <IoPersonOutline size={24} />
@@ -39,7 +42,9 @@ export default function AuthorDetails({
             {room.room_name}
           </Link>
         </h1>
-        <DeleteBtn announcement_id={announcement_id} redirect />
+        {user_id === author.user_id && (
+          <DeleteBtn announcement_id={announcement_id} redirect />
+        )}
       </div>
     </div>
   );

@@ -6,8 +6,6 @@ import { generateUniqueId } from "../../../../lib/helpers/regular_funcs/general"
 import { sql } from "@vercel/postgres";
 import { revalidateTag } from "next/cache";
 
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 interface IPostReqData {
     room: {
         room_name: string;
@@ -80,8 +78,6 @@ export async function POST(req: NextRequest) {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        await delay(1000)
-
         const data: IPostReqData = await req.json()
         const room_id = generateUniqueId("R")
 

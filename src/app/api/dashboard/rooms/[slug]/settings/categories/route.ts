@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { AUTH_COOKIE_KEY } from "../../../../../../../lib/variables"
 import { decrypt } from "../../../../../../../lib/helpers/server_act_funcs/decrypt"
 import { sql } from "@vercel/postgres";
+import { revalidateTag } from "next/cache";
 
 interface Props {
     params: IParams
@@ -31,6 +32,7 @@ export async function PUT(req: NextRequest, { params }: Props) {
             throw new Error()
         }
 
+        revalidateTag("all_rooms")
         return NextResponse.json({ message: "Categories updated successfullly!" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Internal server error. Unable to change room settings." }, { status: 500 })

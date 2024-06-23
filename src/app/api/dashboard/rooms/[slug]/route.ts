@@ -123,7 +123,7 @@ export async function GET(req: NextRequest, { params }: Props) {
                   FROM 
                       announcements a
                   LEFT JOIN 
-                      comments c ON a.announcement_id = c.announcement_id
+                      announcement_comments c ON a.announcement_id = c.announcement_id
                   WHERE 
                       a.room_id = ${params.slug}
                   GROUP BY 

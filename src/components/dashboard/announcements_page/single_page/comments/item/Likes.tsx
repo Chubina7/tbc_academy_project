@@ -7,6 +7,7 @@ import {
   dislikeComment,
   likeComment,
 } from "../../../../../../lib/helpers/server_act_funcs/announcement_comment_acts";
+import { useRouter } from "next/navigation";
 
 interface Props {
   num: number;
@@ -17,7 +18,7 @@ interface Props {
 export default function Likes({ num, isLiked, comment_id }: Props) {
   const [like, setLike] = useState(isLiked);
   const [quantity, setQuantity] = useState(num);
-
+  const router = useRouter();
   const handleCommentLiking = async () => {
     setLike((prev) => !prev);
 
@@ -28,6 +29,8 @@ export default function Likes({ num, isLiked, comment_id }: Props) {
       setQuantity((prev) => prev + 1);
       await likeComment(comment_id);
     }
+
+    router.refresh();
   };
 
   return (

@@ -4,7 +4,9 @@ import Comment from "./Comment";
 import dynamic from "next/dynamic";
 const PostTime = dynamic(() => import("./PostTime"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => (
+    <p className="sm:w-28 text-nowrap text-sm text-center">Loading...</p>
+  ),
 });
 import Likes from "./Likes";
 

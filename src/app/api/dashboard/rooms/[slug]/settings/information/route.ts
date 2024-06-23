@@ -3,8 +3,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { AUTH_COOKIE_KEY } from "../../../../../../../lib/variables"
 import { decrypt } from "../../../../../../../lib/helpers/server_act_funcs/decrypt"
 import { sql } from "@vercel/postgres";
-
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+import { revalidateTag } from "next/cache";
 
 interface Props {
     params: IParams
@@ -18,7 +17,6 @@ export async function PUT(req: NextRequest, { params }: Props) {
     if (user.role === "student") return NextResponse.json({ message: "You do not have persmission to make delete action" }, { status: 401 })
 
     try {
-        await delay(1000)
         const data = await req.json()
 
         const isEnrolled = await sql`SELECT *
@@ -33,7 +31,7 @@ export async function PUT(req: NextRequest, { params }: Props) {
         } else {
             throw new Error()
         }
-
+        revalidateTag("all_rooms")
         return NextResponse.json({ message: "Room information changed successfullly!" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Internal server error. Unable to change room settings." }, { status: 500 })
