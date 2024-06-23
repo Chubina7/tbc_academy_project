@@ -1,4 +1,10 @@
+import { usePathname, useRouter } from "next/navigation";
+import { detectEnviro } from "../../../../../../../lib/helpers/regular_funcs/general";
 import Backdrop from "../../../../../../ui/Backdrop";
+import { useContext, useState } from "react";
+import { NotificationsContext as notifCtx } from "../../../../../../../context/ctx";
+
+const domain = detectEnviro();
 
 interface Props {
   modalHandler: () => void;
@@ -6,9 +12,37 @@ interface Props {
 }
 
 export default function ConfirmModal({ modalHandler, idToDelete }: Props) {
+  const [isLoading, setIsLoading] = useState(false);
+  const { showNotification } = useContext(notifCtx);
+  const router = useRouter();
+  const path = usePathname();
+  const announcement_id = path.split("/")[3];
+
   const handleDeletion = async () => {
-    console.log("Deteling ", idToDelete);
-    modalHandler();
+    try {
+      setIsLoading(true);
+      const res = await fetch(
+        `${domain}/api/dashboard/announcements/${announcement_id}/comments`,
+        {
+          method: "DELETE",
+          body: JSON.stringify(idToDelete),
+        }
+      );
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.message);
+      }
+
+      showNotification(true, "success", result.message);
+      router.refresh();
+    } catch (error: any) {
+      console.error(error);
+      showNotification(true, "error", error.message);
+    } finally {
+      modalHandler();
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -20,14 +54,14 @@ export default function ConfirmModal({ modalHandler, idToDelete }: Props) {
           <button
             className="rounded-lg px-5 py-1 font-bold text-sm border-2 border-[#603CFF] dark:border-[#5C5470] text-[#603CFF] dark:text-[#DBD8E3] transition-all duration-300 disabled:opacity-60"
             onClick={modalHandler}
-            // disabled={isLoading}
+            disabled={isLoading}
           >
             Cancel
           </button>
           <button
             className="border border-red-600 bg-red-600 text-[#FFFFFF] dark:text-[#DBD8E3] transition-all duration-300 rounded-lg select-none px-5 py-1 font-bold text-sm disabled:opacity-60"
             onClick={handleDeletion}
-            // disabled={isLoading}
+            disabled={isLoading}
           >
             Delete
           </button>

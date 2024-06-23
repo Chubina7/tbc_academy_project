@@ -20,7 +20,7 @@ export default async function AnnouncementPage({
     <div className="w-full min-h-screen flex flex-col items-center px-3 md:px-7 py-3 gap-5">
       <Details ann_id={params.slug} />
       <hr className="w-full max-w-4xl border rounded-full mt-6 opacity-60" />
-      <AddNewComment />
+      <AddNewComment announcement_id={params.slug} />
       <Comments ann_id={params.slug} query={searchParams.comments} />
     </div>
   );

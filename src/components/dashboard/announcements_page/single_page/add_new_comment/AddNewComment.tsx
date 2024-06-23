@@ -4,17 +4,19 @@ import { useContext, useState } from "react";
 import Btn from "./Btn";
 import Input from "./Input";
 import { detectEnviro } from "../../../../../lib/helpers/regular_funcs/general";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { NotificationsContext as notifCtx } from "../../../../../context/ctx";
 
 const domain = detectEnviro();
 
-export default function AddNewComment() {
+interface Props {
+  announcement_id: string;
+}
+
+export default function AddNewComment({ announcement_id }: Props) {
   const { showNotification } = useContext(notifCtx);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  const path = usePathname();
-  const announcement_id = path.split("/")[3];
   const state = useState("");
   const router = useRouter();
 
@@ -32,7 +34,7 @@ export default function AddNewComment() {
         `${domain}/api/dashboard/announcements/${announcement_id}/comments`,
         {
           method: "POST",
-          body: JSON.stringify({ comment: value, announcement_id }),
+          body: JSON.stringify({ comment: value }),
         }
       );
       const result = await res.json();

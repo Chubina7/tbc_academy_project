@@ -18,8 +18,6 @@ export async function GET(req: NextRequest, { params }: Props) {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
 
-    console.log("visited api")
-
     try {
         const sqlResult = await sql`SELECT 
                 c.comment_id,
@@ -62,22 +60,40 @@ export async function GET(req: NextRequest, { params }: Props) {
     }
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest, { params }: Props) {
     const token = cookies().get(AUTH_COOKIE_KEY)?.value
     if (!token) return NextResponse.json({ message: "Unauthorized. No token provided" }, { status: 401 })
     const user = await decrypt(token)
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        const { comment, announcement_id } = await req.json()
+        const { comment } = await req.json()
         const comment_id = generateUniqueId("C")
 
-        await sql`INSERT INTO comments (comment_id, comment, user_id, announcement_id) VALUES (${comment_id}, ${comment}, ${user.user_id}, ${announcement_id})`
-        await sql`INSERT INTO comment_authors (comment_id, user_id, announcement_id) VALUES (${comment_id}, ${user.user_id}, ${announcement_id})`
+        await sql`INSERT INTO comments (comment_id, comment, user_id, announcement_id) VALUES (${comment_id}, ${comment}, ${user.user_id}, ${params.slug})`
+        await sql`INSERT INTO comment_authors (comment_id, user_id, announcement_id) VALUES (${comment_id}, ${user.user_id}, ${params.slug})`
 
         revalidateTag("announcement_all_comments")
-        return NextResponse.json({ message: "Success" }, { status: 200 })
+        return NextResponse.json({ message: "Comment added!" }, { status: 200 })
     } catch (error) {
-        return NextResponse.json({ message: "Error", error }, { status: 500 })
+        return NextResponse.json({ message: "Error while adding comment.", error }, { status: 500 })
+    }
+}
+
+export async function DELETE(req: NextRequest) {
+    const token = cookies().get(AUTH_COOKIE_KEY)?.value
+    if (!token) return NextResponse.json({ message: "Unauthorized. No token provided" }, { status: 401 })
+    const user = await decrypt(token)
+    if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
+
+    try {
+        const announcement_id = await req.json()
+
+        await sql`DELETE FROM comments WHERE comment_id = ${announcement_id}`
+
+        revalidateTag("announcement_all_comments")
+        return NextResponse.json({ message: "Comment deleted successfully!" }, { status: 200 })
+    } catch (error) {
+        return NextResponse.json({ message: "Error while deleting comment." }, { status: 500 })
     }
 }
