@@ -13,7 +13,7 @@ interface Props {
     room_id: string;
     username: string;
     surname: string | null;
-    room_title: string;
+    room_name: string;
   };
   data: {
     announcement_id: string;
@@ -26,7 +26,7 @@ interface Props {
 
 export default async function Item({ data, author }: Props) {
   const loginedUser = await USER();
-  const { room_id, room_title, surname, user_id, username } = author;
+  const { room_id, room_name, surname, user_id, username } = author;
 
   return (
     <VariantsListItem className="w-full max-w-4xl">
@@ -41,7 +41,7 @@ export default async function Item({ data, author }: Props) {
         <div className="w-full flex justify-between items-center gap-4 text-xs sm:text-sm">
           <Author
             author={{ surname, user_id, username }}
-            room={{ room_id, room_title }}
+            room={{ room_id, room_name }}
           />
           <PostDate data={data.announced_at} />
         </div>

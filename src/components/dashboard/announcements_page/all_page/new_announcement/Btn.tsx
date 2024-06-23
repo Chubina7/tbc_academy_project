@@ -75,7 +75,7 @@ export default function Btn() {
         <p className="text-red-600">Passing empty values is not permited</p>
       )}
       <button
-        className="px-3 py-1 bg-red-400 rounded-lg"
+        className="px-3 py-1 bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 rounded-lg hover:scale-105"
         onClick={handleSubmition}
       >
         Announce

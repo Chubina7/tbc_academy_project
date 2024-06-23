@@ -3,7 +3,7 @@ import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization_
 import { getUserRooms } from "../../../../../lib/helpers/server_act_funcs/user_relations";
 import Announcement from "./Announcement";
 import Btn from "./Btn";
-import SelectRoom from "./SelectRoom";
+import SelectRoom from "./room_selection/SelectRoom";
 import Title from "./Title";
 
 export default async function AddNewAnnouncement() {

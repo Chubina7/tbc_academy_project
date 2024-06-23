@@ -6,12 +6,6 @@ import { sql } from "@vercel/postgres";
 import { generateUniqueId } from "../../../../lib/helpers/regular_funcs/general";
 import { getUserRooms } from "../../../../lib/helpers/server_act_funcs/user_relations";
 
-interface IPostReqData {
-    announcement: string,
-    announcement_title: string,
-    room_id: string
-}
-
 export async function GET(req: NextRequest) {
     const token = req.headers.get("Authorization")
     if (!token) return NextResponse.json({ message: "Unauthorized. No token provided" }, { status: 401 })
@@ -38,19 +32,20 @@ export async function GET(req: NextRequest) {
         ORDER BY 
             a.announced_at DESC
         `
+        // add comments number querying
         const announcementList = announcements.rows.map(row => ({
             author: {
                 user_id: row.user_id,
                 username: row.username,
                 surname: row.surname,
                 room_id: row.room_id,
-                room_title: row.room_name,
+                room_name: row.room_name,
             },
             announcement_id: row.announcement_id,
             announcement_title: row.announcement_title,
             announcement: row.announcement,
             comments_number: row.comments_number,
-            announced_at: row.announced_at
+            announced_at: row.announced_at,
         }))
 
         const user_rooms = await getUserRooms(user.user_id)
@@ -73,7 +68,7 @@ export async function POST(req: NextRequest) {
 
         const announcement_id = generateUniqueId("N")
 
-        await sql`INSERT INTO announcements (announcement_id, announcement_title, announcement) VALUES (${announcement_id}, ${announcement_title}, ${announcement})`
+        await sql`INSERT INTO announcements (room_id, announcement_id, announcement_title, announcement) VALUES (${room_id},${announcement_id}, ${announcement_title}, ${announcement})`
         await sql`INSERT INTO announcement_authors (announcement_id, user_id, room_id) VALUES (${announcement_id}, ${user.user_id}, ${room_id})`
 
         return NextResponse.json({ message: "Announced successfully" }, { status: 200 })

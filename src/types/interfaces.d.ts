@@ -160,7 +160,7 @@ interface IAnnouncement {
         username: string
         surname: string | null
         room_id: string
-        room_title: string
+        room_name: string
     }
 }
 interface IAnnouncemenetApiReturn {
