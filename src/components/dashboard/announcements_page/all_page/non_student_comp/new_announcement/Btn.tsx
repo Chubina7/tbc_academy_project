@@ -4,13 +4,17 @@ import { useContext } from "react";
 import {
   AddNewAnnouncementContext as newAnnCtx,
   NotificationsContext as notifCtx,
-} from "../../../../../context/ctx";
-import { detectEnviro } from "../../../../../lib/helpers/regular_funcs/general";
+} from "../../../../../../context/ctx";
+import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
 import { useRouter } from "next/navigation";
 
 const domain = detectEnviro();
 
-export default function Btn() {
+interface Props {
+  cancelAddition: () => void;
+}
+
+export default function Btn({ cancelAddition }: Props) {
   const { showNotification } = useContext(notifCtx);
   const router = useRouter();
   const {
@@ -75,7 +79,13 @@ export default function Btn() {
         <p className="text-red-600">Passing empty values is not permited</p>
       )}
       <button
-        className="px-3 py-1 bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 rounded-lg hover:scale-105"
+        className="px-3 py-1 border-2 border-[#603CFF] text-[#603CFF] dark:border-[#5C5470] dark:text-[#FFFFFF] transition-all duration-300 rounded-lg hover:scale-105"
+        onClick={cancelAddition}
+      >
+        Cancel
+      </button>
+      <button
+        className="px-3 py-1 border-2 border-[#603CFF] dark:border-[#5C5470] bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 rounded-lg hover:scale-105"
         onClick={handleSubmition}
       >
         Announce

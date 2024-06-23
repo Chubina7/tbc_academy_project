@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { AddNewAnnouncementContext as newAnnCtx } from "../../../../../context/ctx";
+import { AddNewAnnouncementContext as newAnnCtx } from "../../../../../../context/ctx";
 
 export default function Announcement() {
   const { announcement, setAnnouncement, setError } = useContext(newAnnCtx);

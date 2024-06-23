@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { AddNewAnnouncementContext as newAnnCtx } from "../../../../../../context/ctx";
+import { AddNewAnnouncementContext as newAnnCtx } from "../../../../../../../context/ctx";
 
 interface Props {
   closeModal: () => void;

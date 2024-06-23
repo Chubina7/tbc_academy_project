@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import List from "./List";
-import useOutsideClickTrack from "../../../../../../hooks/useOutsideClickTrack";
+import useOutsideClickTrack from "../../../../../../../hooks/useOutsideClickTrack";
 import { IoCaretUp } from "react-icons/io5";
 
 interface Props {
