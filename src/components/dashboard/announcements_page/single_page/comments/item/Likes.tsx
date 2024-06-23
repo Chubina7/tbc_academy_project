@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { IoHeartOutline } from "react-icons/io5";
 import { IoHeart } from "react-icons/io5";
 import {
@@ -15,7 +15,7 @@ interface Props {
   comment_id: string;
 }
 
-export default function Likes({ num, isLiked, comment_id }: Props) {
+function Likes({ num, isLiked, comment_id }: Props) {
   const path = usePathname();
   const announcement_id = path.split("/")[3];
   const [like, setLike] = useState(isLiked);
@@ -42,3 +42,5 @@ export default function Likes({ num, isLiked, comment_id }: Props) {
     </div>
   );
 }
+
+export default React.memo(Likes);

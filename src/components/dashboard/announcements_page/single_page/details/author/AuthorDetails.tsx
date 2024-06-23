@@ -24,7 +24,7 @@ export default function AuthorDetails({ author, room }: Props) {
         >
           {author.username} {author.surname}
         </Link>{" "}
-        -{" "}
+        &#x2022;{" "}
         <Link
           href={`/dashboard/rooms/${room.room_id}`}
           className="hover:underline"
