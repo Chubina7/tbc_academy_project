@@ -174,7 +174,7 @@ interface IAnnouncementComment {
         user_id: string
         username: string
         surname: string | null
-        user_img: string | null
+        profile_picture: string | null
         role: RoleType
     },
     comment_id: string

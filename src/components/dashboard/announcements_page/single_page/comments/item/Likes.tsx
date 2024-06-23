@@ -36,7 +36,7 @@ export default function Likes({ num, isLiked, comment_id }: Props) {
   return (
     <div className="flex flex-grow flex-col items-center justify-start">
       <button onClick={handleCommentLiking}>
-        {like ? <IoHeartOutline size={24} /> : <IoHeart size={24} />}
+        {like ? <IoHeart size={24} /> : <IoHeartOutline size={24} />}
       </button>
       <p className="text-sm opacity-60">{quantity}</p>
     </div>

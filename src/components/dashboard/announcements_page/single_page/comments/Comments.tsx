@@ -9,8 +9,6 @@ interface Props {
 export default async function Comments({ ann_id }: Props) {
   const data = await getAnnouncementComments(ann_id);
 
-  console.log("თავიდან წამეიღო დატაი");
-  
   if (!data) return null;
 
   return (

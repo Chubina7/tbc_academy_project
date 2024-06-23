@@ -1,7 +1,8 @@
 import AuthorImg from "./AuthorImg";
 import AuthorNames from "./AuthorNames";
 import Comment from "./Comment";
-import PostTime from "./PostTime";
+import dynamic from "next/dynamic";
+const PostTime = dynamic(() => import("./PostTime"), { ssr: false });
 import Likes from "./Likes";
 
 interface Props {
@@ -13,7 +14,7 @@ export default function Item({ data }: Props) {
 
   return (
     <div className="w-full flex gap-3 rounded-lg px-3 sm:px-4 py-3 sm:py-6 hover:bg-[#FFFFFF] hover:dark:bg-[#352F44] hover:shadow-custom transition-all duration-300">
-      <AuthorImg alt={author.username} src={author.user_img} />
+      <AuthorImg alt={author.username} src={author.profile_picture} />
       <div className="w-full flex flex-col justify-center items-start gap-2">
         <AuthorNames
           author={{
