@@ -1,19 +1,23 @@
 "use server"
 
+import { sql } from "@vercel/postgres"
 import { USER } from "./authorization_acts"
 
-export const likeComment = async ({ announcement_id, comment_id }: { comment_id: string, announcement_id: string }) => {
+export const likeComment = async (comment_id: string) => {
+    const { user_id } = await USER();
+    const { rowCount } = await sql`SELECT FROM announcement_comment_likes WHERE user_id = ${user_id} AND comment_id = ${comment_id}`
+
+    if (rowCount > 0) return
+
+    await sql`INSERT INTO announcement_comment_likes (user_id, comment_id) VALUES (${user_id}, ${comment_id})`;
+};
+
+export const dislikeComment = async (comment_id: string) => {
     const { user_id } = await USER()
+    const { rowCount } = await sql`SELECT * FROM announcement_comment_likes WHERE user_id = ${user_id} AND comment_id = ${comment_id}`
 
-    // sql command to add like
+    if (rowCount < 1) return
 
-    console.log("comment liked", { user_id, announcement_id, comment_id })
-}
 
-export const dislikeComment = async ({ announcement_id, comment_id }: { comment_id: string, announcement_id: string }) => {
-    const { user_id } = await USER()
-
-    // sql command to remove like
-
-    console.log("comment dis-liked", { user_id, announcement_id, comment_id })
+    await sql`DELETE FROM announcement_comment_likes WHERE user_id = ${user_id} AND comment_id = ${comment_id}`
 }

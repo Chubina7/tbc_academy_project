@@ -7,7 +7,6 @@ import {
   dislikeComment,
   likeComment,
 } from "../../../../../../lib/helpers/server_act_funcs/announcement_comment_acts";
-import { usePathname } from "next/navigation";
 
 interface Props {
   num: number;
@@ -15,9 +14,7 @@ interface Props {
   comment_id: string;
 }
 
-function Likes({ num, isLiked, comment_id }: Props) {
-  const path = usePathname();
-  const announcement_id = path.split("/")[3];
+export default function Likes({ num, isLiked, comment_id }: Props) {
   const [like, setLike] = useState(isLiked);
   const [quantity, setQuantity] = useState(num);
 
@@ -26,10 +23,10 @@ function Likes({ num, isLiked, comment_id }: Props) {
 
     if (like) {
       setQuantity((prev) => prev - 1);
-      await likeComment({ comment_id, announcement_id });
+      await dislikeComment(comment_id);
     } else {
       setQuantity((prev) => prev + 1);
-      await dislikeComment({ comment_id, announcement_id });
+      await likeComment(comment_id);
     }
   };
 
@@ -42,5 +39,3 @@ function Likes({ num, isLiked, comment_id }: Props) {
     </div>
   );
 }
-
-export default React.memo(Likes);
