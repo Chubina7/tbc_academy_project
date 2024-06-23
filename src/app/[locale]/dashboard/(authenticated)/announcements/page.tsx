@@ -7,9 +7,15 @@ import { unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
   params: IParams;
+  searchParams: {
+    _announcements_made_in: string;
+  };
 }
 
-export default async function AnnouncementsPage({ params }: Props) {
+export default async function AnnouncementsPage({
+  params,
+  searchParams,
+}: Props) {
   unstable_setRequestLocale(params.locale);
   const { role } = await USER();
   const data = await getAnnouncementList();
@@ -28,7 +34,10 @@ export default async function AnnouncementsPage({ params }: Props) {
         </>
       )}
       <Filter room_names={data?.room_names} />
-      <List data={data?.announcements} />
+      <List
+        data={data?.announcements}
+        query={searchParams._announcements_made_in}
+      />
     </div>
   );
 }

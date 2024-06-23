@@ -4,9 +4,9 @@ import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../../../../lib/variables";
 import { sql } from "@vercel/postgres";
 import { generateUniqueId } from "../../../../lib/helpers/regular_funcs/general";
-import { getUserRooms } from "../../../../lib/helpers/server_act_funcs/user_relations";
 
 export async function GET(req: NextRequest) {
+    console.log("ესტუმრა ეიპიაის")
     const token = req.headers.get("Authorization")
     if (!token) return NextResponse.json({ message: "Unauthorized. No token provided" }, { status: 401 })
     const user = await decrypt(token)
@@ -30,8 +30,7 @@ export async function GET(req: NextRequest) {
         JOIN 
             rooms r ON aa.room_id = r.room_id
         ORDER BY 
-            a.announced_at DESC
-        `
+            a.announced_at DESC`
         // add comments number querying
         const announcementList = announcements.rows.map(row => ({
             author: {
@@ -48,10 +47,12 @@ export async function GET(req: NextRequest) {
             announced_at: row.announced_at,
         }))
 
-        const user_rooms = await getUserRooms(user.user_id)
-        const room_names = user_rooms.map(item => item.room_name)
+        const room_names = await sql`SELECT DISTINCT r.room_name
+                                FROM announcements a
+                                JOIN rooms r ON a.room_id = r.room_id`
+        const roomNamesList = room_names.rows.map(item => item.room_name)
 
-        return NextResponse.json({ announcements: announcementList, room_names: room_names }, { status: 200 })
+        return NextResponse.json({ announcements: announcementList, room_names: roomNamesList }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Error getting data from API", error }, { status: 500 })
     }

@@ -3,7 +3,6 @@ import { detectEnviro } from "./helpers/regular_funcs/general";
 import { AUTH_COOKIE_KEY } from "./variables";
 
 const domain = detectEnviro();
-// const domain = "http://localhost:3000"
 
 // Rooms
 export async function getEnrolledRoomsList() {

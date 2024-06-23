@@ -18,6 +18,7 @@ export default function Announcement() {
         setError(false);
         setAnnouncement(e.target.value);
       }}
+      spellCheck={false}
     />
   );
 }
