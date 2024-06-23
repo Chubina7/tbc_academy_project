@@ -20,7 +20,7 @@ export default function List({ modalCloser }: Props) {
           id="profile_modal"
         >
           <li
-            className="w-full flex justify-start items-center gap-2 px-3 py-1 rounded-xl hover:bg-[#5C5470]"
+            className="w-full flex justify-start items-center gap-2 px-3 py-1 rounded-xl hover:bg-[#8BA8FF] dark:hover:bg-[#5C5470]"
             id="profile_modal"
           >
             {item.icon}
