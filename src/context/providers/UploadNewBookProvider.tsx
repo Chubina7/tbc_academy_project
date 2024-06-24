@@ -11,10 +11,7 @@ interface Props {
   }> | null;
 }
 const initialValue: IUploadNewBook = {
-  book: {
-    name: "",
-    type: "" as BookTypes,
-  },
+  file: {} as File,
   description: "",
   room: null,
   title: "",

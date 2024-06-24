@@ -15,13 +15,10 @@ export default function InputTypeFile({ openModal }: Props) {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
-    const { name, type } = e.target.files[0] as {
-      name: string;
-      type: BookTypes;
-    };
+    const file = e.target.files[0];
 
     openModal();
-    setData((prev) => ({ ...prev, book: { name, type } }));
+    setData((prev) => ({ ...prev, file }));
   };
 
   return (

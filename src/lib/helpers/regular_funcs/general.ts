@@ -11,18 +11,18 @@ export function generateUniqueId(indicator: string) {
 }
 
 export function detectEnviro() {
-    const enviro = process.env.NODE_ENV;
+    // const enviro = process.env.NODE_ENV;
 
-    switch (enviro) {
-        case "production":
-            return "https://teach-flow.vercel.app";
-        case "development":
-            return "http://localhost:3000";
-        case "test":
-            return "http://localhost:3000";
-    }
+    // switch (enviro) {
+    //     case "production":
+    //         return "https://skill-up-accelerator.vercel.app";
+    //     case "development":
+    //         return "http://localhost:3000";
+    //     case "test":
+    //         return "http://localhost:3000";
+    // }
 
-    // return "http://localhost:3000"
+    return "http://localhost:3000"
 }
 
 export function minimumDatePrevention() {

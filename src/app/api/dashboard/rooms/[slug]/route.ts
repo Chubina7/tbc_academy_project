@@ -176,6 +176,7 @@ export async function DELETE(_req: NextRequest, { params }: Props) {
 
         revalidateTag("all_announcements")
         revalidateTag("all_rooms")
+        revalidateTag("bookshelf")
         return NextResponse.json({ message: "Room deleted successfully" }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Something went wrong! Unable to delete room." }, { status: 500 })
