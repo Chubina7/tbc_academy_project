@@ -26,8 +26,8 @@ export default function Submit({ closeModal }: Props) {
     data.description.trim() === "" ||
     data.file.name.trim() === "" ||
     data.file.type.trim() === "" ||
-    (data.room !== null && data.room.room_id.trim() === "") ||
-    (data.room !== null && data.room.room_name.trim() === "");
+    data.room.room_id.trim() === "" ||
+    data.room.room_name.trim() === "";
 
   const handleNewBookUpload = async () => {
     if (condition) {

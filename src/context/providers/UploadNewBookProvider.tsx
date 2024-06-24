@@ -13,7 +13,7 @@ interface Props {
 const initialValue: IUploadNewBook = {
   file: {} as File,
   description: "",
-  room: null,
+  room: { room_id: "", room_name: "" },
   title: "",
 };
 

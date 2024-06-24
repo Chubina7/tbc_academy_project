@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
-import { BookmarkContext as ctx } from "../../../../../context/ctx";
+import { BookmarkContext as ctx } from "../../../../../../context/ctx";
 
 interface Props {
   book_id: string;

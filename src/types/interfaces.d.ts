@@ -233,5 +233,5 @@ interface IUploadNewBook {
     room: {
         room_id: string;
         room_name: string;
-    } | null,
+    },
 }

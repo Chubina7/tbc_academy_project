@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { UploadNewBookContext as ctx } from "../../../../../../../../context/ctx";
+import { UploadNewBookContext as ctx } from "../../../../../../../context/ctx";
 
 interface Props {
   handleOptions: () => void;
