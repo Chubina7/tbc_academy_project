@@ -1,25 +1,42 @@
 "use client";
 
-import React, { useReducer } from "react";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import { useState } from "react";
 import { BookmarkContext } from "../ctx";
-import { BookmarkStateReducer as reducer } from "../../state-management/reducers";
+import {
+  addBookmarkAct,
+  removeBookmarkAct,
+} from "../../lib/helpers/server_act_funcs/bookmarking_acts";
 
 interface Props {
   children: React.ReactNode;
+  data: Array<BookmarkItemType>;
 }
 
-export default function BookmarkProvider({ children }: Props) {
-  const [initialVal] = useLocalStorage("bookmarks", []);
-  const [bookmarkList, dispatch] = useReducer(reducer, initialVal);
+export default function BookmarkProvider({ children, data }: Props) {
+  const [bookmarkList, setBookmarkList] = useState(data);
+
+  const addToBookmark = async (book_id: string) => {
+    setBookmarkList((prev) => [...prev, book_id]);
+    await addBookmarkAct(book_id);
+  };
+  const removeFromBookmark = async (book_id: string) => {
+    setBookmarkList((prev) => prev.filter((item) => item !== book_id));
+    await removeBookmarkAct(book_id);
+  };
+
+  const includes = (book_id: string) => {
+    return bookmarkList.includes(book_id);
+  };
 
   return (
     <BookmarkContext.Provider
       value={{
-        list: bookmarkList,
-        addItem: (item) => dispatch({ type: "ADD", payload: item }),
-        removeItem: (item) => dispatch({ type: "REMOVE", payload: item }),
-        resetList: () => dispatch({ type: "RESET" }),
+        actions: { addToBookmark, removeFromBookmark },
+        properties: {
+          length: bookmarkList.length,
+          list: bookmarkList,
+          includes,
+        },
       }}
     >
       {children}

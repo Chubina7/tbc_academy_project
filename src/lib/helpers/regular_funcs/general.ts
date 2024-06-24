@@ -9,21 +9,22 @@ export function generateUniqueId(indicator: string) {
 
     return indicator + userID;
 }
-export function dbError() {
-    // should get error code and show different text messages
-}
-export function detectEnviro() {
-    const enviro = process.env.NODE_ENV;
 
-    switch (enviro) {
-        case "production":
-            return "https://teach-flow.vercel.app";
-        case "development":
-            return "http://localhost:3000";
-        case "test":
-            return "http://localhost:3000";
-    }
+export function detectEnviro() {
+    // const enviro = process.env.NODE_ENV;
+
+    // switch (enviro) {
+    //     case "production":
+    //         return "https://teach-flow.vercel.app";
+    //     case "development":
+    //         return "http://localhost:3000";
+    //     case "test":
+    //         return "http://localhost:3000";
+    // }
+
+    return "http://localhost:3000"
 }
+
 export function minimumDatePrevention() {
     const today = new Date();
     const minimumDate = new Date(today.setFullYear(today.getFullYear() - 18));
@@ -43,4 +44,13 @@ export function arraysEqual(arr1: Array<string>, arr2: Array<string>) {
     }
 
     return true;
+};
+
+export function areObjValuesChanged(prevVal: Record<string, any>, val: Record<string, any>) {
+    for (const key in prevVal) {
+        if (prevVal[key] !== val[key]) {
+            return true;
+        }
+    }
+    return false;
 };

@@ -1,12 +1,5 @@
 import React, { createContext, Dispatch, SetStateAction } from "react";
 
-export const BookmarkContext = createContext({
-  list: [] as Array<any>,
-  addItem: (param: any) => param,
-  removeItem: (param: any) => param,
-  resetList: () => {},
-});
-
 export const RegistrationInputsContext = createContext({
   inputs: {
     roleState: {
@@ -173,4 +166,30 @@ export const EditRoomInformationContext = createContext({
     description: "",
   },
   setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+});
+
+export const UploadNewBookContext = createContext({
+  data: {} as IUploadNewBook,
+  setData: (() => {}) as React.Dispatch<React.SetStateAction<IUploadNewBook>>,
+  error: "",
+  setError: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+  initialValue: {} as IUploadNewBook,
+  isLoading: false,
+  setIsLoading: (() => {}) as React.Dispatch<React.SetStateAction<boolean>>,
+  roomSuggestions: [] as Array<{
+    room_id: string;
+    room_name: string;
+  }> | null,
+});
+
+export const BookmarkContext = createContext({
+  actions: {
+    addToBookmark: (() => {}) as (book_id: string) => void,
+    removeFromBookmark: (() => {}) as (book_id: string) => void,
+  },
+  properties: {
+    list: [] as Array<BookmarkItemType>,
+    length: 0,
+    includes: (() => false) as (book_id: string) => boolean,
+  },
 });

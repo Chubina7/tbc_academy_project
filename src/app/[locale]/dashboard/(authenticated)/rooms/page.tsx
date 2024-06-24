@@ -2,7 +2,7 @@ import RoomsFilter from "../../../../../components/dashboard/rooms_page/all_page
 import CreateRoomBtn from "../../../../../components/dashboard/rooms_page/all_page/new_room_setup/CreateRoomBtn";
 import RoomList from "../../../../../components/dashboard/rooms_page/all_page/RoomList";
 import RoomsListFilterProvider from "../../../../../context/providers/RoomsListFilterProvider";
-import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
+import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization_acts";
 import { getEnrolledRoomsList } from "../../../../../lib/data_fetchers";
 import { unstable_setRequestLocale } from "next-intl/server";
 

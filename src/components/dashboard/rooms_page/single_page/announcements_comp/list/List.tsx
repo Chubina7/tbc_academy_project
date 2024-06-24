@@ -12,7 +12,7 @@ export default function List({ data }: Props) {
           <Announcement key={item.announcement_id} data={item} />
         ))
       ) : (
-        <p className="w-full text-center">No announcements made</p>
+        <p className="w-full text-center">No announcements made yet.</p>
       )}
     </div>
   );

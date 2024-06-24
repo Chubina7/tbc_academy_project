@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { psqlCheckUserInDb } from "../../../../lib/sql/sqlQueries";
 import { sql } from "@vercel/postgres";
-import { hasAccess, setSessionCookie } from "../../../../lib/helpers/server_act_funcs/authorization";
+import { hasAccess, setSessionCookie } from "../../../../lib/helpers/server_act_funcs/authorization_acts";
 
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     if (!passwordInDb || !hasAccessOrNot) return NextResponse.json({ message: "Incorrect credentials" }, { status: 401 });
 
     const user = await sql`SELECT * FROM users WHERE email = ${email}`
-    await setSessionCookie(user.rows[0])
+    await setSessionCookie(user.rows[0] as IUser)
 
     return NextResponse.json({ message: "Successfully authenticated!" }, { status: 200 });
   } catch (error) {

@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache";
-import { psqlGetAllUsers, psqlGetBookmarkedItemCount, psqlGetBookmarks, psqlGetResources } from "../../sql/sqlQueries";
+import { psqlGetAllUsers } from "../../sql/sqlQueries";
 
 // sql
 export const getUsers = unstable_cache(
@@ -9,28 +9,6 @@ export const getUsers = unstable_cache(
   },
   ["user_list"],
   { tags: ["user_list"] }
-)
-export const getResouces = unstable_cache(
-  async () => {
-    const data = await psqlGetResources();
-    return data;
-  },
-  ["resources_list"],
-  { tags: ["resources_list"] }
-)
-export const getBookmarks = unstable_cache(
-  async (user_id: string) => {
-    const data = await psqlGetBookmarks(user_id);
-    return data;
-  },
-  ["bookmarks_list"],
-  { tags: ["bookmarks_list"] }
-)
-export const getBookmarkedItemCount = unstable_cache(
-  async (user_id, resource_id) => {
-    const result = await psqlGetBookmarkedItemCount(user_id, resource_id)
-    return result
-  }, ["item_count"], { tags: ["item_count"] }
 )
 
 // Preferences
@@ -44,12 +22,3 @@ export function setTheme(pref: string) {
     document.documentElement.classList.add(pref);
   }
 }
-
-export function areObjValuesChanged(prevVal: Record<string, any>, val: Record<string, any>) {
-  for (const key in prevVal) {
-    if (prevVal[key] !== val[key]) {
-      return true;
-    }
-  }
-  return false;
-};

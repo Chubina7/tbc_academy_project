@@ -37,47 +37,6 @@ export async function psqlEditUser({ username, surname, email, password, role, a
             WHERE user_id = ${user_id}`;
 }
 
-// Bookmarking
-export async function psqAddToBookmarks(user_id: string, resource_id: string, count: number,) {
-  await sql`INSERT INTO bookmarks (user_id, count, resource_id) VALUES (${user_id}, ${count}, ${resource_id});`;
-}
-export async function psqIncrementBookmarkCount(user_id: string, resource_id: string) {
-  await sql`UPDATE bookmarks SET count = count + 1 WHERE resource_id = ${resource_id} AND user_id = ${user_id}`;
-}
-export async function psqDecrementBookmarkCount(user_id: string, resource_id: string,) {
-  const { rows } = await sql`SELECT count FROM bookmarks WHERE resource_id = ${resource_id} AND user_id = ${user_id}`
-  const count = rows[0].count;
-
-  if (count === 1) {
-    await sql`DELETE FROM bookmarks WHERE resource_id = ${resource_id} AND user_id = ${user_id}`;
-  } else if (count > 1) {
-    await sql`UPDATE bookmarks SET count = count - 1 WHERE resource_id = ${resource_id} AND user_id = ${user_id}`;
-  }
-}
-export async function psqDeleteBookmarks(user_id: string) {
-  await sql`DELETE FROM bookmarks WHERE user_id = ${user_id}`;
-}
-export async function psqlGetBookmarks(user_id: string) {
-  const { rows } = await sql`
-      SELECT resources.resource_id, resources.title, resources.description, bookmarks.count
-      FROM bookmarks
-      JOIN users ON bookmarks.user_id = users.user_id
-      JOIN resources ON bookmarks.resource_id = resources.resource_id
-      WHERE bookmarks.user_id = ${user_id}
-      ORDER BY bookmarks.bookmark_id
-    `;
-  return rows;
-}
-export async function psqlGetBookmarkedItemCount(user_id: string, resoucre_id: string) {
-  const { rows } = await sql`SELECT count FROM bookmarks WHERE resource_id = ${resoucre_id} AND user_id = ${user_id}`
-  return rows[0]?.count
-}
-export async function psqlGetBookmarkListLength(user_id: string) {
-  const { rows } = await sql`SELECT SUM(count) AS total_count FROM bookmarks WHERE user_id = ${user_id}`;
-
-  return rows[0].total_count
-}
-
 // Data
 export async function psqlGetAllUsers() {
   const { rows } = await sql`SELECT user_id, username, surname, email, role, age
