@@ -1,16 +1,12 @@
 import React from "react";
 import Navigation from "./Navigation";
-import SignOutBtn from "./SignOutBtn";
 import Logo from "../../dashboard/navigation/aside/Logo";
 import { RxDividerVertical } from "react-icons/rx";
 import ThemeChanger from "../../ui/themePreference/ThemeChanger";
 import LangChanger from "../../ui/languagePreference/LangChanger";
-import { USER } from "../../../lib/helpers/server_act_funcs/authorization_acts";
 import JoinNotAct from "./JoinNotAct";
 
 export default async function Header() {
-  const user = await USER();
-
   return (
     <header className="fixed w-full h-16 p-4 flex justify-between items-center bg-inherit text-inherit z-50">
       <Logo />
@@ -20,8 +16,8 @@ export default async function Header() {
         <div className="flex justify-center items-center gap-3">
           <ThemeChanger />
           <LangChanger />
+          <JoinNotAct />
         </div>
-        {user ? <SignOutBtn /> : <JoinNotAct />}
       </div>
       {/* burger menu */}
     </header>
