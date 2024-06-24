@@ -18,7 +18,7 @@ export default function ProfileLink({
   return (
     <Link
       href={`/dashboard/profile/${user_id}?segment=personal_info`}
-      className="w-full flex flex-col justify-center items-start px-3 py-1 rounded-xl hover:bg-[#5C5470]"
+      className="w-full flex flex-col justify-center items-start px-3 py-1 rounded-xl hover:bg-[#8BA8FF] dark:hover:bg-[#5C5470]"
       onClick={modalCloser}
       id="profile_modal"
     >

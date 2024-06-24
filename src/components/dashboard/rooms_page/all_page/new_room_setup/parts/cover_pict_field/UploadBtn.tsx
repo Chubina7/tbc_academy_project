@@ -30,7 +30,7 @@ export default function UploadBtn() {
         onChange={handleUpload}
       />
       <button
-        className="w-full text-lg px-3 py-1 rounded-xl bg-red-500"
+        className="w-full text-lg px-3 py-1 rounded-xl bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3]"
         onClick={() => {
           if (inputRef.current) {
             inputRef.current.click();

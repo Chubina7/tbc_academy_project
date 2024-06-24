@@ -27,7 +27,7 @@ export default function BrowseBtn({ action }: Props) {
         onChange={action}
       />
       <button
-        className="mt-5 px-3 py-1 border rounded-lg select-none"
+        className="px-3 py-1 border rounded-lg select-none text-nowrap"
         id="cover_picture"
         name="cover_picture"
         onClick={handleFileBrowsing}
