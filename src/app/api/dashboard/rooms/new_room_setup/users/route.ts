@@ -2,7 +2,6 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { AUTH_COOKIE_KEY } from "../../../../../../lib/variables";
 import { decrypt } from "../../../../../../lib/helpers/server_act_funcs/decrypt";
-import { sql } from "@vercel/postgres";
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -13,11 +12,44 @@ export async function GET() {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        await delay(1000)
+        await delay(2500)
 
-        const users = await sql`SELECT user_id, profile_picture, username, surname, role FROM users WHERE user_id != ${user.user_id}`
+        const userLIst: Array<IRoomUserListItem> = [
+            {
+                user_id: "U0001",
+                profile_picture: null,
+                username: "luka",
+                surname: null,
+                role: "student" as RoleType,
+                joined_at: "12/12/1212",
+            },
+            {
+                user_id: "U0002",
+                profile_picture: null,
+                username: "mariami",
+                surname: null,
+                role: "student" as RoleType,
+                joined_at: "12/12/1212",
+            },
+            {
+                user_id: "U0003",
+                profile_picture: null,
+                username: "dali",
+                surname: null,
+                role: "student" as RoleType,
+                joined_at: "12/12/1212",
+            },
+            {
+                user_id: "U0004",
+                profile_picture: null,
+                username: "bote",
+                surname: null,
+                role: "student" as RoleType,
+                joined_at: "12/12/1212",
+            },
+        ];
 
-        return NextResponse.json(users.rows, { status: 200 })
+        return NextResponse.json(userLIst, { status: 200 })
     } catch (error) {
         return NextResponse.json({ message: "Error connecting to the API" }, { status: 500 })
     }

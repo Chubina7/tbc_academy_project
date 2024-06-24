@@ -4,7 +4,7 @@ import { useContext } from "react";
 import CancelBtn from "./CancelBtn";
 import SaveBtn from "./SaveBtn";
 import { PersonalInfoChangingContext as ctx } from "../../../../../../context/ctx";
-import { areObjValuesChanged } from "../../../../../../lib/helpers/regular_funcs/general";
+import { areObjValuesChanged } from "../../../../../../lib/helpers/regular_funcs/helpers";
 
 export default function Actions() {
   const { prevValues, value, setValue } = useContext(ctx);

@@ -42,14 +42,12 @@ export default function RoomsFilter({ filters }: Props) {
 
   return (
     <ul className="w-full flex gap-3 items-center overflow-x-scroll scroll-hidden">
-      {filters.length > 1 && (
-        <li
-          className={styles("all")}
-          onClick={() => !isInList("all") && setSelectedCategories(["all"])}
-        >
-          All
-        </li>
-      )}
+      <li
+        className={styles("all")}
+        onClick={() => !isInList("all") && setSelectedCategories(["all"])}
+      >
+        All
+      </li>
       {filters.map((category, idx) => {
         const word = category.charAt(0).toUpperCase() + category.slice(1);
         const className = styles(category);

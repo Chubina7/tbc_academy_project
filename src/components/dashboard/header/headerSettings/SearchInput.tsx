@@ -1,3 +1,4 @@
+import React from "react";
 import { IoSearch } from "react-icons/io5";
 
 export default function SearchInput() {
@@ -10,10 +11,9 @@ export default function SearchInput() {
       />
       <input
         type="search"
-        placeholder="Search user..."
+        placeholder="Search"
         className="bg-[#F4F7FF] text-inherit placeholder:text-inherit dark:bg-[#2A2438] dark:text-inherit |  placeholder:opacity-50 w-full h-full p-2 pl-10 outline-none transition-all duration-300"
       />
-      {/* suggestions modal */}
     </div>
   );
 }

@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function Announcement({ data }: Props) {
-  return <p className="w-full text-base sm:text-lg">{data}</p>;
+  return <p className="text-base sm:text-lg">{data}</p>;
 }

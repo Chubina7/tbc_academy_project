@@ -1,4 +1,4 @@
-import { USER } from "../../../../../../../lib/helpers/server_act_funcs/authorization_acts";
+import { USER } from "../../../../../../../lib/helpers/server_act_funcs/authorization";
 
 interface Props {
   data: boolean;

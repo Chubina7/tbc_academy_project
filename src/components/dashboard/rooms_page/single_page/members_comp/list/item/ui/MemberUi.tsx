@@ -31,3 +31,4 @@ export default function MemberUi({ isTeacherOrAdmin, data, room_id }: Props) {
     </div>
   );
 }
+

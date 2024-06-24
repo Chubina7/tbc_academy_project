@@ -1,4 +1,4 @@
-import { USER } from "../../../../../../lib/helpers/server_act_funcs/authorization_acts";
+import { USER } from "../../../../../../lib/helpers/server_act_funcs/authorization";
 import VisitorProfileUi from "../../../../../../components/dashboard/profile_page/visitor_user_ui/VisitorProfileUi";
 import LoginedUserUi from "../../../../../../components/dashboard/profile_page/logined_user_ui/ui/LoginedUserUi";
 import { unstable_setRequestLocale } from "next-intl/server";

@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { decrypt } from "../../../../lib/helpers/server_act_funcs/decrypt";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "../../../../lib/variables";
-import { sql } from "@vercel/postgres";
-import { encrypt } from "../../../../lib/helpers/server_act_funcs/authorization_acts";
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -14,14 +12,23 @@ export async function POST(req: NextRequest) {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        await delay(1000)
+        await delay(2500)
         const body = await req.json()
+        // store data in DB
+        // ...
+        // get newest user data
+        // ...
+        // create new JWT Token
+        // ...
+        // set new token in cookies
+        // cookies().set(AUTH_COOKIE_KEY, "test")
 
-        await sql`UPDATE users
-                SET username = ${body.username}, surname = ${body.surname}, birth_date = ${body.birth_date}, profile_picture = ${body.profile_picture}
-                WHERE user_id = ${user.user_id}`
-        const newSession = await encrypt({ ...user, surname: body.surname, username: body.username, birth_date: body.birth_date, profile_picture: body.profile_picture })
-        cookies().set(AUTH_COOKIE_KEY, newSession)
+        const pairsToBeChanged = Object.entries(body)
+            .map(([key, value]) => `${key} = '${value}'`)
+            .join(', ');
+        // await sql`UPDATE users SET ${pairsToBeChanged} WHERE user_id = ${user.user_id}`
+
+        console.log(`UPDATE users SET ${pairsToBeChanged} WHERE user_id = '${user.user_id}'`)
 
         return NextResponse.json({ message: "User details changed successfully." }, { status: 200 })
     } catch (error) {
@@ -36,10 +43,7 @@ export async function DELETE() {
     if (!user) return NextResponse.json({ message: "Unauthorized. Token is not valid" }, { status: 401 })
 
     try {
-        await delay(1000)
-
-        await sql`DELETE FROM users WHERE user_id = ${user.user_id}`
-        cookies().delete(AUTH_COOKIE_KEY)
+        await delay(2500)
 
         return NextResponse.json({ message: "Account deleted successfully." }, { status: 200 })
     } catch (error) {

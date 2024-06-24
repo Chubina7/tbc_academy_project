@@ -1,4 +1,4 @@
-import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization_acts";
+import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
 import Btn from "./add_new_act/Btn";
 
 interface Props {

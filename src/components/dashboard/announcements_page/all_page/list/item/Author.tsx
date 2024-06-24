@@ -9,7 +9,7 @@ interface Props {
   };
   room: {
     room_id: string;
-    room_name: string;
+    room_title: string;
   };
 }
 
@@ -29,7 +29,7 @@ export default function Author({ author, room }: Props) {
           href={`/dashboard/rooms/${room.room_id}`}
           className="cursor-pointer hover:underline"
         >
-          {room.room_name}
+          {room.room_title}
         </Link>
       </p>
     </div>

@@ -20,7 +20,7 @@ export default function EnrollBtn({ user_id }: Props) {
 
   return (
     <button
-      className="px-3 py-1 rounded-lg bg-[#603CFF] text-[#FFFFFF] dark:bg-[#DBD8E3] dark:text-[#5C5470] font-bold text-sm min-w-20"
+      className="px-3 py-1 rounded-lg bg-red-400 text-sm min-w-20"
       onClick={handleEnrollment}
     >
       {includes ? "Remove" : "Enroll"}

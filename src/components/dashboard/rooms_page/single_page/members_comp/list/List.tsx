@@ -7,7 +7,7 @@ interface Props {
 
 export default function List({ data, room_id }: Props) {
   return (
-    <div className="w-full xl:h-[658px] xl:overflow-scroll scroll-hidden flex justify-start items-start flex-col">
+    <div className="w-full 2xl:h-[658px] overflow-scroll scroll-hidden flex justify-start items-start flex-col">
       {data ? (
         data.length > 0 ? (
           data.map((item) => (

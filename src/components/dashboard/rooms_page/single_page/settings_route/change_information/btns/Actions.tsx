@@ -67,7 +67,7 @@ export default function Actions() {
     details.title.trim() !== prevData.title
   ) {
     return (
-      <div className="w-full flex justify-end items-center gap-4 text-sm font-bold">
+      <div className="w-full flex justify-end items-center gap-4">
         <ResetBtn action={resetAction} />
         <ChangeBtn action={submitAction} />
       </div>

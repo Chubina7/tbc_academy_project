@@ -22,10 +22,10 @@ interface ILandingNavItem {
     whenActive: "/" | "/about" | "/contact" | "/admin";
 }
 interface IDashboardNavListItem {
-    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "Bookshelf",
+    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "El-Resources",
     icon: React.ReactNode,
     onActive: React.ReactNode,
-    href: "" | "/rooms" | "/schedule" | "/announcements" | "/bookshelf",
+    href: "" | "/rooms" | "/schedule" | "/announcements" | "/el-resources",
     forHeading: string
 }
 
@@ -79,8 +79,8 @@ interface IRegisterCredentials {
 interface IRoom {
     room_id: string
     room_name: string
-    room_description: string
-    room_image: string
+    description: string
+    room_image: string | null
     teacher: string
     enrolled_number: number
     category: Array<string>
@@ -96,6 +96,7 @@ interface IRoomUserListItem {
     username: string;
     surname: null;
     role: RoleType;
+    joined_at: string;
 }
 // Single Room
 interface IRoomAssignment {
@@ -110,13 +111,13 @@ interface IRoomIntro {
     room_name: string,
     room_description: string,
     created_at: string,
-    room_image: string,
+    room_image: string | null,
 }
 interface IRoomAnnouncement {
     announcement_id: string;
     announcement_title: string;
-    announced_at: string;
-    announcement: string;
+    annonced_at: string;
+    announcement_description: string;
     announcement_comment_num: number;
 }
 interface IRoomMember {
@@ -160,7 +161,7 @@ interface IAnnouncement {
         username: string
         surname: string | null
         room_id: string
-        room_name: string
+        room_title: string
     }
 }
 interface IAnnouncemenetApiReturn {
@@ -174,7 +175,7 @@ interface IAnnouncementComment {
         user_id: string
         username: string
         surname: string | null
-        profile_picture: string | null
+        user_img: string | null
         role: RoleType
     },
     comment_id: string
@@ -185,17 +186,23 @@ interface IAnnouncementComment {
     }
     commented_at: string
 }
-interface ISingleAnnouncementData {
-    author: {
-        user_id: string;
-        room_id: string;
-        username: string;
-        surname: string | null;
-        room_name: string;
-    };
-    announcement_title: string;
-    announcement: string;
-    announced_at: string;
+interface ISingleAnnouncementApiReturn {
+    announcement: {
+        author: {
+            user_id: string,
+            room_id: string,
+            username: string,
+            surname: string | null,
+            room_title: string,
+        },
+        data: {
+            announcement_title: string,
+            announcement: string
+            announced_at: string,
+            comments_number: 15,
+        },
+    }
+    comments: Array<IAnnouncementComment>
 }
 
 // Profile page
@@ -204,37 +211,6 @@ interface IUserPublicInfo {
     surname: string | null;
     birth_date: string | null;
     email: string;
-    profile_picture: string | null;
+    profile_image: string | null;
     role: RoleType;
-}
-
-// Bookshelf
-interface IBook {
-    book_id: string;
-    book_title: string;
-    book_description: string;
-    book_type: BookTypes;
-    author: {
-        room: {
-            room_id: string;
-            room_name: string;
-        } | null;
-        user: {
-            surname: string;
-            user_id: string;
-            username: string;
-        };
-    };
-}
-interface IUploadNewBook {
-    book: {
-        name: string,
-        type: BookTypes,
-    },
-    description: string,
-    room: {
-        room_id: string;
-        room_name: string;
-    } | null,
-    title: string,
 }

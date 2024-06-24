@@ -1,4 +1,4 @@
-import { USER } from "../server_act_funcs/authorization_acts";
+import { USER } from "../server_act_funcs/authorization";
 import { detectEnviro } from "./general";
 
 // Courses

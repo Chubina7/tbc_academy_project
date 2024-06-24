@@ -16,13 +16,10 @@ export default function useTimeAgo(posted_at: string) {
   function calculateTimeAgo(dateString: string): string {
     const now = new Date();
     const postedTime = new Date(dateString);
-
-    const timezoneOffset = now.getTimezoneOffset();
-
-    postedTime.setMinutes(postedTime.getMinutes() - timezoneOffset);
-
     const timeDifference = now.getTime() - postedTime.getTime();
+
     const seconds = Math.floor(timeDifference / 1000);
+
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);

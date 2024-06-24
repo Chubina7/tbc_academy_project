@@ -9,5 +9,5 @@ interface Props {
 export default function PostTime({ commented_at }: Props) {
   const timeAgo = useTimeAgo(commented_at);
 
-  return <p className="sm:w-28 text-nowrap text-sm text-center">{timeAgo}</p>;
+  return <p className="text-nowrap text-sm">{timeAgo}</p>;
 }

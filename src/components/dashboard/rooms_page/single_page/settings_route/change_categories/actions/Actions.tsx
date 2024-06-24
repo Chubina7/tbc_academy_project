@@ -16,7 +16,7 @@ export default function Actions({ prevData }: Props) {
   if (arraysEqual(prevData, categories)) return null;
 
   return (
-    <div className="w-full flex gap-4 justify-end items-center text-sm font-bold">
+    <div className="w-full flex gap-4 justify-end items-center">
       <ResetBtn />
       <SaveBtn />
     </div>

@@ -1,5 +1,5 @@
 import PersonalInfoChangingProvider from "../../../../../context/providers/PersonalInfoChangingProvider";
-import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization_acts";
+import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
 import Info from "./info/Info";
 import ProfilePicture from "./profile_pic/ProfilePicture";
 import Actions from "./btns/Actions";

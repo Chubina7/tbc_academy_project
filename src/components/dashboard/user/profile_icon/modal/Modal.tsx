@@ -3,6 +3,7 @@
 import SignOut from "./SignOut";
 import List from "./List";
 import ProfileLink from "./ProfileLink";
+import { useEffect } from "react";
 import useOutsideClickTrack from "../../../../../hooks/useOutsideClickTrack";
 
 interface Props {
@@ -18,9 +19,14 @@ interface Props {
 export default function Modal({ data, modalState }: Props) {
   const { surname, username, email, user_id } = data;
   const [isOpen, setIsOpen] = modalState;
-  useOutsideClickTrack("profile_modal", modalState);
+  const trackerValue = useOutsideClickTrack("profile_modal", modalState);
 
   const handleModal = () => setIsOpen(false);
+
+  useEffect(() => {
+    setIsOpen(trackerValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trackerValue]);
 
   if (isOpen) {
     return (

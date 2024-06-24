@@ -1,4 +1,4 @@
-import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization_acts";
+import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization";
 import StudentComp from "./student_ui/StudentComp";
 import TeacherComp from "./teacher_ui/TeacherComp";
 

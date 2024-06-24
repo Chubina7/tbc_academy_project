@@ -37,15 +37,13 @@ export default function Input() {
           placeholder="Search categories.."
           className="w-full text-lg rounded-lg border focus:outline-none bg-transparent px-3 py-1"
           value={category}
-          onChange={(e) =>
-            setCategory(e.target.value.replace(/[^a-zA-Z]/g, ""))
-          }
+          onChange={(e) => setCategory(e.target.value.replace(/[^a-zA-Z]/g, ""))}
           onKeyDown={(e) => {
             if (e.key === "Enter") addCategory();
           }}
         />
         <button
-          className="px-4 py-1 bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] rounded-lg"
+          className="px-4 py-1 bg-red-400 rounded-lg"
           onClick={addCategory}
         >
           Add

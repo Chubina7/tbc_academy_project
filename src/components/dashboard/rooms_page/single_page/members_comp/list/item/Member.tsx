@@ -1,5 +1,5 @@
 import MemberSettingsDialogProvider from "../../../../../../../context/providers/MemberSettingsDialogProvider";
-import { USER } from "../../../../../../../lib/helpers/server_act_funcs/authorization_acts";
+import { USER } from "../../../../../../../lib/helpers/server_act_funcs/authorization";
 import MemberUi from "./ui/MemberUi";
 
 interface Props {

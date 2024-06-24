@@ -6,7 +6,6 @@ import {
   ProfileLoadingStateContext as loadingCtx,
   NotificationsContext as notifCtx,
 } from "../../../../../../context/ctx";
-import { useRouter } from "next/navigation";
 
 interface Props {
   dataToBeServed: {
@@ -20,7 +19,6 @@ interface Props {
 const domain = detectEnviro();
 
 export default function SaveBtn({ dataToBeServed }: Props) {
-  const router = useRouter();
   const { setIsLoading } = useContext(loadingCtx);
   const { showNotification } = useContext(notifCtx);
 
@@ -42,16 +40,12 @@ export default function SaveBtn({ dataToBeServed }: Props) {
     } catch (error: any) {
       showNotification(true, "error", error.message);
     } finally {
-      router.refresh();
       setIsLoading(false);
     }
   };
 
   return (
-    <button
-      className="px-3 py-1 rounded-lg border-2 border-[#603CFF] dark:border-[#5C5470] bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 text-sm font-bold"
-      onClick={handleSubmit}
-    >
+    <button className="px-3 py-1 rounded-lg bg-red-400" onClick={handleSubmit}>
       Save <span className="hidden md:inline-block">Changes</span>
     </button>
   );

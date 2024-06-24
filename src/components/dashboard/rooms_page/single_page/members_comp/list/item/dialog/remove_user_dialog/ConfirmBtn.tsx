@@ -3,7 +3,6 @@
 import { useContext } from "react";
 import { NotificationsContext as notifCtx } from "../../../../../../../../../context/ctx";
 import { detectEnviro } from "../../../../../../../../../lib/helpers/regular_funcs/general";
-import { useRouter } from "next/navigation";
 
 interface Props {
   modalHandler: () => void;
@@ -21,13 +20,12 @@ export default function ConfirmBtn({
   const { showNotification } = useContext(notifCtx);
   const [isLoading, setIsLoading] = loadingState;
   const { room_id, user_id } = data;
-  const router = useRouter();
 
   const handleConfirmation = async () => {
     setIsLoading(true);
     try {
       const res = await fetch(
-        `${domain}/api/dashboard/rooms/${room_id}/members`,
+        `${domain}/api/dashboard/rooms/${room_id}/members/remove`,
         {
           method: "DELETE",
           body: JSON.stringify({ user_id, room_id }),
@@ -43,7 +41,6 @@ export default function ConfirmBtn({
     } catch (error: any) {
       showNotification(true, "error", error.message);
     } finally {
-      router.refresh();
       setIsLoading(false);
       modalHandler();
     }

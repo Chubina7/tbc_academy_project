@@ -24,7 +24,7 @@ export default function RoomListItem({ data, role }: Props) {
             {data.room_name}
           </h1>
           <CategoryList categories={data.category} />
-          <p className="w-full text-sm px-5">{data.room_description}</p>
+          <p className="w-full text-sm px-5">{data.description}</p>
           <div className="w-full flex flex-grow justify-between items-end py-3 px-5 text-sm text-nowrap">
             <EnrolledNum number={data.enrolled_number} />
             {role === "student" ? (

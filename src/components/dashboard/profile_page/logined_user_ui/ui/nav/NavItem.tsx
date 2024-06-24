@@ -22,8 +22,8 @@ export default function NavItem({ item }: Props) {
         item.queryValue === "delete_acc" && "text-red-600 font-semibold"
       } | ${
         item.queryValue === searchParams.get("segment")
-          ? "bg-[#603CFF] dark:bg-[#5C5470] text-[#FFFFFF] opacity-100"
-          : "hover:bg-[#8BA8FF] dark:hover:bg-[#5C5470]  opacity-60"
+          ? "bg-red-400 dark:bg-[#5C5470] opacity-100"
+          : "hover:bg-red-400 hover:dark:bg-[#5C5470] opacity-60"
       } transition-all duration-300`}
     >
       {item.icon}

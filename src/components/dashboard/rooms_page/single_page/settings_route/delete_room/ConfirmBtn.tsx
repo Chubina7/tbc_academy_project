@@ -38,7 +38,6 @@ export default function ConfirmBtn({ closeModal, loadingState }: Props) {
     } finally {
       loadingState[1](false);
       closeModal();
-      router.refresh();
     }
   };
 
