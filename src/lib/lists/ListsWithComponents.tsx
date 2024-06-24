@@ -92,7 +92,6 @@ export const navItems: LandingNavItemsType = [
   { placeholder: "home", href: "/", whenActive: "/" },
   { placeholder: "contact", href: "/contact", whenActive: "/contact" },
   { placeholder: "about", href: "/about", whenActive: "/about" },
-  { placeholder: "admin", href: "/admin", whenActive: "/admin" },
 ];
 export const dashboardNavigationList: DashboardNavListType = [
   {
