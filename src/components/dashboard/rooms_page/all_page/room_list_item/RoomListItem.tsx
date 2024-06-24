@@ -2,7 +2,11 @@ import RoomImage from "./RoomImage";
 import CategoryList from "./CategoryList";
 import EnrolledNum from "./EnrolledNum";
 import Link from "next/link";
-import CreatedAt from "./CreatedAt";
+import dynamic from "next/dynamic";
+const CreatedAt = dynamic(() => import("./CreatedAt"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 import Author from "./Author";
 import VariantsListItem from "../../../../ui/framerMotionDivs/variants/VariantsListItem";
 

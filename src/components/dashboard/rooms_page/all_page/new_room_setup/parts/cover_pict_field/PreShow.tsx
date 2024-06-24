@@ -6,11 +6,18 @@ import { IoImage } from "react-icons/io5";
 export default function PreShow() {
   const { data } = useContext(ctx);
 
+  const local = (() => {
+    if (!data.coverPicture) return;
+    const url = URL.createObjectURL(data.coverPicture);
+    () => URL.revokeObjectURL(url);
+    return url;
+  })();
+
   return (
     <div className="w-full h-full max-h-[460px] border-2 border-dashed rounded-lg flex justify-center items-center">
       {data.coverPicture ? (
         <Image
-          src={data.coverPicture}
+          src={local || ""}
           alt={data.title}
           width={720}
           height={440}

@@ -15,10 +15,7 @@ export default function ChangeBtn() {
       return;
     }
 
-    const url = URL.createObjectURL(file);
-
-    setValue((prev) => ({ ...prev, profile_picture: url }));
-    return () => URL.revokeObjectURL(url);
+    setValue((prev) => ({ ...prev, profile: { ...prev.profile, file } }));
   };
 
   return (

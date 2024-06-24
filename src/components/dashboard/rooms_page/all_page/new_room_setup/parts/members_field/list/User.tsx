@@ -5,7 +5,7 @@ import EnrollBtn from "./EnrollBtn";
 interface Props {
   data: {
     user_id: string;
-    profile_picture: string | null;
+    profile_picture: string;
     username: string;
     surname: string | null;
     role: RoleType;
@@ -18,11 +18,11 @@ export default function User({ data }: Props) {
   return (
     <div className="hover:bg-[#8BA8FF] dark:hover:bg-[#5C5470] | w-full px-2 sm:px-4 py-3 flex gap-3 justify-center items-center rounded-lg">
       <Image
-        src={profile_picture || fallback_img}
+        src={profile_picture ? profile_picture : fallback_img}
         alt={`${username}'s profile pict`}
-        width={64}
-        height={64}
-        className="w-14 h-14 rounded-full"
+        width={128}
+        height={128}
+        className="w-14 h-14 flex rounded-full object-cover aspect-square"
       />
       <div className="w-full flex flex-col">
         <h1 className="font-semibold text-lg sm:text-xl">

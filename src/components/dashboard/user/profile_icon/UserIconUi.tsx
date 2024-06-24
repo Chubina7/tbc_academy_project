@@ -18,9 +18,9 @@ export default function UserIconUi({ data }: Props) {
       <Image
         src={profile_picture ? profile_picture : anonym}
         alt={username}
-        width={36}
-        height={36}
-        className="w-9 h-9 rounded-full cursor-pointer object-cover"
+        width={128}
+        height={128}
+        className="w-9 h-9 rounded-full aspect-square cursor-pointer object-cover"
         onClick={() => modalState[1]((prev) => !prev)}
         id="profile_modal"
       />

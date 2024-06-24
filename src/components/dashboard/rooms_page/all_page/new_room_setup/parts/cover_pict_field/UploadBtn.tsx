@@ -12,10 +12,7 @@ export default function UploadBtn() {
       return;
     }
 
-    const url = URL.createObjectURL(file);
-
-    setters.setCoverPicture(url);
-    return () => URL.revokeObjectURL(url);
+    setters.setCoverPicture(file);
   };
 
   return (

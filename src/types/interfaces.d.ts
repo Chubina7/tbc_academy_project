@@ -92,7 +92,7 @@ interface IRoomsApiReturn {
 }
 interface IRoomUserListItem {
     user_id: string;
-    profile_picture: null;
+    profile_picture: string;
     username: string;
     surname: null;
     role: RoleType;
@@ -124,7 +124,7 @@ interface IRoomMember {
     username: string;
     surname: string | null;
     email: string;
-    profile_picture: string | null;
+    profile_picture: string;
 }
 interface IRoomTeacherAvgs {
     user_id: string;

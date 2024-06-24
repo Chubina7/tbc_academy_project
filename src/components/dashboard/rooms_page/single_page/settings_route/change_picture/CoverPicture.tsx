@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import BrowseBtn from "./btns/BrowseBtn";
-import Info from "./Info";
 import ChangeBtn from "./btns/ChangeBtn";
 import UploadedImg from "./UploadedImg";
 import DeleteBtn from "./btns/DeleteBtn";
@@ -12,7 +11,7 @@ interface Props {
 }
 
 export default function CoverPicture({ data }: Props) {
-  const [imageUrl, setImageUrl] = useState(data || "");
+  const [imageFile, setImageFile] = useState(null as File | null);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,17 +23,7 @@ export default function CoverPicture({ data }: Props) {
       return;
     }
 
-    const url = URL.createObjectURL(file);
-    setImageUrl(url);
-
-    // vercel blob upload
-    // ...
-    // const newBlob = await upload(file.name, file, {
-    //   access: 'public',
-    //   handleUploadUrl: '/api/avatar/upload',
-    // });
-
-    // setBlob(newBlob);
+    setImageFile(file);
   };
 
   return (
@@ -52,23 +41,22 @@ export default function CoverPicture({ data }: Props) {
             Cover Picture
           </h1>
           <div className="flex justify-center items-center gap-2 font-bold text-sm">
-            {imageUrl !== "" && (
-              <DeleteBtn deleteHandler={() => setImageUrl("")} />
-            )}
-            {data === imageUrl && <BrowseBtn action={handleUpload} />}
-            {imageUrl !== data && (
-              <ChangeBtn source={imageUrl} setLoading={setIsLoading} />
+            {imageFile ? (
+              <>
+                <DeleteBtn deleteHandler={() => setImageFile(null)} />
+                <ChangeBtn
+                  source={imageFile}
+                  setLoading={setIsLoading}
+                  previousImg={data}
+                  resetButtons={setImageFile}
+                />
+              </>
+            ) : (
+              <BrowseBtn action={handleUpload} />
             )}
           </div>
         </div>
-        {imageUrl ? (
-          <UploadedImg src={imageUrl} />
-        ) : (
-          <div className="w-full flex flex-col justify-center items-center border-2 border-dashed rounded-lg py-20 gap-4">
-            <Info />
-            {/* <BrowseBtn action={handleUpload} /> */}
-          </div>
-        )}
+        <UploadedImg src={imageFile ? imageFile : data} />
         <p className="text-sm text-red-600">{error.trim() !== "" && error}</p>
       </div>
     </div>

@@ -88,14 +88,16 @@ export const AddNewRoomContext = createContext({
   data: {
     title: "",
     description: "",
-    coverPicture: "",
+    coverPicture: null as File | null,
     categories: [] as Array<string>,
     members: [] as Array<string>,
   },
   setters: {
     setTitle: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
     setDescription: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
-    setCoverPicture: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+    setCoverPicture: (() => {}) as React.Dispatch<
+      React.SetStateAction<File | null>
+    >,
     setCategories: (() => {}) as React.Dispatch<
       React.SetStateAction<Array<string>>
     >,
@@ -115,20 +117,29 @@ export const PersonalInfoChangingContext = createContext({
     username: "",
     surname: ("" || null) as string | null,
     birth_date: ("" || null) as string | null,
-    profile_picture: ("" || null) as string | null,
+    profile: {
+      picture: "",
+      file: {} as File | null,
+    },
   },
   value: {
     username: "",
     surname: ("" || null) as string | null,
     birth_date: ("" || null) as string | null,
-    profile_picture: ("" || null) as string | null,
+    profile: {
+      picture: "",
+      file: {} as File | null,
+    },
   },
   setValue: (() => {}) as React.Dispatch<
     React.SetStateAction<{
       username: string;
       surname: string | null;
       birth_date: string | null;
-      profile_picture: string | null;
+      profile: {
+        picture: string;
+        file: File | null;
+      };
     }>
   >,
 });

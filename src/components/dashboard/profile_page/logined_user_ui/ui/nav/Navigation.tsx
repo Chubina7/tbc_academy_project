@@ -1,4 +1,9 @@
-import { IoPersonCircle, IoKey, IoCard, IoTrash } from "react-icons/io5";
+import {
+  IoPersonCircle,
+  // IoKey,
+  IoCard,
+  IoTrash,
+} from "react-icons/io5";
 import NavItem from "./NavItem";
 
 export const profileSegments = [
@@ -7,11 +12,11 @@ export const profileSegments = [
     icon: <IoPersonCircle size={24} />,
     queryValue: "personal_info",
   },
-  {
-    title: "Authorization Details",
-    icon: <IoKey size={24} />,
-    queryValue: "auth_details",
-  },
+  // {
+  //   title: "Authorization Details",
+  //   icon: <IoKey size={24} />,
+  //   queryValue: "auth_details",
+  // },
   {
     title: "Payment Details",
     icon: <IoCard size={24} />,

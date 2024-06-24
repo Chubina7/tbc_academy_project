@@ -15,7 +15,7 @@ export default function Close({ action }: Props) {
   const handleClose = () => {
     if (
       categories.length !== 0 ||
-      coverPicture.trim() !== "" ||
+      !coverPicture ||
       description.trim() !== "" ||
       members.length !== 0 ||
       title.trim() !== ""
