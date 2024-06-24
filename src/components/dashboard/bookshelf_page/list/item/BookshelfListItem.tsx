@@ -5,8 +5,6 @@ import Desc from "./Desc";
 import VariantsListItem from "../../../../ui/framerMotionDivs/variants/VariantsListItem";
 import BookmarkCheck from "./bookmarking/BookmarkCheck";
 import FileIcon from "../../../../ui/FileIcon";
-import DeleteBtn from "./delete/DeleteBtn";
-import { USER } from "../../../../../lib/helpers/server_act_funcs/authorization_acts";
 
 interface Props {
   data: {
@@ -21,16 +19,11 @@ interface Props {
   };
 }
 
-export default async function BookshelfListItem({ data }: Props) {
-  const { user_id } = await USER();
-  
+export default function BookshelfListItem({ data }: Props) {
   return (
-    <VariantsListItem className="w-full select-none">
+    <VariantsListItem className="w-full min-h-[294px] select-none">
       <div className="relative h-full bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl shadow-custom transition-all duration-300 | p-3 pt-10 flex flex-col justify-center items-center gap-3 hover:scale-105">
         <BookmarkCheck book_id={data.book_id} />
-        {user_id === data.author.user.user_id && (
-          <DeleteBtn book_id={data.book_id} />
-        )}
         <Link
           href={`/dashboard/bookshelf/${data.book_id}`}
           className="w-full flex flex-col gap-3 justify-center items-center"

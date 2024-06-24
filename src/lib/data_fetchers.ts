@@ -185,3 +185,26 @@ export async function getBookshelfItems() {
         return null;
     }
 }
+export async function getSingleBookData(book_id: string) {
+    const token = cookies().get(AUTH_COOKIE_KEY);
+
+    try {
+        const res = await fetch(`${domain}/api/dashboard/bookshelf/${book_id}`, {
+            cache: "no-cache",
+            headers: {
+                Authorization: token?.value || "",
+            },
+        });
+
+        if (!res.ok) {
+            const result = await res.json();
+            throw new Error(result.message || "Error while fetching data");
+        }
+
+        const result = await res.json();
+        return result;
+    } catch (error) {
+        console.error("Failed to fetch single book data:", error);
+        return null;
+    }
+}
