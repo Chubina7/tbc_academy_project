@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { IoCaretDown } from "react-icons/io5";
-import { UploadNewBookContext as ctx } from "../../../../../../../../context/ctx";
+import { UploadNewBookContext as ctx } from "../../../../../../../context/ctx";
 
 interface Props {
   handleOptions: () => void;

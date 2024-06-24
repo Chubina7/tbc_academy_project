@@ -15,9 +15,9 @@ export default function UploadedFilePrev() {
     >
       <h1 className="w-full text-left text-base select-none">File Preview</h1>
       <div className="w-full rounded-xl border-2 border-dashed bg-transparent flex flex-col justify-center items-center p-3 py-10 gap-2">
-        <FileIcon fileType={data.book.type} />
+        <FileIcon fileType={data.file.type as BookTypes} />
         <p className="w-full text-center truncate select-none">
-          {data.book.name}
+          {data.file.name}
         </p>
       </div>
     </div>

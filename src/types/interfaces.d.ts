@@ -227,14 +227,11 @@ interface IBook {
     };
 }
 interface IUploadNewBook {
-    book: {
-        name: string,
-        type: BookTypes,
-    },
+    title: string,
     description: string,
+    file: File
     room: {
         room_id: string;
         room_name: string;
-    } | null,
-    title: string,
+    },
 }

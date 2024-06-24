@@ -15,7 +15,7 @@ export function detectEnviro() {
 
     switch (enviro) {
         case "production":
-            return "https://teach-flow.vercel.app";
+            return "https://skill-up-accelerator.vercel.app";
         case "development":
             return "http://localhost:3000";
         case "test":
