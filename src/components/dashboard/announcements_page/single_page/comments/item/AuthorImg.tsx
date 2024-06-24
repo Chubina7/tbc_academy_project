@@ -11,9 +11,9 @@ export default function AuthorImg({ src, alt }: Props) {
     <Image
       src={src ? src : fallback_img}
       alt={alt}
-      width={64}
-      height={64}
-      className="w-12 h-12 rounded-full"
+      width={128}
+      height={128}
+      className="w-12 h-12 rounded-full aspect-square object-cover"
     />
   );
 }
