@@ -8,9 +8,17 @@ import { PersonalInfoChangingContext as ctx } from "../../../../../../context/ct
 export default function ShownImg() {
   const { value } = useContext(ctx);
 
+  const local = (() => {
+    if (!value.profile.file) return;
+    const url = URL.createObjectURL(value.profile.file);
+    () => URL.revokeObjectURL(url);
+    return url;
+  })();
+  const blob = value.profile.picture;
+
   return (
     <Image
-      src={value.profile.picture || fallback_img}
+      src={local ? local : blob || fallback_img}
       alt="profile_pic"
       width={384}
       height={384}

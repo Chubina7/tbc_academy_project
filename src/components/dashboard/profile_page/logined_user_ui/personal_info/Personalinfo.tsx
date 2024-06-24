@@ -13,7 +13,7 @@ export default async function Personalinfo() {
         username,
         profile: {
           picture: profile_picture,
-          file: {},
+          file: null,
         },
         surname,
         birth_date,

@@ -16,11 +16,13 @@ interface Props {
     birth_date: string | null;
     profile: {
       picture: string;
-      file: File;
+      file: File | null;
     };
   };
   prevProfileImage: string;
 }
+
+const domain = detectEnviro();
 
 const deleteBlobData = async (urlToDelete: string) => {
   try {
@@ -40,8 +42,6 @@ const deleteBlobData = async (urlToDelete: string) => {
   }
 };
 
-const domain = detectEnviro();
-
 export default function SaveBtn({ dataToBeServed, prevProfileImage }: Props) {
   const router = useRouter();
   const { setIsLoading } = useContext(loadingCtx);
@@ -50,15 +50,22 @@ export default function SaveBtn({ dataToBeServed, prevProfileImage }: Props) {
   const handleSubmit = async () => {
     setIsLoading(true);
 
-    const newBlob = await upload(
-      dataToBeServed.profile.file.name,
-      dataToBeServed.profile.file,
-      {
-        access: "public",
-        handleUploadUrl: "/api/dashboard/blob/upload",
+    const storingBlob = async () => {
+      if (dataToBeServed.profile.file !== null) {
+        const blob = await upload(
+          dataToBeServed.profile.file.name,
+          dataToBeServed.profile.file,
+          {
+            access: "public",
+            handleUploadUrl: "/api/dashboard/blob/upload",
+          }
+        );
+        return blob.url;
+      } else {
+        await deleteBlobData(prevProfileImage);
+        return "";
       }
-    );
-
+    };
     try {
       const res = await fetch(`${domain}/api/dashboard/profile`, {
         method: "POST",
@@ -66,7 +73,7 @@ export default function SaveBtn({ dataToBeServed, prevProfileImage }: Props) {
           username: dataToBeServed.username,
           surname: dataToBeServed.surname,
           birth_date: dataToBeServed.birth_date,
-          profile_picture: newBlob.url,
+          profile_picture: await storingBlob(),
         }),
       });
       if (!res.ok) {

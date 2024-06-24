@@ -117,7 +117,7 @@ export const PersonalInfoChangingContext = createContext({
     birth_date: ("" || null) as string | null,
     profile: {
       picture: "",
-      file: {} as File,
+      file: {} as File | null,
     },
   },
   value: {
@@ -126,7 +126,7 @@ export const PersonalInfoChangingContext = createContext({
     birth_date: ("" || null) as string | null,
     profile: {
       picture: "",
-      file: {} as File,
+      file: {} as File | null,
     },
   },
   setValue: (() => {}) as React.Dispatch<
@@ -136,7 +136,7 @@ export const PersonalInfoChangingContext = createContext({
       birth_date: string | null;
       profile: {
         picture: string;
-        file: File;
+        file: File | null;
       };
     }>
   >,
