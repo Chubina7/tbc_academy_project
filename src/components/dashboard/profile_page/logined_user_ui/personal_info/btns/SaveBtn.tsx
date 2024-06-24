@@ -7,19 +7,42 @@ import {
   NotificationsContext as notifCtx,
 } from "../../../../../../context/ctx";
 import { useRouter } from "next/navigation";
+import { upload } from "@vercel/blob/client";
 
 interface Props {
   dataToBeServed: {
     username: string;
     surname: string | null;
     birth_date: string | null;
-    profile_picture: string | null;
+    profile: {
+      picture: string;
+      file: File;
+    };
   };
+  prevProfileImage: string;
 }
+
+const deleteBlobData = async (urlToDelete: string) => {
+  try {
+    const res = await fetch(
+      `${domain}/api/dashboard/blob/delete?url=${urlToDelete}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const result = await res.json();
+
+    if (!res.ok) {
+      throw new Error(result.message);
+    }
+  } catch (error: any) {
+    console.error(error.message);
+  }
+};
 
 const domain = detectEnviro();
 
-export default function SaveBtn({ dataToBeServed }: Props) {
+export default function SaveBtn({ dataToBeServed, prevProfileImage }: Props) {
   const router = useRouter();
   const { setIsLoading } = useContext(loadingCtx);
   const { showNotification } = useContext(notifCtx);
@@ -27,10 +50,24 @@ export default function SaveBtn({ dataToBeServed }: Props) {
   const handleSubmit = async () => {
     setIsLoading(true);
 
+    const newBlob = await upload(
+      dataToBeServed.profile.file.name,
+      dataToBeServed.profile.file,
+      {
+        access: "public",
+        handleUploadUrl: "/api/dashboard/blob/upload",
+      }
+    );
+
     try {
       const res = await fetch(`${domain}/api/dashboard/profile`, {
         method: "POST",
-        body: JSON.stringify(dataToBeServed),
+        body: JSON.stringify({
+          username: dataToBeServed.username,
+          surname: dataToBeServed.surname,
+          birth_date: dataToBeServed.birth_date,
+          profile_picture: newBlob.url,
+        }),
       });
       if (!res.ok) {
         const result = await res.json();
@@ -39,6 +76,7 @@ export default function SaveBtn({ dataToBeServed }: Props) {
 
       const result = await res.json();
       showNotification(true, "success", result.message);
+      if (prevProfileImage !== "") await deleteBlobData(prevProfileImage);
     } catch (error: any) {
       showNotification(true, "error", error.message);
     } finally {

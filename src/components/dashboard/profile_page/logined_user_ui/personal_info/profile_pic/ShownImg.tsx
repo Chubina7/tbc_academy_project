@@ -10,7 +10,7 @@ export default function ShownImg() {
 
   return (
     <Image
-      src={value.profile_picture || fallback_img}
+      src={value.profile.picture || fallback_img}
       alt="profile_pic"
       width={384}
       height={384}

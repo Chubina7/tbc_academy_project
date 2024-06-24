@@ -115,20 +115,29 @@ export const PersonalInfoChangingContext = createContext({
     username: "",
     surname: ("" || null) as string | null,
     birth_date: ("" || null) as string | null,
-    profile_picture: ("" || null) as string | null,
+    profile: {
+      picture: "",
+      file: {} as File,
+    },
   },
   value: {
     username: "",
     surname: ("" || null) as string | null,
     birth_date: ("" || null) as string | null,
-    profile_picture: ("" || null) as string | null,
+    profile: {
+      picture: "",
+      file: {} as File,
+    },
   },
   setValue: (() => {}) as React.Dispatch<
     React.SetStateAction<{
       username: string;
       surname: string | null;
       birth_date: string | null;
-      profile_picture: string | null;
+      profile: {
+        picture: string;
+        file: File;
+      };
     }>
   >,
 });

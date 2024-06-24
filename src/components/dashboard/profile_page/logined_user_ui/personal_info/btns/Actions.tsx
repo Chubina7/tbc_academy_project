@@ -11,11 +11,16 @@ export default function Actions() {
 
   const handleCancel = () => setValue(prevValues);
 
+  console.log(prevValues, value);
+
   if (areObjValuesChanged(prevValues, value))
     return (
       <div className="flex gap-2 justify-center items-center">
         <CancelBtn action={handleCancel} />
-        <SaveBtn dataToBeServed={value} />
+        <SaveBtn
+          dataToBeServed={value}
+          prevProfileImage={prevValues.profile.picture}
+        />
       </div>
     );
 
