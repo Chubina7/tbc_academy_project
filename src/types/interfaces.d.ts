@@ -124,7 +124,7 @@ interface IRoomMember {
     username: string;
     surname: string | null;
     email: string;
-    profile_picture: string | null;
+    profile_picture: string;
 }
 interface IRoomTeacherAvgs {
     user_id: string;

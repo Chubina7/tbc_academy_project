@@ -11,7 +11,7 @@ export default function NextBtn() {
   const condition =
     (steps.activeIdx === 0 &&
       (data.title.trim() === "" || data.description.trim() === "")) ||
-    (steps.activeIdx === 1 && data.coverPicture.trim() === "") ||
+    (steps.activeIdx === 1 && !data.coverPicture) ||
     (steps.activeIdx === 2 && data.categories.length < 3);
 
   return (

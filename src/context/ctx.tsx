@@ -88,14 +88,16 @@ export const AddNewRoomContext = createContext({
   data: {
     title: "",
     description: "",
-    coverPicture: "",
+    coverPicture: null as File | null,
     categories: [] as Array<string>,
     members: [] as Array<string>,
   },
   setters: {
     setTitle: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
     setDescription: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
-    setCoverPicture: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
+    setCoverPicture: (() => {}) as React.Dispatch<
+      React.SetStateAction<File | null>
+    >,
     setCategories: (() => {}) as React.Dispatch<
       React.SetStateAction<Array<string>>
     >,

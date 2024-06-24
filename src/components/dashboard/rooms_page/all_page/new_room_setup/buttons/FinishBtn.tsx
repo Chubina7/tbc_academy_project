@@ -7,6 +7,7 @@ import {
 } from "../../../../../../context/ctx";
 import { useRouter } from "next/navigation";
 import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
+import { upload } from "@vercel/blob/client";
 
 interface Props {
   closeModal: () => void;
@@ -25,11 +26,11 @@ export default function FinishBtn({ closeModal }: Props) {
   const { categories, members } = data;
   const description = data.description.trim();
   const title = data.title.trim();
-  const coverPicture = data.coverPicture.trim();
+  const coverPicture = data.coverPicture;
 
   const condition =
     categories.length < 3 ||
-    coverPicture === "" ||
+    !coverPicture ||
     description === "" ||
     members.length < 1 ||
     title === "";
@@ -41,12 +42,17 @@ export default function FinishBtn({ closeModal }: Props) {
       return;
     }
 
+    const newBlob = await upload(coverPicture.name, coverPicture, {
+      access: "public",
+      handleUploadUrl: "/api/dashboard/blob/upload",
+    });
+
     const dataToBeStored = {
       room: {
         room_name: data.title,
         room_description: data.description,
         category: data.categories,
-        cover_picture: data.coverPicture,
+        cover_picture: newBlob.url,
       },
       members: data.members,
     };
