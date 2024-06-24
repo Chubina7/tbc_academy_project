@@ -24,7 +24,7 @@ interface Props {
 
 const domain = detectEnviro();
 
-const deleteBlobData = async (urlToDelete: string) => {
+export const deleteBlobData = async (urlToDelete: string) => {
   try {
     const res = await fetch(
       `${domain}/api/dashboard/blob/delete?url=${urlToDelete}`,

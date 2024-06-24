@@ -92,7 +92,7 @@ interface IRoomsApiReturn {
 }
 interface IRoomUserListItem {
     user_id: string;
-    profile_picture: null;
+    profile_picture: string;
     username: string;
     surname: null;
     role: RoleType;

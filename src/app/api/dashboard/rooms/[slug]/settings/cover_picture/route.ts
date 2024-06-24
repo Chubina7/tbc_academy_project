@@ -19,13 +19,15 @@ export async function PUT(req: NextRequest, { params }: Props) {
     try {
         const cover_picture = await req.json()
 
+        console.log(cover_picture)
+
         const isEnrolled = await sql`SELECT *
         FROM room_enrollments
         WHERE user_id = ${user.user_id}
         AND room_id = ${params.slug}`
 
         if (isEnrolled.rows.length !== 0) {
-            await sql`UPDATE rooms SET room_image = ${cover_picture.trim()} WHERE room_id = ${params.slug}`
+            await sql`UPDATE rooms SET room_image = ${cover_picture} WHERE room_id = ${params.slug}`
         } else {
             throw new Error()
         }

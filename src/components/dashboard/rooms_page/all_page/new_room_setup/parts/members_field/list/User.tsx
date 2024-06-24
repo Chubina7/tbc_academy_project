@@ -18,7 +18,7 @@ export default function User({ data }: Props) {
   return (
     <div className="hover:bg-[#8BA8FF] dark:hover:bg-[#5C5470] | w-full px-2 sm:px-4 py-3 flex gap-3 justify-center items-center rounded-lg">
       <Image
-        src={profile_picture !== "" ? profile_picture : fallback_img}
+        src={profile_picture ? profile_picture : fallback_img}
         alt={`${username}'s profile pict`}
         width={128}
         height={128}

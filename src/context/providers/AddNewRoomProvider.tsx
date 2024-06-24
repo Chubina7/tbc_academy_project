@@ -11,7 +11,7 @@ export default function AddNewRoomProvider({ children }: Props) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [coverPicture, setCoverPicture] = useState("");
+  const [coverPicture, setCoverPicture] = useState(null as File | null);
   const [categories, setCategories] = useState<Array<string>>([]);
   const [members, setMembers] = useState<Array<string>>([]);
   const [isLoading, setIsLoading] = useState(false);
