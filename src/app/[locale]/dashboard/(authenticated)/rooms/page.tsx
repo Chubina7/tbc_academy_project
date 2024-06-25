@@ -10,6 +10,11 @@ interface Props {
   params: IParams;
 }
 
+export const metadata: IMetaData = {
+  title: "Rooms",
+  description: "You can enroll and comunicate with others. Or wait other teacher to add you into the room.",
+};
+
 export default async function RoomsPage({ params }: Props) {
   unstable_setRequestLocale(params.locale);
   const { role } = await USER();

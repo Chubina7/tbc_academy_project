@@ -1,6 +1,11 @@
 import BookmarkList from "../../../../../components/dashboard/bookmarks_page/BookmarkList";
 import { getBookshelfItems } from "../../../../../lib/data_fetchers";
 
+export const metadata: IMetaData = {
+  title: "Bookmarks",
+  description: "Yey.. Here are your bookmarks. I think you like all of them.",
+};
+
 export default async function BookmarksPage() {
   const bookshelfData = await getBookshelfItems();
 

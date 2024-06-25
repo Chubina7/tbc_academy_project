@@ -4,6 +4,11 @@ interface Props {
   params: IParams;
 }
 
+export const metadata: IMetaData = {
+  title: "Home",
+  description: "Homepage of Skillup.",
+};
+
 export default function Dashboard({ params }: Props) {
   unstable_setRequestLocale(params.locale);
 

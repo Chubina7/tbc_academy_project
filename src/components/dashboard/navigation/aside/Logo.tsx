@@ -1,14 +1,17 @@
 import Link from "next/link";
 import React from "react";
-import { IoSchool } from "react-icons/io5";
 import TopToDown from "../../../ui/framerMotionDivs/directions/TopToDown";
+import { FcGraduationCap } from "react-icons/fc";
 
 function Logo() {
   return (
     <Link href={"/dashboard"}>
-      <TopToDown className="flex justify-center items-center gap-3">
-        <IoSchool size={36} />
-        <h1 className="hidden xl:block text-lg font-bold">Teach-Flow</h1>
+      <TopToDown className="flex justify-center items-top gap-3">
+        <FcGraduationCap size={36} />
+        <div className="hidden xl:flex flex-col items-start justify-center">
+          <h1 className=" text-lg font-bold">Skill UP</h1>
+          <p className="opacity-60 text-xs">Teach Smart, Learn Better</p>
+        </div>
       </TopToDown>
     </Link>
   );

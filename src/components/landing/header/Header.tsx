@@ -5,6 +5,7 @@ import { RxDividerVertical } from "react-icons/rx";
 import ThemeChanger from "../../ui/themePreference/ThemeChanger";
 import LangChanger from "../../ui/languagePreference/LangChanger";
 import JoinNotAct from "./JoinNotAct";
+import { IoApps } from "react-icons/io5";
 
 export default async function Header() {
   return (
@@ -19,6 +20,7 @@ export default async function Header() {
           <JoinNotAct />
         </div>
       </div>
+      <IoApps size={28} className="md:hidden" />
       {/* burger menu */}
     </header>
   );

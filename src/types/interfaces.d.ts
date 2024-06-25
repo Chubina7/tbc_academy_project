@@ -17,9 +17,9 @@ interface ILandPrefListItem {
     setFunction: () => Promise<void>
 }
 interface ILandingNavItem {
-    placeholder: "home" | "about" | "contact";
-    href: "/" | "/about" | "/contact"
-    whenActive: "/" | "/about" | "/contact";
+    placeholder: "home";
+    href: "/"
+    whenActive: "/"
 }
 interface IDashboardNavListItem {
     title: "home" | "rooms" | "announcements" | "bookshelf",

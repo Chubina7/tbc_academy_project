@@ -3,6 +3,7 @@ import { IoSearch } from "react-icons/io5";
 
 export default function SearchInput() {
   const t = useTranslations("dashboard.header");
+
   return (
     <div className="relative w-full md:w-fit rounded-full overflow-hidden text-sm">
       <IoSearch
@@ -16,6 +17,7 @@ export default function SearchInput() {
         className="bg-[#F4F7FF] text-inherit placeholder:text-inherit dark:bg-[#2A2438] dark:text-inherit |  placeholder:opacity-50 w-full sm:min-w-64 h-full p-2 pl-10 outline-none transition-all duration-300"
       />
       {/* suggestions modal */}
+      <div className="absolute"></div>
     </div>
   );
 }
