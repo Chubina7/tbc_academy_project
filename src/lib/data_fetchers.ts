@@ -164,12 +164,9 @@ export async function getBookshelfItems() {
     const token = cookies().get(AUTH_COOKIE_KEY)?.value;
     try {
         const res = await fetch(`${domain}/api/dashboard/bookshelf`, {
-            cache: "force-cache",
+            cache: "no-cache",
             headers: {
                 Authorization: token || "",
-            },
-            next: {
-                tags: ["bookshelf"]
             }
         });
 
