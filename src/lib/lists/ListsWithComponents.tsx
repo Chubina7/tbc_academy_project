@@ -1,6 +1,5 @@
 import {
   IoHome,
-  IoCalendarSharp,
   IoBook,
   IoInformationCircle,
   IoMoon,
@@ -107,13 +106,13 @@ export const dashboardNavigationList: DashboardNavListType = [
     href: "/rooms",
     forHeading: "Rooms you enrolled",
   },
-  {
-    title: "schedule",
-    icon: <IoCalendarSharp size={20} color="inherit" />,
-    onActive: <IoCalendarSharp size={20} color="inherit" />,
-    href: "/schedule",
-    forHeading: "Plans here!",
-  },
+  // {
+  //   title: "schedule",
+  //   icon: <IoCalendarSharp size={20} color="inherit" />,
+  //   onActive: <IoCalendarSharp size={20} color="inherit" />,
+  //   href: "/schedule",
+  //   forHeading: "Plans here!",
+  // },
   {
     title: "announcements",
     icon: <IoInformationCircle size={20} color="inherit" />,

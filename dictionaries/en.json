@@ -247,5 +247,16 @@
                 }
             }
         }
+    },
+    "notFound": {
+        "title1": "Oop.. Could not find requested page.",
+        "title2": "It is maybe already deleted, or did not even exist.",
+        "back": "Go back",
+        "dashboard": "Dashboard"
+    },
+    "error": {
+        "title": "Something went wrong!",
+        "goBack": "Go to homepage",
+        "tryAgain": "Try again"
     }
 }
