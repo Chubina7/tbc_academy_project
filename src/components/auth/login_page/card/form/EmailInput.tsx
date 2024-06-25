@@ -12,7 +12,7 @@ interface Props {
 }
 
 const EmailInput = ({ inputValueState, loadingState }: Props) => {
-  const [email, setEmazil] = inputValueState;
+  const [email, setEmail] = inputValueState;
 
   return (
     <div className="relative w-full">

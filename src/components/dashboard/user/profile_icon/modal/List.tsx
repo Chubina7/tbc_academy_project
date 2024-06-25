@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { modalListItems } from "../../../../../lib/lists/ListsWithComponents";
+import { useTranslations } from "next-intl";
 
 interface Props {
   modalCloser: () => void;
 }
 
 export default function List({ modalCloser }: Props) {
+  const t = useTranslations("dashboard.header.modal");
+
   return (
     <ul
       className="w-full flex flex-col items-start justify-center"
@@ -24,7 +27,7 @@ export default function List({ modalCloser }: Props) {
             id="profile_modal"
           >
             {item.icon}
-            <p id="profile_modal">{item.title}</p>
+            <p id="profile_modal">{t(`${item.title}`)}</p>
           </li>
         </Link>
       ))}

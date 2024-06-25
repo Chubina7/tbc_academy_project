@@ -74,6 +74,27 @@
                     "here": "აქ"
                 }
             }
+        },
+        "navigation": {
+            "home": "მთავარი",
+            "rooms": "ოთახები",
+            "schedule": "განრიგი",
+            "announcements": "განცხადებები",
+            "bookshelf": "რესურსები"
+        },
+        "header": {
+            "search": "მოძებნე მომხმარებელი...",
+            "modal": {
+                "settings": "პარამეტრები",
+                "help": "დახმარება",
+                "signOutBtn": {
+                    "static": "გასვლა",
+                    "loading": "მუშავდება..."
+                }
+            }
+        },
+        "pages": {
+            "rooms": {}
         }
     }
 }

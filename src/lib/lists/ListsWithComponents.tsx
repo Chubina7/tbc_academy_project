@@ -94,35 +94,35 @@ export const navItems: LandingNavItemsType = [
 ];
 export const dashboardNavigationList: DashboardNavListType = [
   {
-    title: "Home",
+    title: "home",
     icon: <IoHome size={20} color="inherit" />,
     onActive: <IoHome size={20} color="inherit" />,
     href: "",
     forHeading: "Welcome, STUDENT!",
   },
   {
-    title: "Rooms",
+    title: "rooms",
     icon: <IoChatbubbles size={20} color="inherit" />,
     onActive: <IoChatbubbles size={20} color="inherit" />,
     href: "/rooms",
     forHeading: "Rooms you enrolled",
   },
   {
-    title: "Schedule",
+    title: "schedule",
     icon: <IoCalendarSharp size={20} color="inherit" />,
     onActive: <IoCalendarSharp size={20} color="inherit" />,
     href: "/schedule",
     forHeading: "Plans here!",
   },
   {
-    title: "Announcements",
+    title: "announcements",
     icon: <IoInformationCircle size={20} color="inherit" />,
     onActive: <IoInformationCircle size={20} color="inherit" />,
     href: "/announcements",
     forHeading: "Sssch!",
   },
   {
-    title: "Bookshelf",
+    title: "bookshelf",
     icon: <IoBook size={20} color="inherit" />,
     onActive: <IoBook size={20} color="inherit" />,
     href: "/bookshelf",
@@ -140,14 +140,18 @@ export const registrationSteps: Array<{
   },
   { component: <CredentialInputs key={2} />, ph: "cred" },
 ];
-export const modalListItems = [
+export const modalListItems: Array<{
+  title: "settings" | "help";
+  icon: JSX.Element;
+  link: string;
+}> = [
   {
-    title: "Settings",
+    title: "settings",
     icon: <IoSettings id="profile_modal" size={20} />,
     link: "/dashboard/settings",
   },
   {
-    title: "Help Center",
+    title: "help",
     icon: <IoHelpCircle id="profile_modal" size={20} />,
     link: "/dashboard/help",
   },
