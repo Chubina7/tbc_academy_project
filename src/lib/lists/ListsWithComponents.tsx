@@ -14,7 +14,6 @@ import {
   IoList,
   IoPeople,
 } from "react-icons/io5";
-import Appear from "../../components/ui/framerMotionDivs/Appear";
 import RoleCheckmark from "../../components/auth/register_page/card/steps/RoleCheckmark";
 import PersonalDetailInputs from "../../components/auth/register_page/card/steps/presonal_details/PersonalDetailInputs";
 import CredentialInputs from "../../components/auth/register_page/card/steps/acc_credentials/CredentialInputs";
@@ -130,21 +129,16 @@ export const dashboardNavigationList: DashboardNavListType = [
     forHeading: "Resources that you need.",
   },
 ];
-export const loginHeadingWords = [
-  <Appear key={0} className="transition-colors duration-300 font-bold">
-    STUDENT
-  </Appear>,
-  <Appear key={1} className="transition-colors duration-300 font-bold">
-    TEACHER
-  </Appear>,
-];
-export const registrationSteps = [
-  { component: <RoleCheckmark key={0} />, heading: "Choose Role" },
+export const registrationSteps: Array<{
+  component: JSX.Element;
+  ph: "role" | "pers" | "cred";
+}> = [
+  { component: <RoleCheckmark key={0} />, ph: "role" },
   {
     component: <PersonalDetailInputs key={1} />,
-    heading: "Enter Personal Details",
+    ph: "pers",
   },
-  { component: <CredentialInputs key={2} />, heading: "Account Credentials" },
+  { component: <CredentialInputs key={2} />, ph: "cred" },
 ];
 export const modalListItems = [
   {

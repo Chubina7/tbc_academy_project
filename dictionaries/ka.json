@@ -1,67 +1,79 @@
 {
-    "Auth": {
-        "login": {
-            "title": "შესვლა",
-            "form": {
-                "usernameLabel": "მომხმარებლის იმეილი",
-                "usernameInput": "სახელი123",
-                "passwordLabel": "მომხმარებლის პაროლი",
-                "passwordInput": "პაროლი",
-                "signInBtn": "შესვლა",
-                "messages": {
-                    "empty": "ცარიელი მონაცემების გაგზავნა შეუძლებელია!",
-                    "fillBoth": "ერთ-ერთი ველი ცარიელია. შეავსე ორივე!",
-                    "invalid": "არასწორი მონაცემები",
-                    "handlerError": "მოხდა შეცდომა. მეტი ინფორმაცია ბრაუზერის კონსოლში."
+    "landing": {
+        "header": {
+            "navigation": {
+                "about": "შესახებ",
+                "home": "მთავარი",
+                "contact": "კონტაქტი",
+                "dashboard": "დეშბორდი"
+            },
+            "btn": "დაწყება"
+        }
+    },
+    "dashboard": {
+        "authorization": {
+            "login": {
+                "title": "შესვლა",
+                "welcome": {
+                    "text": "კეთილი იყოს შენი დაბრუნება, ძვირფასო",
+                    "role": {
+                        "teacher": "მასწავლებელო",
+                        "student": "მოსწავლე"
+                    }
+                },
+                "form": {
+                    "password": "პაროლი",
+                    "btn": {
+                        "loading": "ავტორიზაცია...",
+                        "static": "შესვლა"
+                    }
+                },
+                "or": "ან",
+                "toRegister": {
+                    "text": "შექმენი",
+                    "click": "ახალი ანგარიში"
                 }
             },
-            "info": {
-                "text": "თუ ჯერ არ გაქვს ანგარიში, დააჭირე",
-                "underline": "აქ"
-            }
-        },
-        "register": {
-            "title": "რეგისტრაცია",
-            "form": {
-                "usernameLabel": "მომხმარებლის სახელი",
-                "usernameInput": "შეიყვანეთ სახელი",
-                "emailLabel": "ელ. მეილი",
-                "emailInput": "შეიყვანეთ იმეილი",
-                "passwordLabel": "პაროლი",
-                "passwordInput": "შეიყვანეთ პაროლი",
-                "rePasswordInput": "გაიმეორეთ პაროლი",
-                "signUpBtn": "რეგისტრაცია"
-            },
-            "info": {
-                "text": "თუ უკვე გაქვს ანგარიში, დააჭირე",
-                "underline": "აქ"
+            "register": {
+                "title": "რეგისტრაცია",
+                "steps": {
+                    "role": "აირჩიე როლი",
+                    "pers": "პერსონალური მონაცემები",
+                    "cred": "ანგარიშის მონაცემები"
+                },
+                "components": {
+                    "role": {
+                        "question": "რა არის შენი სტატუსი?",
+                        "teacher": "მასწავლებელი",
+                        "student": "მოსწავლე"
+                    },
+                    "personalDetails": {
+                        "title": "მიუთითეთ დეტალები თქვენს შესახებ",
+                        "username": "სახელი* (სავალდებულო)",
+                        "surname": "გვარი (სურვილისამებრ)",
+                        "birthdate": ""
+                    },
+                    "credentials": {
+                        "email": "შეიყვანეთ ვალიდური ელ. მეილი",
+                        "password": {
+                            "new": "შეიყვანეთ პაროლი",
+                            "rep": "გაიმეორეთ პაროლი"
+                        }
+                    }
+                },
+                "controls": {
+                    "back": "უკან",
+                    "next": "შემდეგი",
+                    "finish": {
+                        "loading": "რეგისტრაცია...",
+                        "static": "დასრულება"
+                    }
+                },
+                "toLogin": {
+                    "text": "თუ უკვე გაქვს ანგარიში, დააჭირე",
+                    "here": "აქ"
+                }
             }
         }
-    },
-    "Header": {
-        "navigation": {
-            "navItems": {
-                "home": "მთავარი",
-                "blog": "ბლოგი",
-                "contact": "კონტაქტი",
-                "profile": "პროფილი",
-                "products": "პროდუქცია",
-                "admin": "ადმინი"
-            },
-            "lngChanger": {
-                "geo": "ქართული",
-                "eng": "ინგლისური"
-            },
-            "themeChanger": {
-                "light": "ღია",
-                "dark": "მუქი",
-                "os": "სისტემური"
-            },
-            "signOutBtn": "გასვლა"
-        }
-    },
-    "Footer": {
-        "title": "ყველა უფლება დაცულია",
-        "inputPh": "დაგვიტოვე მეილი"
     }
 }

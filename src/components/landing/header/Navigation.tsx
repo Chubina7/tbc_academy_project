@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-// import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { navItems } from "../../../lib/lists/ListsWithComponents";
 import { IoArrowUp } from "react-icons/io5";
@@ -9,7 +9,7 @@ import { IoArrowUp } from "react-icons/io5";
 import Link from "next/link";
 
 export default function Navigation() {
-  // const t = useTranslations("Header.navigation.navItems");
+  const t = useTranslations("landing.header.navigation");
   const path = usePathname();
 
   return (
@@ -23,7 +23,7 @@ export default function Navigation() {
               : "text-[#8697C3] hover:text-inherit"
           }`}
         >
-          <Link href={navItem.href}>{navItem.placeholder}</Link>
+          <Link href={navItem.href}>{t(navItem.placeholder)}</Link>
         </li>
       ))}
       <li
@@ -31,7 +31,7 @@ export default function Navigation() {
       >
         <IoArrowUp size={12} className="absolute top-0 -right-1" />
         <Link href={"/dashboard"} target="_blank">
-          Dashboard
+          {t("dashboard")}
         </Link>
       </li>
     </ul>

@@ -7,8 +7,10 @@ import {
 } from "../../../../../../context/ctx";
 import { useRouter } from "next/navigation";
 import { credentialsValidationMessage } from "../../../../../../lib/helpers/regular_funcs/validators";
+import { useTranslations } from "next-intl";
 
 export default function FinishBtn() {
+  const t = useTranslations("dashboard.authorization.register.controls.finish");
   const { inputs, stepIdxState, messages } = useContext(regCtx);
   const { showNotification } = useContext(notifCtx);
   const [isLoading, setIsLoading] = useState(false);
@@ -79,7 +81,7 @@ export default function FinishBtn() {
         onClick={handleSubmit}
         disabled={disable}
       >
-        {isLoading ? "Registrating..." : "Finish"}
+        {isLoading ? t("loading") : t("static")}
       </button>
     );
   } else {
