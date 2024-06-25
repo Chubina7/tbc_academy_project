@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
 import { useContext } from "react";
 import { NotificationsContext as notifCtx } from "../../../../../../context/ctx";
+import { useTranslations } from "next-intl";
 
 interface Props {
   closeModal: () => void;
@@ -18,6 +19,7 @@ const domain = detectEnviro();
 export default function YesBtn({ closeModal, loadingState }: Props) {
   const { showNotification } = useContext(notifCtx);
   const router = useRouter();
+  const t = useTranslations("dashboard.pages.profile.logined.deleteAcc.modal");
 
   const handleDeletion = async () => {
     loadingState.setIsLoading(true);
@@ -49,12 +51,12 @@ export default function YesBtn({ closeModal, loadingState }: Props) {
   return (
     <button
       onClick={handleDeletion}
-      className={`px-3 py-1 rounded-lg bg-red-600 ${
+      className={`px-3 py-1 rounded-lg bg-red-600 text-[#FFFFFF] ${
         loadingState.isLoading ? "opacity-60" : "opacity-100"
       }`}
       disabled={loadingState.isLoading}
     >
-      Yes
+      {t("yesBtn")}
     </button>
   );
 }

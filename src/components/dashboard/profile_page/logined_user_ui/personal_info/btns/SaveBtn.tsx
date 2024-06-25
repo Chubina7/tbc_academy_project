@@ -8,6 +8,7 @@ import {
 } from "../../../../../../context/ctx";
 import { useRouter } from "next/navigation";
 import { upload } from "@vercel/blob/client";
+import { useTranslations } from "next-intl";
 
 interface Props {
   dataToBeServed: {
@@ -46,6 +47,7 @@ export default function SaveBtn({ dataToBeServed, prevProfileImage }: Props) {
   const router = useRouter();
   const { setIsLoading } = useContext(loadingCtx);
   const { showNotification } = useContext(notifCtx);
+  const t = useTranslations("dashboard.pages.profile.logined.pers.btns");
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -94,10 +96,10 @@ export default function SaveBtn({ dataToBeServed, prevProfileImage }: Props) {
 
   return (
     <button
-      className="px-3 py-1 rounded-lg border-2 border-[#603CFF] dark:border-[#5C5470] bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 text-sm font-bold"
+      className="px-3 py-1 rounded-lg border-2 border-[#603CFF] dark:border-[#5C5470] bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 text-sm font-bold text-nowrap"
       onClick={handleSubmit}
     >
-      Save <span className="hidden md:inline-block">Changes</span>
+      {t("save")}
     </button>
   );
 }

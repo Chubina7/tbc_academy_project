@@ -94,7 +94,50 @@
             }
         },
         "pages": {
-            "rooms": {}
+            "rooms": {},
+            "profile": {
+                "logined": {
+                    "nav": {
+                        "pers": "Personal Information",
+                        "payment": "Payment Details",
+                        "delete": "Delete Account"
+                    },
+                    "pers": {
+                        "title": "Personal Information",
+                        "btns": {
+                            "cancel": "Cancel",
+                            "save": "Save changes",
+                            "edit": "Change profile picture",
+                            "delete": "Delete exciting"
+                        },
+                        "username": {
+                            "label": "Username",
+                            "input": "Enter new username"
+                        },
+                        "surname": {
+                            "label": "Surname",
+                            "input": "Enter new surname"
+                        },
+                        "birthdate": {
+                            "label": "Birthdate",
+                            "input": "Enter birthdate"
+                        }
+                    },
+                    "deleteAcc": {
+                        "title": "Delete Account",
+                        "warning1": "Permanently delete your account",
+                        "warning2": "All related data will be removed from our databases",
+                        "btn": "DELETE",
+                        "modal": {
+                            "title": "Confirm deletion",
+                            "question": "Do you really want to remove account? This action can not be undone!",
+                            "noBtn": "No",
+                            "yesBtn": "Yes"
+                        }
+                    }
+                },
+                "visitor": {}
+            }
         }
     }
 }
