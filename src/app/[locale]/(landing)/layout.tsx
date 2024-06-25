@@ -13,7 +13,7 @@ export default function LandindPageLayout({ children, params }: Props) {
   return (
     <>
       <Header />
-      <main className="w-full max-w-screen-2xl min-h-screen p-8 py-6 mx-auto mt-16">
+      <main className="w-full max-w-screen-2xl min-h-screen sm:p-8 py-6 mx-auto mt-16">
         {children}
       </main>
       <Footer />

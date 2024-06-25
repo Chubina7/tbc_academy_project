@@ -13,6 +13,11 @@ interface Props {
   };
 }
 
+export const metadata: IMetaData = {
+  title: "Announcements",
+  description: "Lets find out what teachers are announcing.",
+};
+
 export default async function AnnouncementsPage({
   params,
   searchParams,

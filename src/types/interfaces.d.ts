@@ -17,12 +17,12 @@ interface ILandPrefListItem {
     setFunction: () => Promise<void>
 }
 interface ILandingNavItem {
-    placeholder: "home" | "about" | "contact";
-    href: "/" | "/about" | "/contact"
-    whenActive: "/" | "/about" | "/contact";
+    placeholder: "home";
+    href: "/"
+    whenActive: "/"
 }
 interface IDashboardNavListItem {
-    title: "home" | "rooms" | "schedule" | "announcements" | "bookshelf",
+    title: "home" | "rooms" | "announcements" | "bookshelf",
     icon: React.ReactNode,
     onActive: React.ReactNode,
     href: "" | "/rooms" | "/schedule" | "/announcements" | "/bookshelf",

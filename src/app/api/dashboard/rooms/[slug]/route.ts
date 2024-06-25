@@ -14,74 +14,13 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const assignments = [
     {
         assignment_id: "A0001",
-        assignment_title: "Calculus Homework",
-        assignment_description: "Complete the calculus problems on page 32.",
+        assignment_title: "HARDCODED DATA",
+        assignment_description: "HARDCODED DATA HARDCODED DATA HARDCODED DATA",
         assignment_status: true,
         created_at: "2024-02-10T08:00:00Z",
         assignment_past_due: "2024-02-20T08:00:00Z",
     },
-    {
-        assignment_id: "A0002",
-        assignment_title: "Linear Algebra Assignment",
-        assignment_description: "Submit a report on vector spaces.",
-        assignment_status: false,
-        created_at: "2024-03-05T08:00:00Z",
-        assignment_past_due: "2024-03-15T08:00:00Z",
-    },
-    {
-        assignment_id: "A0002",
-        assignment_title: "Linear Algebra Assignment",
-        assignment_description: "Submit a report on vector spaces.",
-        assignment_status: false,
-        created_at: "2024-03-05T08:00:00Z",
-        assignment_past_due: "2024-03-15T08:00:00Z",
-    },
-    {
-        assignment_id: "A0002",
-        assignment_title: "Linear Algebra Assignment",
-        assignment_description: "Submit a report on vector spaces.",
-        assignment_status: false,
-        created_at: "2024-03-05T08:00:00Z",
-        assignment_past_due: "2024-03-15T08:00:00Z",
-    },
-    {
-        assignment_id: "A0002",
-        assignment_title: "Linear Algebra Assignment",
-        assignment_description: "Submit a report on vector spaces.",
-        assignment_status: false,
-        created_at: "2024-03-05T08:00:00Z",
-        assignment_past_due: "2024-03-15T08:00:00Z",
-    },
-    {
-        assignment_id: "A0002",
-        assignment_title: "Linear Algebra Assignment",
-        assignment_description: "Submit a report on vector spaces.",
-        assignment_status: false,
-        created_at: "2024-03-05T08:00:00Z",
-        assignment_past_due: "2024-03-15T08:00:00Z",
-    },
 ]
-const grade = {
-    student_data: {
-        user_avg: 88.5,
-        class_avg: 75.3,
-    },
-    teacher_data: [
-        {
-            user_id: "U0001",
-            username: "jdoe",
-            surname: "Doe",
-            student_avg_grade: 85.6,
-        },
-        {
-            user_id: "U0002",
-            username: "asmith",
-            surname: "Smith",
-            student_avg_grade: 90.2,
-        },
-    ],
-}
-
 interface Props {
     params: IParams
 }
@@ -135,8 +74,18 @@ export async function GET(req: NextRequest, { params }: Props) {
 
         // assignments relation
         // ...
-        // grade relation
-        // ...
+        const grade = {
+            student_data: {
+                user_avg: Math.round((Math.random() * 50 + 50) * 10) / 10,
+                class_avg: Math.round((Math.random() * 50 + 50) * 10) / 10
+            },
+            teacher_data: members.map(item => ({
+                user_id: item.user_id,
+                username: item.username,
+                surname: item.surname,
+                student_avg_grade: Math.round((Math.random() * 50 + 50) * 10) / 10
+            })) as Array<IRoomTeacherAvgs>
+        }
 
         const data: ISingleRoomApiReturn = {
             intro,

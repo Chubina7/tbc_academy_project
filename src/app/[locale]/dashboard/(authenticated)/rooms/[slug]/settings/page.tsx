@@ -11,6 +11,11 @@ interface Props {
   params: IParams;
 }
 
+export const metadata: IMetaData = {
+  title: "Settings",
+  description: "Change and modify room. Or delete.. if you want.",
+};
+
 const NoAccessPage = ({ message }: { message: string }) => (
   <section className="w-full h-full flex flex-col p-3 md:p-7 gap-5 overflow-visible">
     <h1>{message}</h1>

@@ -11,6 +11,15 @@ interface Props {
   params: IParams;
 }
 
+export async function generateMetadata({ params }: Props) {
+  const data = await getSingleRoomData(params.slug);
+
+  return {
+    title: data?.intro.room_name,
+    description: data?.intro.room_description,
+  };
+}
+
 export default async function RoomPage({ params }: Props) {
   unstable_setRequestLocale(params.locale);
   const data = await getSingleRoomData(params.slug);

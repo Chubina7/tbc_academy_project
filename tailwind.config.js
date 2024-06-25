@@ -17,6 +17,9 @@ module.exports = {
       boxShadow: {
         custom: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
       },
+      height: {
+        minusHeader: "calc(100vh - 64px)",
+      },
     },
   },
   plugins: ["tailwindcss", "autoprefixer"],

@@ -5,6 +5,15 @@ interface Props {
   params: IParams;
 }
 
+export async function generateMetadata({ params }: Props) {
+  const data = await getSingleBookData(params.slug);
+
+  return {
+    title: data?.book_title,
+    description: data?.book_description,
+  };
+}
+
 export default async function BookPage({ params }: Props) {
   const data = await getSingleBookData(params.slug);
 

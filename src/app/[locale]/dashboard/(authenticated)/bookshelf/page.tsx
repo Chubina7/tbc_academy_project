@@ -1,6 +1,12 @@
 import BookshelfList from "../../../../../components/dashboard/bookshelf_page/list/BookshelfList";
 import { getBookshelfItems } from "../../../../../lib/data_fetchers";
 
+export const metadata: IMetaData = {
+  title: "Bookshelf",
+  description:
+    "Find perfect books and resources, that you think you will need it.",
+};
+
 export default async function BookshelfPage() {
   const data = await getBookshelfItems();
 

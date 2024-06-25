@@ -198,7 +198,15 @@ export async function getSingleBookData(book_id: string) {
             throw new Error(result.message || "Error while fetching data");
         }
 
-        const result = await res.json();
+        const result: {
+            username: string;
+            surname: string | null;
+            book_title: string;
+            book_description: string;
+            blob_download_link: string;
+            blob_type: BookTypes;
+            blob_name: string;
+        } = await res.json();
         return result;
     } catch (error) {
         console.error("Failed to fetch single book data:", error);

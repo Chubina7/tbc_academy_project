@@ -2,11 +2,21 @@ import { unstable_setRequestLocale } from "next-intl/server";
 import AddNewComment from "../../../../../../components/dashboard/announcements_page/single_page/add_new_comment/AddNewComment";
 import Comments from "../../../../../../components/dashboard/announcements_page/single_page/comments/Comments";
 import Details from "../../../../../../components/dashboard/announcements_page/single_page/details/Details";
+import { getSingleAnnouncementData } from "../../../../../../lib/data_fetchers";
 
 interface Props {
   params: IParams;
   searchParams: {
     comments: string | undefined;
+  };
+}
+
+export async function generateMetadata({ params }: Props) {
+  const data = await getSingleAnnouncementData(params.slug);
+
+  return {
+    title: data?.announcement_title,
+    description: data?.announcement,
   };
 }
 
