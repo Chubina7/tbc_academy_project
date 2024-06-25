@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import Item from "./item/Item";
 
 interface Props {
@@ -6,6 +7,8 @@ interface Props {
 }
 
 export default function List({ data, query }: Props) {
+  const t = useTranslations("dashboard.pages.announcements.singlePage");
+
   return (
     <div className="w-full max-w-4xl flex flex-col justify-center items-center ">
       {data ? (
@@ -23,7 +26,7 @@ export default function List({ data, query }: Props) {
             })
             .map((item) => <Item key={item.comment_id} data={item} />)
         ) : (
-          <p className="w-full text-center">No comments</p>
+          <p className="w-full text-center">{t("noComments")}</p>
         )
       ) : (
         <p className="w-full text-center">Error fetching data</p>

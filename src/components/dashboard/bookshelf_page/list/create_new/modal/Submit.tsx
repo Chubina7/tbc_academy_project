@@ -8,6 +8,7 @@ import {
 import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
 import { upload } from "@vercel/blob/client";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 interface Props {
   closeModal: () => void;
@@ -20,6 +21,7 @@ export default function Submit({ closeModal }: Props) {
     useContext(ctx);
   const { showNotification } = useContext(notifCtx);
   const router = useRouter();
+  const t = useTranslations("dashboard.pages.bookshelf.modal");
 
   const condition =
     data.title.trim() === "" ||
@@ -78,7 +80,7 @@ export default function Submit({ closeModal }: Props) {
       onClick={handleNewBookUpload}
       disabled={isLoading || condition}
     >
-      Finish
+      {t("finishBtn")}
     </button>
   );
 }

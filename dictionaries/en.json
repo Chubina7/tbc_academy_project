@@ -200,6 +200,51 @@
                         "admin": "Admin"
                     }
                 }
+            },
+            "announcements": {
+                "new": {
+                    "title": "Announcement title",
+                    "desc": "What you want to announce...",
+                    "select": "Select room",
+                    "cancel": "",
+                    "announce": "",
+                    "add": "Add Announcement",
+                    "allTitle": "All Announcements",
+                    "make": "Make Announcement"
+                },
+                "singlePage": {
+                    "allTitle": "Comments",
+                    "title": "Add new comment",
+                    "addBtn": "Comment",
+                    "ph": "What is in your mind...",
+                    "noComments": "No comments",
+                    "role": {
+                        "teacher": "Teaher",
+                        "student": "Student",
+                        "admin": "Admin"
+                    },
+                    "sort": "Sort"
+                }
+            },
+            "bookshelf": {
+                "upload": "Upload",
+                "modal": {
+                    "title": "Upload new book or resource",
+                    "addTitle": {
+                        "label": "Add Title",
+                        "ph": "Add some meaningful title"
+                    },
+                    "addDesc": {
+                        "label": "Provide Description",
+                        "ph": "Describe in few words, what are you uploading"
+                    },
+                    "filePrev": "File Preview",
+                    "choose": "Select Room",
+                    "finishBtn": "Finish"
+                },
+                "singlePage": {
+                    "download": "Download"
+                }
             }
         }
     }

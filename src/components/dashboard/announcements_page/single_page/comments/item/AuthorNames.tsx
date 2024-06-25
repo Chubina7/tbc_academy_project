@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { USER } from "../../../../../../lib/helpers/server_act_funcs/authorization_acts";
 import DeleteBtn from "./delete/DeleteBtn";
+import { getTranslations } from "next-intl/server";
 
 interface Props {
   author: {
@@ -14,6 +15,9 @@ interface Props {
 
 export default async function AuthorNames({ author, idToDelte }: Props) {
   const { user_id } = await USER();
+  const t = await getTranslations(
+    "dashboard.pages.announcements.singlePage.role"
+  );
 
   return (
     <div className="w-full flex flex-col">
@@ -26,9 +30,7 @@ export default async function AuthorNames({ author, idToDelte }: Props) {
         </Link>
         {user_id === author.user_id && <DeleteBtn idToDelete={idToDelte} />}
       </h1>
-      <p className="text-sm opacity-60">
-        {author.role.charAt(0).toLocaleUpperCase() + author.role.slice(1)}
-      </p>
+      <p className="text-sm opacity-60">{t(`${author.role}`)}</p>
     </div>
   );
 }

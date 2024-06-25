@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AddNewAnnouncement from "./new_announcement/AddNewAnnouncement";
 import { IoAdd } from "react-icons/io5";
+import { useTranslations } from "next-intl";
 
 interface Props {
   enrolledRoomList: Array<{ room_id: string; room_name: string }>;
@@ -10,6 +11,7 @@ interface Props {
 
 export default function TeacherComp({ enrolledRoomList }: Props) {
   const [makeAnnc, setMakeAnnc] = useState(false);
+  const t = useTranslations("dashboard.pages.announcements.new");
 
   const handleAnnouncement = () => setMakeAnnc((prev) => !prev);
 
@@ -17,9 +19,7 @@ export default function TeacherComp({ enrolledRoomList }: Props) {
     <>
       {makeAnnc ? (
         <>
-          <h1 className="w-full max-w-4xl font-bold text-2xl">
-            Make announcement
-          </h1>
+          <h1 className="w-full max-w-4xl font-bold text-2xl">{t("make")}</h1>
           <AddNewAnnouncement
             enrolledRoomList={enrolledRoomList}
             cancelAddition={handleAnnouncement}
@@ -32,11 +32,11 @@ export default function TeacherComp({ enrolledRoomList }: Props) {
             onClick={handleAnnouncement}
           >
             <IoAdd size={20} />
-            <span className="text-nowrap">Add Announcement</span>
+            <span className="text-nowrap">{t("add")}</span>
           </button>
         </div>
       )}
-      <h1 className="w-full max-w-4xl font-bold text-2xl">All announcements</h1>
+      <h1 className="w-full max-w-4xl font-bold text-2xl">{t("allTitle")}</h1>
     </>
   );
 }
