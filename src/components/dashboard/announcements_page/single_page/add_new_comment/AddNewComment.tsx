@@ -6,6 +6,7 @@ import Input from "./Input";
 import { detectEnviro } from "../../../../../lib/helpers/regular_funcs/general";
 import { useRouter } from "next/navigation";
 import { NotificationsContext as notifCtx } from "../../../../../context/ctx";
+import { useTranslations } from "next-intl";
 
 const domain = detectEnviro();
 
@@ -19,6 +20,7 @@ export default function AddNewComment({ announcement_id }: Props) {
   const [error, setError] = useState(false);
   const state = useState("");
   const router = useRouter();
+  const t = useTranslations("dashboard.pages.announcements.singlePage");
 
   const handleSubmit = async () => {
     const value = state[0];
@@ -60,7 +62,7 @@ export default function AddNewComment({ announcement_id }: Props) {
         isLoading ? "opacity-50" : "opacity-100"
       }`}
     >
-      <h1 className="w-full max-w-4xl font-bold text-2xl">Add new comment</h1>
+      <h1 className="w-full max-w-4xl font-bold text-2xl">{t("title")}</h1>
       <Input
         state={state}
         handleSubmit={handleSubmit}

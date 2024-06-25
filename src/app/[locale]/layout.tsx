@@ -24,7 +24,7 @@ const english = Montserrat({
 
 // Metadata
 export const metadata: IMetaData = {
-  title: "TBC x USAID Course Project",
+  title: "SkillUp",
   description: "Developed by Luka Chubinidze",
 };
 

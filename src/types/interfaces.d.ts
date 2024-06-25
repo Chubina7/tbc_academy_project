@@ -17,12 +17,12 @@ interface ILandPrefListItem {
     setFunction: () => Promise<void>
 }
 interface ILandingNavItem {
-    placeholder: "home" | "about" | "contact";
-    href: "/" | "/about" | "/contact"
-    whenActive: "/" | "/about" | "/contact";
+    placeholder: "home";
+    href: "/"
+    whenActive: "/"
 }
 interface IDashboardNavListItem {
-    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "Bookshelf",
+    title: "home" | "rooms" | "announcements" | "bookshelf",
     icon: React.ReactNode,
     onActive: React.ReactNode,
     href: "" | "/rooms" | "/schedule" | "/announcements" | "/bookshelf",
@@ -227,14 +227,11 @@ interface IBook {
     };
 }
 interface IUploadNewBook {
-    book: {
-        name: string,
-        type: BookTypes,
-    },
+    title: string,
     description: string,
+    file: File
     room: {
         room_id: string;
         room_name: string;
-    } | null,
-    title: string,
+    },
 }

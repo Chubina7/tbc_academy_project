@@ -2,6 +2,7 @@
 
 import { useContext, useEffect } from "react";
 import { RoomsListFilterContext as ctx } from "../../../../context/ctx";
+import { useTranslations } from "next-intl";
 
 interface Props {
   filters: Array<string>;
@@ -9,7 +10,7 @@ interface Props {
 
 export default function RoomsFilter({ filters }: Props) {
   const { selectedCategories, setSelectedCategories } = useContext(ctx);
-
+  const t = useTranslations("dashboard.pages.rooms");
   useEffect(() => {
     if (selectedCategories.length === 0) {
       setSelectedCategories(["all"]);
@@ -24,7 +25,7 @@ export default function RoomsFilter({ filters }: Props) {
   // styles
   const styles = (ctg: string) => {
     const baseStyle =
-      "bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] rounded-full py-0.5 px-5 text-sm hover:cursor-pointer transition-all duration-300 select-none opacity-100 text-nowrap";
+      "bg-[#2B3674] text-[#F4F7FF] dark:bg-[#5C5470] rounded-full py-0.5 px-5 text-sm hover:cursor-pointer transition-all duration-300 select-none opacity-100 text-nowrap min-w-[85px] text-center";
     const unActiveStl = " opacity-60 hover:opacity-80 ";
     return isInList(ctg) ? baseStyle : unActiveStl + baseStyle;
   };
@@ -47,7 +48,7 @@ export default function RoomsFilter({ filters }: Props) {
           className={styles("all")}
           onClick={() => !isInList("all") && setSelectedCategories(["all"])}
         >
-          All
+          {t("all")}
         </li>
       )}
       {filters.map((category, idx) => {

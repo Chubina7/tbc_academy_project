@@ -9,7 +9,7 @@ import { detectEnviro } from "../../../lib/helpers/regular_funcs/general";
 const domain = detectEnviro();
 
 export default function SignOutBtn() {
-  const t = useTranslations("Header.navigation");
+  const t = useTranslations("dashboard.header.modal.signOutBtn");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -36,7 +36,7 @@ export default function SignOutBtn() {
       id="profile_modal"
     >
       <FaSignOutAlt size={18} />
-      {isLoading ? "Signing out..." : t("signOutBtn")}
+      {isLoading ? t("loading") : t("static")}
     </button>
   );
 }

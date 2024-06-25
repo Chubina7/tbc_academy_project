@@ -1,67 +1,263 @@
 {
-    "Auth": {
-        "login": {
-            "title": "Login",
-            "form": {
-                "usernameLabel": "Enter your email",
-                "usernameInput": "example123",
-                "passwordLabel": "Enter valid password",
-                "passwordInput": "Password",
-                "signInBtn": "Sign in",
-                "messages": {
-                    "empty": "Unable to pass empty data!",
-                    "fillBoth": "One of these fields is empty. Please, fill both!",
-                    "invalid": "Invalid credentials",
-                    "handlerError": "Erorr happened. Check browser console for more information."
+    "landing": {
+        "header": {
+            "navigation": {
+                "about": "About",
+                "home": "Home",
+                "contact": "contact",
+                "dashboard": "Dashboard"
+            },
+            "btn": "Join Now"
+        }
+    },
+    "dashboard": {
+        "authorization": {
+            "login": {
+                "title": "Login",
+                "welcome": {
+                    "text": "Welcome back, dear",
+                    "role": {
+                        "teacher": "TEACHER",
+                        "student": "STUDENT"
+                    }
+                },
+                "form": {
+                    "password": "Password",
+                    "btn": {
+                        "loading": "Authenticating...",
+                        "static": "Login"
+                    }
+                },
+                "or": "OR",
+                "toRegister": {
+                    "text": "Create",
+                    "click": "new account"
                 }
             },
-            "info": {
-                "text": "If you dont have accout, Sign Up",
-                "underline": "here"
+            "register": {
+                "title": "Registration",
+                "steps": {
+                    "role": "Choose Role",
+                    "pers": "Enter Personal Details",
+                    "cred": "Account Credentials"
+                },
+                "components": {
+                    "role": {
+                        "question": "Are you student or teacher?",
+                        "teacher": "Teaher",
+                        "student": "Student"
+                    },
+                    "personalDetails": {
+                        "title": "Provide some personal details",
+                        "username": "Username* (required)",
+                        "surname": "Surname (optional)",
+                        "birthdate": ""
+                    },
+                    "credentials": {
+                        "email": "Enter valid e-mail",
+                        "password": {
+                            "new": "Enter password",
+                            "rep": "Repeat Password"
+                        }
+                    }
+                },
+                "controls": {
+                    "back": "Back",
+                    "next": "Next",
+                    "finish": {
+                        "loading": "Registrating...",
+                        "static": "Finish"
+                    }
+                },
+                "toLogin": {
+                    "text": "If you already have account, Log In",
+                    "here": "here"
+                }
             }
         },
-        "register": {
-            "title": "Register",
-            "form": {
-                "usernameLabel": "Username",
-                "usernameInput": "Username",
-                "emailLabel": "Email",
-                "emailInput": "Enter e-mail",
-                "passwordLabel": "Password",
-                "passwordInput": "Enter password",
-                "rePasswordInput": "Re-type password",
-                "signUpBtn": "Sign up"
+        "navigation": {
+            "home": "Home",
+            "rooms": "Rooms",
+            "schedule": "Schedule",
+            "announcements": "Announcements",
+            "bookshelf": "Bookshelf"
+        },
+        "header": {
+            "search": "Search user...",
+            "modal": {
+                "settings": "Settings",
+                "help": "Help Center",
+                "signOutBtn": {
+                    "static": "Sign out",
+                    "loading": "Signing out..."
+                }
+            }
+        },
+        "pages": {
+            "rooms": {
+                "createBtn": "Create Room",
+                "all": "All",
+                "singlePage": {
+                    "edit": "Edit",
+                    "titles": {
+                        "assignments": "Assignments",
+                        "members": "Members",
+                        "announcements": "Announcements",
+                        "grades": "Grades"
+                    },
+                    "addBtn": "Add",
+                    "seeMore": "See more",
+                    "dueTo": "Due to",
+                    "postedAgo": "Posted",
+                    "createdAt": "Created At",
+                    "settingsPage": {
+                        "info": {
+                            "title": "Information",
+                            "reset": "Reset",
+                            "save": "Save",
+                            "roomTitlePh": "Room Title",
+                            "roomDesc": "Room Description"
+                        },
+                        "ctg": {
+                            "title": "Categories",
+                            "reset": "Reset",
+                            "save": "Save",
+                            "addBtn": "Add",
+                            "ph": "Start typing..."
+                        },
+                        "pict": {
+                            "title": "Cover Picture",
+                            "browseBtn": "Browse Files",
+                            "cancel": "Cancel",
+                            "save": "Save",
+                            "delete": "Delete"
+                        },
+                        "delete": {
+                            "title": "Delete Room",
+                            "warning": "Permanently delete room and its related data",
+                            "delBtn": "Delete",
+                            "cancel": "Cancel",
+                            "info": {
+                                "title": "Confirm room deletion",
+                                "warning": "Harmful action!",
+                                "members": "Members",
+                                "resources": "Resources",
+                                "assignments": "Assignments",
+                                "grades": "Grades",
+                                "warnpart1": "will be permanently deleted and",
+                                "warnpart2": "can not be undone"
+                            }
+                        }
+                    }
+                }
             },
-            "info": {
-                "text": "If you already have accout, Sign in",
-                "underline": "here"
+            "profile": {
+                "logined": {
+                    "nav": {
+                        "pers": "Personal Information",
+                        "payment": "Payment Details",
+                        "delete": "Delete Account"
+                    },
+                    "pers": {
+                        "title": "Personal Information",
+                        "btns": {
+                            "cancel": "Cancel",
+                            "save": "Save changes",
+                            "edit": "Change profile picture",
+                            "delete": "Delete exciting"
+                        },
+                        "username": {
+                            "label": "Username",
+                            "input": "Enter new username"
+                        },
+                        "surname": {
+                            "label": "Surname",
+                            "input": "Enter new surname"
+                        },
+                        "birthdate": {
+                            "label": "Birthdate",
+                            "input": "Enter birthdate"
+                        }
+                    },
+                    "deleteAcc": {
+                        "title": "Delete Account",
+                        "warning1": "Permanently delete your account",
+                        "warning2": "All related data will be removed from our databases",
+                        "btn": "DELETE",
+                        "modal": {
+                            "title": "Confirm deletion",
+                            "question": "Do you really want to remove account? This action can not be undone!",
+                            "noBtn": "No",
+                            "yesBtn": "Yes"
+                        }
+                    }
+                },
+                "visitor": {
+                    "title": "Personal Information",
+                    "role": {
+                        "student": "Student",
+                        "teacher": "Teaher",
+                        "admin": "Admin"
+                    }
+                }
+            },
+            "announcements": {
+                "new": {
+                    "title": "Announcement title",
+                    "desc": "What you want to announce...",
+                    "select": "Select room",
+                    "cancel": "",
+                    "announce": "",
+                    "add": "Add Announcement",
+                    "allTitle": "All Announcements",
+                    "make": "Make Announcement"
+                },
+                "singlePage": {
+                    "allTitle": "Comments",
+                    "title": "Add new comment",
+                    "addBtn": "Comment",
+                    "ph": "What is in your mind...",
+                    "noComments": "No comments",
+                    "role": {
+                        "teacher": "Teaher",
+                        "student": "Student",
+                        "admin": "Admin"
+                    },
+                    "sort": "Sort"
+                }
+            },
+            "bookshelf": {
+                "upload": "Upload",
+                "modal": {
+                    "title": "Upload new book or resource",
+                    "addTitle": {
+                        "label": "Add Title",
+                        "ph": "Add some meaningful title"
+                    },
+                    "addDesc": {
+                        "label": "Provide Description",
+                        "ph": "Describe in few words, what are you uploading"
+                    },
+                    "filePrev": "File Preview",
+                    "choose": "Select Room",
+                    "finishBtn": "Finish"
+                },
+                "singlePage": {
+                    "download": "Download"
+                }
             }
         }
     },
-    "Header": {
-        "navigation": {
-            "navItems": {
-                "home": "Home",
-                "blog": "Blog",
-                "contact": "Contact",
-                "profile": "Profile",
-                "products": "Products",
-                "admin": "Admin"
-            },
-            "lngChanger": {
-                "geo": "Georgian",
-                "eng": "English"
-            },
-            "themeChanger": {
-                "light": "Light",
-                "dark": "Dark",
-                "os": "System"
-            },
-            "signOutBtn": "Sign out"
-        }
+    "notFound": {
+        "title1": "Oop.. Could not find requested page.",
+        "title2": "It is maybe already deleted, or did not even exist.",
+        "back": "Go back",
+        "dashboard": "Dashboard"
     },
-    "Footer": {
-        "title": "All rights reserved",
-        "inputPh": "Leave your email"
-    }
+    "error": {
+        "title": "Something went wrong!",
+        "goBack": "Go to homepage",
+        "tryAgain": "Try again"
+    },
+    "welcome": "Teach with us smarter, Learn with us better"
 }

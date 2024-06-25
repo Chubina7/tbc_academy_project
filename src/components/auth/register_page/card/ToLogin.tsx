@@ -3,10 +3,12 @@
 import React, { useContext } from "react";
 import { RegistrationInputsContext } from "../../../../context/ctx";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function ToLogin() {
   const { inputs } = useContext(RegistrationInputsContext);
   const router = useRouter();
+  const t = useTranslations("dashboard.authorization.register.toLogin");
 
   const handleRoute = () => {
     if (
@@ -25,9 +27,9 @@ export default function ToLogin() {
 
   return (
     <p>
-      If you already have account, Log In{" "}
+      {t("text")}{" "}
       <span className="underline cursor-pointer" onClick={handleRoute}>
-        here
+        {t("here")}
       </span>
     </p>
   );

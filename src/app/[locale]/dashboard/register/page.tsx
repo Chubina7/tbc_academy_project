@@ -1,4 +1,3 @@
-// import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import Banner from "../../../../components/auth/register_page/banner/Banner";
 import RegisterCard from "../../../../components/auth/register_page/card/RegisterCard";
@@ -10,7 +9,6 @@ interface Props {
 
 export default function RegisterPage({ params }: Props) {
   unstable_setRequestLocale(params.locale);
-  // const t = useTranslations("Auth.register");
 
   return (
     <RegistrationProvider>

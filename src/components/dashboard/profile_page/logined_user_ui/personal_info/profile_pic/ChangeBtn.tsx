@@ -3,10 +3,12 @@
 import { useContext, useRef } from "react";
 import { IoPencil } from "react-icons/io5";
 import { PersonalInfoChangingContext as ctx } from "../../../../../../context/ctx";
+import { useTranslations } from "next-intl";
 
 export default function ChangeBtn() {
   const { setValue } = useContext(ctx);
   const browseRef = useRef<HTMLInputElement>(null);
+  const t = useTranslations("dashboard.pages.profile.logined.pers.btns");
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -34,7 +36,7 @@ export default function ChangeBtn() {
         onClick={() => browseRef.current && browseRef.current.click()}
       >
         <IoPencil size={20} />
-        <p>Change profile picture</p>
+        <p>{t("edit")}</p>
       </button>
     </>
   );

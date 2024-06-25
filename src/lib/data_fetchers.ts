@@ -158,3 +158,81 @@ export async function getUserPublicProfileInfo(user_id: string) {
         return null;
     }
 }
+
+// Bookshelf
+export async function getBookshelfItems() {
+    const token = cookies().get(AUTH_COOKIE_KEY)?.value;
+    try {
+        const res = await fetch(`${domain}/api/dashboard/bookshelf`, {
+            cache: "no-cache",
+            headers: {
+                Authorization: token || "",
+            }
+        });
+
+        if (!res.ok) {
+            const result = await res.json();
+            throw new Error(result.messae);
+        }
+
+        const result: Array<IBook> = await res.json();
+        return result;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+export async function getSingleBookData(book_id: string) {
+    const token = cookies().get(AUTH_COOKIE_KEY);
+
+    try {
+        const res = await fetch(`${domain}/api/dashboard/bookshelf/${book_id}`, {
+            cache: "no-cache",
+            headers: {
+                Authorization: token?.value || "",
+            },
+        });
+
+        if (!res.ok) {
+            const result = await res.json();
+            throw new Error(result.message || "Error while fetching data");
+        }
+
+        const result: {
+            username: string;
+            surname: string | null;
+            book_title: string;
+            book_description: string;
+            blob_download_link: string;
+            blob_type: BookTypes;
+            blob_name: string;
+        } = await res.json();
+        return result;
+    } catch (error) {
+        console.error("Failed to fetch single book data:", error);
+        return null;
+    }
+}
+
+// Bookmark
+export async function getBookmarks() {
+    const token = cookies().get(AUTH_COOKIE_KEY)?.value;
+    try {
+        const res = await fetch(`${domain}/api/dashboard/bookmarks`, {
+            cache: "no-cache",
+            headers: {
+                Authorization: token || ""
+            }
+        })
+        const result = await res.json()
+
+        if (!res.ok) {
+            throw new Error(result.message)
+        }
+
+        return result as Array<BookmarkItemType>
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}

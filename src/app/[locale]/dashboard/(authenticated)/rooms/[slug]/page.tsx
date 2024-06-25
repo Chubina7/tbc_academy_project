@@ -4,11 +4,20 @@ import Assignments from "../../../../../../components/dashboard/rooms_page/singl
 import Grades from "../../../../../../components/dashboard/rooms_page/single_page/grades_comp/Grades";
 import Intro from "../../../../../../components/dashboard/rooms_page/single_page/intro_comp/Intro";
 import Members from "../../../../../../components/dashboard/rooms_page/single_page/members_comp/Members";
-import Schedule from "../../../../../../components/dashboard/rooms_page/single_page/Schedule";
+// import Schedule from "../../../../../../components/dashboard/rooms_page/single_page/Schedule";
 import { getSingleRoomData } from "../../../../../../lib/data_fetchers";
 
 interface Props {
   params: IParams;
+}
+
+export async function generateMetadata({ params }: Props) {
+  const data = await getSingleRoomData(params.slug);
+
+  return {
+    title: data?.intro.room_name,
+    description: data?.intro.room_description,
+  };
 }
 
 export default async function RoomPage({ params }: Props) {
@@ -33,7 +42,7 @@ export default async function RoomPage({ params }: Props) {
         </div>
         <Members room_id={params.slug} data={data.members} />
       </div>
-      <Schedule />
+      {/* <Schedule /> */}
     </section>
   );
 }

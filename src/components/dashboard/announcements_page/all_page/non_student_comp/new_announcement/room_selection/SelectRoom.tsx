@@ -4,6 +4,7 @@ import { useState } from "react";
 import List from "./List";
 import useOutsideClickTrack from "../../../../../../../hooks/useOutsideClickTrack";
 import { IoCaretUp } from "react-icons/io5";
+import { useTranslations } from "next-intl";
 
 interface Props {
   roomList: Array<{ room_id: string; room_name: string }>;
@@ -13,30 +14,10 @@ export default function SelectRoom({ roomList }: Props) {
   const [selectedName, setSelectedName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   useOutsideClickTrack("select_room_new_announcement", [isOpen, setIsOpen]);
+  const t = useTranslations("dashboard.pages.announcements.new");
 
   const modalHandler = () => setIsOpen((prev) => !prev);
 
-  // return (
-  //   <select
-  //     name="room"
-  //     id="room"
-  //     className="rounded-lg bg-transparent dark:bg-[#5C5470] border-2 px-3 py-1 w-full max-w-40 overflow-x-hidden font"
-  //     defaultValue={"default"}
-  //     onChange={(e) => {
-  //       setError(false);
-  //       setRoomId(e.target.value);
-  //     }}
-  //   >
-  //     {roomList.map((item, idx) => (
-  //       <option key={idx} value={item.room_id}>
-  //         {item.room_name}
-  //       </option>
-  //     ))}
-  //     <option value="default" hidden>
-  //       Select Room
-  //     </option>
-  //   </select>
-  // );
   return (
     <div
       className="relative w-full max-w-44 rounded-lg bg-[#FFFFFF] dark:bg-[#5C5470] transition-all duration-300"
@@ -48,7 +29,7 @@ export default function SelectRoom({ roomList }: Props) {
         id="select_room_new_announcement"
       >
         <p id="select_room_new_announcement" className="w-full line-clamp-1">
-          {selectedName !== "" ? selectedName : "SELECT ROOM"}
+          {selectedName !== "" ? selectedName : t("select")}
         </p>
         <IoCaretUp
           size={18}

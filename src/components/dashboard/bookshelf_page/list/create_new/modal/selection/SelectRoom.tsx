@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Options from "./Options";
 import Select from "./Select";
-import useOutsideClickTrack from "../../../../../../../../hooks/useOutsideClickTrack";
+import useOutsideClickTrack from "../../../../../../../hooks/useOutsideClickTrack";
 
 export default function SelectRoom() {
   const [isOpen, setIsOpen] = useState(false);
