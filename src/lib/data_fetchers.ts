@@ -208,3 +208,26 @@ export async function getSingleBookData(book_id: string) {
         return null;
     }
 }
+
+// Bookmark
+export async function getBookmarks() {
+    const token = cookies().get(AUTH_COOKIE_KEY)?.value;
+    try {
+        const res = await fetch(`${domain}/api/dashboard/bookmarks`, {
+            cache: "no-cache",
+            headers: {
+                Authorization: token || ""
+            }
+        })
+        const result = await res.json()
+
+        if (!res.ok) {
+            throw new Error(result.message)
+        }
+
+        return result as Array<BookmarkItemType>
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
