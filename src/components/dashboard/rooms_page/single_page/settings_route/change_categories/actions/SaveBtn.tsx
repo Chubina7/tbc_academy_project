@@ -7,6 +7,7 @@ import {
 } from "../../../../../../../context/ctx";
 import { detectEnviro } from "../../../../../../../lib/helpers/regular_funcs/general";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const domain = detectEnviro();
 
@@ -16,6 +17,9 @@ export default function SaveBtn() {
   const path = usePathname();
   const router = useRouter();
   const room_id = path.split("/")[3];
+  const t = useTranslations(
+    "dashboard.pages.rooms.singlePage.settingsPage.ctg"
+  );
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -47,7 +51,7 @@ export default function SaveBtn() {
       className="px-3 py-1 border border-[#603CFF] dark:border-[#5C5470] bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 rounded-lg"
       onClick={handleSubmit}
     >
-      Save
+      {t("save")}
     </button>
   );
 }

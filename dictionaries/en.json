@@ -94,7 +94,63 @@
             }
         },
         "pages": {
-            "rooms": {},
+            "rooms": {
+                "createBtn": "Create Room",
+                "all": "All",
+                "singlePage": {
+                    "edit": "Edit",
+                    "titles": {
+                        "assignments": "Assignments",
+                        "members": "Members",
+                        "announcements": "Announcements",
+                        "grades": "Grades"
+                    },
+                    "addBtn": "Add",
+                    "seeMore": "See more",
+                    "dueTo": "Due to",
+                    "postedAgo": "Posted",
+                    "createdAt": "Created At",
+                    "settingsPage": {
+                        "info": {
+                            "title": "Information",
+                            "reset": "Reset",
+                            "save": "Save",
+                            "roomTitlePh": "Room Title",
+                            "roomDesc": "Room Description"
+                        },
+                        "ctg": {
+                            "title": "Categories",
+                            "reset": "Reset",
+                            "save": "Save",
+                            "addBtn": "Add",
+                            "ph": "Start typing..."
+                        },
+                        "pict": {
+                            "title": "Cover Picture",
+                            "browseBtn": "Browse Files",
+                            "cancel": "Cancel",
+                            "save": "Save",
+                            "delete": "Delete"
+                        },
+                        "delete": {
+                            "title": "Delete Room",
+                            "warning": "Permanently delete room and its related data",
+                            "delBtn": "Delete",
+                            "cancel": "Cancel",
+                            "info": {
+                                "title": "Confirm room deletion",
+                                "warning": "Harmful action!",
+                                "members": "Members",
+                                "resources": "Resources",
+                                "assignments": "Assignments",
+                                "grades": "Grades",
+                                "warnpart1": "will be permanently deleted and",
+                                "warnpart2": "can not be undone"
+                            }
+                        }
+                    }
+                }
+            },
             "profile": {
                 "logined": {
                     "nav": {
@@ -136,7 +192,14 @@
                         }
                     }
                 },
-                "visitor": {}
+                "visitor": {
+                    "title": "Personal Information",
+                    "role": {
+                        "student": "Student",
+                        "teacher": "Teaher",
+                        "admin": "Admin"
+                    }
+                }
             }
         }
     }

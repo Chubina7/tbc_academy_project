@@ -7,7 +7,7 @@ interface Props {
   data: Array<IRoomMember>;
 }
 
-export default async function Members({ data, room_id }: Props) {
+export default function Members({ data, room_id }: Props) {
   return (
     <div className="bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-all duration-300 shadow-custom | w-full h-full xl:max-w-80 flex flex-col gap-6">
       <Heading room_id={room_id} />

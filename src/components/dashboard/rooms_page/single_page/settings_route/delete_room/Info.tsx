@@ -1,17 +1,22 @@
+import { useTranslations } from "next-intl";
+
 export default function Info() {
+  const t = useTranslations(
+    "dashboard.pages.rooms.singlePage.settingsPage.delete.info"
+  );
+
   return (
     <>
-      <h1 className="w-full font-bold text-2xl">Confirm room deletion</h1>
-      <p>Harmfull action!</p>
+      <h1 className="w-full font-bold text-2xl">{t("title")}</h1>
+      <p>{t("warning")}</p>
       <ul className="list-disc pl-6">
-        <li>Members</li>
-        <li>Resources</li>
-        <li>Assignments</li>
-        <li>Grades</li>
+        <li>{t("members")}</li>
+        <li>{t("resources")}</li>
+        <li>{t("assignments")}</li>
+        <li>{t("grades")}</li>
       </ul>
       <p>
-        will be <span className="font-bold">permanently</span> deleted and{" "}
-        <span className="font-bold">can not be undone</span>!
+        {t("warnpart1")} <span className="font-bold">{t("warnpart2")}</span>!
       </p>
     </>
   );

@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
 import { useContext } from "react";
 import { NotificationsContext as notifCtx } from "../../../../../../context/ctx";
+import { useTranslations } from "next-intl";
 
 interface Props {
   closeModal: () => void;
@@ -17,6 +18,9 @@ export default function ConfirmBtn({ closeModal, loadingState }: Props) {
   const router = useRouter();
   const path = usePathname();
   const room_id = path.split("/")[3];
+  const t = useTranslations(
+    "dashboard.pages.rooms.singlePage.settingsPage.delete"
+  );
 
   const deletionHandler = async () => {
     loadingState[1](true);
@@ -50,7 +54,7 @@ export default function ConfirmBtn({ closeModal, loadingState }: Props) {
       onClick={deletionHandler}
       disabled={loadingState[0]}
     >
-      Confirm
+      {t("delBtn")}
     </button>
   );
 }
