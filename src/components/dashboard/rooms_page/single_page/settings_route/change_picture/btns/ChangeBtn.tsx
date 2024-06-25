@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { NotificationsContext as notifCtx } from "../../../../../../../context/ctx";
 import { upload } from "@vercel/blob/client";
 import { deleteBlobData } from "../../../../../profile_page/logined_user_ui/personal_info/btns/SaveBtn";
+import { useTranslations } from "next-intl";
 
 interface Props {
   source: File | null;
@@ -25,6 +26,9 @@ export default function ChangeBtn({
   const { showNotification } = useContext(notifCtx);
   const path = usePathname();
   const router = useRouter();
+  const t = useTranslations(
+    "dashboard.pages.rooms.singlePage.settingsPage.pict"
+  );
 
   const handleCoverPictureChange = async () => {
     setLoading(true);
@@ -69,7 +73,7 @@ export default function ChangeBtn({
       className="text-nowrap px-3 py-1 border border-[#603CFF] dark:border-[#5C5470] bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 rounded-lg select-none"
       onClick={handleCoverPictureChange}
     >
-      Save
+      {t("save")}
     </button>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 import { IoLockClosedOutline } from "react-icons/io5";
 
@@ -13,6 +14,7 @@ interface Props {
 
 const PasswordInput = ({ inputValueState, loadingState }: Props) => {
   const [password, setPassword] = inputValueState;
+  const t = useTranslations("dashboard.authorization.login.form");
 
   return (
     <div className="relative w-full">
@@ -24,7 +26,7 @@ const PasswordInput = ({ inputValueState, loadingState }: Props) => {
         type="password"
         id="password"
         name="password"
-        placeholder="example123"
+        placeholder={t("password")}
         className={`relative w-full bg-[#FFFFFF] text-[#2B3674] dark:bg-[#5C5470] dark:text-[#F4F7FF] rounded-xl px-3 py-3 pl-12 outline-none focus:outline-none text-lg opacity-60 focus:opacity-100 | transition-all duration-300 ${
           loadingState ? "cursor-not-allowed" : "cursor-text"
         }`}

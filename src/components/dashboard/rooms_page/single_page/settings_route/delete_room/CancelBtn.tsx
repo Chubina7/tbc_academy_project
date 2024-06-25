@@ -1,9 +1,15 @@
+import { useTranslations } from "next-intl";
+
 interface Props {
   modalHandler: () => void;
   isLoading: boolean;
 }
 
 export default function CancelBtn({ modalHandler, isLoading }: Props) {
+  const t = useTranslations(
+    "dashboard.pages.rooms.singlePage.settingsPage.delete"
+  );
+  
   return (
     <button
       className={`px-3 py-1 border rounded-lg ${
@@ -12,7 +18,7 @@ export default function CancelBtn({ modalHandler, isLoading }: Props) {
       onClick={modalHandler}
       disabled={isLoading}
     >
-      Cancel
+      {t("cancel")}
     </button>
   );
 }

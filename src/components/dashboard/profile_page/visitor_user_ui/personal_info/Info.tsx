@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 interface Props {
   username: string;
   surname: string | null;
@@ -17,13 +19,14 @@ export default function Info({
   const day = String(d.getDate()).padStart(2, "0");
   const month = String(d.getMonth() + 1).padStart(2, "0");
   const year = d.getFullYear();
+  const t = useTranslations("dashboard.pages.profile.visitor.role");
 
   return (
     <div className="w-full flex flex-col justify-start items-center">
       <h1 className="text-center text-2xl">
         {username} {surname}
       </h1>
-      <h1 className="text-center opacity-60 text-sm">{role}</h1>
+      <h1 className="text-center opacity-60 text-sm">{t(`${role}`)}</h1>
       <h1 className="text-center text-sm opacity-60">{email}</h1>
       <h1 className="text-center text-sm opacity-60">
         {birth_date ? `${day}/${month}/${year}` : "No birthdate provided"}

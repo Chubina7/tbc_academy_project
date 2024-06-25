@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 // import Tooltip from "./Tooltip";
 import VariantsListItem from "../../../../ui/framerMotionDivs/variants/VariantsListItem";
+import { useTranslations } from "next-intl";
 
 interface Props {
   data: IDashboardNavListItem;
@@ -14,6 +15,7 @@ export default function NavItem({ data }: Props) {
   // const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>();
   const path = usePathname();
   const isActive = path.substring(10) === data.href;
+  const t = useTranslations("dashboard.navigation");
 
   // const handleMouseEnter = () => {
   //   const i = setTimeout(() => {
@@ -57,7 +59,7 @@ export default function NavItem({ data }: Props) {
             isActive ? "opacity-100 font-bold scale-105" : "opacity-40"
           }`}
         >
-          {data.title}
+          {t(`${data.title}`)}
         </p>
       </VariantsListItem>
     </Link>

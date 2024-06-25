@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { IoCaretDown } from "react-icons/io5";
 import { UploadNewBookContext as ctx } from "../../../../../../../context/ctx";
+import { useTranslations } from "next-intl";
 
 interface Props {
   handleOptions: () => void;
@@ -9,6 +10,7 @@ interface Props {
 
 export default function Select({ handleOptions, isOpen }: Props) {
   const { data, isLoading } = useContext(ctx);
+  const t = useTranslations("dashboard.pages.bookshelf.modal");
 
   return (
     <div
@@ -25,7 +27,7 @@ export default function Select({ handleOptions, isOpen }: Props) {
         className="w-full h-full text-left line-clamp-1"
         id="room_selecting_in_new_book"
       >
-        {data.room?.room_name ? data.room.room_name : "Select Room"}
+        {data.room?.room_name ? data.room.room_name : t("choose")}
       </p>
       <IoCaretDown
         size={18}

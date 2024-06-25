@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useRef } from "react";
 
 interface Props {
@@ -8,6 +9,9 @@ interface Props {
 
 export default function BrowseBtn({ action }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const t = useTranslations(
+    "dashboard.pages.rooms.singlePage.settingsPage.pict"
+  );
 
   const handleFileBrowsing = () => {
     if (inputRef.current) {
@@ -32,7 +36,7 @@ export default function BrowseBtn({ action }: Props) {
         name="cover_picture"
         onClick={handleFileBrowsing}
       >
-        Browse Files
+        {t("browseBtn")}
       </button>
     </>
   );

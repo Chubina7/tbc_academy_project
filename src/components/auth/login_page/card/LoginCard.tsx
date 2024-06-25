@@ -4,6 +4,7 @@ import Hr from "./Hr";
 import Heading from "./Heading";
 import ToRegister from "./ToRegister";
 import Appear from "../../../ui/framerMotionDivs/Appear";
+import LangChanger from "../../../ui/languagePreference/LangChanger";
 
 export default function LoginCard() {
   return (
@@ -13,7 +14,10 @@ export default function LoginCard() {
         <Form />
         <Hr />
         <ToRegister />
-        <ThemeChanger />
+        <div className="flex gap-7 justify-center items-center">
+          <ThemeChanger />
+          <LangChanger />
+        </div>
       </div>
     </Appear>
   );

@@ -7,6 +7,7 @@ import {
 } from "../../../../../../context/ctx";
 import { detectEnviro } from "../../../../../../lib/helpers/regular_funcs/general";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const domain = detectEnviro();
 
@@ -28,6 +29,7 @@ export default function Btn({ cancelAddition }: Props) {
     setError,
     setIsLoading,
   } = useContext(newAnnCtx);
+  const t = useTranslations("dashboard.pages.announcements.new");
 
   const handleSubmition = async () => {
     setIsLoading(true);
@@ -82,13 +84,13 @@ export default function Btn({ cancelAddition }: Props) {
         className="px-3 py-1 border-2 border-[#603CFF] text-[#603CFF] dark:border-[#5C5470] dark:text-[#FFFFFF] transition-all duration-300 rounded-lg hover:scale-105"
         onClick={cancelAddition}
       >
-        Cancel
+        {t("cancel")}
       </button>
       <button
         className="px-3 py-1 border-2 border-[#603CFF] dark:border-[#5C5470] bg-[#603CFF] text-[#FFFFFF] dark:bg-[#5C5470] dark:text-[#DBD8E3] transition-all duration-300 rounded-lg hover:scale-105"
         onClick={handleSubmition}
       >
-        Announce
+        {t("announce")}
       </button>
     </div>
   );

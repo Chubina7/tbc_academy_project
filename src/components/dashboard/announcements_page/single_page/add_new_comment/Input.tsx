@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 interface Props {
   state: [string, React.Dispatch<React.SetStateAction<string>>];
   handleSubmit: () => void;
@@ -12,12 +14,13 @@ export default function Input({
   errorState,
 }: Props) {
   const [value, setValue] = state;
+  const t = useTranslations("dashboard.pages.announcements.singlePage");
 
   return (
     <textarea
       name="announcement_new_comment"
       id="announcement_new_comment"
-      placeholder="What is in your mind..."
+      placeholder={t("ph")}
       rows={5}
       className="w-full bg-transparent border-2 rounded-lg focus:outline-none p-3 resize-none"
       value={value}

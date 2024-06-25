@@ -22,7 +22,7 @@ interface ILandingNavItem {
     whenActive: "/" | "/about" | "/contact";
 }
 interface IDashboardNavListItem {
-    title: "Home" | "Rooms" | "Schedule" | "Announcements" | "Bookshelf",
+    title: "home" | "rooms" | "schedule" | "announcements" | "bookshelf",
     icon: React.ReactNode,
     onActive: React.ReactNode,
     href: "" | "/rooms" | "/schedule" | "/announcements" | "/bookshelf",

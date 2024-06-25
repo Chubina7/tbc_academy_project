@@ -5,6 +5,7 @@ import BrowseBtn from "./btns/BrowseBtn";
 import ChangeBtn from "./btns/ChangeBtn";
 import UploadedImg from "./UploadedImg";
 import DeleteBtn from "./btns/DeleteBtn";
+import { useTranslations } from "next-intl";
 
 interface Props {
   data: string;
@@ -14,6 +15,9 @@ export default function CoverPicture({ data }: Props) {
   const [imageFile, setImageFile] = useState(null as File | null);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const t = useTranslations(
+    "dashboard.pages.rooms.singlePage.settingsPage.pict"
+  );
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -38,7 +42,7 @@ export default function CoverPicture({ data }: Props) {
       <div className="bg-[#FFFFFF] dark:bg-[#352F44] rounded-xl transition-all duration-300 shadow-custom p-3 | w-full flex flex-col gap-3">
         <div className="w-full flex justify-between items-center">
           <h1 className="w-full font-bold text-2xl select-none">
-            Cover Picture
+            {t("title")}
           </h1>
           <div className="flex justify-center items-center gap-2 font-bold text-sm">
             {imageFile ? (

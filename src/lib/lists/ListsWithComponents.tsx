@@ -14,7 +14,6 @@ import {
   IoList,
   IoPeople,
 } from "react-icons/io5";
-import Appear from "../../components/ui/framerMotionDivs/Appear";
 import RoleCheckmark from "../../components/auth/register_page/card/steps/RoleCheckmark";
 import PersonalDetailInputs from "../../components/auth/register_page/card/steps/presonal_details/PersonalDetailInputs";
 import CredentialInputs from "../../components/auth/register_page/card/steps/acc_credentials/CredentialInputs";
@@ -95,65 +94,64 @@ export const navItems: LandingNavItemsType = [
 ];
 export const dashboardNavigationList: DashboardNavListType = [
   {
-    title: "Home",
+    title: "home",
     icon: <IoHome size={20} color="inherit" />,
     onActive: <IoHome size={20} color="inherit" />,
     href: "",
     forHeading: "Welcome, STUDENT!",
   },
   {
-    title: "Rooms",
+    title: "rooms",
     icon: <IoChatbubbles size={20} color="inherit" />,
     onActive: <IoChatbubbles size={20} color="inherit" />,
     href: "/rooms",
     forHeading: "Rooms you enrolled",
   },
   {
-    title: "Schedule",
+    title: "schedule",
     icon: <IoCalendarSharp size={20} color="inherit" />,
     onActive: <IoCalendarSharp size={20} color="inherit" />,
     href: "/schedule",
     forHeading: "Plans here!",
   },
   {
-    title: "Announcements",
+    title: "announcements",
     icon: <IoInformationCircle size={20} color="inherit" />,
     onActive: <IoInformationCircle size={20} color="inherit" />,
     href: "/announcements",
     forHeading: "Sssch!",
   },
   {
-    title: "Bookshelf",
+    title: "bookshelf",
     icon: <IoBook size={20} color="inherit" />,
     onActive: <IoBook size={20} color="inherit" />,
     href: "/bookshelf",
     forHeading: "Resources that you need.",
   },
 ];
-export const loginHeadingWords = [
-  <Appear key={0} className="transition-colors duration-300 font-bold">
-    STUDENT
-  </Appear>,
-  <Appear key={1} className="transition-colors duration-300 font-bold">
-    TEACHER
-  </Appear>,
-];
-export const registrationSteps = [
-  { component: <RoleCheckmark key={0} />, heading: "Choose Role" },
+export const registrationSteps: Array<{
+  component: JSX.Element;
+  ph: "role" | "pers" | "cred";
+}> = [
+  { component: <RoleCheckmark key={0} />, ph: "role" },
   {
     component: <PersonalDetailInputs key={1} />,
-    heading: "Enter Personal Details",
+    ph: "pers",
   },
-  { component: <CredentialInputs key={2} />, heading: "Account Credentials" },
+  { component: <CredentialInputs key={2} />, ph: "cred" },
 ];
-export const modalListItems = [
+export const modalListItems: Array<{
+  title: "settings" | "help";
+  icon: JSX.Element;
+  link: string;
+}> = [
   {
-    title: "Settings",
+    title: "settings",
     icon: <IoSettings id="profile_modal" size={20} />,
     link: "/dashboard/settings",
   },
   {
-    title: "Help Center",
+    title: "help",
     icon: <IoHelpCircle id="profile_modal" size={20} />,
     link: "/dashboard/help",
   },

@@ -1,4 +1,5 @@
 import Appear from "../../../ui/framerMotionDivs/Appear";
+import LangChanger from "../../../ui/languagePreference/LangChanger";
 import ThemeChanger from "../../../ui/themePreference/ThemeChanger";
 import Hr from "./Hr";
 // import Modal from "./Modal";
@@ -15,7 +16,10 @@ export default function RegisterCard() {
           <Steps />
           <Hr />
           <ToLogin />
-          <ThemeChanger />
+          <div className="flex gap-7 justify-center items-center">
+            <ThemeChanger />
+            <LangChanger />
+          </div>
         </div>
       </Appear>
       {/* <Modal /> */}
