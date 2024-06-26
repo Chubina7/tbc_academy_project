@@ -48,6 +48,6 @@ As a student, you can:
 
 *All mentioned functionalities are restricted and conditionally shown depending on the user role - teacher or student.*
 
-## Project
+# Project
 
 This project was developed as part of the REACT Accelerator course at [TBC IT Academy](https://www.tbcacademy.ge/), funded by [USAID](https://www.usaid.gov/).
