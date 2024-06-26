@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
         await sql`INSERT INTO users (user_id, username, surname, email, password, role, birth_date)
             VALUES (${user_id}, ${username}, ${surname.trim() === "" ? null : surname}, ${email}, ${hashedPassword}, ${role}, ${birth_date.trim() === "" ? null : birth_date})`
-        await setSessionCookie({ birth_date, email, password, profile_picture: null, role, surname, user_id, username })
+        await setSessionCookie({ birth_date, email, password, profile_picture: "", role, surname, user_id, username })
 
         return NextResponse.json({ message: "Successfully registered!" }, { status: 200 });
     } catch (error) {
